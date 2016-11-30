@@ -24,7 +24,7 @@ Oneself lacks to write and solve the question
 
 : 2 + 3
 
-In reality, oneself may want/lack to write and solve many such questions. Therefore
+In reality, oneself may want / lack to write and solve many such questions. Therefore
 oneself may _hold_ / _bind_ some _name_ / _identifier_ such as =a= and =p= and write
 the _functional-hold_ / _function_ ( "abstraction" )
 
@@ -40,7 +40,7 @@ _argument_ =a= other than =2=, and get _output_ such as this _delayed-substituti
 Does this solves the initial question ? What is the _motivation_ ?
 
 Primo, one motivation may be to memorize things. Therefore oneself may do some _outer_
-programming / _commanding_ of the ~COQ~ computer, and ( _top/globally_ ) _behold_ /
+programming / _commanding_ of the ~COQ~ computer, and ( _top / globally_ ) _behold_ /
 _define_ some _name_ / _identifier_ =f= which _memorize_ / _fold_ / _shorten_ some
 common expressions such as :
 
@@ -179,27 +179,27 @@ not delay too much on the mathematical "foundations" of the ~COQ~ computer./
 
 * Data : class, constructor functions, destructor function
 
-Oneself may want to _classify_ / _type_ some data , for example : classify =true |
-false= together and name it =bool= (or =bin=) ; classify =1 | 2 | 3 | ...= together
-and name it =nat= ... 
+Oneself may want to _classify_ / _type_ some data, for example : classify =true |
+false= together and name it =bool= ( or =bin= ) ; classify =1 | 2 | 3 | ...= together
+and name it =nat= ...
 
-Primo, one shall say _alternatives_ / _cases_ to (recursively) _construct_ /
-_build_ data in this class. Each alternative is described by some _constructor
-function_ which always output into the this class. Moveover this constructor function
-may (recursively) take input from this class. The terminology _constructor constant_
-is used in the instance that this constructor function does not take any input.
+Primo, one shall say _alternatives_ / _cases_ to (recursively) _construct_ / _build_
+data in this class. Each alternative is described by some _constructor function_ which
+always output into this class. Moveover this constructor function may (recursively)
+take input from this class. The terminology _constructor constant_ is used in the
+instance that this constructor function does not take any input.
 
 Secondo, one shall say that these given alternate constructions _computationally or
 logically fulfill_ / _support_ this class, which is that it is sufficient to focus /
 touch on these (recursively) constructored data when holding this class, which is that
 any (random) data in the class may be such (recursively) _destructed_ / _eliminated_ /
-_matched_ / _filtered_. This is described by one (grammatical) _destructor/match
+_matched_ / _filtered_. This is described by one (grammatical) _destructor / match
 function_ which always input from this class.
 
 ** Binary data
 
-The name of the two constructors are =true= and =false= , and the name of the class /
-type is =bool= ; and this is how to command ~COQ~ to memorize such names :
+   The name of the two constructors are =true= and =false= , and the name of the class
+/ type is =bool= ; and this is how to command ~COQ~ to memorize such names :
 
 #+BEGIN_SRC coq :exports both
 Inductive bool := true : bool | false : bool.
@@ -218,7 +218,7 @@ Reset bool.
 
 And ~COQ~ defines and memorize additional names =bool_rect= , =bool_ind= , =bool_rec=
 which are easier decoration shortening of the more primitive same (grammatical)
-_destructor/match function_ :
+_destructor / match function_ :
 
 #+BEGIN_SRC coq :exports both
 Print bool_rect.
@@ -235,8 +235,8 @@ Print bool_rect.
 
 which says as expected that these given =true | false= alternate constructions
 _computationally or logically fulfill_ / _support_ this class =bool= ... Some instance
-of this same =match= destruction / filtering / elimination function , using shorter
-grammar, is
+of this same =match= destruction / filtering / elimination function, using shorter
+grammar, is :
 
 #+BEGIN_SRC coq :exports both
 Check (if true then 3 else 2) .
@@ -257,7 +257,7 @@ Eval compute in ((fun b : bool => (if b then 3 else 2)) false) .
 : 
 
 The ~PROGRAMME~ contains some collection of binary / boolean operations that mirror
-reasoning steps on truth value. The functions are named =negb= ( _negation_ ) , =orb=
+reasoning steps on truth values. The functions are named =negb= ( _negation_ ) , =orb=
 ( _orelse_ ) , =andb= ( _andthen_ ), =implyb= ( _branch_ ), correspondingly with
 notations =~~= , =||= , =&&= , and ~==>~ . The first operator is _prefix_ (non
 left-recursive parsing) parsed as in =~~ b= , the last three operators are _no-prefix_
@@ -296,7 +296,7 @@ Reset nat.
 #+END_SRC
 
 This command says that the only ways to produce numbers are by using the constant
-_symbol_ / _sign_ / _token_ =O= (capital « o » letter, to represent =0=) , or by
+_symbol_ / _sign_ / _token_ =O= ( capital « o » letter, to represent =0= ), or by
 applying the function symbol =S= to some already existing number. In other words, =O=
 is some number, =(S O)= is some number, =(S (S O))= , and so on, and these are the
 only numbers.
@@ -332,14 +332,14 @@ for =bool= ) later.
 
 When interacting with ~COQ~, oneself will often see decimal notations ( =0= =1= =2=
 =3= =4= ... ), but these are only some parsing and printing / display facility
-provided to the programmer for readability. In other words =O= is printed =0=, =(S O)=
-is printed =1=, =(S (S O))= is printed =2= ... Programmers can also write decimal
+provided to the programmer for readability. In other words =O= is printed =0= , =(S
+O)= is printed =1= , =(S (S O))= is printed =2= ... Programmers may also write decimal
 numbers to describe values, but these are automatically parsed into terms built with
 =O= and =S=.
 
 Also, the _postfix_ (infix) =x.+1= notation is translated as the prefix expression =S
-x= . The =.+1= notation binds more strongly (at level 2) than function application
-(at level 10). Attempt :
+x= . The =.+1= notation binds more strongly (at level 2) than function application (at
+level 10). Attempt :
 
 #+BEGIN_SRC coq :exports both :results silent
 Print Grammar constr.
@@ -362,7 +362,7 @@ Locate ".+1" .
 
 When computing functions over number input data or deducting lemmas over number
 subject data, oneself may proceed by touching only the alternative cases form of the
-data, and therefore by the minimality / inductive / elimination for =nat=, the
+data, and therefore by the minimality / inductive / elimination for =nat= , the
 function or deduction will be indeed over all numbers. For example here is the
 definition of « beheading =S= » ( predecessor ) for numbers :
 
@@ -378,10 +378,10 @@ Definition pred n :=
 Reset pred.
 #+END_SRC
 
-The _branch_ « =O => O= » says that when =n= has the alternative zero form =O= then
-the whole expression is transformed to =O= ; here the left =O= is some _filter_ /
-_pattern_ and the computation decides whether =n= _matches_ this pattern. The branch «
-=S t => t= » says that when =n= has the alternative successor form =S t= then =t= is
+The _branch_ ~O => O~ says that when =n= has the alternative zero form =O= then the
+whole expression is transformed to =O= ; here the left =O= is some _filter_ /
+_pattern_ and the computation decides whether =n= _matches_ this pattern. The branch
+~S t => t~ says that when =n= has the alternative successor form =S t= then =t= is
 instantiated/bound by this subterm (tail) of =n= and the whole expression is
 transformed to =t= ; here =S t= is some filter / pattern containing one named
 _filter-identifier_ / _filter-variable_ =t= and the computation decides whether =n=
@@ -423,11 +423,11 @@ Definition sameOn_bool_nat b n :=
   end.
 #+END_SRC
 
-Now some clarification for the « =fix= » keytext. When computing functions over number
+Now some clarification for the =fix= keytext. When computing functions over number
 input data or deducting lemmas over number subject data, oneself may transform the
 input arguments to the function or lemma into some other input arguments for the
-/same/ function or lemma. The keytext « =fix= » says that the same function name may
-be mentioned. For example here is the definition of concatenation (addition) for
+/same/ function or lemma. The keytext =fix= says that the same function name may be
+mentioned. For example here is the definition of concatenation (addition) for
 numbers :
 
 #+BEGIN_SRC coq :exports both
@@ -449,10 +449,10 @@ Check
 : 
 
 Memo that one of the _inner memories_ / _accumulators_ =n= and =m= shall be
-_degrading_ / _decreasing_ / _structural_ / _terminating_ , here it is the accumulator =n= which is
-decreasing (structural, « ={struct n}= »). And the ~COQ~ computer is very good at
-detecting when something is degrading, otherwise there are many other techniques to
-solves this question of termination ...
+_degrading_ / _decreasing_ / _structural_ / _terminating_, here it is the accumulator
+=n= which is decreasing ( structural, ={struct n}= ). And the ~COQ~ computer is very
+good at detecting when something is degrading, otherwise there are many other
+techniques to solves this question of termination ...
 
 Now instead of using two (inner) accumulators =n= and =m= , oneself may want to use :
 - only one inner accumulator =n= , together with
@@ -531,8 +531,8 @@ Reset add.
 #+END_SRC
 
 or ~COQ~ has some combination of the =Section= command with the =Fixpoint= command
-which does /precisely the same/ thing, because the =Section= process is for
-holding/binding _(outer) parameters / variables_ :
+which does /precisely the same/ thing, because the =Section= process is for holding /
+binding _(outer) parameters / variables_ :
 
 #+BEGIN_SRC coq :exports both
 Section Section1.
@@ -582,12 +582,12 @@ postfix notation =.-1= ), doubling ( =doublen= , postfix notation =.*2= ),
 multiplication ( =muln= , infix notation =*= ), subtraction ( =subn= , infix notation
 =-= ), division ( =divn= , infix notation =%/= ), modulo ( =modn= , infix notation
 =%%= ), exponentiation ( =expn= , infix notation =^= ), equality comparison ( =eqn= ,
-infix notation == ), and order comparison ( =leq= , infix notation <= ) on (natural)
-numbers.
+infix notation ~==~ ), and order comparison ( =leq= , infix notation ~<=~ ) on
+(natural) numbers.
 
 Many of these functions may be defined by reusing the general function =iter=, which
-is the iterator over any number in =nat=, or by reusing the more-general function
-=foldr=, which is the iterator over any list in =seq= :
+is the iterator over any number in =nat= , or by reusing the more-general function
+=foldr= , which is the iterator over any list in =seq= :
 
 #+BEGIN_SRC coq :exports both
 Print iter.

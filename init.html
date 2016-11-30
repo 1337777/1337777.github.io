@@ -108,7 +108,7 @@ for the JavaScript code in this tag.
 <li><a href="#org8f25d05">6.1. inference</a></li>
 <li><a href="#orgde10255">6.2. classifying inference</a></li>
 <li><a href="#org259b9f1">6.3. alternative</a></li>
-<li><a href="#orga82aae1">6.4. recursion</a></li>
+<li><a href="#org87089e5">6.4. recursion</a></li>
 </ul>
 </li>
 <li><a href="#org5343b48">7. Deduction : classification</a>
@@ -116,7 +116,7 @@ for the JavaScript code in this tag.
 <li><a href="#org6116e68">7.1. meta-computation</a></li>
 <li><a href="#orgc5b14c7">7.2. boolean-computational reflection</a></li>
 <li><a href="#org9b17275">7.3. boolean simultaneous-substitution</a></li>
-<li><a href="#org87089e5">7.4. recursion</a></li>
+<li><a href="#org2700952">7.4. recursion</a></li>
 </ul>
 </li>
 <li><a href="#orgf9d80cf">8. Review of some long deductions</a>
@@ -148,7 +148,7 @@ Oneself lacks to write and solve the question
 </pre>
 
 <p>
-In reality, oneself may want/lack to write and solve many such questions. Therefore
+In reality, oneself may want / lack to write and solve many such questions. Therefore
 oneself may <span class="underline">hold</span> / <span class="underline">bind</span> some <span class="underline">name</span> / <span class="underline">identifier</span> such as <code>a</code> and <code>p</code> and write
 the <span class="underline">functional-hold</span> / <span class="underline">function</span> ( "abstraction" )
 </p>
@@ -174,7 +174,7 @@ Does this solves the initial question ? What is the <span class="underline">moti
 
 <p>
 Primo, one motivation may be to memorize things. Therefore oneself may do some <span class="underline">outer</span>
-programming / <span class="underline">commanding</span> of the <code>COQ</code> computer, and ( <span class="underline">top/globally</span> ) <span class="underline">behold</span> /
+programming / <span class="underline">commanding</span> of the <code>COQ</code> computer, and ( <span class="underline">top / globally</span> ) <span class="underline">behold</span> /
 <span class="underline">define</span> some <span class="underline">name</span> / <span class="underline">identifier</span> <code>f</code> which <span class="underline">memorize</span> / <span class="underline">fold</span> / <span class="underline">shorten</span> some
 common expressions such as :
 </p>
@@ -341,17 +341,17 @@ not delay too much on the mathematical "foundations" of the <code>COQ</code> com
 <h2 id="org7d3fbf1"><span class="section-number-2">2</span> Data : class, constructor functions, destructor function</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-Oneself may want to <span class="underline">classify</span> / <span class="underline">type</span> some data , for example : classify <code>true |
-false</code> together and name it <code>bool</code> (or <code>bin</code>) ; classify <code>1 | 2 | 3 | ...</code> together
-and name it <code>nat</code> &#x2026; 
+Oneself may want to <span class="underline">classify</span> / <span class="underline">type</span> some data, for example : classify <code>true |
+false</code> together and name it <code>bool</code> ( or <code>bin</code> ) ; classify <code>1 | 2 | 3 | ...</code> together
+and name it <code>nat</code> &#x2026;
 </p>
 
 <p>
-Primo, one shall say <span class="underline">alternatives</span> / <span class="underline">cases</span> to (recursively) <span class="underline">construct</span> /
-<span class="underline">build</span> data in this class. Each alternative is described by some <span class="underline">constructor
-function</span> which always output into the this class. Moveover this constructor function
-may (recursively) take input from this class. The terminology <span class="underline">constructor constant</span>
-is used in the instance that this constructor function does not take any input.
+Primo, one shall say <span class="underline">alternatives</span> / <span class="underline">cases</span> to (recursively) <span class="underline">construct</span> / <span class="underline">build</span>
+data in this class. Each alternative is described by some <span class="underline">constructor function</span> which
+always output into this class. Moveover this constructor function may (recursively)
+take input from this class. The terminology <span class="underline">constructor constant</span> is used in the
+instance that this constructor function does not take any input.
 </p>
 
 <p>
@@ -359,7 +359,7 @@ Secondo, one shall say that these given alternate constructions <span class="und
 logically fulfill</span> / <span class="underline">support</span> this class, which is that it is sufficient to focus /
 touch on these (recursively) constructored data when holding this class, which is that
 any (random) data in the class may be such (recursively) <span class="underline">destructed</span> / <span class="underline">eliminated</span> /
-<span class="underline">matched</span> / <span class="underline">filtered</span>. This is described by one (grammatical) <span class="underline">destructor/match
+<span class="underline">matched</span> / <span class="underline">filtered</span>. This is described by one (grammatical) <span class="underline">destructor / match
 function</span> which always input from this class.
 </p>
 </div>
@@ -368,8 +368,8 @@ function</span> which always input from this class.
 <h3 id="orgb844805"><span class="section-number-3">2.1</span> Binary data</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
-The name of the two constructors are <code>true</code> and <code>false</code> , and the name of the class /
-type is <code>bool</code> ; and this is how to command <code>COQ</code> to memorize such names :
+The name of the two constructors are <code>true</code> and <code>false</code> , and the name of the class
+/ type is <code>bool</code> ; and this is how to command <code>COQ</code> to memorize such names :
 </p>
 
 <div class="org-src-container">
@@ -384,7 +384,7 @@ bool is defined
 <p>
 And <code>COQ</code> defines and memorize additional names <code>bool_rect</code> , <code>bool_ind</code> , <code>bool_rec</code>
 which are easier decoration shortening of the more primitive same (grammatical)
-<span class="underline">destructor/match function</span> :
+<span class="underline">destructor / match function</span> :
 </p>
 
 <div class="org-src-container">
@@ -404,8 +404,8 @@ Argument scopes are [function_scope _ _ bool_scope]
 <p>
 which says as expected that these given <code>true | false</code> alternate constructions
 <span class="underline">computationally or logically fulfill</span> / <span class="underline">support</span> this class <code>bool</code> &#x2026; Some instance
-of this same <code>match</code> destruction / filtering / elimination function , using shorter
-grammar, is
+of this same <code>match</code> destruction / filtering / elimination function, using shorter
+grammar, is :
 </p>
 
 <div class="org-src-container">
@@ -430,7 +430,7 @@ if true then 3 else 2
 
 <p>
 The <code>PROGRAMME</code> contains some collection of binary / boolean operations that mirror
-reasoning steps on truth value. The functions are named <code>negb</code> ( <span class="underline">negation</span> ) , <code>orb</code>
+reasoning steps on truth values. The functions are named <code>negb</code> ( <span class="underline">negation</span> ) , <code>orb</code>
 ( <span class="underline">orelse</span> ) , <code>andb</code> ( <span class="underline">andthen</span> ), <code>implyb</code> ( <span class="underline">branch</span> ), correspondingly with
 notations <code>~~</code> , <code>||</code> , <code>&amp;&amp;</code> , and <code>==&gt;</code> . The first operator is <span class="underline">prefix</span> (non
 left-recursive parsing) parsed as in <code>~~ b</code> , the last three operators are <span class="underline">no-prefix</span>
@@ -472,7 +472,7 @@ nat_rec is defined
 
 <p>
 This command says that the only ways to produce numbers are by using the constant
-<span class="underline">symbol</span> / <span class="underline">sign</span> / <span class="underline">token</span> <code>O</code> (capital « o » letter, to represent <code>0</code>) , or by
+<span class="underline">symbol</span> / <span class="underline">sign</span> / <span class="underline">token</span> <code>O</code> ( capital « o » letter, to represent <code>0</code> ), or by
 applying the function symbol <code>S</code> to some already existing number. In other words, <code>O</code>
 is some number, <code>(S O)</code> is some number, <code>(S (S O))</code> , and so on, and these are the
 only numbers.
@@ -513,16 +513,16 @@ for <code>bool</code> ) later.
 <p>
 When interacting with <code>COQ</code>, oneself will often see decimal notations ( <code>0</code> <code>1</code> <code>2</code>
 <code>3</code> <code>4</code> &#x2026; ), but these are only some parsing and printing / display facility
-provided to the programmer for readability. In other words <code>O</code> is printed <code>0</code>, <code>(S O)</code>
-is printed <code>1</code>, <code>(S (S O))</code> is printed <code>2</code> &#x2026; Programmers can also write decimal
+provided to the programmer for readability. In other words <code>O</code> is printed <code>0</code> , <code>(S
+O)</code> is printed <code>1</code> , <code>(S (S O))</code> is printed <code>2</code> &#x2026; Programmers may also write decimal
 numbers to describe values, but these are automatically parsed into terms built with
 <code>O</code> and <code>S</code>.
 </p>
 
 <p>
 Also, the <span class="underline">postfix</span> (infix) <code>x.+1</code> notation is translated as the prefix expression <code>S
-x</code> . The <code>.+1</code> notation binds more strongly (at level 2) than function application
-(at level 10). Attempt :
+x</code> . The <code>.+1</code> notation binds more strongly (at level 2) than function application (at
+level 10). Attempt :
 </p>
 
 <div class="org-src-container">
@@ -544,7 +544,7 @@ fun x : nat =&gt; id x.+1
 <p>
 When computing functions over number input data or deducting lemmas over number
 subject data, oneself may proceed by touching only the alternative cases form of the
-data, and therefore by the minimality / inductive / elimination for <code>nat</code>, the
+data, and therefore by the minimality / inductive / elimination for <code>nat</code> , the
 function or deduction will be indeed over all numbers. For example here is the
 definition of « beheading <code>S</code> » ( predecessor ) for numbers :
 </p>
@@ -559,10 +559,10 @@ definition of « beheading <code>S</code> » ( predecessor ) for numbers :
 </div>
 
 <p>
-The <span class="underline">branch</span> « <code>O =&gt; O</code> » says that when <code>n</code> has the alternative zero form <code>O</code> then
-the whole expression is transformed to <code>O</code> ; here the left <code>O</code> is some <span class="underline">filter</span> /
-<span class="underline">pattern</span> and the computation decides whether <code>n</code> <span class="underline">matches</span> this pattern. The branch «
-<code>S t =&gt; t</code> » says that when <code>n</code> has the alternative successor form <code>S t</code> then <code>t</code> is
+The <span class="underline">branch</span> <code>O =&gt; O</code> says that when <code>n</code> has the alternative zero form <code>O</code> then the
+whole expression is transformed to <code>O</code> ; here the left <code>O</code> is some <span class="underline">filter</span> /
+<span class="underline">pattern</span> and the computation decides whether <code>n</code> <span class="underline">matches</span> this pattern. The branch
+<code>S t =&gt; t</code> says that when <code>n</code> has the alternative successor form <code>S t</code> then <code>t</code> is
 instantiated/bound by this subterm (tail) of <code>n</code> and the whole expression is
 transformed to <code>t</code> ; here <code>S t</code> is some filter / pattern containing one named
 <span class="underline">filter-identifier</span> / <span class="underline">filter-variable</span> <code>t</code> and the computation decides whether <code>n</code>
@@ -615,11 +615,11 @@ as the same as
 </div>
 
 <p>
-Now some clarification for the « <code>fix</code> » keytext. When computing functions over number
+Now some clarification for the <code>fix</code> keytext. When computing functions over number
 input data or deducting lemmas over number subject data, oneself may transform the
 input arguments to the function or lemma into some other input arguments for the
-<i>same</i> function or lemma. The keytext « <code>fix</code> » says that the same function name may
-be mentioned. For example here is the definition of concatenation (addition) for
+<i>same</i> function or lemma. The keytext <code>fix</code> says that the same function name may be
+mentioned. For example here is the definition of concatenation (addition) for
 numbers :
 </p>
 
@@ -644,10 +644,10 @@ fix add (n m : nat) {struct n} : nat :=
 
 <p>
 Memo that one of the <span class="underline">inner memories</span> / <span class="underline">accumulators</span> <code>n</code> and <code>m</code> shall be
-<span class="underline">degrading</span> / <span class="underline">decreasing</span> / <span class="underline">structural</span> / <span class="underline">terminating</span> , here it is the accumulator <code>n</code> which is
-decreasing (structural, « <code>{struct n}</code> »). And the <code>COQ</code> computer is very good at
-detecting when something is degrading, otherwise there are many other techniques to
-solves this question of termination &#x2026;
+<span class="underline">degrading</span> / <span class="underline">decreasing</span> / <span class="underline">structural</span> / <span class="underline">terminating</span>, here it is the accumulator
+<code>n</code> which is decreasing ( structural, <code>{struct n}</code> ). And the <code>COQ</code> computer is very
+good at detecting when something is degrading, otherwise there are many other
+techniques to solves this question of termination &#x2026;
 </p>
 
 <p>
@@ -729,8 +729,8 @@ Argument scopes are [nat_scope nat_scope]
 
 <p>
 or <code>COQ</code> has some combination of the <code>Section</code> command with the <code>Fixpoint</code> command
-which does <i>precisely the same</i> thing, because the <code>Section</code> process is for
-holding/binding <span class="underline">(outer) parameters / variables</span> :
+which does <i>precisely the same</i> thing, because the <code>Section</code> process is for holding /
+binding <span class="underline">(outer) parameters / variables</span> :
 </p>
 
 <div class="org-src-container">
@@ -751,17 +751,6 @@ p is declared
 
 add is defined
 add is recursively defined (decreasing on 1st argument)
-
-
-add = 
-fun p : nat =&gt;
-fix add (n : nat) : nat := match n with
-                           | 0 =&gt; p
-                           | t.+1 =&gt; (add t).+1
-                           end
-     : nat -&gt; nat -&gt; nat
-
-Argument scopes are [nat_scope nat_scope]
 </pre>
 
 <div class="org-src-container">
@@ -780,14 +769,14 @@ postfix notation <code>.-1</code> ), doubling ( <code>doublen</code> , postfix n
 multiplication ( <code>muln</code> , infix notation <code>*</code> ), subtraction ( <code>subn</code> , infix notation
 <code>-</code> ), division ( <code>divn</code> , infix notation <code>%/</code> ), modulo ( <code>modn</code> , infix notation
 <code>%%</code> ), exponentiation ( <code>expn</code> , infix notation <code>^</code> ), equality comparison ( <code>eqn</code> ,
-infix notation <code>= ), and order comparison ( =leq</code> , infix notation &lt;= ) on (natural)
-numbers.
+infix notation <code>==</code> ), and order comparison ( <code>leq</code> , infix notation <code>&lt;=</code> ) on
+(natural) numbers.
 </p>
 
 <p>
 Many of these functions may be defined by reusing the general function <code>iter</code>, which
-is the iterator over any number in <code>nat</code>, or by reusing the more-general function
-<code>foldr</code>, which is the iterator over any list in <code>seq</code> :
+is the iterator over any number in <code>nat</code> , or by reusing the more-general function
+<code>foldr</code> , which is the iterator over any list in <code>seq</code> :
 </p>
 
 <div class="org-src-container">
@@ -2332,6 +2321,13 @@ Error: y is used in hypothesis odd_y.
   odd_y : odd y
   ============================
   2 &lt; y + x
+
+1 subgoal
+  
+  x : nat
+  x_gt1 : 1 &lt; x
+  ============================
+  forall y : nat, odd y -&gt; 2 &lt; y + x
 </pre>
 
 <p>
@@ -3421,12 +3417,6 @@ deduction-term as the manually written deduction-term above :
   A -&gt; B -&gt; A
 
 No more subgoals.
-
-case.
-(move =&gt; a b; exact : a).
-
-Defined.
-fst is defined
 </pre>
 </div>
 </div>
@@ -3473,11 +3463,6 @@ Primo, the <code>COQ</code> deduction / tactic command corresponding to the cons
 No more subgoals.
 
 (existT ilist 3 (icons 6 (icons 7 (icons 5 inil))))
-
-exists 3.
-exact : (icons 6 (icons 7 (icons 5 inil))).
-
-Defined.
 </pre>
 
 <p>
@@ -3558,8 +3543,8 @@ description</i> :
 </div>
 </div>
 
-<div id="outline-container-orga82aae1" class="outline-3">
-<h3 id="orga82aae1"><span class="section-number-3">6.4</span> recursion</h3>
+<div id="outline-container-org87089e5" class="outline-3">
+<h3 id="org87089e5"><span class="section-number-3">6.4</span> recursion</h3>
 <div class="outline-text-3" id="text-6-4">
 <p>
 Whenever oneself does some grammatical / inductive description / definition <code>idef1</code>
@@ -3700,14 +3685,6 @@ as the <code>pattern</code> command) :
   m : nat
   ============================
   (fun m' : nat =&gt; m' + 0 = m') m
-
-2 subgoals
-  
-  ============================
-  0 + 0 = 0
-
-subgoal 2 is:
- forall n : nat, n + 0 = n -&gt; n.+1 + 0 = n.+1
 </pre>
 </div>
 </div>
@@ -4175,6 +4152,16 @@ Argument b1 is implicit and maximally inserted
 Argument scope is [bool_scope]
 idP is opaque
 Expands to: Constant mathcomp.ssreflect.ssrbool.idP
+
+iffP :
+forall (P Q : Prop) (b : bool),
+reflect P b -&gt; (P -&gt; Q) -&gt; (Q -&gt; P) -&gt; reflect Q b
+
+Arguments P, Q, b are implicit
+Argument scopes are [type_scope type_scope bool_scope _ function_scope
+  function_scope]
+iffP is opaque
+Expands to: Constant mathcomp.ssreflect.ssrbool.iffP
 </pre>
 </div>
 </div>
@@ -4197,9 +4184,6 @@ numbers</span>.
 
 <pre class="example">
 compare_nat is defined
-compare_nat_rect is defined
-compare_nat_ind is defined
-compare_nat_rec is defined
 </pre>
 
 <p>
@@ -4220,8 +4204,8 @@ lemma <code>leqP</code> .
 </div>
 </div>
 
-<div id="outline-container-org87089e5" class="outline-3">
-<h3 id="org87089e5"><span class="section-number-3">7.4</span> recursion</h3>
+<div id="outline-container-org2700952" class="outline-3">
+<h3 id="org2700952"><span class="section-number-3">7.4</span> recursion</h3>
 <div class="outline-text-3" id="text-7-4">
 <p>
 For <i>classifiers</i>, as for <i>classes</i>, the <span class="underline">recursion</span> <code>fix .. := ..</code> grammatical
@@ -4485,6 +4469,7 @@ case  Heq: (S _) / l =&gt; [|j m' l'].
  exact : (j, l').
 
 Defined.
+ihead_ibehead is defined
 </pre>
 
 <p>

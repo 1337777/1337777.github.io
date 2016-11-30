@@ -4,6 +4,8 @@ index
 
 « TOUCH 2 »
 
+« TOUCH 2 »
+
 #+BEGIN_SRC coq :exports both
 Print nat.
 Print nat_rect.

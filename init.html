@@ -108,7 +108,7 @@ for the JavaScript code in this tag.
 <li><a href="#org8f25d05">6.1. inference</a></li>
 <li><a href="#orgde10255">6.2. classifying inference</a></li>
 <li><a href="#org259b9f1">6.3. alternative</a></li>
-<li><a href="#org87089e5">6.4. recursion</a></li>
+<li><a href="#org2700952">6.4. recursion</a></li>
 </ul>
 </li>
 <li><a href="#org5343b48">7. Deduction : classification</a>
@@ -116,7 +116,7 @@ for the JavaScript code in this tag.
 <li><a href="#org6116e68">7.1. meta-computation</a></li>
 <li><a href="#orgc5b14c7">7.2. boolean-computational reflection</a></li>
 <li><a href="#org9b17275">7.3. boolean simultaneous-substitution</a></li>
-<li><a href="#org2700952">7.4. recursion</a></li>
+<li><a href="#org3c8c978">7.4. recursion</a></li>
 </ul>
 </li>
 <li><a href="#orgf9d80cf">8. Review of some long deductions</a>
@@ -180,7 +180,7 @@ common expressions such as :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Definition</span> <span style="font-weight: bold;">f</span> := <span style="font-weight: bold; text-decoration: underline;">fun</span> <span style="font-weight: bold; font-style: italic;">p</span> =&gt; <span style="font-weight: bold; text-decoration: underline;">fun</span> <span style="font-weight: bold; font-style: italic;">a</span> =&gt; a + p .
+<pre class="src src-coq"><span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">f</span> := <span style="color: #228b22;">fun</span> <span style="color: #a0522d;">p</span> =&gt; <span style="color: #228b22;">fun</span> <span style="color: #a0522d;">a</span> =&gt; a + p .
 </pre>
 </div>
 
@@ -195,7 +195,7 @@ memorized fulfill some prescribed/wanted <span class="underline">classification<
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Definition</span> <span style="font-weight: bold;">f</span> : nat -&gt; nat -&gt; nat := <span style="font-weight: bold; text-decoration: underline;">fun</span> <span style="font-weight: bold; font-style: italic;">p</span> =&gt; <span style="font-weight: bold; text-decoration: underline;">fun</span> <span style="font-weight: bold; font-style: italic;">a</span> =&gt; a + p .
+<pre class="src src-coq"><span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">f</span> : nat -&gt; nat -&gt; nat := <span style="color: #228b22;">fun</span> <span style="color: #a0522d;">p</span> =&gt; <span style="color: #228b22;">fun</span> <span style="color: #a0522d;">a</span> =&gt; a + p .
 </pre>
 </div>
 
@@ -204,7 +204,7 @@ f is defined
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Check</span> f.
+<pre class="src src-coq"><span style="color: #a020f0;">Check</span> f.
 </pre>
 </div>
 
@@ -264,7 +264,7 @@ as :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Eval</span> <span style="text-decoration: underline;">compute</span> <span style="font-weight: bold; text-decoration: underline;">in</span> f 3 2.
+<pre class="src src-coq"><span style="color: #a020f0;">Eval</span> <span style="color: #00008b;">compute</span> <span style="color: #228b22;">in</span> f 3 2.
 </pre>
 </div>
 
@@ -289,7 +289,7 @@ as :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">About</span> f.
+<pre class="src src-coq"><span style="color: #a020f0;">About</span> f.
 </pre>
 </div>
 
@@ -302,7 +302,7 @@ Expands to: Constant Top.f
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Print</span> f.
+<pre class="src src-coq"><span style="color: #a020f0;">Print</span> f.
 </pre>
 </div>
 
@@ -322,7 +322,7 @@ Argument scopes are [nat_scope nat_scope]
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">About</span> f.
+<pre class="src src-coq"><span style="color: #a020f0;">About</span> f.
 </pre>
 </div>
 
@@ -373,7 +373,7 @@ The name of the two constructors are <code>true</code> and <code>false</code> , 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Inductive</span> <span style="font-weight: bold;">bool</span> := true : bool | false : bool.
+<pre class="src src-coq"><span style="color: #a020f0;">Inductive</span> <span style="color: #0000ff;">bool</span> := true : bool | false : bool.
 </pre>
 </div>
 
@@ -388,7 +388,7 @@ which are easier decoration shortening of the more primitive same (grammatical)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Print</span> bool_rect.
+<pre class="src src-coq"><span style="color: #a020f0;">Print</span> bool_rect.
 </pre>
 </div>
 
@@ -409,7 +409,7 @@ grammar, is :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Check</span> (<span style="font-weight: bold; text-decoration: underline;">if</span> true <span style="font-weight: bold; text-decoration: underline;">then</span> 3 <span style="font-weight: bold; text-decoration: underline;">else</span> 2) .
+<pre class="src src-coq"><span style="color: #a020f0;">Check</span> (<span style="color: #228b22;">if</span> true <span style="color: #228b22;">then</span> 3 <span style="color: #228b22;">else</span> 2) .
 </pre>
 </div>
 
@@ -419,7 +419,7 @@ if true then 3 else 2
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Eval</span> <span style="text-decoration: underline;">compute</span> <span style="font-weight: bold; text-decoration: underline;">in</span> ((<span style="font-weight: bold; text-decoration: underline;">fun</span> <span style="font-weight: bold; font-style: italic;">b</span> : bool =&gt; (<span style="font-weight: bold; text-decoration: underline;">if</span> b <span style="font-weight: bold; text-decoration: underline;">then</span> 3 <span style="font-weight: bold; text-decoration: underline;">else</span> 2)) false) .
+<pre class="src src-coq"><span style="color: #a020f0;">Eval</span> <span style="color: #00008b;">compute</span> <span style="color: #228b22;">in</span> ((<span style="color: #228b22;">fun</span> <span style="color: #a0522d;">b</span> : bool =&gt; (<span style="color: #228b22;">if</span> b <span style="color: #228b22;">then</span> 3 <span style="color: #228b22;">else</span> 2)) false) .
 </pre>
 </div>
 
@@ -443,7 +443,7 @@ andthen the second input is true ] :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Definition</span> <span style="font-weight: bold;">andb</span> b1 b2 := <span style="font-weight: bold; text-decoration: underline;">if</span> b1 <span style="font-weight: bold; text-decoration: underline;">then</span> b2 <span style="font-weight: bold; text-decoration: underline;">else</span> false.
+<pre class="src src-coq"><span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">andb</span> b1 b2 := <span style="color: #228b22;">if</span> b1 <span style="color: #228b22;">then</span> b2 <span style="color: #228b22;">else</span> false.
 </pre>
 </div>
 </div>
@@ -457,7 +457,7 @@ Any number is zero or the successor of an existing number :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Inductive</span> <span style="font-weight: bold;">nat</span> := 
+<pre class="src src-coq"><span style="color: #a020f0;">Inductive</span> <span style="color: #0000ff;">nat</span> := 
     O : nat 
   | S : nat -&gt; nat.
 </pre>
@@ -485,7 +485,7 @@ which are easier decoration shortening of the more primitive same (grammatical)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Print</span> nat_rect.
+<pre class="src src-coq"><span style="color: #a020f0;">Print</span> nat_rect.
 </pre>
 </div>
 
@@ -526,13 +526,13 @@ level 10). Attempt :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Print</span> Grammar constr.
+<pre class="src src-coq"><span style="color: #a020f0;">Print</span> Grammar constr.
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Check</span> <span style="font-weight: bold; text-decoration: underline;">fun</span> <span style="font-weight: bold; font-style: italic;">x</span> =&gt; (<span style="font-weight: bold; text-decoration: underline;">fun</span> <span style="font-weight: bold; font-style: italic;">n</span> : nat =&gt; n) x.+1 .
-<span style="font-weight: bold;">Locate</span> <span style="font-style: italic;">".+1"</span> .
+<pre class="src src-coq"><span style="color: #a020f0;">Check</span> <span style="color: #228b22;">fun</span> <span style="color: #a0522d;">x</span> =&gt; (<span style="color: #228b22;">fun</span> <span style="color: #a0522d;">n</span> : nat =&gt; n) x.+1 .
+<span style="color: #a020f0;">Locate</span> <span style="color: #8b2252;">".+1"</span> .
 </pre>
 </div>
 
@@ -550,11 +550,11 @@ definition of « beheading <code>S</code> » ( predecessor ) for numbers :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Definition</span> <span style="font-weight: bold;">pred</span> n := 
-  <span style="font-weight: bold; text-decoration: underline;">match</span> n <span style="font-weight: bold; text-decoration: underline;">with</span> 
+<pre class="src src-coq"><span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">pred</span> n := 
+  <span style="color: #228b22;">match</span> n <span style="color: #228b22;">with</span> 
     O =&gt; O 
   | S t =&gt; t 
-  <span style="font-weight: bold; text-decoration: underline;">end</span>.
+  <span style="color: #228b22;">end</span>.
 </pre>
 </div>
 
@@ -575,8 +575,8 @@ example, this attempt is not memorized by the <code>COQ</code> computer :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq">Fail <span style="font-weight: bold;">Definition</span> <span style="font-weight: bold;">wrong</span> (<span style="font-weight: bold; font-style: italic;">n</span> : nat) :=
-<span style="font-weight: bold; text-decoration: underline;">match</span> n <span style="font-weight: bold; text-decoration: underline;">with</span> 0 =&gt; true <span style="font-weight: bold; text-decoration: underline;">end</span>.
+<pre class="src src-coq">Fail <span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">wrong</span> (<span style="color: #a0522d;">n</span> : nat) :=
+<span style="color: #228b22;">match</span> n <span style="color: #228b22;">with</span> 0 =&gt; true <span style="color: #228b22;">end</span>.
 </pre>
 </div>
 
@@ -592,11 +592,11 @@ fatigue and translate the grammar
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Definition</span> <span style="font-weight: bold;">sameOn_bool_nat</span> b n :=
-  <span style="font-weight: bold; text-decoration: underline;">match</span> b, n <span style="font-weight: bold; text-decoration: underline;">with</span>
+<pre class="src src-coq"><span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">sameOn_bool_nat</span> b n :=
+  <span style="color: #228b22;">match</span> b, n <span style="color: #228b22;">with</span>
     | true, S _ =&gt; true
     | _, _ =&gt; false
-  <span style="font-weight: bold; text-decoration: underline;">end</span>.
+  <span style="color: #228b22;">end</span>.
 </pre>
 </div>
 
@@ -606,11 +606,11 @@ as the same as
 
 <div class="org-src-container">
 <pre class="src src-coq">Reset sameOn_bool_nat.
-<span style="font-weight: bold;">Definition</span> <span style="font-weight: bold;">sameOn_bool_nat</span> b n :=
-  <span style="font-weight: bold; text-decoration: underline;">match</span> b <span style="font-weight: bold; text-decoration: underline;">with</span>
-    | true =&gt; <span style="font-weight: bold; text-decoration: underline;">if</span> n <span style="font-weight: bold; text-decoration: underline;">is</span> S t <span style="font-weight: bold; text-decoration: underline;">then</span> true <span style="font-weight: bold; text-decoration: underline;">else</span> false
+<span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">sameOn_bool_nat</span> b n :=
+  <span style="color: #228b22;">match</span> b <span style="color: #228b22;">with</span>
+    | true =&gt; <span style="color: #228b22;">if</span> n <span style="color: #228b22;">is</span> S t <span style="color: #228b22;">then</span> true <span style="color: #228b22;">else</span> false
     | _ =&gt; false
-  <span style="font-weight: bold; text-decoration: underline;">end</span>.
+  <span style="color: #228b22;">end</span>.
 </pre>
 </div>
 
@@ -624,12 +624,12 @@ numbers :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Check</span>
-  <span style="font-weight: bold; text-decoration: underline;">fix</span> add n m := 
-    <span style="font-weight: bold; text-decoration: underline;">match</span> n <span style="font-weight: bold; text-decoration: underline;">with</span>
+<pre class="src src-coq"><span style="color: #a020f0;">Check</span>
+  <span style="color: #228b22;">fix</span> add n m := 
+    <span style="color: #228b22;">match</span> n <span style="color: #228b22;">with</span>
       S t =&gt; add t (S m)
       | O =&gt; m
-    <span style="font-weight: bold; text-decoration: underline;">end</span> .
+    <span style="color: #228b22;">end</span> .
 </pre>
 </div>
 
@@ -661,12 +661,12 @@ of changing some second inner memory, together with</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Check</span> 
-  <span style="font-weight: bold; text-decoration: underline;">fun</span> <span style="font-weight: bold; font-style: italic;">p</span> =&gt; <span style="font-weight: bold; text-decoration: underline;">fix</span> add n := 
-    <span style="font-weight: bold; text-decoration: underline;">match</span> n <span style="font-weight: bold; text-decoration: underline;">with</span>
+<pre class="src src-coq"><span style="color: #a020f0;">Check</span> 
+  <span style="color: #228b22;">fun</span> <span style="color: #a0522d;">p</span> =&gt; <span style="color: #228b22;">fix</span> add n := 
+    <span style="color: #228b22;">match</span> n <span style="color: #228b22;">with</span>
       S t =&gt; S (add t)
       | O =&gt; p
-    <span style="font-weight: bold; text-decoration: underline;">end</span> .
+    <span style="color: #228b22;">end</span> .
 </pre>
 </div>
 
@@ -684,12 +684,12 @@ Finally oneself may command <code>COQ</code> to memorize this expression :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Definition</span> <span style="font-weight: bold;">add</span> := 
-  <span style="font-weight: bold; text-decoration: underline;">fun</span> <span style="font-weight: bold; font-style: italic;">p</span> =&gt; <span style="font-weight: bold; text-decoration: underline;">fix</span> add n := 
-    <span style="font-weight: bold; text-decoration: underline;">match</span> n <span style="font-weight: bold; text-decoration: underline;">with</span>
+<pre class="src src-coq"><span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">add</span> := 
+  <span style="color: #228b22;">fun</span> <span style="color: #a0522d;">p</span> =&gt; <span style="color: #228b22;">fix</span> add n := 
+    <span style="color: #228b22;">match</span> n <span style="color: #228b22;">with</span>
       S t =&gt; S (add t)
       | O =&gt; p
-    <span style="font-weight: bold; text-decoration: underline;">end</span> .
+    <span style="color: #228b22;">end</span> .
 </pre>
 </div>
 
@@ -703,12 +703,12 @@ To prevent programmer fatigue, <code>COQ</code> has some alias command <code>Fix
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Fixpoint</span> <span style="font-weight: bold;">add</span> p n {<span style="font-weight: bold; text-decoration: underline;">struct</span> n} := 
-    <span style="font-weight: bold; text-decoration: underline;">match</span> n <span style="font-weight: bold; text-decoration: underline;">with</span>
+<pre class="src src-coq"><span style="color: #a020f0;">Fixpoint</span> <span style="color: #0000ff;">add</span> p n {<span style="color: #228b22;">struct</span> n} := 
+    <span style="color: #228b22;">match</span> n <span style="color: #228b22;">with</span>
       S t =&gt; S (add p t)
       | O =&gt; p
-    <span style="font-weight: bold; text-decoration: underline;">end</span> .
-<span style="font-weight: bold;">Print</span> add.
+    <span style="color: #228b22;">end</span> .
+<span style="color: #a020f0;">Print</span> add.
 </pre>
 </div>
 
@@ -734,15 +734,15 @@ binding <span class="underline">(outer) parameters / variables</span> :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Section</span> <span style="font-weight: bold;">Section1</span>.
-  <span style="font-weight: bold;">Variable</span> <span style="font-weight: bold; font-style: italic;">p</span> : nat.
-  <span style="font-weight: bold;">Fixpoint</span> <span style="font-weight: bold;">add</span> n := 
-      <span style="font-weight: bold; text-decoration: underline;">match</span> n <span style="font-weight: bold; text-decoration: underline;">with</span>
+<pre class="src src-coq"><span style="color: #a020f0;">Section</span> <span style="color: #0000ff;">Section1</span>.
+  <span style="color: #a020f0;">Variable</span> <span style="color: #a0522d;">p</span> : nat.
+  <span style="color: #a020f0;">Fixpoint</span> <span style="color: #0000ff;">add</span> n := 
+      <span style="color: #228b22;">match</span> n <span style="color: #228b22;">with</span>
         S t =&gt; S (add t)
         | O =&gt; p
-      <span style="font-weight: bold; text-decoration: underline;">end</span> .
-<span style="font-weight: bold;">End</span> <span style="font-weight: bold;">Section1</span>.
-<span style="font-weight: bold;">Print</span> add.
+      <span style="color: #228b22;">end</span> .
+<span style="color: #a020f0;">End</span> <span style="color: #0000ff;">Section1</span>.
+<span style="color: #a020f0;">Print</span> add.
 </pre>
 </div>
 
@@ -751,6 +751,17 @@ p is declared
 
 add is defined
 add is recursively defined (decreasing on 1st argument)
+
+
+add = 
+fun p : nat =&gt;
+fix add (n : nat) : nat := match n with
+                           | 0 =&gt; p
+                           | t.+1 =&gt; (add t).+1
+                           end
+     : nat -&gt; nat -&gt; nat
+
+Argument scopes are [nat_scope nat_scope]
 </pre>
 
 <div class="org-src-container">
@@ -780,11 +791,11 @@ is the iterator over any number in <code>nat</code> , or by reusing the more-gen
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Print</span> iter.
-<span style="font-weight: bold;">Definition</span> <span style="font-weight: bold;">add</span> (<span style="font-weight: bold; font-style: italic;">p</span> : nat) : nat -&gt; nat :=
-  <span style="font-weight: bold; text-decoration: underline;">fun</span> <span style="font-weight: bold; font-style: italic;">n</span> : nat =&gt;
-    iter n (<span style="font-weight: bold; text-decoration: underline;">fun</span> <span style="font-weight: bold; font-style: italic;">acc</span> : nat =&gt; S (acc)) p .
-<span style="font-weight: bold;">Print</span> foldr.
+<pre class="src src-coq"><span style="color: #a020f0;">Print</span> iter.
+<span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">add</span> (<span style="color: #a0522d;">p</span> : nat) : nat -&gt; nat :=
+  <span style="color: #228b22;">fun</span> <span style="color: #a0522d;">n</span> : nat =&gt;
+    iter n (<span style="color: #228b22;">fun</span> <span style="color: #a0522d;">acc</span> : nat =&gt; S (acc)) p .
+<span style="color: #a020f0;">Print</span> foldr.
 </pre>
 </div>
 
@@ -823,9 +834,9 @@ this attempt is not memorized by the <code>COQ</code> computer :
 
 <div class="org-src-container">
 <pre class="src src-coq">Fail
-<span style="font-weight: bold;">Fixpoint</span> <span style="font-weight: bold;">nat_empty</span> (<span style="font-weight: bold; font-style: italic;">n</span> : nat) {<span style="font-weight: bold; text-decoration: underline;">struct</span> n}: <span style="font-weight: bold; text-decoration: underline;">False</span> := 
-  <span style="font-weight: bold; text-decoration: underline;">if</span> n <span style="font-weight: bold; text-decoration: underline;">is</span> S n' <span style="font-weight: bold; text-decoration: underline;">then</span> nat_empty n' <span style="font-weight: bold; text-decoration: underline;">else</span> nat_empty 0.
-Fail <span style="font-weight: bold;">Check</span> nat_empty ( <span style="font-weight: bold; font-style: italic;">3</span> : nat ) <span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">: False *</span><span style="font-weight: bold; font-style: italic;">*)</span>.
+<span style="color: #a020f0;">Fixpoint</span> <span style="color: #0000ff;">nat_empty</span> (<span style="color: #a0522d;">n</span> : nat) {<span style="color: #228b22;">struct</span> n}: <span style="color: #228b22;">False</span> := 
+  <span style="color: #228b22;">if</span> n <span style="color: #228b22;">is</span> S n' <span style="color: #228b22;">then</span> nat_empty n' <span style="color: #228b22;">else</span> nat_empty 0.
+Fail <span style="color: #a020f0;">Check</span> nat_empty ( <span style="color: #a0522d;">3</span> : nat ) <span style="color: #b22222;">(** </span><span style="color: #b22222;">: False *</span><span style="color: #b22222;">*)</span>.
 </pre>
 </div>
 
@@ -863,9 +874,9 @@ element <code>3</code>.
 <h3 id="orgbefb84e"><span class="section-number-3">3.1</span> Option data</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
-Now oneself wants some version of the data type <code>bool</code> which is <span class="underline">container</span> for more
-information / data , which is that each alternative <code>true | false</code> may contain more
-data which says <i>how</i> true (or how false).
+Now oneself wants some version of the data type <code>bool</code> which is <span class="underline">container</span> for
+more information / data, which is that each alternative <code>true | false</code> may contain
+more data which says <i>how</i> true (or how false).
 </p>
 
 <p>
@@ -873,16 +884,17 @@ Suppose oneself wants to write this partial function over only the <i>odd</i> nu
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Definition</span> <span style="font-weight: bold;">pred_for_only_odd</span> (<span style="font-weight: bold; font-style: italic;">n</span> : nat) := <span style="font-weight: bold; text-decoration: underline;">if</span> odd n <span style="font-weight: bold; text-decoration: underline;">then</span> Some (n.-1) <span style="font-weight: bold; text-decoration: underline;">else</span> None.
+<pre class="src src-coq"><span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">pred_for_only_odd</span> (<span style="color: #a0522d;">n</span> : nat) := <span style="color: #228b22;">if</span> odd n <span style="color: #228b22;">then</span> Some (n.-1) <span style="color: #228b22;">else</span> None.
 </pre>
 </div>
 
 <p>
-or suppose oneself want to write such partial function over only the <i>small</i> numbers :
+or suppose oneself wants to write such partial function over only the <i>small</i>
+numbers :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Definition</span> <span style="font-weight: bold;">odd_for_only_small</span> (<span style="font-weight: bold; font-style: italic;">n</span> : nat) := <span style="font-weight: bold; text-decoration: underline;">if</span> n &lt; 100 <span style="font-weight: bold; text-decoration: underline;">then</span> Some (odd n) <span style="font-weight: bold; text-decoration: underline;">else</span> None.
+<pre class="src src-coq"><span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">odd_for_only_small</span> (<span style="color: #a0522d;">n</span> : nat) := <span style="color: #228b22;">if</span> n &lt; 100 <span style="color: #228b22;">then</span> Some (odd n) <span style="color: #228b22;">else</span> None.
 </pre>
 </div>
 
@@ -891,14 +903,14 @@ Therefore one may define some <span class="underline">outer parametric /_polymor
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Inductive</span> <span style="font-weight: bold;">option</span> (<span style="font-weight: bold; font-style: italic;">A</span> : <span style="font-weight: bold; text-decoration: underline;">Type</span>) := None : option A | Some : A -&gt; option A.
+<pre class="src src-coq"><span style="color: #a020f0;">Inductive</span> <span style="color: #0000ff;">option</span> (<span style="color: #a0522d;">A</span> : <span style="color: #228b22;">Type</span>) := None : option A | Some : A -&gt; option A.
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">About</span> option.
-<span style="font-weight: bold;">About</span> None.
-<span style="font-weight: bold;">About</span> Some.
+<pre class="src src-coq"><span style="color: #a020f0;">About</span> option.
+<span style="color: #a020f0;">About</span> None.
+<span style="color: #a020f0;">About</span> Some.
 </pre>
 </div>
 
@@ -919,33 +931,34 @@ Expands to: Constructor Coq.Init.Datatypes.None
 
 <p>
 The <span class="underline">parameter</span> <code>A</code> says that some different type / class <code>(option A)</code> exists for each
-possible choice of some type / class <code>A</code>, for example <code>(option nat)</code> , <code>(option bool)</code>
-&#x2026; And <code>Type</code> is some keytext / keyword that denotes <code>the class of all data classes</code>,
-and <code>option</code> is some <span class="underline">class / type former</span> function, itself of class <code>(Type -&gt;
-Type)</code>. Indeed <code>option</code> alone is not some data type, but if oneself instantiates it
+possible choice of some type / class <code>A</code> , for example <code>(option nat)</code> , <code>(option
+bool)</code> &#x2026; And <code>Type</code> is some keytext / keyword that denotes <span class="underline">the class of all data
+classes</span>, and <code>option</code> is some <span class="underline">class / type former</span> function, itself of class <code>(Type
+-&gt; Type)</code>. Indeed <code>option</code> alone is not some data-type, but if oneself instantiates it
 with another data type, then it forms one.  For example <code>(nat : Type)</code> and <code>(bool :
 Type)</code> are of class <code>Type</code>, and may be used in place of <code>A</code> to produce the types
 <code>((option nat) : Type)</code> and <code>((option bool) : Type)</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Check</span> pred_for_only_odd : nat -&gt; option nat.
-<span style="font-weight: bold;">Check</span> odd_for_only_small : nat -&gt; option bool.
+<pre class="src src-coq"><span style="color: #a020f0;">Check</span> pred_for_only_odd : nat -&gt; option nat.
+<span style="color: #a020f0;">Check</span> odd_for_only_small : nat -&gt; option bool.
 </pre>
 </div>
 
 <p>
 Memo that all the constructors of this polymorphic data type definition, in reality,
-have some type parameter, where as described in some section above, the keytext «
-<code>forall .. , ..</code> » is some more general form of « <code>.. -&gt; ..</code> ».
+have some type parameter, where as described in some section above, the <i>classifying
+inference</i> keytext <code>forall .. , ..</code> is some more general form of the <i>inference</i>
+keytext <code>.. -&gt; ..</code> .
 </p>
 
 <p>
-The message « <code>Argument A is implicit and ..</code> » says that every time programmers write
-<code>Some</code> or <code>None</code> , the <code>COQ</code> computer automatically inserts/instantiates some term in
-place of the parameter <code>A</code>, so that this term does not need to be textually written :
-the parameter is <span class="underline">hidden</span> / <span class="underline">implicit</span>. And the <code>COQ</code> computer <span class="underline">infers</span> or guesses
-what this type parameter is
+The message <code>Argument A is implicit and ...</code> says that every time programmers write
+<code>Some</code> or <code>None</code> , the <code>COQ</code> computer automatically inserts / instantiates some term
+in place of the parameter <code>A</code> , such that this term does not lack to be textually
+written : the parameter is <span class="underline">hidden</span> / <span class="underline">implicit</span>. And the <code>COQ</code> computer <span class="underline">infers</span> or
+guesses whatever-is this type parameter
 </p>
 <ul class="org-ul">
 <li>when looking at the first explicit argument input given to <code>Some</code> , or</li>
@@ -953,7 +966,7 @@ what this type parameter is
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Check</span> Some 2.
+<pre class="src src-coq"><span style="color: #a020f0;">Check</span> Some 2.
 </pre>
 </div>
 
@@ -963,11 +976,11 @@ Some 2
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Check</span> <span style="font-weight: bold; text-decoration: underline;">if</span> (37 + 73) &lt; 100 <span style="font-weight: bold; text-decoration: underline;">then</span> Some (37+73) <span style="font-weight: bold; text-decoration: underline;">else</span> None.
-<span style="font-weight: bold;">Eval</span> <span style="text-decoration: underline;">compute</span> <span style="font-weight: bold; text-decoration: underline;">in</span> <span style="font-weight: bold; text-decoration: underline;">if</span> (37 + 73) &lt; 100 <span style="font-weight: bold; text-decoration: underline;">then</span> Some (odd (37 + 73)) <span style="font-weight: bold; text-decoration: underline;">else</span> None.
-Fail <span style="font-weight: bold;">Check</span> <span style="font-weight: bold; text-decoration: underline;">if</span> (37 + 73) &lt; 100 <span style="font-weight: bold; text-decoration: underline;">then</span> Some (odd (37 + 73)) <span style="font-weight: bold; text-decoration: underline;">else</span> (None (A := nat)).
-Fail <span style="font-weight: bold;">Check</span> <span style="font-weight: bold; text-decoration: underline;">if</span> (37 + 73) &lt; 100 <span style="font-weight: bold; text-decoration: underline;">then</span> Some (odd (37 + 73)) <span style="font-weight: bold; text-decoration: underline;">else</span> (@None nat).
-<span style="font-weight: bold;">Eval</span> <span style="text-decoration: underline;">compute</span> <span style="font-weight: bold; text-decoration: underline;">in</span> <span style="font-weight: bold; text-decoration: underline;">if</span> (37 + 73) &lt; 100 <span style="font-weight: bold; text-decoration: underline;">then</span> Some (odd (37 + 73)) <span style="font-weight: bold; text-decoration: underline;">else</span> @None _.
+<pre class="src src-coq"><span style="color: #a020f0;">Check</span> <span style="color: #228b22;">if</span> (37 + 73) &lt; 100 <span style="color: #228b22;">then</span> Some (37+73) <span style="color: #228b22;">else</span> None.
+<span style="color: #a020f0;">Eval</span> <span style="color: #00008b;">compute</span> <span style="color: #228b22;">in</span> <span style="color: #228b22;">if</span> (37 + 73) &lt; 100 <span style="color: #228b22;">then</span> Some (odd (37 + 73)) <span style="color: #228b22;">else</span> None.
+Fail <span style="color: #a020f0;">Check</span> <span style="color: #228b22;">if</span> (37 + 73) &lt; 100 <span style="color: #228b22;">then</span> Some (odd (37 + 73)) <span style="color: #228b22;">else</span> (None (A := nat)).
+Fail <span style="color: #a020f0;">Check</span> <span style="color: #228b22;">if</span> (37 + 73) &lt; 100 <span style="color: #228b22;">then</span> Some (odd (37 + 73)) <span style="color: #228b22;">else</span> (@None nat).
+<span style="color: #a020f0;">Eval</span> <span style="color: #00008b;">compute</span> <span style="color: #228b22;">in</span> <span style="color: #228b22;">if</span> (37 + 73) &lt; 100 <span style="color: #228b22;">then</span> Some (odd (37 + 73)) <span style="color: #228b22;">else</span> @None _.
 </pre>
 </div>
 
@@ -988,12 +1001,12 @@ The term "None" has type "option nat" while it is expected to have type
 </pre>
 
 <p>
-This example shows that the grammar <code>(None (A :=</code> <code>nat))</code> or <code>(@None nat)</code> may be used
+This example shows that the grammar <code>(None (A := nat))</code> or <code>(@None nat)</code> may be used
 to force or input explicitly some parameter which is hidden, and that the grammar <code>_</code>
 (underline, filter, hole, wildcard) as in <code>@None _</code> may be used to explicitly-command
 <code>COQ</code> to attempt to infer some instantiation of any (implicit or explicit) parameter
-<code>A</code>, for many reasons &#x2026; In reality, the message « <code>Argument A .. and maximally
-inserted</code> » says that whenever the programmer writes <code>None</code>, the <code>COQ</code> computer
+<code>A</code>, for many reasons &#x2026; In reality, the message <code>Argument A ... and maximally
+inserted</code> says that whenever the programmer writes <code>None</code> , the <code>COQ</code> computer
 translates it to <code>@None _</code>.
 </p>
 </div>
@@ -1004,13 +1017,13 @@ translates it to <code>@None _</code>.
 <div class="outline-text-3" id="text-3-2">
 <p>
 Now oneself wants some version of the data type <code>nat</code> which is <span class="underline">container</span> for more
-information / data , which is that each alternative <code>O | S (n : nat)</code> may contain more
+information / data, which is that each alternative <code>O | S (n : nat)</code> may contain more
 data which says <i>how</i> successor (or how zero). This is precisely the <code>polymorphic list
 / seq type</code> :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Inductive</span> <span style="font-weight: bold;">seq</span> (<span style="font-weight: bold; font-style: italic;">A</span> : <span style="font-weight: bold; text-decoration: underline;">Type</span>) := nil : seq A | cons : A -&gt; seq A -&gt; seq A.
+<pre class="src src-coq"><span style="color: #a020f0;">Inductive</span> <span style="color: #0000ff;">seq</span> (<span style="color: #a0522d;">A</span> : <span style="color: #228b22;">Type</span>) := nil : seq A | cons : A -&gt; seq A -&gt; seq A.
 </pre>
 </div>
 
@@ -1020,11 +1033,11 @@ or be instantiated to contain numbers <code>(seq nat)</code> :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Check</span> cons true (cons false (cons true nil)).
-<span style="font-weight: bold;">Check</span> cons 2 (cons 1 (cons 3 nil)).
-<span style="font-weight: bold;">Check</span> 2 :: 1 :: 3 :: nil.
-<span style="font-weight: bold;">Check</span> [:: 2; 1; 3].
-<span style="font-weight: bold;">Check</span> <span style="font-weight: bold; text-decoration: underline;">fun</span> <span style="font-weight: bold; font-style: italic;">l</span> : seq nat =&gt; [:: 2, 1, 3 &amp; l].
+<pre class="src src-coq"><span style="color: #a020f0;">Check</span> cons true (cons false (cons true nil)).
+<span style="color: #a020f0;">Check</span> cons 2 (cons 1 (cons 3 nil)).
+<span style="color: #a020f0;">Check</span> 2 :: 1 :: 3 :: nil.
+<span style="color: #a020f0;">Check</span> [:: 2; 1; 3].
+<span style="color: #a020f0;">Check</span> <span style="color: #228b22;">fun</span> <span style="color: #a0522d;">l</span> : seq nat =&gt; [:: 2, 1, 3 &amp; l].
 </pre>
 </div>
 
@@ -1050,17 +1063,17 @@ oneself may write one single function which compute the number form (size) of an
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Fixpoint</span> <span style="font-weight: bold;">number</span> A (<span style="font-weight: bold; font-style: italic;">s</span> : seq A) : nat :=
-  <span style="font-weight: bold; text-decoration: underline;">match</span> s <span style="font-weight: bold; text-decoration: underline;">with</span>
+<pre class="src src-coq"><span style="color: #a020f0;">Fixpoint</span> <span style="color: #0000ff;">number</span> A (<span style="color: #a0522d;">s</span> : seq A) : nat :=
+  <span style="color: #228b22;">match</span> s <span style="color: #228b22;">with</span>
       cons _ tl =&gt; S (number tl)
     | nil =&gt; 0
-  <span style="font-weight: bold; text-decoration: underline;">end</span>.
+  <span style="color: #228b22;">end</span>.
 </pre>
 </div>
 
 <p>
-where the parameter <code>A</code> of the function <code>number</code> is automatically memorized by <code>COQ</code> as
-hidden / implicit.
+where the parameter <code>A</code> of the function <code>number</code> is automatically memorized by <code>COQ</code>
+as hidden / implicit.
 </p>
 
 <p>
@@ -1072,10 +1085,10 @@ both arguments to some <span class="underline">composition</span> / <span class=
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Fixpoint</span> <span style="font-weight: bold;">map</span> (<span style="font-weight: bold; font-style: italic;">A</span> : <span style="font-weight: bold; text-decoration: underline;">Type</span>) (<span style="font-weight: bold; font-style: italic;">B</span> : <span style="font-weight: bold; text-decoration: underline;">Type</span>) (<span style="font-weight: bold; font-style: italic;">f</span> : A -&gt; B) (<span style="font-weight: bold; font-style: italic;">s</span> : seq A) : seq B :=
-  <span style="font-weight: bold; text-decoration: underline;">if</span> s <span style="font-weight: bold; text-decoration: underline;">is</span> e :: tl 
-  <span style="font-weight: bold; text-decoration: underline;">then</span> f e :: map f tl 
-  <span style="font-weight: bold; text-decoration: underline;">else</span> nil.
+<pre class="src src-coq"><span style="color: #a020f0;">Fixpoint</span> <span style="color: #0000ff;">map</span> (<span style="color: #a0522d;">A</span> : <span style="color: #228b22;">Type</span>) (<span style="color: #a0522d;">B</span> : <span style="color: #228b22;">Type</span>) (<span style="color: #a0522d;">f</span> : A -&gt; B) (<span style="color: #a0522d;">s</span> : seq A) : seq B :=
+  <span style="color: #228b22;">if</span> s <span style="color: #228b22;">is</span> e :: tl 
+  <span style="color: #228b22;">then</span> f e :: map f tl 
+  <span style="color: #228b22;">else</span> nil.
 </pre>
 </div>
 
@@ -1085,9 +1098,9 @@ numbers list :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Eval</span> <span style="text-decoration: underline;">compute</span> <span style="font-weight: bold; text-decoration: underline;">in</span> map (<span style="font-weight: bold; text-decoration: underline;">fun</span> <span style="font-weight: bold; font-style: italic;">i</span> : bool =&gt; ~~ i) [:: true; false; true].
-<span style="font-weight: bold;">Eval</span> <span style="text-decoration: underline;">compute</span> <span style="font-weight: bold; text-decoration: underline;">in</span> map (<span style="font-weight: bold; text-decoration: underline;">fun</span> <span style="font-weight: bold; font-style: italic;">i</span> : nat =&gt; i.+1) [:: 2; 1; 3].
-<span style="font-weight: bold;">Eval</span> <span style="text-decoration: underline;">compute</span> <span style="font-weight: bold; text-decoration: underline;">in</span> [seq i.+1 | i &lt;- [:: 2; 1; 3]].
+<pre class="src src-coq"><span style="color: #a020f0;">Eval</span> <span style="color: #00008b;">compute</span> <span style="color: #228b22;">in</span> map (<span style="color: #228b22;">fun</span> <span style="color: #a0522d;">i</span> : bool =&gt; ~~ i) [:: true; false; true].
+<span style="color: #a020f0;">Eval</span> <span style="color: #00008b;">compute</span> <span style="color: #228b22;">in</span> map (<span style="color: #228b22;">fun</span> <span style="color: #a0522d;">i</span> : nat =&gt; i.+1) [:: 2; 1; 3].
+<span style="color: #a020f0;">Eval</span> <span style="color: #00008b;">compute</span> <span style="color: #228b22;">in</span> [seq i.+1 | i &lt;- [:: 2; 1; 3]].
 </pre>
 </div>
 
@@ -1100,12 +1113,12 @@ numbers list :
 </pre>
 
 <p>
-where this more-advanced <span class="underline">notation which binds/holds some identifier / name</span>, was used
-( the identifier <code>i</code> is bound/held in the term <code>E</code> ) :
+where this more-advanced <span class="underline">notation which binds / holds some identifier / name</span>, was
+used ( the identifier <code>i</code> is bound / held in the term <code>E</code> ) :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Notation</span> <span style="font-style: italic;">"[ 'seq' E | i &lt;- s ]"</span> := (map (<span style="font-weight: bold; text-decoration: underline;">fun</span> <span style="font-weight: bold; font-style: italic;">i</span> =&gt; E) s).
+<pre class="src src-coq"><span style="color: #a020f0;">Notation</span> <span style="color: #8b2252;">"[ 'seq' E | i &lt;- s ]"</span> := (map (<span style="color: #228b22;">fun</span> <span style="color: #a0522d;">i</span> =&gt; E) s).
 </pre>
 </div>
 
@@ -1119,18 +1132,18 @@ In addition to the function <code>map</code> there are more <i>advanced-polymorp
 only-touch sequences, as described in the file <code>seq.v</code>. For instance the <code>filter</code>
 function and its notation <code>[seq i &lt;- s | p]</code> filters the sequence <code>s</code> keeping only the
 values selected by the boolean test <code>p</code>, whenever the common parameter <code>A</code>
-itself-as-data may be classified ("canonical structures") &#x2026;
+itself-as-data may be classified ( "canonical structures" ) &#x2026;
 </p>
 
 <p>
-Elsewhere, memo that because <code>map</code> takes <i>some function as input</i> it is said to be some
-<span class="underline">higher-order function</span>. Morever <code>map</code> may also be viewed as <i>outputing some function</i>
-when <code>map</code> is only <span class="underline">partially applied / inputed</span> :
+Elsewhere, memo that because <code>map</code> takes <i>some function as input</i> it is said to be
+some <span class="underline">higher-order function</span>. Morever <code>map</code> may also be viewed as <i>outputing some
+function</i> when <code>map</code> is only <span class="underline">partially applied / inputed</span> :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Check</span> map (<span style="font-weight: bold; text-decoration: underline;">fun</span> <span style="font-weight: bold; font-style: italic;">i</span> : bool =&gt; ~~ i) [:: true; false; true].
-<span style="font-weight: bold;">Check</span> map (<span style="font-weight: bold; text-decoration: underline;">fun</span> <span style="font-weight: bold; font-style: italic;">i</span> : bool =&gt; ~~ i) .
+<pre class="src src-coq"><span style="color: #a020f0;">Check</span> map (<span style="color: #228b22;">fun</span> <span style="color: #a0522d;">i</span> : bool =&gt; ~~ i) [:: true; false; true].
+<span style="color: #a020f0;">Check</span> map (<span style="color: #228b22;">fun</span> <span style="color: #a0522d;">i</span> : bool =&gt; ~~ i) .
 </pre>
 </div>
 
@@ -1146,7 +1159,7 @@ single constructor <code>tt</code> (and only one inhabitant) :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Inductive</span> <span style="font-weight: bold;">unit</span> : <span style="font-weight: bold; text-decoration: underline;">Type</span> :=  tt : unit.
+<pre class="src src-coq"><span style="color: #a020f0;">Inductive</span> <span style="color: #0000ff;">unit</span> : <span style="color: #228b22;">Type</span> :=  tt : unit.
 </pre>
 </div>
 
@@ -1171,7 +1184,7 @@ Another review at this instance of recursive function defined over the numbers
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Print</span> nat_rect.
+<pre class="src src-coq"><span style="color: #a020f0;">Print</span> nat_rect.
 </pre>
 </div>
 
@@ -1195,7 +1208,7 @@ shows that these given alternate constructions <code>O | S (n : nat)</code> of t
 sufficient to focus / touch on these (recursively) constructored data when holding
 this class, which is that any (random) data in the class may be such (recursively)
 <span class="underline">destructed</span> / <span class="underline">eliminated</span> / <span class="underline">matched</span> / <span class="underline">filtered</span>. This is described by this
-(grammatical) <span class="underline">destructor function</span>
+(grammatical) <span class="underline">destructor / match function</span>
 </p>
 
 <pre class="example">
@@ -1216,12 +1229,12 @@ fix .. := ..
 Now while any <code>bool</code> or <code>nat</code> or <code>list nat</code> or <code>list A</code> is some single isolated class
 / type, this above expression <code>(P : nat -&gt; Type)</code> says that <code>P</code> is some
 <span class="underline">classification</span> or some <span class="underline">family / collection of classes</span> or some <span class="underline">dependent class</span> or
-some <span class="underline">predicate</span> ; such that <code>P 0 : Type</code> is some class and <code>P 1 : Type</code> is another
+some <span class="underline">predicate</span>; such that <code>P 0 : Type</code> is some class and <code>P 1 : Type</code> is another
 class and <code>P 2 : Type</code> is also some class &#x2026; And oneself is attempting to define some
 (recursive) function <code>nat_rect</code> from the class <code>nat</code> to the classification <code>P</code>, such
 that the input <code>n</code> from <code>nat</code> <i>affect both</i> the <span class="underline">precise-classification</span> of the output
-(here <code>P n</code>) and the <span class="underline">value</span> of the output (here <code>f</code> when <code>n</code> is <code>O</code> , or <code>f0 n0 (F n0)</code>
-when <code>n</code> is <code>S n0</code>).
+( here <code>P n</code> ) and the <span class="underline">value</span> of the output ( here <code>f</code> when <code>n</code> is <code>O</code> , or <code>f0 n0 (F
+n0)</code> when <code>n</code> is <code>S n0</code> ).
 </p>
 
 <p>
@@ -1242,7 +1255,7 @@ with .. =&gt; .. | .. =&gt; .. end
 </pre>
 
 <p>
-.. and certainly each filtering of the input to decide which alternative branching
+.. and certainly each filtering of the input for deciding which alternative branching
 will, as usual, instantiate / <span class="underline">refine</span> the proposed output value but also instantiate
 / refine the expected classification / type of the output.
 </p>
@@ -1253,14 +1266,14 @@ will, as usual, instantiate / <span class="underline">refine</span> the proposed
 <div class="outline-text-3" id="text-4-1">
 <p>
 Another example of some classification similar as <code>(P : nat -&gt; Type)</code> is the
-<span class="underline">indexed lists</span>, which futher classifies lists by some <span class="underline">index / argument</span>, whose
-sense here is similar as "<code>size</code> (number form) of the list" :
+<span class="underline">indexed lists</span>, which futher classifies lists by some <span class="underline">index / argument</span>, whose sense
+here is similar as « size (number form) of the list » :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Inductive</span> <span style="font-weight: bold;">ilist</span> : nat -&gt; <span style="font-weight: bold; text-decoration: underline;">Type</span> := 
+<pre class="src src-coq"><span style="color: #a020f0;">Inductive</span> <span style="color: #0000ff;">ilist</span> : nat -&gt; <span style="color: #228b22;">Type</span> := 
     inil : ilist 0 
-  | icons : nat -&gt; <span style="font-weight: bold; text-decoration: underline;">forall</span> <span style="font-weight: bold; font-style: italic;">m</span> : nat, ilist m -&gt; ilist (S m).
+  | icons : nat -&gt; <span style="color: #228b22;">forall</span> <span style="color: #a0522d;">m</span> : nat, ilist m -&gt; ilist (S m).
 </pre>
 </div>
 
@@ -1274,21 +1287,21 @@ ilist_rec is defined
 <p>
 Attempt now to define some (recursive) function from <code>nat</code> to <code>ilist</code> , which input
 some number <code>m</code> and output something precisely-classified by <code>ilist m</code> and whose value
-has all its items being <code>7</code> .
+has all its items being <code>7</code> :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Definition</span> <span style="font-weight: bold;">only7</span> :=
-  <span style="font-weight: bold; text-decoration: underline;">fix</span> only7 (<span style="font-weight: bold; font-style: italic;">m</span> : nat) : (ilist m) :=
-    <span style="font-weight: bold; text-decoration: underline;">match</span> m <span style="font-weight: bold; text-decoration: underline;">as</span> m' <span style="font-weight: bold; text-decoration: underline;">return</span> (ilist m') <span style="font-weight: bold; text-decoration: underline;">with</span>
+<pre class="src src-coq"><span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">only7</span> :=
+  <span style="color: #228b22;">fix</span> only7 (<span style="color: #a0522d;">m</span> : nat) : (ilist m) :=
+    <span style="color: #228b22;">match</span> m <span style="color: #228b22;">as</span> m' <span style="color: #228b22;">return</span> (ilist m') <span style="color: #228b22;">with</span>
       O =&gt; inil 
     | S m0 =&gt; icons 7 (only7 m0)
-    <span style="font-weight: bold; text-decoration: underline;">end</span> .
+    <span style="color: #228b22;">end</span> .
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Eval</span> <span style="text-decoration: underline;">compute</span> <span style="font-weight: bold; text-decoration: underline;">in</span> only7 3.
+<pre class="src src-coq"><span style="color: #a020f0;">Eval</span> <span style="color: #00008b;">compute</span> <span style="color: #228b22;">in</span> only7 3.
 </pre>
 </div>
 
@@ -1298,13 +1311,13 @@ has all its items being <code>7</code> .
 </pre>
 
 <p>
-Another way of writing the same thing is
+Another way of writing the same thing is :
 </p>
 
 <div class="org-src-container">
 <pre class="src src-coq">Reset only7.
-<span style="font-weight: bold;">Definition</span> <span style="font-weight: bold;">only7</span> :=
-  nat_rect (ilist) (inil) (<span style="font-weight: bold; text-decoration: underline;">fun</span> (<span style="font-weight: bold; font-style: italic;">m0</span> : nat) (<span style="font-weight: bold; font-style: italic;">only7_m0</span> : ilist m0) =&gt; icons 7 only7_m0).
+<span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">only7</span> :=
+  nat_rect (ilist) (inil) (<span style="color: #228b22;">fun</span> (<span style="color: #a0522d;">m0</span> : nat) (<span style="color: #a0522d;">only7_m0</span> : ilist m0) =&gt; icons 7 only7_m0).
 </pre>
 </div>
 </div>
@@ -1316,13 +1329,13 @@ Another way of writing the same thing is
 <p>
 Another example of some classification similar as <code>(P : nat -&gt; Type)</code> is the
 <span class="underline">equality classification</span>, which classifies <span class="underline">(primitive or complex) deductions</span> /
-<span class="underline">proofs</span> of "equality" to some given fixed (outer) parameter <code>x</code>; this classification
+<span class="underline">proofs</span> of "equality" to some given fixed (outer) parameter <code>x</code> ; this classification
 is by whatelse (inner) arguments / indices this fixed parameter <code>x</code> is possibly
 (by-computation-and-by-logical-deduction-)"equal" (eq) to :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Inductive</span> <span style="font-weight: bold;">eq</span> (<span style="font-weight: bold; font-style: italic;">A</span> : <span style="font-weight: bold; text-decoration: underline;">Type</span>) (<span style="font-weight: bold; font-style: italic;">x</span> : A) : A -&gt; <span style="font-weight: bold; text-decoration: underline;">Type</span> :=
+<pre class="src src-coq"><span style="color: #a020f0;">Inductive</span> <span style="color: #0000ff;">eq</span> (<span style="color: #a0522d;">A</span> : <span style="color: #228b22;">Type</span>) (<span style="color: #a0522d;">x</span> : A) : A -&gt; <span style="color: #228b22;">Type</span> :=
   eqrefl : @eq A x x .
 </pre>
 </div>
@@ -1335,7 +1348,7 @@ eq_rec is defined
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">About</span> eqrefl.
+<pre class="src src-coq"><span style="color: #a020f0;">About</span> eqrefl.
 </pre>
 </div>
 
@@ -1362,7 +1375,7 @@ term / value</span> which says ( asserts / deduces / proves ) that the parameter
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Check</span> @eqrefl nat (3 + 2) : @eq nat (3 + 2) (S (S (1 + 2))).
+<pre class="src src-coq"><span style="color: #a020f0;">Check</span> @eqrefl nat (3 + 2) : @eq nat (3 + 2) (S (S (1 + 2))).
 </pre>
 </div>
 
@@ -1383,7 +1396,7 @@ Inductive eq (A : Type) (x : A) : A -&gt; Type :=
 <p>
 Now, deductions may be combinated in complex ways; which is that oneself may arrive at
 <code>@eq A x y</code> by more-complex combinaisons ( <span class="underline">by-logical-deduction</span> ) beyond
-precisely-one-primitive-deduction ( <span class="underline">by-computation</span> ) <code>eqrefl</code>. Therefore any
+precisely-one-primitive-deduction ( <span class="underline">by-computation</span> ) <code>eqrefl</code> . Therefore any
 (random) data / inhabitant <code>lemma1 : @eq A x z</code> is named <span class="underline">logical-deduction</span>.
 </p>
 
@@ -1391,17 +1404,17 @@ precisely-one-primitive-deduction ( <span class="underline">by-computation</span
 Here is one instance of combining deductions : how to input some deduction data from
 <code>(@eq nat x a)</code> and output some deduction into <code>(@eq nat (S x) (S a))</code> which is
 further-classified by the index-argument <code>(S a)</code> of the classification <code>(@eq nat (S
-x))</code> . This uses the (grammatical) destructor/match function on "equality", which is
-named <span class="underline">(congruent) rewriting</span> / <span class="underline">casting</span> / <span class="underline">transport</span> .  This may look silly :
+x))</code> . This uses the (grammatical) destructor / match function on "equality", which is
+named <span class="underline">(congruent) rewriting</span> / <span class="underline">casting</span> / <span class="underline">transport</span>.  This may look silly :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Check</span>
-  (<span style="font-weight: bold; text-decoration: underline;">fun</span> (<span style="font-weight: bold; font-style: italic;">x</span> : nat) (<span style="font-weight: bold; font-style: italic;">a</span> : nat) (<span style="font-weight: bold; font-style: italic;">H</span> : @eq nat x a) =&gt;
-     <span style="font-weight: bold; text-decoration: underline;">match</span> H <span style="font-weight: bold; text-decoration: underline;">as</span> H0 <span style="font-weight: bold; text-decoration: underline;">in</span> (@eq _ _ a0) <span style="font-weight: bold; text-decoration: underline;">return</span> (@eq nat (S x) (S a0)) <span style="font-weight: bold; text-decoration: underline;">with</span>
+<pre class="src src-coq"><span style="color: #a020f0;">Check</span>
+  (<span style="color: #228b22;">fun</span> (<span style="color: #a0522d;">x</span> : nat) (<span style="color: #a0522d;">a</span> : nat) (<span style="color: #a0522d;">H</span> : @eq nat x a) =&gt;
+     <span style="color: #228b22;">match</span> H <span style="color: #228b22;">as</span> H0 <span style="color: #228b22;">in</span> (@eq _ _ a0) <span style="color: #228b22;">return</span> (@eq nat (S x) (S a0)) <span style="color: #228b22;">with</span>
      | @eqrefl _ _ =&gt; @eqrefl nat (S x)
-     <span style="font-weight: bold; text-decoration: underline;">end</span>)
-     : <span style="font-weight: bold; text-decoration: underline;">forall</span> <span style="font-weight: bold; font-style: italic;">x a</span> : nat, @eq nat x a -&gt; @eq nat (S x) (S a) .
+     <span style="color: #228b22;">end</span>)
+     : <span style="color: #228b22;">forall</span> <span style="color: #a0522d;">x a</span> : nat, @eq nat x a -&gt; @eq nat (S x) (S a) .
 </pre>
 </div>
 
@@ -1432,32 +1445,31 @@ which has some extra <code>in ..</code> keytext now because the input data is ta
 <p>
 This full grammar <code>as .. in .. return ..</code> is because « <span class="underline">the input</span> » <code>H</code> <span class="underline">is both the
 input value</span> (the <code>H0</code> in the <code>as H0</code> keytext) <span class="underline">and the input precise-classification</span>
-(the argument <code>a0</code> in the <code>in @eq _ _ a0</code> keytext) ; and both the input value and
-input precise-classification do affect the expected output precise-classification
-(here <code>return (@eq nat (S x) (S a0))</code>, where <code>H0</code> is absent here
-only-by-chance). However the value of the output in each alternative branch has only
-access to the destructed value of the input and <i>no direct-access</i> to the
-precise-classification of the input.
+(the argument <code>a0</code> in the <code>in @eq _ _ a0</code> keytext); and both the input value and input
+precise-classification do affect the expected output precise-classification (here
+<code>return (@eq nat (S x) (S a0))</code> , where <code>H0</code> is absent here only-by-chance). However
+the value of the output in each alternative branch has only access to the destructed
+value of the input and <i>no direct-access</i> to the precise-classification of the input.
 </p>
 
 <p>
-Another example which uses this full grammar <code>as .. in .. return ..</code> is this "<code>more</code>"
+Another example which uses this full grammar <code>as .. in .. return ..</code> is this <code>more</code>
 function, which increments all the items in some indexed list and creates one more
-item.
+item :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Definition</span> <span style="font-weight: bold;">more</span> :=
-  (<span style="font-weight: bold; text-decoration: underline;">fix</span> more (<span style="font-weight: bold; font-style: italic;">m</span> : nat) (<span style="font-weight: bold; font-style: italic;">l</span> : ilist m) {<span style="font-weight: bold; text-decoration: underline;">struct</span> l} : ilist (S m) :=
-     <span style="font-weight: bold; text-decoration: underline;">match</span> l <span style="font-weight: bold; text-decoration: underline;">as</span> l0 <span style="font-weight: bold; text-decoration: underline;">in</span> ilist m0 <span style="font-weight: bold; text-decoration: underline;">return</span> ilist (S m0) <span style="font-weight: bold; text-decoration: underline;">with</span>
+<pre class="src src-coq"><span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">more</span> :=
+  (<span style="color: #228b22;">fix</span> more (<span style="color: #a0522d;">m</span> : nat) (<span style="color: #a0522d;">l</span> : ilist m) {<span style="color: #228b22;">struct</span> l} : ilist (S m) :=
+     <span style="color: #228b22;">match</span> l <span style="color: #228b22;">as</span> l0 <span style="color: #228b22;">in</span> ilist m0 <span style="color: #228b22;">return</span> ilist (S m0) <span style="color: #228b22;">with</span>
        inil =&gt; icons 0 inil
      | icons j m_tl tl =&gt; icons (S j) (more m_tl tl)
-     <span style="font-weight: bold; text-decoration: underline;">end</span>).
+     <span style="color: #228b22;">end</span>).
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Eval</span> <span style="text-decoration: underline;">compute</span> <span style="font-weight: bold; text-decoration: underline;">in</span> @more 3 (icons 6 (icons 7 (icons 5 inil))).
+<pre class="src src-coq"><span style="color: #a020f0;">Eval</span> <span style="color: #00008b;">compute</span> <span style="color: #228b22;">in</span> @more 3 (icons 6 (icons 7 (icons 5 inil))).
 </pre>
 </div>
 
@@ -1468,18 +1480,18 @@ item.
 
 <p>
 Another example which uses nothing of this full grammar <code>as .. in .. return ..</code>
-(because the ouput classification <code>nat</code> does not lack it) is this <code>inumber</code> ("isize")
-function, which computes the <i>real size</i> (number of items, number form) of some
+(because the ouput classification <code>nat</code> does not lack it) is this <code>inumber</code> ( "isize"
+) function, which computes the <i>real size</i> (number of items, number form) of some
 indexed list.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Definition</span> <span style="font-weight: bold;">inumber</span> :=
-  (<span style="font-weight: bold; text-decoration: underline;">fix</span> inumber (<span style="font-weight: bold; font-style: italic;">m</span> : nat) (<span style="font-weight: bold; font-style: italic;">l</span> : ilist m) {<span style="font-weight: bold; text-decoration: underline;">struct</span> l} : nat :=
-     <span style="font-weight: bold; text-decoration: underline;">match</span> l <span style="font-weight: bold; text-decoration: underline;">with</span>
+<pre class="src src-coq"><span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">inumber</span> :=
+  (<span style="color: #228b22;">fix</span> inumber (<span style="color: #a0522d;">m</span> : nat) (<span style="color: #a0522d;">l</span> : ilist m) {<span style="color: #228b22;">struct</span> l} : nat :=
+     <span style="color: #228b22;">match</span> l <span style="color: #228b22;">with</span>
        inil =&gt; 0
      | icons j m_tl tl =&gt; S (inumber m_tl tl)
-     <span style="font-weight: bold; text-decoration: underline;">end</span>).
+     <span style="color: #228b22;">end</span>).
 </pre>
 </div>
 
@@ -1490,32 +1502,32 @@ indeed "equal" (eq) to the real size (number of items) of this indexed list.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Definition</span> <span style="font-weight: bold;">lemma1</span> :=
-  <span style="font-weight: bold; text-decoration: underline;">fix</span> lemma1 (<span style="font-weight: bold; font-style: italic;">m</span> : nat) (<span style="font-weight: bold; font-style: italic;">l</span> : ilist m) {<span style="font-weight: bold; text-decoration: underline;">struct</span> l} : @eq nat m (inumber l) :=
-    <span style="font-weight: bold; text-decoration: underline;">match</span> l <span style="font-weight: bold; text-decoration: underline;">as</span> l0 <span style="font-weight: bold; text-decoration: underline;">in</span> ilist m0 <span style="font-weight: bold; text-decoration: underline;">return</span> @eq nat m0 (inumber l0) <span style="font-weight: bold; text-decoration: underline;">with</span>
+<pre class="src src-coq"><span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">lemma1</span> :=
+  <span style="color: #228b22;">fix</span> lemma1 (<span style="color: #a0522d;">m</span> : nat) (<span style="color: #a0522d;">l</span> : ilist m) {<span style="color: #228b22;">struct</span> l} : @eq nat m (inumber l) :=
+    <span style="color: #228b22;">match</span> l <span style="color: #228b22;">as</span> l0 <span style="color: #228b22;">in</span> ilist m0 <span style="color: #228b22;">return</span> @eq nat m0 (inumber l0) <span style="color: #228b22;">with</span>
 
       inil =&gt;
-        <span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">expected (goal) output precise-classification :</span>
-<span style="font-weight: bold; font-style: italic;">        @eq nat 0 (inumber (inil)) , which computationally-is</span>
-<span style="font-weight: bold; font-style: italic;">        @eq nat 0 O  *</span><span style="font-weight: bold; font-style: italic;">*)</span>
+        <span style="color: #b22222;">(** </span><span style="color: #b22222;">expected (goal) output precise-classification :</span>
+<span style="color: #b22222;">        @eq nat 0 (inumber (inil)) , which computationally-is</span>
+<span style="color: #b22222;">        @eq nat 0 O  *</span><span style="color: #b22222;">*)</span>
         @eqrefl nat 0
 
     | icons j m_tl tl =&gt;
-        <span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">expected (goal) output precise-classification :</span>
-<span style="font-weight: bold; font-style: italic;">        @eq nat (S m_tl) (inumber (icons j m_tl tl)) , which computationally-is</span>
-<span style="font-weight: bold; font-style: italic;">        @eq nat (S m_tl) (S (inumber tl)) ;</span>
+        <span style="color: #b22222;">(** </span><span style="color: #b22222;">expected (goal) output precise-classification :</span>
+<span style="color: #b22222;">        @eq nat (S m_tl) (inumber (icons j m_tl tl)) , which computationally-is</span>
+<span style="color: #b22222;">        @eq nat (S m_tl) (S (inumber tl)) ;</span>
 
-<span style="font-weight: bold; font-style: italic;">        now by recursion, the deduction (lemma1 m_tl tl) of classification</span>
-<span style="font-weight: bold; font-style: italic;">        @eq nat (m_tl) ((inumber tl)),</span>
-<span style="font-weight: bold; font-style: italic;">        is present to do some rewrite / cast / transport  *</span><span style="font-weight: bold; font-style: italic;">*)</span>
-        <span style="font-weight: bold; text-decoration: underline;">match</span> (lemma1 m_tl tl) <span style="font-weight: bold; text-decoration: underline;">as</span> H0 <span style="font-weight: bold; text-decoration: underline;">in</span> @eq _ _ a0 <span style="font-weight: bold; text-decoration: underline;">return</span> @eq nat (S m_tl) (S a0) <span style="font-weight: bold; text-decoration: underline;">with</span>
+<span style="color: #b22222;">        now by recursion, the deduction (lemma1 m_tl tl) of classification</span>
+<span style="color: #b22222;">        @eq nat (m_tl) ((inumber tl)),</span>
+<span style="color: #b22222;">        is present to do some rewrite / cast / transport  *</span><span style="color: #b22222;">*)</span>
+        <span style="color: #228b22;">match</span> (lemma1 m_tl tl) <span style="color: #228b22;">as</span> H0 <span style="color: #228b22;">in</span> @eq _ _ a0 <span style="color: #228b22;">return</span> @eq nat (S m_tl) (S a0) <span style="color: #228b22;">with</span>
           @eqrefl _ _ =&gt;
-            <span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">expected (goal) output precise-classification :</span>
-<span style="font-weight: bold; font-style: italic;">            @eq nat (S m_tl) (S m_tl)  *</span><span style="font-weight: bold; font-style: italic;">*)</span>
+            <span style="color: #b22222;">(** </span><span style="color: #b22222;">expected (goal) output precise-classification :</span>
+<span style="color: #b22222;">            @eq nat (S m_tl) (S m_tl)  *</span><span style="color: #b22222;">*)</span>
             @eqrefl nat (S m_tl)
-        <span style="font-weight: bold; text-decoration: underline;">end</span>
+        <span style="color: #228b22;">end</span>
 
-    <span style="font-weight: bold; text-decoration: underline;">end</span>.
+    <span style="color: #228b22;">end</span>.
 </pre>
 </div>
 
@@ -1527,7 +1539,7 @@ the <code>COQ</code> computer prints the expected (goal) classification of the o
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Lemma</span> <span style="font-weight: bold;">lemma2</span> : <span style="font-weight: bold; text-decoration: underline;">forall</span> (<span style="font-weight: bold; font-style: italic;">m</span> : nat) (<span style="font-weight: bold; font-style: italic;">l</span> : ilist m), @eq nat m (inumber l).
+<pre class="src src-coq"><span style="color: #a020f0;">Lemma</span> <span style="color: #0000ff;">lemma2</span> : <span style="color: #228b22;">forall</span> (<span style="color: #a0522d;">m</span> : nat) (<span style="color: #a0522d;">l</span> : ilist m), @eq nat m (inumber l).
 </pre>
 </div>
 
@@ -1544,8 +1556,8 @@ assumptions, by using the <code>intros</code> command (or the almost-same <code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">move =&gt; m l .*</span><span style="font-weight: bold; font-style: italic;">*)</span>
-<span style="text-decoration: underline;">intros</span> m l.
+<pre class="src src-coq"><span style="color: #b22222;">(** </span><span style="color: #b22222;">move =&gt; m l .*</span><span style="color: #b22222;">*)</span>
+<span style="color: #00008b;">intros</span> m l.
 </pre>
 </div>
 
@@ -1559,16 +1571,16 @@ assumptions, by using the <code>intros</code> command (or the almost-same <code>
 </pre>
 
 <p>
-Now the « <code>fix lemma2 m l {struct l} :=</code> <code>match l .. with .. =&gt;</code> <code>.. | .. =&gt;</code> <code>.. end</code>
-» keytext corresponds to the <code>induction</code> command (or the almost-same <code>elim</code> command),
-then the <code>COQ</code> computer prints, for each filtering of the input, the expected (goal)
+Now the <code>fix lemma2 m l {struct l} := match l .. with .. =&gt; .. | .. =&gt; .. end</code> keytext
+corresponds to the <code>induction</code> command (or the almost-same <code>elim</code> command), then the
+<code>COQ</code> computer prints, for each filtering of the input, the expected (goal)
 precise-classification of the output deduction; the <code>inil =&gt; ..</code> alternative branch
 shall be solved first :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">elim : l =&gt; [ | j m_tl tl lemma2_m_tl_tl ] .*</span><span style="font-weight: bold; font-style: italic;">*)</span>
-<span style="text-decoration: underline;">induction</span> l <span style="font-weight: bold; text-decoration: underline;">as</span> [ | j m_tl tl lemma2_m_tl_tl ]  .
+<pre class="src src-coq"><span style="color: #b22222;">(** </span><span style="color: #b22222;">elim : l =&gt; [ | j m_tl tl lemma2_m_tl_tl ] .*</span><span style="color: #b22222;">*)</span>
+<span style="color: #00008b;">induction</span> l <span style="color: #228b22;">as</span> [ | j m_tl tl lemma2_m_tl_tl ]  .
 </pre>
 </div>
 
@@ -1589,8 +1601,8 @@ command).
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">move =&gt; /= .*</span><span style="font-weight: bold; font-style: italic;">*)</span>
-<span style="text-decoration: underline;">simpl</span>.
+<pre class="src src-coq"><span style="color: #b22222;">(** </span><span style="color: #b22222;">move =&gt; /= .*</span><span style="color: #b22222;">*)</span>
+<span style="color: #00008b;">simpl</span>.
 </pre>
 </div>
 
@@ -1611,7 +1623,7 @@ use the <code>exact</code> command :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq">exact (@eqrefl nat 0).
+<pre class="src src-coq"><span style="color: #ff0000;">exact</span> (@eqrefl nat 0).
 </pre>
 </div>
 
@@ -1632,8 +1644,8 @@ command.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">move =&gt; /= .*</span><span style="font-weight: bold; font-style: italic;">*)</span>
-<span style="text-decoration: underline;">simpl</span>.
+<pre class="src src-coq"><span style="color: #b22222;">(** </span><span style="color: #b22222;">move =&gt; /= .*</span><span style="color: #b22222;">*)</span>
+<span style="color: #00008b;">simpl</span>.
 </pre>
 </div>
 
@@ -1655,8 +1667,8 @@ keytext <code>(lemma2_m_tl_tl) as H0 in @eq _ _ a0 return @eq nat (S m_tl) (S a0
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">move : lemma2_m_tl_tl .*</span><span style="font-weight: bold; font-style: italic;">*)</span>
-<span style="text-decoration: underline;">revert</span> lemma2_m_tl_tl.
+<pre class="src src-coq"><span style="color: #b22222;">(** </span><span style="color: #b22222;">move : lemma2_m_tl_tl .*</span><span style="color: #b22222;">*)</span>
+<span style="color: #00008b;">revert</span> lemma2_m_tl_tl.
 </pre>
 </div>
 
@@ -1670,8 +1682,8 @@ keytext <code>(lemma2_m_tl_tl) as H0 in @eq _ _ a0 return @eq nat (S m_tl) (S a0
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">move : (inumber tl) .*</span><span style="font-weight: bold; font-style: italic;">*)</span>
-<span style="text-decoration: underline;">generalize</span> (inumber tl) <span style="font-weight: bold; text-decoration: underline;">as</span> a0.
+<pre class="src src-coq"><span style="color: #b22222;">(** </span><span style="color: #b22222;">move : (inumber tl) .*</span><span style="color: #b22222;">*)</span>
+<span style="color: #00008b;">generalize</span> (inumber tl) <span style="color: #228b22;">as</span> a0.
 </pre>
 </div>
 
@@ -1695,8 +1707,8 @@ These two related steps of the same progress may be combined by the <code>.. ; .
 </div>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">move : (inumber tl) lemma2_m_tl_tl .*</span><span style="font-weight: bold; font-style: italic;">*)</span>
-<span style="text-decoration: underline;">revert</span> lemma2_m_tl_tl ; <span style="text-decoration: underline;">generalize</span> (inumber tl) <span style="font-weight: bold; text-decoration: underline;">as</span> a0 .
+<pre class="src src-coq"><span style="color: #b22222;">(** </span><span style="color: #b22222;">move : (inumber tl) lemma2_m_tl_tl .*</span><span style="color: #b22222;">*)</span>
+<span style="color: #00008b;">revert</span> lemma2_m_tl_tl ; <span style="color: #00008b;">generalize</span> (inumber tl) <span style="color: #228b22;">as</span> a0 .
 </pre>
 </div>
 
@@ -1706,8 +1718,8 @@ command), corresponds to the keytext <code>match .. with @eqrefl _ _ =&gt; .. en
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">move =&gt; a0 ; case .*</span><span style="font-weight: bold; font-style: italic;">*)</span>
-<span style="text-decoration: underline;">destruct</span> 1.
+<pre class="src src-coq"><span style="color: #b22222;">(** </span><span style="color: #b22222;">move =&gt; a0 ; case .*</span><span style="color: #b22222;">*)</span>
+<span style="color: #00008b;">destruct</span> 1.
 </pre>
 </div>
 
@@ -1736,8 +1748,8 @@ goals (here none) :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">apply : eqrefl .*</span><span style="font-weight: bold; font-style: italic;">*)</span>
-<span style="text-decoration: underline;">apply</span> eqrefl.
+<pre class="src src-coq"><span style="color: #b22222;">(** </span><span style="color: #b22222;">apply : eqrefl .*</span><span style="color: #b22222;">*)</span>
+<span style="color: #00008b;">apply</span> eqrefl.
 </pre>
 </div>
 
@@ -1752,8 +1764,8 @@ manually-programmed deduction term memorized in <code>lemma1</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">Qed .*</span><span style="font-weight: bold; font-style: italic;">*)</span>
-<span style="font-weight: bold;">Defined</span>.
+<pre class="src src-coq"><span style="color: #b22222;">(** </span><span style="color: #b22222;">Qed .*</span><span style="color: #b22222;">*)</span>
+<span style="color: #a020f0;">Defined</span>.
 </pre>
 </div>
 
@@ -1773,7 +1785,7 @@ lemma2 is defined
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Print</span> lemma2.
+<pre class="src src-coq"><span style="color: #a020f0;">Print</span> lemma2.
 </pre>
 </div>
 
@@ -1793,7 +1805,7 @@ Argument scopes are [nat_scope _]
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Eval</span> <span style="text-decoration: underline;">unfold</span> lemma2, ilist_ind, ilist_rect <span style="font-weight: bold; text-decoration: underline;">in</span> lemma2.
+<pre class="src src-coq"><span style="color: #a020f0;">Eval</span> <span style="color: #00008b;">unfold</span> lemma2, ilist_ind, ilist_rect <span style="color: #228b22;">in</span> lemma2.
 </pre>
 </div>
 
@@ -1830,7 +1842,7 @@ Secondo, memo that there is some flexibility when writing some type / goal, as i
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Goal</span> <span style="font-weight: bold; text-decoration: underline;">forall</span> <span style="font-weight: bold; font-style: italic;">xy</span> : prod nat nat, prime (fst (<span style="font-weight: bold; font-style: italic;">xy</span> : (nat * nat)%type)) -&gt;
+<pre class="src src-coq"><span style="color: #a020f0;">Goal</span> <span style="color: #228b22;">forall</span> <span style="color: #a0522d;">xy</span> : prod nat nat, prime (fst (<span style="color: #a0522d;">xy</span> : (nat * nat)%type)) -&gt;
                  odd xy.2 = true -&gt; leq 2 ((snd xy) + xy.1) .
 </pre>
 </div>
@@ -1844,8 +1856,8 @@ Secondo, memo that there is some flexibility when writing some type / goal, as i
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Unset Printing Notations</span>.
-<span style="font-weight: bold;">Show</span>.
+<pre class="src src-coq"><span style="color: #a020f0;">Unset Printing Notations</span>.
+<span style="color: #a020f0;">Show</span>.
 </pre>
 </div>
 
@@ -1867,7 +1879,7 @@ for correspondingly the functions <code>fst</code> and <code>snd</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Locate</span> <span style="font-style: italic;">"*"</span>.
+<pre class="src src-coq"><span style="color: #a020f0;">Locate</span> <span style="color: #8b2252;">"*"</span>.
 </pre>
 </div>
 
@@ -1890,7 +1902,7 @@ declassification</code> or <code>coercive notation</code> and is based from this
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Eval</span> <span style="text-decoration: underline;">compute</span> <span style="font-weight: bold; text-decoration: underline;">in</span> (<span style="font-weight: bold; text-decoration: underline;">fun</span> <span style="font-weight: bold; font-style: italic;">b</span> : bool =&gt; (<span style="font-weight: bold; font-style: italic;">is_true b</span> : <span style="font-weight: bold; text-decoration: underline;">Type</span>)).
+<pre class="src src-coq"><span style="color: #a020f0;">Eval</span> <span style="color: #00008b;">compute</span> <span style="color: #228b22;">in</span> (<span style="color: #228b22;">fun</span> <span style="color: #a0522d;">b</span> : bool =&gt; (<span style="color: #a0522d;">is_true b</span> : <span style="color: #228b22;">Type</span>)).
 </pre>
 </div>
 
@@ -1900,8 +1912,8 @@ declassification</code> or <code>coercive notation</code> and is based from this
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Set Printing Coercions</span>.
-<span style="font-weight: bold;">Show</span>.
+<pre class="src src-coq"><span style="color: #a020f0;">Set Printing Coercions</span>.
+<span style="color: #a020f0;">Show</span>.
 </pre>
 </div>
 
@@ -1926,7 +1938,7 @@ assumption or quantified variable</span> in the goal.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Goal</span> <span style="font-weight: bold; text-decoration: underline;">forall</span> <span style="font-weight: bold; font-style: italic;">xy</span> : nat * nat, prime xy.1 -&gt; odd xy.2 -&gt; 2 &lt; xy.2 + xy.1 .
+<pre class="src src-coq"><span style="color: #a020f0;">Goal</span> <span style="color: #228b22;">forall</span> <span style="color: #a0522d;">xy</span> : nat * nat, prime xy.1 -&gt; odd xy.2 -&gt; 2 &lt; xy.2 + xy.1 .
 </pre>
 </div>
 
@@ -1938,7 +1950,7 @@ assumption or quantified variable</span> in the goal.
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">move</span> =&gt; xy .
+<pre class="src src-coq"><span style="color: #00008b;">move</span> =&gt; xy .
 </pre>
 </div>
 
@@ -1956,7 +1968,7 @@ assumption or quantified variable</span> in the goal.
 </div>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">move</span> =&gt; xy =&gt; pr_x odd_y .
+<pre class="src src-coq"><span style="color: #00008b;">move</span> =&gt; xy =&gt; pr_x odd_y .
 </pre>
 </div>
 
@@ -1984,7 +1996,7 @@ use this shorter grammar <code>[]</code> for intro to perform such action.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">move</span>=&gt; [x y] pr_x odd_y.
+<pre class="src src-coq"><span style="color: #00008b;">move</span>=&gt; [x y] pr_x odd_y.
 </pre>
 </div>
 
@@ -2005,7 +2017,7 @@ is the same as the <code class="src src-coq">simpl.</code> command.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">move</span>=&gt; [x y] /= pr_x odd_y.
+<pre class="src src-coq"><span style="color: #00008b;">move</span>=&gt; [x y] /= pr_x odd_y.
 </pre>
 </div>
 
@@ -2029,7 +2041,7 @@ grammar line. This is the same as the common <code>apply .. in ..</code> command
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">move</span>=&gt; [x y] /= /prime_gt1-x_gt1 odd_y.
+<pre class="src src-coq"><span style="color: #00008b;">move</span>=&gt; [x y] /= /prime_gt1-x_gt1 odd_y.
 </pre>
 </div>
 
@@ -2060,8 +2072,8 @@ after some <code>Require Import mathcomp.ssreflect.ssreflect.</code> command.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Check</span> @iffRL : <span style="font-weight: bold; text-decoration: underline;">forall</span> P Q (<span style="font-weight: bold; font-style: italic;">eqPQ</span> : P &lt;-&gt; Q), Q -&gt; P. 
-<span style="font-weight: bold;">Hint View for</span> <span style="text-decoration: underline;">move</span>/ iffRL|2 <span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">this 2 refer to the 2 _ prefixing @iffRL _ _ above*</span><span style="font-weight: bold; font-style: italic;">*)</span>.
+<pre class="src src-coq"><span style="color: #a020f0;">Check</span> @iffRL : <span style="color: #228b22;">forall</span> P Q (<span style="color: #a0522d;">eqPQ</span> : P &lt;-&gt; Q), Q -&gt; P. 
+<span style="color: #a020f0;">Hint View for</span> <span style="color: #00008b;">move</span>/ iffRL|2 <span style="color: #b22222;">(** </span><span style="color: #b22222;">this 2 refer to the 2 _ prefixing @iffRL _ _ above*</span><span style="color: #b22222;">*)</span>.
 </pre>
 </div>
 
@@ -2071,7 +2083,7 @@ iffRL : (forall P Q : Prop, P &lt;-&gt; Q -&gt; Q -&gt; P)
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">move</span>=&gt; [x y] /= /prime_gt1'-[x_gt1 x_pr] odd_y.
+<pre class="src src-coq"><span style="color: #00008b;">move</span>=&gt; [x y] /= /prime_gt1'-[x_gt1 x_pr] odd_y.
 </pre>
 </div>
 
@@ -2098,7 +2110,7 @@ contradiction in the assumptions). The <code>//</code> option of the <code>=&gt;
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">move</span>=&gt; [ x [ // | y ] ] /= /prime_gt1-x_gt1.
+<pre class="src src-coq"><span style="color: #00008b;">move</span>=&gt; [ x [ // | y ] ] /= /prime_gt1-x_gt1.
 </pre>
 </div>
 
@@ -2129,12 +2141,12 @@ textual marker</span> to communicate that the now-present goal is being <i>fully
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">move</span>=&gt; [x [//|y]] /= /prime_gt1-x_gt1 odd_y {odd_y}.
+<pre class="src src-coq"><span style="color: #00008b;">move</span>=&gt; [x [//|y]] /= /prime_gt1-x_gt1 odd_y {odd_y}.
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-coq">by <span style="text-decoration: underline;">move</span>=&gt; [ x [ // | y ] ] /= /prime_gt1-x_gt1 _ ; <span style="text-decoration: underline;">apply</span> (ltn_addl _ x_gt1).
+<pre class="src src-coq"><span style="color: #ff0000;">by</span> <span style="color: #00008b;">move</span>=&gt; [ x [ // | y ] ] /= /prime_gt1-x_gt1 _ ; <span style="color: #00008b;">apply</span> (ltn_addl _ x_gt1).
 </pre>
 </div>
 
@@ -2143,7 +2155,7 @@ No more subgoals.
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">About</span> ltn_addl.
+<pre class="src src-coq"><span style="color: #a020f0;">About</span> ltn_addl.
 </pre>
 </div>
 
@@ -2162,7 +2174,7 @@ Dually of <i>apply / instantiate some lemma by some assumption</i>, oneself may 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Goal</span> (<span style="font-weight: bold; text-decoration: underline;">forall</span> <span style="font-weight: bold; font-style: italic;">n</span>, n * 2 = n + n) -&gt; 6 = 3 + 3.
+<pre class="src src-coq"><span style="color: #a020f0;">Goal</span> (<span style="color: #228b22;">forall</span> <span style="color: #a0522d;">n</span>, n * 2 = n + n) -&gt; 6 = 3 + 3.
 </pre>
 </div>
 
@@ -2174,7 +2186,7 @@ Dually of <i>apply / instantiate some lemma by some assumption</i>, oneself may 
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">move</span> =&gt; /(_ 3).
+<pre class="src src-coq"><span style="color: #00008b;">move</span> =&gt; /(_ 3).
 </pre>
 </div>
 
@@ -2191,7 +2203,7 @@ same assumption.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">move</span> =&gt; /(special1arg 3).
+<pre class="src src-coq"><span style="color: #00008b;">move</span> =&gt; /(special1arg 3).
 </pre>
 </div>
 
@@ -2211,7 +2223,7 @@ assumptions or outer context.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">move</span> =&gt; &lt;- .
+<pre class="src src-coq"><span style="color: #00008b;">move</span> =&gt; &lt;- .
 </pre>
 </div>
 
@@ -2229,7 +2241,7 @@ input1)</code> ) of the <code>move =&gt; ..</code> command may occur affixed to 
 
 <div class="org-src-container">
 <pre class="src src-coq">Undo 2.
-<span style="text-decoration: underline;">move</span>/(special1arg 3).
+<span style="color: #00008b;">move</span>/(special1arg 3).
 </pre>
 </div>
 
@@ -2247,7 +2259,7 @@ input1)</code> ) of the <code>move =&gt; ..</code> command may occur affixed to 
 
 <div class="org-src-container">
 <pre class="src src-coq">Undo 1.
-<span style="text-decoration: underline;">move</span>/(_ 3).
+<span style="color: #00008b;">move</span>/(_ 3).
 </pre>
 </div>
 
@@ -2290,7 +2302,7 @@ pre-process the goal :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Lemma</span> <span style="font-weight: bold;">goal1</span> (<span style="font-weight: bold; font-style: italic;">x y</span> : nat) (<span style="font-weight: bold; font-style: italic;">x_gt1</span> : 1 &lt; x) (<span style="font-weight: bold; font-style: italic;">odd_y</span> : odd y) : 2 &lt; y + x .
+<pre class="src src-coq"><span style="color: #a020f0;">Lemma</span> <span style="color: #0000ff;">goal1</span> (<span style="color: #a0522d;">x y</span> : nat) (<span style="color: #a0522d;">x_gt1</span> : 1 &lt; x) (<span style="color: #a0522d;">odd_y</span> : odd y) : 2 &lt; y + x .
 </pre>
 </div>
 
@@ -2305,8 +2317,8 @@ pre-process the goal :
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq">Fail <span style="text-decoration: underline;">move</span> : y .
-<span style="text-decoration: underline;">move</span> : y odd_y .
+<pre class="src src-coq">Fail <span style="color: #00008b;">move</span> : y .
+<span style="color: #00008b;">move</span> : y odd_y .
 </pre>
 </div>
 
@@ -2321,13 +2333,6 @@ Error: y is used in hypothesis odd_y.
   odd_y : odd y
   ============================
   2 &lt; y + x
-
-1 subgoal
-  
-  x : nat
-  x_gt1 : 1 &lt; x
-  ============================
-  forall y : nat, odd y -&gt; 2 &lt; y + x
 </pre>
 
 <p>
@@ -2343,7 +2348,7 @@ single line of text.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">case</span> : y odd_y =&gt; [ | y' ].
+<pre class="src src-coq"><span style="color: #00008b;">case</span> : y odd_y =&gt; [ | y' ].
 </pre>
 </div>
 
@@ -2368,7 +2373,7 @@ write <code>case =&gt; - [ .. | .. ]</code> where the <code>-</code> keytext has
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq">Admitted.
+<pre class="src src-coq"><span style="background-color: #ff0000;">Admitted</span>.
 </pre>
 </div>
 
@@ -2386,8 +2391,8 @@ Such above goal may sometimes occur in less-practical form :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Lemma</span> <span style="font-weight: bold;">goal2</span> (<span style="font-weight: bold; font-style: italic;">x y1 y2</span> : nat) (<span style="font-weight: bold; font-style: italic;">x_gt1</span> : 1 &lt; x)
-   (<span style="font-weight: bold; font-style: italic;">odd_y1y2</span> : odd (y1 - y2)) : 2 &lt; (y1 - y2) + x .
+<pre class="src src-coq"><span style="color: #a020f0;">Lemma</span> <span style="color: #0000ff;">goal2</span> (<span style="color: #a0522d;">x y1 y2</span> : nat) (<span style="color: #a0522d;">x_gt1</span> : 1 &lt; x)
+   (<span style="color: #a0522d;">odd_y1y2</span> : odd (y1 - y2)) : 2 &lt; (y1 - y2) + x .
 </pre>
 </div>
 
@@ -2407,7 +2412,7 @@ more-practical form above and oneself may continue the same deduction :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">move</span> : (y1 - y2) odd_y1y2 .
+<pre class="src src-coq"><span style="color: #00008b;">move</span> : (y1 - y2) odd_y1y2 .
 </pre>
 </div>
 
@@ -2443,7 +2448,7 @@ start of this new deduction instead of manually-generalizing. This senses that t
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">apply</span> (goal1) .
+<pre class="src src-coq"><span style="color: #00008b;">apply</span> (goal1) .
 </pre>
 </div>
 
@@ -2473,8 +2478,8 @@ directly-using the particular lemma <code>goal1</code>,</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">move</span> : goal1 .
-<span style="text-decoration: underline;">apply</span> .
+<pre class="src src-coq"><span style="color: #00008b;">move</span> : goal1 .
+<span style="color: #00008b;">apply</span> .
 </pre>
 </div>
 
@@ -2504,7 +2509,7 @@ In reality, the following command will combine these two steps :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">apply</span> : goal1 .
+<pre class="src src-coq"><span style="color: #00008b;">apply</span> : goal1 .
 </pre>
 </div>
 
@@ -2528,9 +2533,9 @@ command says that <code>cmd1</code> succeed-and-progress else <code>cmd2</code> 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">refine</span> ( @goal1 ) || ( <span style="text-decoration: underline;">refine</span> ( @goal1 _ ) ||
-( <span style="text-decoration: underline;">refine</span> ( @goal1 _ _ ) || ( <span style="text-decoration: underline;">refine</span> ( @goal1 _ _ _ ) || 
-<span style="text-decoration: underline;">refine</span> ( @goal1 _ _ _ _ ) ) ) ) <span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">or more *</span><span style="font-weight: bold; font-style: italic;">*)</span> .
+<pre class="src src-coq"><span style="color: #00008b;">refine</span> ( @goal1 ) || ( <span style="color: #00008b;">refine</span> ( @goal1 _ ) ||
+( <span style="color: #00008b;">refine</span> ( @goal1 _ _ ) || ( <span style="color: #00008b;">refine</span> ( @goal1 _ _ _ ) || 
+<span style="color: #00008b;">refine</span> ( @goal1 _ _ _ _ ) ) ) ) <span style="color: #b22222;">(** </span><span style="color: #b22222;">or more *</span><span style="color: #b22222;">*)</span> .
 </pre>
 </div>
 
@@ -2553,7 +2558,7 @@ database</span> by affixing the lemma-to-be-applied to the <code>apply/</code> c
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">apply</span> / goal1 .
+<pre class="src src-coq"><span style="color: #00008b;">apply</span> / goal1 .
 </pre>
 </div>
 
@@ -2579,7 +2584,7 @@ from being <i>cleared</i> from the outer context. For example :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">move</span> : (x_gt1) .
+<pre class="src src-coq"><span style="color: #00008b;">move</span> : (x_gt1) .
 </pre>
 </div>
 
@@ -2598,7 +2603,7 @@ subgoal 2 is:
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Abort</span>.
+<pre class="src src-coq"><span style="color: #a020f0;">Abort</span>.
 </pre>
 </div>
 </div>
@@ -2613,8 +2618,8 @@ Here is the process named <span class="underline">revert-then-intro</span> ( <sp
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Lemma</span> <span style="font-weight: bold;">goal2</span> (<span style="font-weight: bold; font-style: italic;">x y1 y2</span> : nat) (<span style="font-weight: bold; font-style: italic;">x_gt1</span> : 1 &lt; x)
-   (<span style="font-weight: bold; font-style: italic;">odd_y1y2</span> : odd (y1 - y2)) : 2 &lt; (y1 - y2) + x .
+<pre class="src src-coq"><span style="color: #a020f0;">Lemma</span> <span style="color: #0000ff;">goal2</span> (<span style="color: #a0522d;">x y1 y2</span> : nat) (<span style="color: #a0522d;">x_gt1</span> : 1 &lt; x)
+   (<span style="color: #a0522d;">odd_y1y2</span> : odd (y1 - y2)) : 2 &lt; (y1 - y2) + x .
 </pre>
 </div>
 
@@ -2635,7 +2640,7 @@ of the generalized goal, oneself may do this command :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">move</span> : (y1 - y2) =&gt; z <span style="font-weight: bold; text-decoration: underline;">in</span> odd_y1y2 * .
+<pre class="src src-coq"><span style="color: #00008b;">move</span> : (y1 - y2) =&gt; z <span style="color: #228b22;">in</span> odd_y1y2 * .
 </pre>
 </div>
 
@@ -2655,7 +2660,7 @@ instead of this less-clear command :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">move</span> : (y1 - y2) odd_y1y2 =&gt; z odd_y1y1 .
+<pre class="src src-coq"><span style="color: #00008b;">move</span> : (y1 - y2) odd_y1y2 =&gt; z odd_y1y1 .
 </pre>
 </div>
 
@@ -2681,7 +2686,7 @@ using the braces <code>{ .. }</code> option in the same line of textual command 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">move</span> : (y1 - y2) =&gt; {y1 y2} z <span style="font-weight: bold; text-decoration: underline;">in</span> odd_y1y2 * .
+<pre class="src src-coq"><span style="color: #00008b;">move</span> : (y1 - y2) =&gt; {y1 y2} z <span style="color: #228b22;">in</span> odd_y1y2 * .
 </pre>
 </div>
 
@@ -2708,7 +2713,7 @@ command. This process is named <span class="underline">equational-generalize</sp
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Lemma</span> <span style="font-weight: bold;">goal3</span> (<span style="font-weight: bold; font-style: italic;">x y</span> : nat) (<span style="font-weight: bold; font-style: italic;">x_gt1</span> : 1 &lt; x) : odd y -&gt; 2 &lt; y + x .
+<pre class="src src-coq"><span style="color: #a020f0;">Lemma</span> <span style="color: #0000ff;">goal3</span> (<span style="color: #a0522d;">x y</span> : nat) (<span style="color: #a0522d;">x_gt1</span> : 1 &lt; x) : odd y -&gt; 2 &lt; y + x .
 </pre>
 </div>
 
@@ -2722,8 +2727,8 @@ command. This process is named <span class="underline">equational-generalize</sp
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">move</span> : {-1}y (erefl y). <span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">equational-generalize *</span><span style="font-weight: bold; font-style: italic;">*)</span>
-<span style="text-decoration: underline;">case</span> =&gt; [ | y' ] E <span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">case *</span><span style="font-weight: bold; font-style: italic;">*)</span>.
+<pre class="src src-coq"><span style="color: #00008b;">move</span> : {-1}y (erefl y). <span style="color: #b22222;">(** </span><span style="color: #b22222;">equational-generalize *</span><span style="color: #b22222;">*)</span>
+<span style="color: #00008b;">case</span> =&gt; [ | y' ] E <span style="color: #b22222;">(** </span><span style="color: #b22222;">case *</span><span style="color: #b22222;">*)</span>.
 </pre>
 </div>
 
@@ -2757,7 +2762,7 @@ Alternatively, oneself may use the equation-option of the case command.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">case</span> E : y =&gt; [ | y' ] <span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">equational-generalize case *</span><span style="font-weight: bold; font-style: italic;">*)</span>.
+<pre class="src src-coq"><span style="color: #00008b;">case</span> E : y =&gt; [ | y' ] <span style="color: #b22222;">(** </span><span style="color: #b22222;">equational-generalize case *</span><span style="color: #b22222;">*)</span>.
 </pre>
 </div>
 
@@ -2775,7 +2780,7 @@ subgoal 2 is:
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Abort</span>.
+<pre class="src src-coq"><span style="color: #a020f0;">Abort</span>.
 </pre>
 </div>
 </div>
@@ -2801,7 +2806,7 @@ question is some instance :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Lemma</span> <span style="font-weight: bold;">stamps</span> n : 12 &lt;= n -&gt; <span style="text-decoration: underline;">exists</span> <span style="font-weight: bold; font-style: italic;">s4 s5</span>, s4 * 4 + s5 * 5 = n.
+<pre class="src src-coq"><span style="color: #a020f0;">Lemma</span> <span style="color: #0000ff;">stamps</span> n : 12 &lt;= n -&gt; <span style="color: #00008b;">exists</span> <span style="color: #a0522d;">s4 s5</span>, s4 * 4 + s5 * 5 = n.
 </pre>
 </div>
 
@@ -2814,9 +2819,9 @@ question is some instance :
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">move</span> : n {-2}n (leqnn n). <span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">lessorequal-generalize *</span><span style="font-weight: bold; font-style: italic;">*)</span>
-<span style="text-decoration: underline;">elim</span> =&gt; [ | m IHm ] <span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">elim , then [  |  ] branching and intros *</span><span style="font-weight: bold; font-style: italic;">*)</span> .
-<span style="font-weight: bold;">Show</span> 2 <span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">shows subgoal 2 which has the stronger induction hypothesis *</span><span style="font-weight: bold; font-style: italic;">*)</span>.
+<pre class="src src-coq"><span style="color: #00008b;">move</span> : n {-2}n (leqnn n). <span style="color: #b22222;">(** </span><span style="color: #b22222;">lessorequal-generalize *</span><span style="color: #b22222;">*)</span>
+<span style="color: #00008b;">elim</span> =&gt; [ | m IHm ] <span style="color: #b22222;">(** </span><span style="color: #b22222;">elim , then [  |  ] branching and intros *</span><span style="color: #b22222;">*)</span> .
+<span style="color: #a020f0;">Show</span> 2 <span style="color: #b22222;">(** </span><span style="color: #b22222;">shows subgoal 2 which has the stronger induction hypothesis *</span><span style="color: #b22222;">*)</span>.
 </pre>
 </div>
 
@@ -2847,7 +2852,7 @@ subgoal 2 is:
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Abort</span>.
+<pre class="src src-coq"><span style="color: #a020f0;">Abort</span>.
 </pre>
 </div>
 </div>
@@ -2867,9 +2872,9 @@ shall be general. This mediating pre-processing is named
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Fixpoint</span> <span style="font-weight: bold;">addacc</span> (<span style="font-weight: bold; font-style: italic;">n</span> : nat) (<span style="font-weight: bold; font-style: italic;">a</span> : nat) {<span style="font-weight: bold; text-decoration: underline;">struct</span> n} : nat :=
-  <span style="font-weight: bold; text-decoration: underline;">if</span> n <span style="font-weight: bold; text-decoration: underline;">is</span> S n' <span style="font-weight: bold; text-decoration: underline;">then</span> addacc n' (S a) <span style="font-weight: bold; text-decoration: underline;">else</span> a .
-<span style="font-weight: bold;">Definition</span> <span style="font-weight: bold;">add10</span> (<span style="font-weight: bold; font-style: italic;">n</span> : nat) := addacc n 10 .
+<pre class="src src-coq"><span style="color: #a020f0;">Fixpoint</span> <span style="color: #0000ff;">addacc</span> (<span style="color: #a0522d;">n</span> : nat) (<span style="color: #a0522d;">a</span> : nat) {<span style="color: #228b22;">struct</span> n} : nat :=
+  <span style="color: #228b22;">if</span> n <span style="color: #228b22;">is</span> S n' <span style="color: #228b22;">then</span> addacc n' (S a) <span style="color: #228b22;">else</span> a .
+<span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">add10</span> (<span style="color: #a0522d;">n</span> : nat) := addacc n 10 .
 </pre>
 </div>
 
@@ -2881,8 +2886,8 @@ add10 is defined
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Lemma</span> <span style="font-weight: bold;">add10S</span> (<span style="font-weight: bold; font-style: italic;">n</span> : nat) : add10 (S n) = S (add10 n).
-<span style="text-decoration: underline;">rewrite</span> /add10.
+<pre class="src src-coq"><span style="color: #a020f0;">Lemma</span> <span style="color: #0000ff;">add10S</span> (<span style="color: #a0522d;">n</span> : nat) : add10 (S n) = S (add10 n).
+<span style="color: #00008b;">rewrite</span> /add10.
 </pre>
 </div>
 
@@ -2901,7 +2906,7 @@ add10 is defined
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">move</span> : 10 .
+<pre class="src src-coq"><span style="color: #00008b;">move</span> : 10 .
 </pre>
 </div>
 
@@ -2914,7 +2919,7 @@ add10 is defined
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">elim</span> : n =&gt; [ // | n IHn ] a .
+<pre class="src src-coq"><span style="color: #00008b;">elim</span> : n =&gt; [ // | n IHn ] a .
 </pre>
 </div>
 
@@ -2929,8 +2934,8 @@ add10 is defined
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">simpl</span>.
-<span style="text-decoration: underline;">apply</span>: (IHn (S a)).
+<pre class="src src-coq"><span style="color: #00008b;">simpl</span>.
+<span style="color: #00008b;">apply</span>: (IHn (S a)).
 </pre>
 </div>
 
@@ -2947,7 +2952,7 @@ No more subgoals.
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Qed</span>.
+<pre class="src src-coq"><span style="color: #a020f0;">Qed</span>.
 </pre>
 </div>
 </div>
@@ -2969,8 +2974,8 @@ named <span class="underline">forward-generalize</span> (for the <code>have</cod
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Lemma</span> <span style="font-weight: bold;">goal2</span> (<span style="font-weight: bold; font-style: italic;">x y1 y2</span> : nat) (<span style="font-weight: bold; font-style: italic;">x_gt1</span> : 1 &lt; x)
-   (<span style="font-weight: bold; font-style: italic;">odd_y1y2</span> : odd (y1 - y2)) : 2 &lt; (y1 - y2) + x .
+<pre class="src src-coq"><span style="color: #a020f0;">Lemma</span> <span style="color: #0000ff;">goal2</span> (<span style="color: #a0522d;">x y1 y2</span> : nat) (<span style="color: #a0522d;">x_gt1</span> : 1 &lt; x)
+   (<span style="color: #a0522d;">odd_y1y2</span> : odd (y1 - y2)) : 2 &lt; (y1 - y2) + x .
 </pre>
 </div>
 
@@ -2986,7 +2991,7 @@ named <span class="underline">forward-generalize</span> (for the <code>have</cod
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">have</span> : <span style="font-weight: bold; text-decoration: underline;">forall</span> (<span style="font-weight: bold; font-style: italic;">y</span> : nat), odd y -&gt; 2 &lt; y + x .
+<pre class="src src-coq"><span style="color: #00008b;">have</span> : <span style="color: #228b22;">forall</span> (<span style="color: #a0522d;">y</span> : nat), odd y -&gt; 2 &lt; y + x .
 </pre>
 </div>
 
@@ -3004,7 +3009,7 @@ subgoal 2 is:
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq">by <span style="text-decoration: underline;">move</span> =&gt; [ // | y' ] /= _ ; <span style="text-decoration: underline;">apply</span> : ltn_addl x_gt1 .
+<pre class="src src-coq"><span style="color: #ff0000;">by</span> <span style="color: #00008b;">move</span> =&gt; [ // | y' ] /= _ ; <span style="color: #00008b;">apply</span> : ltn_addl x_gt1 .
 </pre>
 </div>
 
@@ -3023,7 +3028,7 @@ Now the old goal, which has been generalized :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq">by <span style="text-decoration: underline;">apply</span>.
+<pre class="src src-coq"><span style="color: #ff0000;">by</span> <span style="color: #00008b;">apply</span>.
 </pre>
 </div>
 
@@ -3054,10 +3059,10 @@ command as follows.
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">suffices</span> : <span style="font-weight: bold; text-decoration: underline;">forall</span> (<span style="font-weight: bold; font-style: italic;">y</span> : nat), odd y -&gt; 2 &lt; y + x.
-  by <span style="text-decoration: underline;">apply</span>.
+<pre class="src src-coq"><span style="color: #00008b;">suffices</span> : <span style="color: #228b22;">forall</span> (<span style="color: #a0522d;">y</span> : nat), odd y -&gt; 2 &lt; y + x.
+  <span style="color: #ff0000;">by</span> <span style="color: #00008b;">apply</span>.
 
-by <span style="text-decoration: underline;">move</span> =&gt; [ // | y' ] /= _ ; <span style="text-decoration: underline;">apply</span> : ltn_addl x_gt1 .
+<span style="color: #ff0000;">by</span> <span style="color: #00008b;">move</span> =&gt; [ // | y' ] /= _ ; <span style="color: #00008b;">apply</span> : ltn_addl x_gt1 .
 </pre>
 </div>
 
@@ -3085,7 +3090,7 @@ No more subgoals.
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Qed</span>.
+<pre class="src src-coq"><span style="color: #a020f0;">Qed</span>.
 </pre>
 </div>
 </div>
@@ -3102,7 +3107,7 @@ the goal. For instance :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Lemma</span> <span style="font-weight: bold;">leq_max</span> m n1 n2 : (m &lt;= maxn n1 n2) = (m &lt;= n1) || (m &lt;= n2) .
+<pre class="src src-coq"><span style="color: #a020f0;">Lemma</span> <span style="color: #0000ff;">leq_max</span> m n1 n2 : (m &lt;= maxn n1 n2) = (m &lt;= n1) || (m &lt;= n2) .
 </pre>
 </div>
 
@@ -3122,7 +3127,7 @@ Therefore it shall be sufficient to deduce the conclusion under the assumption /
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">suff</span> : <span style="font-weight: bold; text-decoration: underline;">forall</span> <span style="font-weight: bold; font-style: italic;">x y</span>, y &lt;= x -&gt; (m &lt;= maxn x y) = (m &lt;= x) || (m &lt;= y).
+<pre class="src src-coq"><span style="color: #00008b;">suff</span> : <span style="color: #228b22;">forall</span> <span style="color: #a0522d;">x y</span>, y &lt;= x -&gt; (m &lt;= maxn x y) = (m &lt;= x) || (m &lt;= y).
 </pre>
 </div>
 
@@ -3146,7 +3151,7 @@ indeed holds.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">move</span> : (leq_total n2 n1) =&gt; /orP <span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">this apply-in query the view hints database *</span><span style="font-weight: bold; font-style: italic;">*)</span> .
+<pre class="src src-coq"><span style="color: #00008b;">move</span> : (leq_total n2 n1) =&gt; /orP <span style="color: #b22222;">(** </span><span style="color: #b22222;">this apply-in query the view hints database *</span><span style="color: #b22222;">*)</span> .
 </pre>
 </div>
 
@@ -3164,7 +3169,7 @@ subgoal 2 is:
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">case</span> =&gt; y_le_x =&gt; /(_ _ _ y_le_x) .
+<pre class="src src-coq"><span style="color: #00008b;">case</span> =&gt; y_le_x =&gt; /(_ _ _ y_le_x) .
 </pre>
 </div>
 
@@ -3185,8 +3190,8 @@ subgoal 3 is:
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq">  by [].
-by <span style="text-decoration: underline;">move</span> =&gt; lem_perm; <span style="text-decoration: underline;">rewrite</span> maxnC orbC.
+<pre class="src src-coq">  <span style="color: #ff0000;">by</span> [].
+<span style="color: #ff0000;">by</span> <span style="color: #00008b;">move</span> =&gt; lem_perm; <span style="color: #00008b;">rewrite</span> maxnC orbC.
 </pre>
 </div>
 
@@ -3243,7 +3248,7 @@ shall be generalized ( <code>n1</code> and <code>n2</code> ), the sufficiency ( 
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">wlog</span> le_n21 : n1 n2 / n2 &lt;= n1 .
+<pre class="src src-coq"><span style="color: #00008b;">wlog</span> le_n21 : n1 n2 / n2 &lt;= n1 .
 </pre>
 </div>
 
@@ -3260,8 +3265,8 @@ subgoal 2 is:
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq">by <span style="text-decoration: underline;">case</span>/orP : (leq_total n2 n1) =&gt; y_le_x =&gt; /(_ _ _ y_le_x) ;
-  last <span style="text-decoration: underline;">move</span> =&gt; lem_perm; <span style="text-decoration: underline;">rewrite</span> maxnC orbC.
+<pre class="src src-coq"><span style="color: #ff0000;">by</span> <span style="color: #00008b;">case</span>/orP : (leq_total n2 n1) =&gt; y_le_x =&gt; /(_ _ _ y_le_x) ;
+  <span style="color: #b452cd;">last</span> <span style="color: #00008b;">move</span> =&gt; lem_perm; <span style="color: #00008b;">rewrite</span> maxnC orbC.
 </pre>
 </div>
 
@@ -3306,7 +3311,7 @@ does some <span class="underline">grammatical / inductive description / definiti
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Inductive</span> <span style="font-weight: bold;">prod</span> (<span style="font-weight: bold; font-style: italic;">A B</span> : <span style="font-weight: bold; text-decoration: underline;">Type</span>) : <span style="font-weight: bold; text-decoration: underline;">Type</span> :=
+<pre class="src src-coq"><span style="color: #a020f0;">Inductive</span> <span style="color: #0000ff;">prod</span> (<span style="color: #a0522d;">A B</span> : <span style="color: #228b22;">Type</span>) : <span style="color: #228b22;">Type</span> :=
   pair : A -&gt; (B -&gt; prod A B) .
 </pre>
 </div>
@@ -3317,7 +3322,7 @@ instance in :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Check</span> (@pair bool nat (false) (S (S O))).
+<pre class="src src-coq"><span style="color: #a020f0;">Check</span> (@pair bool nat (false) (S (S O))).
 </pre>
 </div>
 
@@ -3333,12 +3338,12 @@ the same deduction-term as the manually written deduction-term above :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Definition</span> <span style="font-weight: bold;">pair_false_2</span> : bool * nat .
+<pre class="src src-coq"><span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">pair_false_2</span> : bool * nat .
 
-  <span style="text-decoration: underline;">split</span>.
-    exact: false.
-  exact: (S (S O)).
-<span style="font-weight: bold;">Defined</span>.
+  <span style="color: #00008b;">split</span>.
+    <span style="color: #ff0000;">exact</span>: false.
+  <span style="color: #ff0000;">exact</span>: (S (S O)).
+<span style="color: #a020f0;">Defined</span>.
 </pre>
 </div>
 
@@ -3381,10 +3386,10 @@ this class, which is that any (random) data in the class may be such (recursivel
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Definition</span> <span style="font-weight: bold;">fst</span> (<span style="font-weight: bold; font-style: italic;">A B</span> : <span style="font-weight: bold; text-decoration: underline;">Type</span>) (<span style="font-weight: bold; font-style: italic;">p</span> : prod A B) : A :=
-  <span style="font-weight: bold; text-decoration: underline;">match</span> p <span style="font-weight: bold; text-decoration: underline;">as</span> p0 <span style="font-weight: bold; text-decoration: underline;">in</span> prod _ _ <span style="font-weight: bold; text-decoration: underline;">return</span> A <span style="font-weight: bold; text-decoration: underline;">with</span>
+<pre class="src src-coq"><span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">fst</span> (<span style="color: #a0522d;">A B</span> : <span style="color: #228b22;">Type</span>) (<span style="color: #a0522d;">p</span> : prod A B) : A :=
+  <span style="color: #228b22;">match</span> p <span style="color: #228b22;">as</span> p0 <span style="color: #228b22;">in</span> prod _ _ <span style="color: #228b22;">return</span> A <span style="color: #228b22;">with</span>
     @pair _ _ a b =&gt; a
-  <span style="font-weight: bold; text-decoration: underline;">end</span>.
+  <span style="color: #228b22;">end</span>.
 </pre>
 </div>
 <p>
@@ -3394,10 +3399,10 @@ deduction-term as the manually written deduction-term above :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Definition</span> <span style="font-weight: bold;">fst</span> (<span style="font-weight: bold; font-style: italic;">A B</span> : <span style="font-weight: bold; text-decoration: underline;">Type</span>) : prod A B -&gt; A .
-  <span style="text-decoration: underline;">case</span>.
-  <span style="text-decoration: underline;">move</span> =&gt; a b ; exact : a.
-<span style="font-weight: bold;">Defined</span>.
+<pre class="src src-coq"><span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">fst</span> (<span style="color: #a0522d;">A B</span> : <span style="color: #228b22;">Type</span>) : prod A B -&gt; A .
+  <span style="color: #00008b;">case</span>.
+  <span style="color: #00008b;">move</span> =&gt; a b ; <span style="color: #ff0000;">exact</span> : a.
+<span style="color: #a020f0;">Defined</span>.
 </pre>
 </div>
 
@@ -3417,6 +3422,12 @@ deduction-term as the manually written deduction-term above :
   A -&gt; B -&gt; A
 
 No more subgoals.
+
+case.
+(move =&gt; a b; exact : a).
+
+Defined.
+fst is defined
 </pre>
 </div>
 </div>
@@ -3431,8 +3442,8 @@ not occur in the (inner-most) conclusion</i> of <code>existT</code> :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Inductive</span> <span style="font-weight: bold;">sigT</span> (<span style="font-weight: bold; font-style: italic;">A</span> : <span style="font-weight: bold; text-decoration: underline;">Type</span>) (<span style="font-weight: bold; font-style: italic;">P</span> : A -&gt; <span style="font-weight: bold; text-decoration: underline;">Type</span>) : <span style="font-weight: bold; text-decoration: underline;">Type</span> :=
-    existT : <span style="font-weight: bold; text-decoration: underline;">forall</span> <span style="font-weight: bold; font-style: italic;">x</span> : A, P x -&gt; @sigT A P .
+<pre class="src src-coq"><span style="color: #a020f0;">Inductive</span> <span style="color: #0000ff;">sigT</span> (<span style="color: #a0522d;">A</span> : <span style="color: #228b22;">Type</span>) (<span style="color: #a0522d;">P</span> : A -&gt; <span style="color: #228b22;">Type</span>) : <span style="color: #228b22;">Type</span> :=
+    existT : <span style="color: #228b22;">forall</span> <span style="color: #a0522d;">x</span> : A, P x -&gt; @sigT A P .
 </pre>
 </div>
 <p>
@@ -3441,11 +3452,11 @@ Primo, the <code>COQ</code> deduction / tactic command corresponding to the cons
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Definition</span> <span style="font-weight: bold;">existsT_3_icons675inil</span> : @sigT nat ilist .
-  <span style="text-decoration: underline;">exists</span> 3.
-  exact: (icons 6 (icons 7 (icons 5 inil))).
-  <span style="font-weight: bold;">Show</span> <span style="font-weight: bold;">Proof</span>.
-<span style="font-weight: bold;">Defined</span>.
+<pre class="src src-coq"><span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">existsT_3_icons675inil</span> : @sigT nat ilist .
+  <span style="color: #00008b;">exists</span> 3.
+  <span style="color: #ff0000;">exact</span>: (icons 6 (icons 7 (icons 5 inil))).
+  <span style="color: #a020f0;">Show</span> <span style="color: #a020f0;">Proof</span>.
+<span style="color: #a020f0;">Defined</span>.
 </pre>
 </div>
 
@@ -3463,6 +3474,11 @@ Primo, the <code>COQ</code> deduction / tactic command corresponding to the cons
 No more subgoals.
 
 (existT ilist 3 (icons 6 (icons 7 (icons 5 inil))))
+
+exists 3.
+exact : (icons 6 (icons 7 (icons 5 inil))).
+
+Defined.
 </pre>
 
 <p>
@@ -3483,7 +3499,7 @@ The <span class="underline">sum</span> ( or <span class="underline">or</span> &#
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Inductive</span> <span style="font-weight: bold;">sum</span> (<span style="font-weight: bold; font-style: italic;">A B</span> : <span style="font-weight: bold; text-decoration: underline;">Type</span>) : <span style="font-weight: bold; text-decoration: underline;">Type</span> :=  
+<pre class="src src-coq"><span style="color: #a020f0;">Inductive</span> <span style="color: #0000ff;">sum</span> (<span style="color: #a0522d;">A B</span> : <span style="color: #228b22;">Type</span>) : <span style="color: #228b22;">Type</span> :=  
     inl : A -&gt; sum A B 
   | inr : B -&gt; sum A B .
 </pre>
@@ -3503,8 +3519,8 @@ data type correspondingly internalizes the <span class="underline">1-iterated or
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Inductive</span> <span style="font-weight: bold;">unit</span> : <span style="font-weight: bold; text-decoration: underline;">Type</span> :=  tt : unit .
-<span style="font-weight: bold;">Inductive</span> <span style="font-weight: bold;">empty</span> : <span style="font-weight: bold; text-decoration: underline;">Type</span> :=           .
+<pre class="src src-coq"><span style="color: #a020f0;">Inductive</span> <span style="color: #0000ff;">unit</span> : <span style="color: #228b22;">Type</span> :=  tt : unit .
+<span style="color: #a020f0;">Inductive</span> <span style="color: #0000ff;">empty</span> : <span style="color: #228b22;">Type</span> :=           .
 </pre>
 </div>
 
@@ -3517,9 +3533,9 @@ data. This is show for instance in :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Definition</span> <span style="text-decoration: underline;">exfalso</span> (<span style="font-weight: bold; font-style: italic;">A</span> : <span style="font-weight: bold; text-decoration: underline;">Type</span>) : empty -&gt; A :=
-  <span style="font-weight: bold; text-decoration: underline;">fun</span> <span style="font-weight: bold; font-style: italic;">x</span> : empty =&gt;
-    <span style="font-weight: bold; text-decoration: underline;">match</span> x <span style="font-weight: bold; text-decoration: underline;">with</span> <span style="font-weight: bold; text-decoration: underline;">end</span>.
+<pre class="src src-coq"><span style="color: #a020f0;">Definition</span> <span style="color: #00008b;">exfalso</span> (<span style="color: #a0522d;">A</span> : <span style="color: #228b22;">Type</span>) : empty -&gt; A :=
+  <span style="color: #228b22;">fun</span> <span style="color: #a0522d;">x</span> : empty =&gt;
+    <span style="color: #228b22;">match</span> x <span style="color: #228b22;">with</span> <span style="color: #228b22;">end</span>.
 </pre>
 </div>
 
@@ -3537,14 +3553,14 @@ description</i> :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Definition</span> <span style="font-weight: bold;">is_empty</span> (<span style="font-weight: bold; font-style: italic;">A</span> : <span style="font-weight: bold; text-decoration: underline;">Type</span>) := A -&gt; empty .
+<pre class="src src-coq"><span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">is_empty</span> (<span style="color: #a0522d;">A</span> : <span style="color: #228b22;">Type</span>) := A -&gt; empty .
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org87089e5" class="outline-3">
-<h3 id="org87089e5"><span class="section-number-3">6.4</span> recursion</h3>
+<div id="outline-container-org2700952" class="outline-3">
+<h3 id="org2700952"><span class="section-number-3">6.4</span> recursion</h3>
 <div class="outline-text-3" id="text-6-4">
 <p>
 Whenever oneself does some grammatical / inductive description / definition <code>idef1</code>
@@ -3556,7 +3572,7 @@ the <code>nat</code> numbers :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Inductive</span> <span style="font-weight: bold;">nat</span> := 
+<pre class="src src-coq"><span style="color: #a020f0;">Inductive</span> <span style="color: #0000ff;">nat</span> := 
     O : nat 
   | S : nat -&gt; nat.
 </pre>
@@ -3570,7 +3586,7 @@ nat_rec is defined
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Print</span> nat_rect.
+<pre class="src src-coq"><span style="color: #a020f0;">Print</span> nat_rect.
 </pre>
 </div>
 
@@ -3596,7 +3612,7 @@ this is such to prevent something as
 
 <div class="org-src-container">
 <pre class="src src-coq">Fail
-<span style="font-weight: bold;">Inductive</span> <span style="font-weight: bold;">empty_nonempty</span> := Convert (<span style="font-weight: bold; font-style: italic;">empty</span> : empty_nonempty -&gt; <span style="font-weight: bold; text-decoration: underline;">False</span>) .
+<span style="color: #a020f0;">Inductive</span> <span style="color: #0000ff;">empty_nonempty</span> := Convert (<span style="color: #a0522d;">empty</span> : empty_nonempty -&gt; <span style="color: #228b22;">False</span>) .
 </pre>
 </div>
 
@@ -3632,8 +3648,8 @@ idef1_rect</code> ). For instance :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Lemma</span> <span style="font-weight: bold;">addn0</span> : <span style="font-weight: bold; text-decoration: underline;">forall</span> <span style="font-weight: bold; font-style: italic;">m</span> : nat, m + 0 = m.
-  <span style="text-decoration: underline;">elim</span>.
+<pre class="src src-coq"><span style="color: #a020f0;">Lemma</span> <span style="color: #0000ff;">addn0</span> : <span style="color: #228b22;">forall</span> <span style="color: #a0522d;">m</span> : nat, m + 0 = m.
+  <span style="color: #00008b;">elim</span>.
 </pre>
 </div>
 
@@ -3662,9 +3678,9 @@ as the <code>pattern</code> command) :
 
 <div class="org-src-container">
 <pre class="src src-coq">Undo.
-<span style="text-decoration: underline;">move</span> =&gt; m.
-<span style="text-decoration: underline;">rewrite</span> -[_ = _]/((<span style="font-weight: bold; text-decoration: underline;">fun</span> <span style="font-weight: bold; font-style: italic;">m'</span> =&gt; _) m) .
-<span style="text-decoration: underline;">apply</span> : nat_rect m <span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">or elim : m *</span><span style="font-weight: bold; font-style: italic;">*)</span> .
+<span style="color: #00008b;">move</span> =&gt; m.
+<span style="color: #00008b;">rewrite</span> -[_ = _]/((<span style="color: #228b22;">fun</span> <span style="color: #a0522d;">m'</span> =&gt; _) m) .
+<span style="color: #00008b;">apply</span> : nat_rect m <span style="color: #b22222;">(** </span><span style="color: #b22222;">or elim : m *</span><span style="color: #b22222;">*)</span> .
 </pre>
 </div>
 
@@ -3685,6 +3701,14 @@ as the <code>pattern</code> command) :
   m : nat
   ============================
   (fun m' : nat =&gt; m' + 0 = m') m
+
+2 subgoals
+  
+  ============================
+  0 + 0 = 0
+
+subgoal 2 is:
+ forall n : nat, n + 0 = n -&gt; n.+1 + 0 = n.+1
 </pre>
 </div>
 </div>
@@ -3717,7 +3741,7 @@ The <span class="underline">equality classifier</span> internalizes <span class=
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Print</span> Coq.Init.Logic.eq.
+<pre class="src src-coq"><span style="color: #a020f0;">Print</span> Coq.Init.Logic.eq.
 </pre>
 </div>
 
@@ -3743,7 +3767,7 @@ corresponding to the constructor function <code>eq_refl</code> is <code>reflexiv
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Check</span> @Logic.eq_refl nat (3 + 2) : @Logic.eq nat (3 + 2) (S (S (1 + 2))).
+<pre class="src src-coq"><span style="color: #a020f0;">Check</span> @Logic.eq_refl nat (3 + 2) : @Logic.eq nat (3 + 2) (S (S (1 + 2))).
 </pre>
 </div>
 
@@ -3797,21 +3821,21 @@ classification is not some variable</i> :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Lemma</span> <span style="font-weight: bold;">lemma1337</span> (<span style="font-weight: bold; font-style: italic;">P</span> : nat -&gt; nat -&gt; <span style="font-weight: bold; text-decoration: underline;">Type</span>)
-  (<span style="font-weight: bold; font-style: italic;">c</span> : nat) (<span style="font-weight: bold; font-style: italic;">pcc</span> : P c (c * c)) (<span style="font-weight: bold; font-style: italic;">Hc</span> : c + c = 0)
-  (<span style="font-weight: bold; font-style: italic;">Heq</span> : <span style="font-weight: bold; text-decoration: underline;">forall</span> (<span style="font-weight: bold; font-style: italic;">n</span> : nat), c + c = n - n -&gt; c = n * 0) n1 n2 
+<pre class="src src-coq"><span style="color: #a020f0;">Lemma</span> <span style="color: #0000ff;">lemma1337</span> (<span style="color: #a0522d;">P</span> : nat -&gt; nat -&gt; <span style="color: #228b22;">Type</span>)
+  (<span style="color: #a0522d;">c</span> : nat) (<span style="color: #a0522d;">pcc</span> : P c (c * c)) (<span style="color: #a0522d;">Hc</span> : c + c = 0)
+  (<span style="color: #a0522d;">Heq</span> : <span style="color: #228b22;">forall</span> (<span style="color: #a0522d;">n</span> : nat), c + c = n - n -&gt; c = n * 0) n1 n2 
   : P (n1 * 0) ((n2 * 0) * (n2 * 0)) .
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">case</span> : ( n1 * _ ) / Heq.
+<pre class="src src-coq"><span style="color: #00008b;">case</span> : ( n1 * _ ) / Heq.
 
 Undo.
-<span style="text-decoration: underline;">rewrite</span> -[ n1 * _ ]Heq.
+<span style="color: #00008b;">rewrite</span> -[ n1 * _ ]Heq.
 
 Undo.
-<span style="text-decoration: underline;">rewrite</span> -Heq.
+<span style="color: #00008b;">rewrite</span> -Heq.
 </pre>
 </div>
 
@@ -3892,8 +3916,8 @@ And the rest of the modifiers for the <code>rewrite</code> command explains itse
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq">Fail <span style="text-decoration: underline;">rewrite</span> -{2}Heq.
-<span style="text-decoration: underline;">rewrite</span> -{2}[ <span style="font-weight: bold; text-decoration: underline;">in</span> X <span style="font-weight: bold; text-decoration: underline;">in</span> P _ X ]Heq.
+<pre class="src src-coq">Fail <span style="color: #00008b;">rewrite</span> -{2}Heq.
+<span style="color: #00008b;">rewrite</span> -{2}[ <span style="color: #228b22;">in</span> X <span style="color: #228b22;">in</span> P _ X ]Heq.
 </pre>
 </div>
 
@@ -3922,10 +3946,10 @@ where any <code>[ in .. ]</code> modifier such as <code>[ in X in P _ X ]</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">rewrite</span> -{2}[ (_ * 0) <span style="font-weight: bold; text-decoration: underline;">in</span> X <span style="font-weight: bold; text-decoration: underline;">in</span> P _ X ]Heq
-  ?Hc ?subnn // <span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">1 branch *</span><span style="font-weight: bold; font-style: italic;">*)</span>
-  -!Heq // <span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">trunk *</span><span style="font-weight: bold; font-style: italic;">*)</span> 
-  Hc subnn // <span style="font-weight: bold; font-style: italic;">(** </span><span style="font-weight: bold; font-style: italic;">2 branches *</span><span style="font-weight: bold; font-style: italic;">*)</span> .
+<pre class="src src-coq"><span style="color: #00008b;">rewrite</span> -{2}[ (_ * 0) <span style="color: #228b22;">in</span> X <span style="color: #228b22;">in</span> P _ X ]Heq
+  ?Hc ?subnn // <span style="color: #b22222;">(** </span><span style="color: #b22222;">1 branch *</span><span style="color: #b22222;">*)</span>
+  -!Heq // <span style="color: #b22222;">(** </span><span style="color: #b22222;">trunk *</span><span style="color: #b22222;">*)</span> 
+  Hc subnn // <span style="color: #b22222;">(** </span><span style="color: #b22222;">2 branches *</span><span style="color: #b22222;">*)</span> .
 </pre>
 </div>
 
@@ -3954,7 +3978,7 @@ name of some shortening-definition which shall be <span class="underline">unfold
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Lemma</span> <span style="font-weight: bold;">leq_mul2l</span> m n1 n2 :
+<pre class="src src-coq"><span style="color: #a020f0;">Lemma</span> <span style="color: #0000ff;">leq_mul2l</span> m n1 n2 :
   (m * n1 &lt;= m * n2) = (eqn m 0) || (leq n1 n2).
 </pre>
 </div>
@@ -3968,7 +3992,7 @@ name of some shortening-definition which shall be <span class="underline">unfold
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">rewrite</span> [<span style="font-weight: bold; text-decoration: underline;">in</span> LHS]/leq.
+<pre class="src src-coq"><span style="color: #00008b;">rewrite</span> [<span style="color: #228b22;">in</span> LHS]/leq.
 </pre>
 </div>
 
@@ -3993,7 +4017,7 @@ another term whenever these two terms are equal-by-computation :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">rewrite</span> -[n1]/(addn 0 n1).
+<pre class="src src-coq"><span style="color: #00008b;">rewrite</span> -[n1]/(addn 0 n1).
 </pre>
 </div>
 
@@ -4013,7 +4037,7 @@ constant of the destination filter.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">rewrite</span> -/(leq _ _).
+<pre class="src src-coq"><span style="color: #00008b;">rewrite</span> -/(leq _ _).
 </pre>
 </div>
 
@@ -4036,9 +4060,9 @@ The <span class="underline">reflect classifier</span> internalizes the <span cla
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Inductive</span> <span style="font-weight: bold;">reflect</span> (<span style="font-weight: bold; font-style: italic;">P</span> : <span style="font-weight: bold; text-decoration: underline;">Type</span>) : bool -&gt; <span style="font-weight: bold; text-decoration: underline;">Type</span> :=
-| ReflectT (<span style="font-weight: bold; font-style: italic;">p</span> : P) : reflect P true
-| ReflectF (<span style="font-weight: bold; font-style: italic;">np</span> : P -&gt; <span style="font-weight: bold; text-decoration: underline;">False</span>) : reflect P false
+<pre class="src src-coq"><span style="color: #a020f0;">Inductive</span> <span style="color: #0000ff;">reflect</span> (<span style="color: #a0522d;">P</span> : <span style="color: #228b22;">Type</span>) : bool -&gt; <span style="color: #228b22;">Type</span> :=
+| ReflectT (<span style="color: #a0522d;">p</span> : P) : reflect P true
+| ReflectF (<span style="color: #a0522d;">np</span> : P -&gt; <span style="color: #228b22;">False</span>) : reflect P false
 </pre>
 </div>
 
@@ -4065,7 +4089,7 @@ predicate</i> and <i>boolean predicate</i> :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">About</span> andP.
+<pre class="src src-coq"><span style="color: #a020f0;">About</span> andP.
 </pre>
 </div>
 
@@ -4079,9 +4103,9 @@ Expands to: Constant mathcomp.ssreflect.ssrbool.andP
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Lemma</span> <span style="font-weight: bold;">example37</span> a b : a &amp;&amp; b ==&gt; (a == b).
+<pre class="src src-coq"><span style="color: #a020f0;">Lemma</span> <span style="color: #0000ff;">example37</span> a b : a &amp;&amp; b ==&gt; (a == b).
 
-  <span style="text-decoration: underline;">case</span> : andP .
+  <span style="color: #00008b;">case</span> : andP .
 </pre>
 </div>
 
@@ -4110,9 +4134,9 @@ command <code>case : .. / ..</code> shall be queried directly.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Lemma</span> <span style="font-weight: bold;">example13</span> a b : (a || ~~ a) &amp;&amp; (a &amp;&amp; b ==&gt; (a == b)).
+<pre class="src src-coq"><span style="color: #a020f0;">Lemma</span> <span style="color: #0000ff;">example13</span> a b : (a || ~~ a) &amp;&amp; (a &amp;&amp; b ==&gt; (a == b)).
 
-  <span style="text-decoration: underline;">case</span> E: (a &amp;&amp; _) / andP.
+  <span style="color: #00008b;">case</span> E: (a &amp;&amp; _) / andP.
 </pre>
 </div>
 
@@ -4140,8 +4164,8 @@ And oneself shall use these lemmas if oneself lacks to deduce new reflection lem
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">About</span> idP.
-<span style="font-weight: bold;">About</span> iffP.
+<pre class="src src-coq"><span style="color: #a020f0;">About</span> idP.
+<span style="color: #a020f0;">About</span> iffP.
 </pre>
 </div>
 
@@ -4175,7 +4199,7 @@ numbers</span>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Inductive</span> <span style="font-weight: bold;">compare_nat</span> (<span style="font-weight: bold; font-style: italic;">m n</span> : nat) : bool -&gt; bool -&gt; bool -&gt; <span style="font-weight: bold; text-decoration: underline;">Set</span> :=
+<pre class="src src-coq"><span style="color: #a020f0;">Inductive</span> <span style="color: #0000ff;">compare_nat</span> (<span style="color: #a0522d;">m n</span> : nat) : bool -&gt; bool -&gt; bool -&gt; <span style="color: #228b22;">Set</span> :=
     CompareNatLt : m &lt; n -&gt; compare_nat m n true false false
   | CompareNatGt : n &lt; m -&gt; compare_nat m n false true false
   | CompareNatEq : m = n -&gt; compare_nat m n false false true .
@@ -4184,6 +4208,9 @@ numbers</span>.
 
 <pre class="example">
 compare_nat is defined
+compare_nat_rect is defined
+compare_nat_ind is defined
+compare_nat_rec is defined
 </pre>
 
 <p>
@@ -4193,7 +4220,7 @@ simultaneous-substitution</span> of all the occurrences of <code>(m &lt; n)</cod
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Check</span> ltngtP : <span style="font-weight: bold; text-decoration: underline;">forall</span> <span style="font-weight: bold; font-style: italic;">m n</span>, compare_nat m n (m &lt; n) (n &lt; m) (m == n) .
+<pre class="src src-coq"><span style="color: #a020f0;">Check</span> ltngtP : <span style="color: #228b22;">forall</span> <span style="color: #a0522d;">m n</span>, compare_nat m n (m &lt; n) (n &lt; m) (m == n) .
 </pre>
 </div>
 
@@ -4204,8 +4231,8 @@ lemma <code>leqP</code> .
 </div>
 </div>
 
-<div id="outline-container-org2700952" class="outline-3">
-<h3 id="org2700952"><span class="section-number-3">7.4</span> recursion</h3>
+<div id="outline-container-org3c8c978" class="outline-3">
+<h3 id="org3c8c978"><span class="section-number-3">7.4</span> recursion</h3>
 <div class="outline-text-3" id="text-7-4">
 <p>
 For <i>classifiers</i>, as for <i>classes</i>, the <span class="underline">recursion</span> <code>fix .. := ..</code> grammatical
@@ -4214,9 +4241,9 @@ elimination scheme</span> shortening-definition. For instance, the <code>ilist</
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Inductive</span> <span style="font-weight: bold;">ilist</span> : nat -&gt; <span style="font-weight: bold; text-decoration: underline;">Type</span> := 
+<pre class="src src-coq"><span style="color: #a020f0;">Inductive</span> <span style="color: #0000ff;">ilist</span> : nat -&gt; <span style="color: #228b22;">Type</span> := 
     inil : ilist 0 
-  | icons : nat -&gt; <span style="font-weight: bold; text-decoration: underline;">forall</span> <span style="font-weight: bold; font-style: italic;">m</span> : nat, ilist m -&gt; ilist (S m).
+  | icons : nat -&gt; <span style="color: #228b22;">forall</span> <span style="color: #a0522d;">m</span> : nat, ilist m -&gt; ilist (S m).
 </pre>
 </div>
 
@@ -4262,9 +4289,9 @@ second component is the rest of the list :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Definition</span> <span style="font-weight: bold;">ihead_ibehead</span> (<span style="font-weight: bold; font-style: italic;">m</span> : nat) (<span style="font-weight: bold; font-style: italic;">l</span> : ilist (S m)) : nat * (ilist m).
+<pre class="src src-coq"><span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">ihead_ibehead</span> (<span style="color: #a0522d;">m</span> : nat) (<span style="color: #a0522d;">l</span> : ilist (S m)) : nat * (ilist m).
 
-<span style="text-decoration: underline;">case</span> Heq : (S _) / l =&gt; [ | j m' l' ] .
+<span style="color: #00008b;">case</span> Heq : (S _) / l =&gt; [ | j m' l' ] .
 </pre>
 </div>
 
@@ -4292,7 +4319,7 @@ Oneself shall <span class="underline">exfalso</span> this first goal :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">suff</span> : <span style="font-weight: bold; text-decoration: underline;">False</span> by exact: (<span style="font-weight: bold; text-decoration: underline;">fun</span> <span style="font-weight: bold; font-style: italic;">f</span> : <span style="font-weight: bold; text-decoration: underline;">False</span> =&gt; <span style="font-weight: bold; text-decoration: underline;">match</span> f <span style="font-weight: bold; text-decoration: underline;">with</span> <span style="font-weight: bold; text-decoration: underline;">end</span>).
+<pre class="src src-coq"><span style="color: #00008b;">suff</span> : <span style="color: #228b22;">False</span> <span style="color: #ff0000;">by</span> <span style="color: #ff0000;">exact</span>: (<span style="color: #228b22;">fun</span> <span style="color: #a0522d;">f</span> : <span style="color: #228b22;">False</span> =&gt; <span style="color: #228b22;">match</span> f <span style="color: #228b22;">with</span> <span style="color: #228b22;">end</span>).
 </pre>
 </div>
 
@@ -4318,10 +4345,10 @@ data <code>I</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">rewrite</span> -[<span style="font-weight: bold; text-decoration: underline;">False</span>]/((<span style="font-weight: bold; text-decoration: underline;">fun</span> <span style="font-weight: bold; font-style: italic;">n</span> : nat =&gt; <span style="font-weight: bold; text-decoration: underline;">match</span> n <span style="font-weight: bold; text-decoration: underline;">with</span>
-                      | _.+1 =&gt; <span style="font-weight: bold; text-decoration: underline;">True</span>
-                      | 0 =&gt; <span style="font-weight: bold; text-decoration: underline;">False</span>
-                      <span style="font-weight: bold; text-decoration: underline;">end</span>) 0).
+<pre class="src src-coq"><span style="color: #00008b;">rewrite</span> -[<span style="color: #228b22;">False</span>]/((<span style="color: #228b22;">fun</span> <span style="color: #a0522d;">n</span> : nat =&gt; <span style="color: #228b22;">match</span> n <span style="color: #228b22;">with</span>
+                      | _.+1 =&gt; <span style="color: #228b22;">True</span>
+                      | 0 =&gt; <span style="color: #228b22;">False</span>
+                      <span style="color: #228b22;">end</span>) 0).
 </pre>
 </div>
 
@@ -4341,8 +4368,8 @@ subgoal 2 is:
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">rewrite</span> -[0]Heq.
-exact : I.
+<pre class="src src-coq"><span style="color: #00008b;">rewrite</span> -[0]Heq.
+<span style="color: #ff0000;">exact</span> : I.
 </pre>
 </div>
 
@@ -4373,7 +4400,7 @@ this <i>discrimination lemma</i> :
 
 <div class="org-src-container">
 <pre class="src src-coq">Undo 4. 
-by [].
+<span style="color: #ff0000;">by</span> [].
 </pre>
 </div>
 
@@ -4405,7 +4432,7 @@ function <code>_ .-1</code> )
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">have</span> Heq_injective : m.+1.-1 = m'.+1.-1 by <span style="text-decoration: underline;">rewrite</span> Heq.
+<pre class="src src-coq"><span style="color: #00008b;">have</span> Heq_injective : m.+1.-1 = m'.+1.-1 <span style="color: #ff0000;">by</span> <span style="color: #00008b;">rewrite</span> Heq.
 </pre>
 </div>
 
@@ -4426,11 +4453,11 @@ injectivity lemma :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq">Undo. <span style="text-decoration: underline;">case</span> : Heq =&gt; Heq_injective.
+<pre class="src src-coq">Undo. <span style="color: #00008b;">case</span> : Heq =&gt; Heq_injective.
 
-<span style="text-decoration: underline;">rewrite</span> [m]Heq_injective.
-exact: (j , l').
-<span style="font-weight: bold;">Defined</span>.
+<span style="color: #00008b;">rewrite</span> [m]Heq_injective.
+<span style="color: #ff0000;">exact</span>: (j , l').
+<span style="color: #a020f0;">Defined</span>.
 </pre>
 </div>
 
@@ -4469,7 +4496,6 @@ case  Heq: (S _) / l =&gt; [|j m' l'].
  exact : (j, l').
 
 Defined.
-ihead_ibehead is defined
 </pre>
 
 <p>
@@ -4488,11 +4514,11 @@ schema :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Lemma</span> <span style="font-weight: bold;">addn_classifier</span> (<span style="font-weight: bold; font-style: italic;">m</span> : nat) (<span style="font-weight: bold; font-style: italic;">P</span> : nat -&gt; nat -&gt; <span style="font-weight: bold; text-decoration: underline;">Prop</span>) (<span style="font-weight: bold; font-style: italic;">H</span>: P 0 m)
- (<span style="font-weight: bold; font-style: italic;">H0</span> : <span style="font-weight: bold; text-decoration: underline;">forall</span>  <span style="font-weight: bold; font-style: italic;">p</span> : nat, P p (addn p m) -&gt; P p.+1 (addn p m).+1)
- : <span style="font-weight: bold; text-decoration: underline;">forall</span> <span style="font-weight: bold; font-style: italic;">n</span> : nat, P n (addn n m) .
+<pre class="src src-coq"><span style="color: #a020f0;">Lemma</span> <span style="color: #0000ff;">addn_classifier</span> (<span style="color: #a0522d;">m</span> : nat) (<span style="color: #a0522d;">P</span> : nat -&gt; nat -&gt; <span style="color: #228b22;">Prop</span>) (<span style="color: #a0522d;">H</span>: P 0 m)
+ (<span style="color: #a0522d;">H0</span> : <span style="color: #228b22;">forall</span>  <span style="color: #a0522d;">p</span> : nat, P p (addn p m) -&gt; P p.+1 (addn p m).+1)
+ : <span style="color: #228b22;">forall</span> <span style="color: #a0522d;">n</span> : nat, P n (addn n m) .
 
-<span style="text-decoration: underline;">elim</span>; [<span style="text-decoration: underline;">apply</span>: H | <span style="text-decoration: underline;">apply</span>: H0]. <span style="font-weight: bold;">Qed</span>.
+<span style="color: #00008b;">elim</span>; [<span style="color: #00008b;">apply</span>: H | <span style="color: #00008b;">apply</span>: H0]. <span style="color: #a020f0;">Qed</span>.
 </pre>
 </div>
 
@@ -4502,12 +4528,12 @@ simplification-computation step is avoided &#x2026;
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Lemma</span> <span style="font-weight: bold;">exF</span> x y z: addn z (addn y x) = addn (addn z y) x.
+<pre class="src src-coq"><span style="color: #a020f0;">Lemma</span> <span style="color: #0000ff;">exF</span> x y z: addn z (addn y x) = addn (addn z y) x.
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">elim</span>/addn_classifier : z / (addn z _) .
+<pre class="src src-coq"><span style="color: #00008b;">elim</span>/addn_classifier : z / (addn z _) .
 </pre>
 </div>
 
@@ -4523,8 +4549,8 @@ subgoal 2 is:
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-coq">  by [].
-by <span style="text-decoration: underline;">move</span> =&gt; p -&gt; .
+<pre class="src src-coq">  <span style="color: #ff0000;">by</span> [].
+<span style="color: #ff0000;">by</span> <span style="color: #00008b;">move</span> =&gt; p -&gt; .
 </pre>
 </div>
 </div>
@@ -4548,10 +4574,10 @@ accumulator-memory.</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Definition</span> <span style="font-weight: bold;">edivn_rec</span> d :=
-  <span style="font-weight: bold; text-decoration: underline;">fix</span> loop m q := <span style="font-weight: bold; text-decoration: underline;">if</span> m - d <span style="font-weight: bold; text-decoration: underline;">is</span> m'.+1 <span style="font-weight: bold; text-decoration: underline;">then</span> loop m' q.+1 <span style="font-weight: bold; text-decoration: underline;">else</span> (q, m).
+<pre class="src src-coq"><span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">edivn_rec</span> d :=
+  <span style="color: #228b22;">fix</span> loop m q := <span style="color: #228b22;">if</span> m - d <span style="color: #228b22;">is</span> m'.+1 <span style="color: #228b22;">then</span> loop m' q.+1 <span style="color: #228b22;">else</span> (q, m).
 
-<span style="font-weight: bold;">Definition</span> <span style="font-weight: bold;">edivn</span> m d := <span style="font-weight: bold; text-decoration: underline;">if</span> d &gt; 0 <span style="font-weight: bold; text-decoration: underline;">then</span> edivn_rec d.-1 m 0 <span style="font-weight: bold; text-decoration: underline;">else</span> (0, m).
+<span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">edivn</span> m d := <span style="color: #228b22;">if</span> d &gt; 0 <span style="color: #228b22;">then</span> edivn_rec d.-1 m 0 <span style="color: #228b22;">else</span> (0, m).
 </pre>
 </div>
 
@@ -4568,10 +4594,10 @@ It is sometimes useful to describe and deduce unfolding equations like this one 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Lemma</span> <span style="font-weight: bold;">edivn_recE</span> d m q :
-  edivn_rec d m q = <span style="font-weight: bold; text-decoration: underline;">if</span> m - d <span style="font-weight: bold; text-decoration: underline;">is</span> m'.+1 <span style="font-weight: bold; text-decoration: underline;">then</span> edivn_rec d m' q.+1 <span style="font-weight: bold; text-decoration: underline;">else</span> (q,m).
+<pre class="src src-coq"><span style="color: #a020f0;">Lemma</span> <span style="color: #0000ff;">edivn_recE</span> d m q :
+  edivn_rec d m q = <span style="color: #228b22;">if</span> m - d <span style="color: #228b22;">is</span> m'.+1 <span style="color: #228b22;">then</span> edivn_rec d m' q.+1 <span style="color: #228b22;">else</span> (q,m).
 
- by <span style="text-decoration: underline;">case</span>: m. <span style="font-weight: bold;">Qed</span>.
+ <span style="color: #ff0000;">by</span> <span style="color: #00008b;">case</span>: m. <span style="color: #a020f0;">Qed</span>.
 </pre>
 </div>
 
@@ -4587,7 +4613,7 @@ specification</i> :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">Lemma</span> <span style="font-weight: bold;">edivnP</span> m d (ed := edivn m d) :
+<pre class="src src-coq"><span style="color: #a020f0;">Lemma</span> <span style="color: #0000ff;">edivnP</span> m d (ed := edivn m d) :
   ((d &gt; 0) ==&gt; (ed.2 &lt; d)) &amp;&amp; (m == ed.1 * d + ed.2).
 </pre>
 </div>
@@ -4609,7 +4635,7 @@ contextualization</i> <code>.. in ..</code> of the command <code>case</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">case</span>: d =&gt; [|d /=] <span style="font-weight: bold; text-decoration: underline;">in</span> ed *; first by <span style="text-decoration: underline;">rewrite</span> eqxx.
+<pre class="src src-coq"><span style="color: #00008b;">case</span>: d =&gt; [|d /=] <span style="color: #228b22;">in</span> ed *; <span style="color: #b452cd;">first</span> <span style="color: #ff0000;">by</span> <span style="color: #00008b;">rewrite</span> eqxx.
 </pre>
 </div>
 
@@ -4630,8 +4656,8 @@ the definition of edivn ( to expose the initial value of the accumulators of
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">rewrite</span> -[edivn m d.+1]/(edivn_rec d m 0) <span style="font-weight: bold; text-decoration: underline;">in</span> ed *.
-<span style="text-decoration: underline;">rewrite</span> -[m]/(0 * d.+1 + m).
+<pre class="src src-coq"><span style="color: #00008b;">rewrite</span> -[edivn m d.+1]/(edivn_rec d m 0) <span style="color: #228b22;">in</span> ed *.
+<span style="color: #00008b;">rewrite</span> -[m]/(0 * d.+1 + m).
 </pre>
 </div>
 
@@ -4662,7 +4688,7 @@ goals.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">elim</span>: m {-2}m 0 (leqnn m) @ed =&gt; [[]//=|n IHn [//=|m]] q le_mn.
+<pre class="src src-coq"><span style="color: #00008b;">elim</span>: m {-2}m 0 (leqnn m) @ed =&gt; [[]//=|n IHn [//=|m]] q le_mn.
 </pre>
 </div>
 
@@ -4686,8 +4712,8 @@ The following lemmas shall be used in the next command :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="font-weight: bold;">About</span> subn_if_gt.
-<span style="font-weight: bold;">About</span> negbT.
+<pre class="src src-coq"><span style="color: #a020f0;">About</span> subn_if_gt.
+<span style="color: #a020f0;">About</span> negbT.
 </pre>
 </div>
 
@@ -4724,8 +4750,8 @@ m)</code> may also be used instead of this long manual equational-generalize.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">rewrite</span> edivn_recE subn_if_gt;
-<span style="text-decoration: underline;">case</span> : {-1}(d &lt;= m) (erefl (d &lt;= m)) =&gt; [le_dm | /negbT lt_md]; last first.
+<pre class="src src-coq"><span style="color: #00008b;">rewrite</span> edivn_recE subn_if_gt;
+<span style="color: #00008b;">case</span> : {-1}(d &lt;= m) (erefl (d &lt;= m)) =&gt; [le_dm | /negbT lt_md]; <span style="color: #b452cd;">last</span> <span style="color: #b452cd;">first</span>.
 </pre>
 </div>
 
@@ -4755,7 +4781,7 @@ is immediately-solved by this command :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq">by <span style="text-decoration: underline;">rewrite</span> /= ltnS ltnNge lt_md eqxx.
+<pre class="src src-coq"><span style="color: #ff0000;">by</span> <span style="color: #00008b;">rewrite</span> /= ltnS ltnNge lt_md eqxx.
 </pre>
 </div>
 
@@ -4785,7 +4811,7 @@ the old goal.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq"><span style="text-decoration: underline;">have</span> /(IHn _ q.+1) : m - d &lt;= n by <span style="text-decoration: underline;">rewrite</span> (leq_trans (leq_subr d m)).
+<pre class="src src-coq"><span style="color: #00008b;">have</span> /(IHn _ q.+1) : m - d &lt;= n <span style="color: #ff0000;">by</span> <span style="color: #00008b;">rewrite</span> (leq_trans (leq_subr d m)).
 </pre>
 </div>
 
@@ -4812,8 +4838,8 @@ This final command deduces that some cancellation of numbers indeed does occur :
 </p>
 
 <div class="org-src-container">
-<pre class="src src-coq">by <span style="text-decoration: underline;">rewrite</span> /= mulSnr -addnA -subSS subnKC.
-<span style="font-weight: bold;">Qed</span>.
+<pre class="src src-coq"><span style="color: #ff0000;">by</span> <span style="color: #00008b;">rewrite</span> /= mulSnr -addnA -subSS subnKC.
+<span style="color: #a020f0;">Qed</span>.
 </pre>
 </div>
 

@@ -669,9 +669,9 @@ element =3=.
 
 ** Option data
 
-Now oneself wants some version of the data type =bool= which is _container_ for more
-information / data , which is that each alternative =true | false= may contain more
-data which says /how/ true (or how false).
+   Now oneself wants some version of the data type =bool= which is _container_ for
+more information / data, which is that each alternative =true | false= may contain
+more data which says /how/ true (or how false).
 
 Suppose oneself wants to write this partial function over only the /odd/ numbers :
 
@@ -679,7 +679,8 @@ Suppose oneself wants to write this partial function over only the /odd/ numbers
 Definition pred_for_only_odd (n : nat) := if odd n then Some (n.-1) else None.
 #+END_SRC
 
-or suppose oneself want to write such partial function over only the /small/ numbers :
+or suppose oneself wants to write such partial function over only the /small/
+numbers :
 
 #+BEGIN_SRC coq :exports both :results silent
 Definition odd_for_only_small (n : nat) := if n < 100 then Some (odd n) else None.
@@ -726,10 +727,10 @@ Expands to: Constructor Coq.Init.Datatypes.Some
 #+end_example
 
 The _parameter_ =A= says that some different type / class =(option A)= exists for each
-possible choice of some type / class =A=, for example =(option nat)= , =(option bool)=
-... And =Type= is some keytext / keyword that denotes =the class of all data classes=,
-and =option= is some _class / type former_ function, itself of class =(Type ->
-Type)=. Indeed =option= alone is not some data type, but if oneself instantiates it
+possible choice of some type / class =A= , for example =(option nat)= , =(option
+bool)= ... And =Type= is some keytext / keyword that denotes _the class of all data
+classes_, and =option= is some _class / type former_ function, itself of class =(Type
+-> Type)=. Indeed =option= alone is not some data-type, but if oneself instantiates it
 with another data type, then it forms one.  For example =(nat : Type)= and =(bool :
 Type)= are of class =Type=, and may be used in place of =A= to produce the types
 =((option nat) : Type)= and =((option bool) : Type)=.
@@ -740,14 +741,15 @@ Check odd_for_only_small : nat -> option bool.
 #+END_SRC
 
 Memo that all the constructors of this polymorphic data type definition, in reality,
-have some type parameter, where as described in some section above, the keytext «
-=forall .. , ..= » is some more general form of « =.. -> ..= ».
+have some type parameter, where as described in some section above, the /classifying
+inference/ keytext =forall .. , ..= is some more general form of the /inference/
+keytext =.. -> ..= .
 
-The message « ~Argument A is implicit and ..~ » says that every time programmers write
-=Some= or =None= , the ~COQ~ computer automatically inserts/instantiates some term in
-place of the parameter =A=, so that this term does not need to be textually written :
-the parameter is _hidden_ / _implicit_. And the ~COQ~ computer _infers_ or guesses
-what this type parameter is
+The message ~Argument A is implicit and ...~ says that every time programmers write
+=Some= or =None= , the ~COQ~ computer automatically inserts / instantiates some term
+in place of the parameter =A= , such that this term does not lack to be textually
+written : the parameter is _hidden_ / _implicit_. And the ~COQ~ computer _infers_ or
+guesses whatever-is this type parameter
 - when looking at the first explicit argument input given to =Some= , or 
 - when looking at the context surrounding the ouput of =None= .
 
@@ -789,18 +791,18 @@ The term "None" has type "option nat" while it is expected to have type
 
 #+end_example
 
-This example shows that the grammar =(None (A :== =nat))= or =(@None nat)= may be used
+This example shows that the grammar ~(None (A := nat))~ or ~(@None nat)~ may be used
 to force or input explicitly some parameter which is hidden, and that the grammar =_=
 (underline, filter, hole, wildcard) as in =@None _= may be used to explicitly-command
 ~COQ~ to attempt to infer some instantiation of any (implicit or explicit) parameter
-=A=, for many reasons ... In reality, the message « ~Argument A .. and maximally
-inserted~ » says that whenever the programmer writes =None=, the ~COQ~ computer
+=A=, for many reasons ... In reality, the message ~Argument A ... and maximally
+inserted~ says that whenever the programmer writes =None= , the ~COQ~ computer
 translates it to =@None _=.
 
 ** List data
 
-Now oneself wants some version of the data type =nat= which is _container_ for more
-information / data , which is that each alternative =O | S (n : nat)= may contain more
+   Now oneself wants some version of the data type =nat= which is _container_ for more
+information / data, which is that each alternative =O | S (n : nat)= may contain more
 data which says /how/ successor (or how zero). This is precisely the =polymorphic list
 / seq type= :
 
@@ -855,8 +857,8 @@ Fixpoint number A (s : seq A) : nat :=
   end.
 #+END_SRC
 
-where the parameter =A= of the function =number= is automatically memorized by ~COQ~ as
-hidden / implicit.
+where the parameter =A= of the function =number= is automatically memorized by ~COQ~
+as hidden / implicit.
 
 Elsewhere, memo that any sequence =[:: true; false; true]= may be commonly viewed as
 some function =[:: 0 |-> true; 1 |-> false; 2 |-> true]= which when given some
@@ -891,8 +893,8 @@ Eval compute in [seq i.+1 | i <- [:: 2; 1; 3]].
 :      : seq nat
 : 
 
-where this more-advanced _notation which binds/holds some identifier / name_, was used
-( the identifier =i= is bound/held in the term =E= ) :
+where this more-advanced _notation which binds / holds some identifier / name_, was
+used ( the identifier =i= is bound / held in the term =E= ) :
 
 #+BEGIN_SRC coq :exports both :results silent
 Notation "[ 'seq' E | i <- s ]" := (map (fun i => E) s).
@@ -906,11 +908,11 @@ In addition to the function =map= there are more /advanced-polymorphic/ function
 only-touch sequences, as described in the file =seq.v=. For instance the =filter=
 function and its notation =[seq i <- s | p]= filters the sequence =s= keeping only the
 values selected by the boolean test =p=, whenever the common parameter =A=
-itself-as-data may be classified ("canonical structures") ...
+itself-as-data may be classified ( "canonical structures" ) ...
 
-Elsewhere, memo that because =map= takes /some function as input/ it is said to be some
-_higher-order function_. Morever =map= may also be viewed as /outputing some function/
-when =map= is only _partially applied / inputed_ :
+Elsewhere, memo that because =map= takes /some function as input/ it is said to be
+some _higher-order function_. Morever =map= may also be viewed as /outputing some
+function/ when =map= is only _partially applied / inputed_ :
 
 #+BEGIN_SRC coq :exports both
 Check map (fun i : bool => ~~ i) [:: true; false; true].
@@ -969,7 +971,7 @@ _computationally or logically fulfill_ / _support_ this class, which is that it 
 sufficient to focus / touch on these (recursively) constructored data when holding
 this class, which is that any (random) data in the class may be such (recursively)
 _destructed_ / _eliminated_ / _matched_ / _filtered_. This is described by this
-(grammatical) _destructor function_
+(grammatical) _destructor / match function_
 
 : match .. as .. return .. with .. => .. | .. => .. end
 
@@ -982,12 +984,12 @@ keytext :
 Now while any =bool= or =nat= or =list nat= or =list A= is some single isolated class
 / type, this above expression =(P : nat -> Type)= says that =P= is some
 _classification_ or some _family / collection of classes_ or some _dependent class_ or
-some _predicate_ ; such that =P 0 : Type= is some class and =P 1 : Type= is another
+some _predicate_; such that =P 0 : Type= is some class and =P 1 : Type= is another
 class and =P 2 : Type= is also some class ... And oneself is attempting to define some
 (recursive) function =nat_rect= from the class =nat= to the classification =P=, such
 that the input =n= from =nat= /affect both/ the _precise-classification_ of the output
-(here =P n=) and the _value_ of the output (here =f= when =n= is =O= , or =f0 n0 (F n0)=
-when =n= is =S n0=).
+( here =P n= ) and the _value_ of the output ( here =f= when =n= is =O= , or =f0 n0 (F
+n0)= when =n= is =S n0= ).
 
 Saying how the input affect the /precise-classification/ of the output is done by the
 keytext
@@ -998,15 +1000,15 @@ Saying how the input affect the /value/ of the output is done by the keytext
 
 : with .. => .. | .. => .. end
 
-.. and certainly each filtering of the input to decide which alternative branching
+.. and certainly each filtering of the input for deciding which alternative branching
 will, as usual, instantiate / _refine_ the proposed output value but also instantiate
 / refine the expected classification / type of the output.
 
 ** List classification
 
    Another example of some classification similar as =(P : nat -> Type)= is the
-   _indexed lists_, which futher classifies lists by some _index / argument_, whose
-   sense here is similar as "=size= (number form) of the list" :
+_indexed lists_, which futher classifies lists by some _index / argument_, whose sense
+here is similar as « size (number form) of the list » :
 
 #+BEGIN_SRC coq :exports both
 Inductive ilist : nat -> Type := 
@@ -1023,7 +1025,7 @@ Inductive ilist : nat -> Type :=
 
 Attempt now to define some (recursive) function from =nat= to =ilist= , which input
 some number =m= and output something precisely-classified by =ilist m= and whose value
-has all its items being =7= .
+has all its items being =7= :
 
 #+BEGIN_SRC coq :exports both :results silent
 Definition only7 :=
@@ -1043,7 +1045,7 @@ Eval compute in only7 3.
 :      : ilist 3
 : 
 
-Another way of writing the same thing is
+Another way of writing the same thing is :
 
 #+BEGIN_SRC coq :exports both :results silent
 Reset only7.
@@ -1055,7 +1057,7 @@ Definition only7 :=
 
    Another example of some classification similar as =(P : nat -> Type)= is the
 _equality classification_, which classifies _(primitive or complex) deductions_ /
-_proofs_ of "equality" to some given fixed (outer) parameter =x=; this classification
+_proofs_ of "equality" to some given fixed (outer) parameter =x= ; this classification
 is by whatelse (inner) arguments / indices this fixed parameter =x= is possibly
 (by-computation-and-by-logical-deduction-)"equal" (eq) to :
 
@@ -1084,7 +1086,7 @@ About eqrefl.
 : Expands to: Constructor Top.eqrefl
 : 
 
-And the infix notation =x = a= is often used for saying =@eq A x a=, where the hidden
+And the infix notation ~x = a~ is often used for saying =@eq A x a=, where the hidden
 / implicit parameter =A= will be inferred / guessed by the ~COQ~ computer.
 
 From the meta (outer) angle of view, =eqrefl= is some primitive _deduction / proof
@@ -1111,14 +1113,14 @@ Inductive eq (A : Type) (x : A) : A -> Type :=
 
 Now, deductions may be combinated in complex ways; which is that oneself may arrive at
 =@eq A x y= by more-complex combinaisons ( _by-logical-deduction_ ) beyond
-precisely-one-primitive-deduction ( _by-computation_ ) =eqrefl=. Therefore any
+precisely-one-primitive-deduction ( _by-computation_ ) =eqrefl= . Therefore any
 (random) data / inhabitant =lemma1 : @eq A x z= is named _logical-deduction_.
 
 Here is one instance of combining deductions : how to input some deduction data from
 =(@eq nat x a)= and output some deduction into =(@eq nat (S x) (S a))= which is
 further-classified by the index-argument =(S a)= of the classification =(@eq nat (S
-x))= . This uses the (grammatical) destructor/match function on "equality", which is
-named _(congruent) rewriting_ / _casting_ / _transport_ .  This may look silly :
+x))= . This uses the (grammatical) destructor / match function on "equality", which is
+named _(congruent) rewriting_ / _casting_ / _transport_.  This may look silly :
 
 #+BEGIN_SRC coq :exports both
 Check
@@ -1149,16 +1151,15 @@ which has some extra =in ..= keytext now because the input data is taken from so
 
 This full grammar =as .. in .. return ..= is because « _the input_ » =H= _is both the
 input value_ (the =H0= in the =as H0= keytext) _and the input precise-classification_
-(the argument =a0= in the =in @eq _ _ a0= keytext) ; and both the input value and
-input precise-classification do affect the expected output precise-classification
-(here =return (@eq nat (S x) (S a0))=, where =H0= is absent here
-only-by-chance). However the value of the output in each alternative branch has only
-access to the destructed value of the input and /no direct-access/ to the
-precise-classification of the input.
+(the argument =a0= in the =in @eq _ _ a0= keytext); and both the input value and input
+precise-classification do affect the expected output precise-classification (here
+=return (@eq nat (S x) (S a0))= , where =H0= is absent here only-by-chance). However
+the value of the output in each alternative branch has only access to the destructed
+value of the input and /no direct-access/ to the precise-classification of the input.
 
-Another example which uses this full grammar =as .. in .. return ..= is this "=more="
+Another example which uses this full grammar =as .. in .. return ..= is this =more=
 function, which increments all the items in some indexed list and creates one more
-item.
+item :
 
 #+BEGIN_SRC coq :exports both :results silent
 Definition more :=
@@ -1179,8 +1180,8 @@ Eval compute in @more 3 (icons 6 (icons 7 (icons 5 inil))).
 : 
 
 Another example which uses nothing of this full grammar =as .. in .. return ..=
-(because the ouput classification =nat= does not lack it) is this =inumber= ("isize")
-function, which computes the /real size/ (number of items, number form) of some
+(because the ouput classification =nat= does not lack it) is this =inumber= ( "isize"
+) function, which computes the /real size/ (number of items, number form) of some
 indexed list.
 
 #+BEGIN_SRC coq :exports both :results silent
@@ -1242,7 +1243,7 @@ Lemma lemma2 : forall (m : nat) (l : ilist m), @eq nat m (inumber l).
 : 
 
 Early oneself may decide-and-rest the names of the quantified variables or
-assumptions, by using the =intros= command (or the almost-same =move => ..= command) :
+assumptions, by using the =intros= command (or the almost-same ~move => ..~ command) :
 
 #+BEGIN_SRC coq :exports both
 (** move => m l .**)
@@ -1258,10 +1259,10 @@ intros m l.
 :   eq m (inumber l)
 : 
 
-Now the « =fix lemma2 m l {struct l} :== =match l .. with .. =>= =.. | .. =>= =.. end=
-» keytext corresponds to the =induction= command (or the almost-same =elim= command),
-then the ~COQ~ computer prints, for each filtering of the input, the expected (goal)
-precise-classification of the output deduction; the =inil => ..= alternative branch
+Now the ~fix lemma2 m l {struct l} := match l .. with .. => .. | .. => .. end~ keytext
+corresponds to the ~induction~ command (or the almost-same ~elim~ command), then the
+~COQ~ computer prints, for each filtering of the input, the expected (goal)
+precise-classification of the output deduction; the ~inil => ..~ alternative branch
 shall be solved first :
 
 #+BEGIN_SRC coq :exports both
@@ -1317,7 +1318,7 @@ exact (@eqrefl nat 0).
 : 
 
 Again the (hidden, implicit, automatic) computation by the ~COQ~ computer in this
-second branch =icons j m_tl tl => ..= may be made explicit by using the =simpl=
+second branch ~icons j m_tl tl => ..~ may be made explicit by using the =simpl=
 command.
 
 #+BEGIN_SRC coq :exports both
@@ -1381,7 +1382,7 @@ revert lemma2_m_tl_tl ; generalize (inumber tl) as a0 .
 #+END_SRC
 
 And the second progress which is the =destruct= command (or the almost-same =case=
-command), corresponds to the keytext =match .. with @eqrefl _ _ => .. end= :
+command), corresponds to the keytext ~match .. with @eqrefl _ _ => .. end~ :
 
 #+BEGIN_SRC coq :exports both
 (** move => a0 ; case .**)

@@ -1523,11 +1523,11 @@ Show.
 :   leq (S (S O)) (addn (snd xy) (fst xy))
 : 
 
-Here the _pairing type former_ =prod= is subtituted by its infix notation =*=, which
-may be precised by some more _annotation / scope_ =( .. )%type= when it is necessary
-to distinguish it from the infix notation =*= of =multn=, which may be precised by
-vsome other annotation / scope =( .. )%nat=. Also =.1= and =.2= are postfix notations
-for correspondingly the functions =fst= and =snd=.
+Here the _pairing type former_ =prod= ( described below ) is subtituted by its infix
+notation =*= , which may be precised by some more _annotation / scope_ =( .. )%type=
+when it is necessary to distinguish it from the infix notation =*= of =multn= , which
+may be precised by some other annotation / scope =( .. )%nat= . Also =.1= and =.2= are
+postfix notations for correspondingly the functions =fst= and =snd= .
 
 #+BEGIN_SRC coq :exports both
 Locate "*".
@@ -1550,8 +1550,8 @@ Notation            Scope
 
 Elsewhere one may write ~leq 2 ((snd xy) + xy.1)~ , instead of ~leq 2 ((snd xy) +
 xy.1) = true~ as it was done for ~odd xy.2 = true~ . Similarly one may write ~prime
-xy.1~, instead of ~prime xy.1 = true~. This notational process is named =automatic
-declassification= or =coercive notation= and is based from this function :
+xy.1~ , instead of ~prime xy.1 = true~ . This notational process is named =coercive
+notation= ( or =automatic declassification= ) and is based from this function :
 
 #+BEGIN_SRC coq :exports both
 Eval compute in (fun b : bool => (is_true b : Type)).
@@ -1582,7 +1582,6 @@ Unset Printing Coercions.
 Set Printing Notations.
 Abort.
 #+END_SRC
-
 
 ** Intro from, apply in, specialize of, substitution by - the nested-stack
 
@@ -1638,12 +1637,12 @@ move => xy => pr_x odd_y .
 
 where the src_coq[:exports code]{move.} command alone without post-processing does
 nothing (almost, as in reality it performs /head normal form computation/ such to
-expose any prefix =forall= quantification). And the postfix ~=> ...~ grammar
-introduces the top assumption or variable into the _(outer) context_.
+expose any prefix =forall= classifying inference / quantification). And the postfix
+~=> ..~ grammar introduces the top assumption or variable into the _(outer) context_.
 
 Now, en passant, oneself may want to decompose =xy= into its first and second
 component. Instead of the long text ~move=> xy; destruct xy as [x y]~ , oneself may
-use this shorter grammar =[]= for intro to perform such action.
+use this shorter grammar =[]= for the introduction filter to perform such action.
 
 #+BEGIN_SRC coq :exports results :results silent
 Undo.
@@ -1683,7 +1682,7 @@ move=> [x y] /= pr_x odd_y.
 :   2 < y + x
 : 
 
-Oneself may also _apply/instantiate some lemma by some assumption_ (or confusingly,
+Oneself may also _apply / instantiate some lemma by some assumption_ ( or confusingly,
 /view some assumption/ ). For example the lemma =prime_gt1 : forall p : nat, prime p
 -> 1 < p= , where the variable argument =p= is implicit, may be be applied onto
 (instantiated by) the top assumption =(prime x)= such to transform the top assumption
@@ -1749,9 +1748,9 @@ move=> [x y] /= /prime_gt1'-[x_gt1 x_pr] odd_y.
 : 
 
 
-Oneself may also examine =y= : it shall not be =0=, since this would make the
+Oneself may also examine =y= : it shall not be =0= , since this would make the
 assumption =odd y= compute to =false= which is some easy contradiction which
-immediately solves this branch of the goal (in other words: the zero case / branch
+immediately solves this branch of the goal (in other words : the zero case / branch
 where =y= is =0= is _immediately solved_ because of the presence of some easy
 contradiction in the assumptions). The =//= option of the ~=> ...~ grammar commands
 ~COQ~ to attempt to /immediately solve/ the goal. This is the same as the =done.= or
@@ -1774,8 +1773,8 @@ move=> [ x [ // | y ] ] /= /prime_gt1-x_gt1.
 : 
 
 where the =[ .. | .. ]= grammar here is same as =destruct y as [ | y ]= which
-generates two branches / cases for the two constructors of the data class =nat=. Memo
-that the same name (here =y=) may be masking/reused for filter-held / filter-bound
+generates two branches / cases for the two constructors of the data class =nat= . Memo
+that the same name ( here =y= ) may be masking / reused for filter-held / filter-bound
 filter-variables, in some comparable way as for funtional-held function-variable.
 
 Now, oneself knows that the assumption saying =y= is even is not lacked to solve,
@@ -1869,7 +1868,7 @@ move => /(special1arg 3).
 : 
 
 Moreover, when the top stack item is some equation, oneself may _substitute-rewrite_
-by this equation _then clear this equation_. The options ~<-~ and ~->~ for the ~=>
+by this equation _then clear this equation_. The options ~<-~ and ~->~ for the ~.. =>
 ...~ grammar correspond to right-to-left and left-to-right substitutions. This is the
 same as the common =rewrite= command, but now the equation is /cleared/ from the
 assumptions or outer context.
@@ -1987,7 +1986,7 @@ Error: y is used in hypothesis odd_y.
 #+end_example
 
 Here the assumptions are pushed onto the goal nested-stack /from the outer context/;
-this process is named _reverting variables / hypothesis_ .
+this process is named _reverting variables / hypothesis_.
 
 Then one more line containing the =case.= command will make the lacked
 progress. Alternatively oneself may combine the =.. : ..= pre-processing grammar with
@@ -2105,9 +2104,9 @@ subgoal 2 is:
 Yet another re-wording of this instantiation / application of lemma =goal1= is as
 follows :
 - primo, oneself pushes the assumption which is the class / type of the lemma =goal1=
-  on top of the now-present inner-context goal, which is that oneself /generalizes the now-present
-  goal by any deduction of the class / type/ of the lemma =goal1=, instead of
-  directly-using the particular lemma =goal1=,
+  on top of the now-present inner-context goal, which is that oneself /generalizes the
+  now-present goal by any deduction of the class / type/ of the lemma =goal1= ,
+  instead of directly-using the particular lemma =goal1= ,
 - secondo, in the inner-context, oneself apply this top assumption onto the conclusion.
 
 #+BEGIN_SRC coq :exports results :results silent
@@ -2337,9 +2336,9 @@ Abort.
 
 *** equational-generalize
 
-    For the same goal =goal1= as above, oneself may describe some name for some equation
-which links the term at the top of the stack before and after the de-structuring
-command. This process is named _equational-generalize_.
+    For the same goal =goal1= as above, oneself may describe some name for some
+equation which links the term at the top of the stack before and after the
+de-structuring command. This process is named _equational-generalize_.
     
 #+BEGIN_SRC coq :exports both
 Lemma goal3 (x y : nat) (x_gt1 : 1 < x) : odd y -> 2 < y + x .
@@ -2421,7 +2420,7 @@ sometimes it is necessary to apply the induction hypothesis :
 - but on some deeper-predecessor such as =(S n) - 4= which is =(n - 3)=.
 
 Therefore oneself shall pre-process the goal by doing what is named
-_equational-generalize_ , and then do the induction =elim= command such to get what is
+_equational-generalize_, and then do the induction =elim= command such to get what is
 named _lessorequal-generalize induction_ ( or _strong induction_ ) . This arithmetic
 question is some instance :
 

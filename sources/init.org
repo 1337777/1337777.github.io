@@ -25,14 +25,15 @@ Oneself lacks to write and solve the question
 : 2 + 3
 
 In reality, oneself may want/lack to write and solve many such questions. Therefore
-one may _hold_ / _bind_ some _name_ / _identifier_ such as =a= and =p= and write the
-_functional-hold_ / _function_ ("abstraction")
+oneself may _hold_ / _bind_ some _name_ / _identifier_ such as =a= and =p= and write
+the _functional-hold_ / _function_ ( "abstraction" )
 
 : fun p => fun a => a + p
 
-and then _(delay-)substitute_ / _instantiate_ / _apply_ this single expression by many _input_
-( _outer_ ) _parameter_ =p= other than =3= and many _input_ ( _inner_ ) _argument_ =a=
-other than =2=, and get _output_ such as the _delayed-substitution_ ("application")
+and then _(delay-)substitute_ / _instantiate_ / _apply_ this single expression by many
+_input_ ( _outer_ ) _parameter_ =p= other than =3= and many _input_ ( _inner_ )
+_argument_ =a= other than =2=, and get _output_ such as this _delayed-substitution_
+( "application" )
 
 : (fun p => fun a => a + p) 3 2
 
@@ -41,7 +42,7 @@ Does this solves the initial question ? What is the _motivation_ ?
 Primo, one motivation may be to memorize things. Therefore oneself may do some _outer_
 programming / _commanding_ of the ~COQ~ computer, and ( _top/globally_ ) _behold_ /
 _define_ some _name_ / _identifier_ =f= which _memorize_ / _fold_ / _shorten_ some
-common expressions such as
+common expressions such as :
 
 #+BEGIN_SRC coq :exports both
 Definition f := fun p => fun a => a + p .
@@ -93,15 +94,16 @@ in contrast to, which is false,
 
 where =nat= is the more primitive class =0 | 1 | 2 | 3 | ...= and =bool= is the more
 primitive class =true | false= and =nat -> nat -> nat= is some more composite class
-which iterates two _function class former_ ( _inference_ =.. -> ..= or _quantification_
-=forall .. , ..= ) such to classify such functions.
+which iterates two _function class former_ ( _inference_ =.. -> ..= or _classifying
+inference_ / _quantification_ =forall .. , ..= ) such to classify such functions.
 
-In short : whenever assuming =(x : A)= (=x= is some identifier classified by the class
-=A=) one has =(b : B)= (=b= is some term classified by the classification =B=), ...
-therefore one may (introduce =forall= by) /form/ this term and its classification
-=((fun x : A => b) : (forall x : A, B))= , also written =((fun x : A => b) : (A ->
-B))= when the identifier =x= does not occur/mentionned in the textual description of
-=B=. This process is named _functional-holding_ / _functional-binding_ / _discharge_.
+In short : whenever assuming =(x : A)= ( =x= is some identifier classified by the
+class =A= ) one has =(b : B)= ( =b= is some term classified by the classification =B=
+), ...  therefore one may (introduce =forall= by) /form/ this term and its
+classification ~((fun x : A => b) : (forall x : A, B))~ , also written ~((fun x : A =>
+b) : (A -> B))~ when the identifier ~x~ does not occur/mentionned in the textual
+description of =B=. This process is named _functional-holding_ / _functional-binding_
+/ _discharge_.
 
 And in the absence of some prescribed/wanted classification or in the presence of only
 partial classification, the ~COQ~ computer will attempt to _infer_ some full
@@ -110,7 +112,7 @@ is non classifiable or the prescribed/wanted classification is not contained/sub
 of some possible inferred classification.
 
 Tertio, another motivation may be to get the output in some more primitive
-_resolution_ / _value_ / _normal form_ , by doing _computational_ ~COQ~ commands such
+_resolution_ / _value_ / _normal form_, by doing _computational_ ~COQ~ commands such
 as :
 
 #+BEGIN_SRC coq :exports both
@@ -122,15 +124,16 @@ Eval compute in f 3 2.
 :      : nat
 : 
 
-In short : whenever =(f : forall x : A, B)= (=f= is some term formed as above) and
-=(t : A)= (=t= is some term classified by the class =A=), ... therefore one may
+In short : whenever =(f : forall x : A, B)= ( =f= is some term formed as above ) and
+=(t : A)= ( =t= is some term classified by the class =A= ), ... therefore one may
 (eliminate =forall= by) /form/ this term and its classification =((f t) : B[t/x])=,
 where =(B[t/x])= signifies the substitution of =t= for =x= in the textual description
 of =B=, also written =((f t) : B)= when the identifier =x= does not occur/mentionned
 in the textual description of =B=. This process is named _delayed-substitution_ /
 _application_.
 
-Finally, other ~COQ~ commands query the present memory of the ~COQ~ computer, such as :
+Finally, other ~COQ~ commands query the present memory of the ~COQ~ computer, such
+as :
 
 #+BEGIN_SRC coq :exports both
 About f.

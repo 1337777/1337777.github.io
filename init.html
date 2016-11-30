@@ -108,7 +108,7 @@ for the JavaScript code in this tag.
 <li><a href="#org8f25d05">6.1. inference</a></li>
 <li><a href="#orgde10255">6.2. classifying inference</a></li>
 <li><a href="#org259b9f1">6.3. alternative</a></li>
-<li><a href="#org00f2c6a">6.4. recursion</a></li>
+<li><a href="#orga82aae1">6.4. recursion</a></li>
 </ul>
 </li>
 <li><a href="#org5343b48">7. Deduction : classification</a>
@@ -116,7 +116,7 @@ for the JavaScript code in this tag.
 <li><a href="#org6116e68">7.1. meta-computation</a></li>
 <li><a href="#orgc5b14c7">7.2. boolean-computational reflection</a></li>
 <li><a href="#org9b17275">7.3. boolean simultaneous-substitution</a></li>
-<li><a href="#orga82aae1">7.4. recursion</a></li>
+<li><a href="#org87089e5">7.4. recursion</a></li>
 </ul>
 </li>
 <li><a href="#orgf9d80cf">8. Review of some long deductions</a>
@@ -149,8 +149,8 @@ Oneself lacks to write and solve the question
 
 <p>
 In reality, oneself may want/lack to write and solve many such questions. Therefore
-one may <span class="underline">hold</span> / <span class="underline">bind</span> some <span class="underline">name</span> / <span class="underline">identifier</span> such as <code>a</code> and <code>p</code> and write the
-<span class="underline">functional-hold</span> / <span class="underline">function</span> ("abstraction")
+oneself may <span class="underline">hold</span> / <span class="underline">bind</span> some <span class="underline">name</span> / <span class="underline">identifier</span> such as <code>a</code> and <code>p</code> and write
+the <span class="underline">functional-hold</span> / <span class="underline">function</span> ( "abstraction" )
 </p>
 
 <pre class="example">
@@ -158,9 +158,10 @@ fun p =&gt; fun a =&gt; a + p
 </pre>
 
 <p>
-and then <span class="underline">(delay-)substitute</span> / <span class="underline">instantiate</span> / <span class="underline">apply</span> this single expression by many <span class="underline">input</span>
-( <span class="underline">outer</span> ) <span class="underline">parameter</span> <code>p</code> other than <code>3</code> and many <span class="underline">input</span> ( <span class="underline">inner</span> ) <span class="underline">argument</span> <code>a</code>
-other than <code>2</code>, and get <span class="underline">output</span> such as the <span class="underline">delayed-substitution</span> ("application")
+and then <span class="underline">(delay-)substitute</span> / <span class="underline">instantiate</span> / <span class="underline">apply</span> this single expression by many
+<span class="underline">input</span> ( <span class="underline">outer</span> ) <span class="underline">parameter</span> <code>p</code> other than <code>3</code> and many <span class="underline">input</span> ( <span class="underline">inner</span> )
+<span class="underline">argument</span> <code>a</code> other than <code>2</code>, and get <span class="underline">output</span> such as this <span class="underline">delayed-substitution</span>
+( "application" )
 </p>
 
 <pre class="example">
@@ -175,7 +176,7 @@ Does this solves the initial question ? What is the <span class="underline">moti
 Primo, one motivation may be to memorize things. Therefore oneself may do some <span class="underline">outer</span>
 programming / <span class="underline">commanding</span> of the <code>COQ</code> computer, and ( <span class="underline">top/globally</span> ) <span class="underline">behold</span> /
 <span class="underline">define</span> some <span class="underline">name</span> / <span class="underline">identifier</span> <code>f</code> which <span class="underline">memorize</span> / <span class="underline">fold</span> / <span class="underline">shorten</span> some
-common expressions such as
+common expressions such as :
 </p>
 
 <div class="org-src-container">
@@ -234,17 +235,18 @@ The term "a + p" has type "nat" while it is expected to have type "bool".
 <p>
 where <code>nat</code> is the more primitive class <code>0 | 1 | 2 | 3 | ...</code> and <code>bool</code> is the more
 primitive class <code>true | false</code> and <code>nat -&gt; nat -&gt; nat</code> is some more composite class
-which iterates two <span class="underline">function class former</span> ( <span class="underline">inference</span> <code>.. -&gt; ..</code> or <span class="underline">quantification</span>
-<code>forall .. , ..</code> ) such to classify such functions.
+which iterates two <span class="underline">function class former</span> ( <span class="underline">inference</span> <code>.. -&gt; ..</code> or <span class="underline">classifying
+inference</span> / <span class="underline">quantification</span> <code>forall .. , ..</code> ) such to classify such functions.
 </p>
 
 <p>
-In short : whenever assuming <code>(x : A)</code> (<code>x</code> is some identifier classified by the class
-<code>A</code>) one has <code>(b : B)</code> (<code>b</code> is some term classified by the classification <code>B</code>), &#x2026;
-therefore one may (introduce <code>forall</code> by) <i>form</i> this term and its classification
-<code>((fun x : A =&gt; b) : (forall x : A, B))</code> , also written <code>((fun x : A =&gt; b) : (A -&gt;
-B))</code> when the identifier <code>x</code> does not occur/mentionned in the textual description of
-<code>B</code>. This process is named <span class="underline">functional-holding</span> / <span class="underline">functional-binding</span> / <span class="underline">discharge</span>.
+In short : whenever assuming <code>(x : A)</code> ( <code>x</code> is some identifier classified by the
+class <code>A</code> ) one has <code>(b : B)</code> ( <code>b</code> is some term classified by the classification <code>B</code>
+), &#x2026;  therefore one may (introduce <code>forall</code> by) <i>form</i> this term and its
+classification <code>((fun x : A =&gt; b) : (forall x : A, B))</code> , also written <code>((fun x : A =&gt;
+b) : (A -&gt; B))</code> when the identifier <code>x</code> does not occur/mentionned in the textual
+description of <code>B</code>. This process is named <span class="underline">functional-holding</span> / <span class="underline">functional-binding</span>
+/ <span class="underline">discharge</span>.
 </p>
 
 <p>
@@ -257,7 +259,7 @@ of some possible inferred classification.
 
 <p>
 Tertio, another motivation may be to get the output in some more primitive
-<span class="underline">resolution</span> / <span class="underline">value</span> / <span class="underline">normal form</span> , by doing <span class="underline">computational</span> <code>COQ</code> commands such
+<span class="underline">resolution</span> / <span class="underline">value</span> / <span class="underline">normal form</span>, by doing <span class="underline">computational</span> <code>COQ</code> commands such
 as :
 </p>
 
@@ -272,8 +274,8 @@ as :
 </pre>
 
 <p>
-In short : whenever <code>(f : forall x : A, B)</code> (<code>f</code> is some term formed as above) and
-<code>(t : A)</code> (<code>t</code> is some term classified by the class <code>A</code>), &#x2026; therefore one may
+In short : whenever <code>(f : forall x : A, B)</code> ( <code>f</code> is some term formed as above ) and
+<code>(t : A)</code> ( <code>t</code> is some term classified by the class <code>A</code> ), &#x2026; therefore one may
 (eliminate <code>forall</code> by) <i>form</i> this term and its classification <code>((f t) : B[t/x])</code>,
 where <code>(B[t/x])</code> signifies the substitution of <code>t</code> for <code>x</code> in the textual description
 of <code>B</code>, also written <code>((f t) : B)</code> when the identifier <code>x</code> does not occur/mentionned
@@ -282,7 +284,8 @@ in the textual description of <code>B</code>. This process is named <span class=
 </p>
 
 <p>
-Finally, other <code>COQ</code> commands query the present memory of the <code>COQ</code> computer, such as :
+Finally, other <code>COQ</code> commands query the present memory of the <code>COQ</code> computer, such
+as :
 </p>
 
 <div class="org-src-container">
@@ -2329,13 +2332,6 @@ Error: y is used in hypothesis odd_y.
   odd_y : odd y
   ============================
   2 &lt; y + x
-
-1 subgoal
-  
-  x : nat
-  x_gt1 : 1 &lt; x
-  ============================
-  forall y : nat, odd y -&gt; 2 &lt; y + x
 </pre>
 
 <p>
@@ -3477,6 +3473,11 @@ Primo, the <code>COQ</code> deduction / tactic command corresponding to the cons
 No more subgoals.
 
 (existT ilist 3 (icons 6 (icons 7 (icons 5 inil))))
+
+exists 3.
+exact : (icons 6 (icons 7 (icons 5 inil))).
+
+Defined.
 </pre>
 
 <p>
@@ -3557,8 +3558,8 @@ description</i> :
 </div>
 </div>
 
-<div id="outline-container-org00f2c6a" class="outline-3">
-<h3 id="org00f2c6a"><span class="section-number-3">6.4</span> recursion</h3>
+<div id="outline-container-orga82aae1" class="outline-3">
+<h3 id="orga82aae1"><span class="section-number-3">6.4</span> recursion</h3>
 <div class="outline-text-3" id="text-6-4">
 <p>
 Whenever oneself does some grammatical / inductive description / definition <code>idef1</code>
@@ -3656,6 +3657,14 @@ idef1_rect</code> ). For instance :
   
   ============================
   forall m : nat, m + 0 = m
+
+2 subgoals
+  
+  ============================
+  0 + 0 = 0
+
+subgoal 2 is:
+ forall n : nat, n + 0 = n -&gt; n.+1 + 0 = n.+1
 </pre>
 
 <p>
@@ -3691,6 +3700,14 @@ as the <code>pattern</code> command) :
   m : nat
   ============================
   (fun m' : nat =&gt; m' + 0 = m') m
+
+2 subgoals
+  
+  ============================
+  0 + 0 = 0
+
+subgoal 2 is:
+ forall n : nat, n + 0 = n -&gt; n.+1 + 0 = n.+1
 </pre>
 </div>
 </div>
@@ -3919,20 +3936,6 @@ of Heq
   n1, n2 : nat
   ============================
   P (n1 * 0) (n2 * 0 * (n2 * 0))
-
-2 subgoals
-  
-  P : nat -&gt; nat -&gt; Type
-  c : nat
-  pcc : P c (c * c)
-  Hc : c + c = 0
-  Heq : forall n : nat, c + c = n - n -&gt; c = n * 0
-  n1, n2 : nat
-  ============================
-  P (n1 * 0) (n2 * 0 * c)
-
-subgoal 2 is:
- c + c = n2 - n2
 </pre>
 
 <p>
@@ -4064,6 +4067,9 @@ The <span class="underline">reflect classifier</span> internalizes the <span cla
 
 <pre class="example">
 reflect is defined
+reflect_rect is defined
+reflect_ind is defined
+reflect_rec is defined
 </pre>
 
 <p>
@@ -4169,16 +4175,6 @@ Argument b1 is implicit and maximally inserted
 Argument scope is [bool_scope]
 idP is opaque
 Expands to: Constant mathcomp.ssreflect.ssrbool.idP
-
-iffP :
-forall (P Q : Prop) (b : bool),
-reflect P b -&gt; (P -&gt; Q) -&gt; (Q -&gt; P) -&gt; reflect Q b
-
-Arguments P, Q, b are implicit
-Argument scopes are [type_scope type_scope bool_scope _ function_scope
-  function_scope]
-iffP is opaque
-Expands to: Constant mathcomp.ssreflect.ssrbool.iffP
 </pre>
 </div>
 </div>
@@ -4224,8 +4220,8 @@ lemma <code>leqP</code> .
 </div>
 </div>
 
-<div id="outline-container-orga82aae1" class="outline-3">
-<h3 id="orga82aae1"><span class="section-number-3">7.4</span> recursion</h3>
+<div id="outline-container-org87089e5" class="outline-3">
+<h3 id="org87089e5"><span class="section-number-3">7.4</span> recursion</h3>
 <div class="outline-text-3" id="text-7-4">
 <p>
 For <i>classifiers</i>, as for <i>classes</i>, the <span class="underline">recursion</span> <code>fix .. := ..</code> grammatical
@@ -4489,7 +4485,6 @@ case  Heq: (S _) / l =&gt; [|j m' l'].
  exact : (j, l').
 
 Defined.
-ihead_ibehead is defined
 </pre>
 
 <p>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title></title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Ubuntu" />
+<link rel="stylesheet" type="text/css" href="./code/style.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<p><a href="index.html">top</a> | <a href="theindex.html">index</a> | <a href="sitemap.html">sitemap</a></p>
+</div>
+<div id="content">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">this modified org-mode ob-coq and coq-inferior.el code is</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">from http://alan.petitepomme.net/tips/executing_coq.html</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">ERRATA</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">(defun org-babel-execute:coq (body param)</span>
+<span style="font-weight: bold; font-style: italic;">;;  </span><span style="font-weight: bold; font-style: italic;">(let ((full-body (org-babel-expand-body:generic body params))</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">to</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">(defun org-babel-execute:coq (body param)</span>
+<span style="font-weight: bold; font-style: italic;">;;   </span><span style="font-weight: bold; font-style: italic;">(let ((full-body (org-babel-expand-body:generic body param))</span>
+
+
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">package</span>)
+(add-to-list 'load-path <span style="font-style: italic;">"/home/ubuntu/.emacs.d/elpa"</span>)
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">for package htmlize</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)</span>
+(package-initialize)
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">;; Load company-coq when opening Coq files</span>
+<span style="font-weight: bold; font-style: italic;">;;</span><span style="font-weight: bold; font-style: italic;">(add-hook 'coq-mode-hook #'company-coq-mode)</span>
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Open .v files with Proof-General's coq-mode</span>
+<span style="font-weight: bold; font-style: italic;">;;</span><span style="font-weight: bold; font-style: italic;">(require 'proof-site)</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Open .v files with Proof General's Coq mode</span>
+(load <span style="font-style: italic;">"/home/ubuntu/.emacs.d/lisp/PG/generic/proof-site"</span>)
+
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">org</span>)
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">ob</span>)
+<span style="font-weight: bold; font-style: italic;">;;</span><span style="font-weight: bold; font-style: italic;">(require 'ob-coq)</span>
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">ox</span>)
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">ox-html</span>)
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">ox-org</span>)
+
+(setq org-confirm-babel-evaluate nil)
+(setq org-babel-tangle-lang-exts
+      (cons '(<span style="font-style: italic;">"coq"</span> . <span style="font-style: italic;">"v"</span>)
+            (assq-delete-all <span style="font-style: italic;">"coq"</span> org-babel-tangle-lang-exts)))
+(setq org-babel-default-header-args
+      (cons '(<span style="font-weight: bold;">:tangle</span> . <span style="font-style: italic;">"yes"</span>)
+            (assq-delete-all <span style="font-weight: bold;">:tangle</span> org-babel-default-header-args)))
+
+(setq org-html-head-include-default-style nil)
+(setq org-html-head <span style="font-style: italic;">"&lt;link rel=\"stylesheet\" type=\"text/css\" href=\"./code/style.css\"/&gt;"</span>)
+(setq org-html-postamble nil)
+(setq org-export-time-stamp-file nil)
+
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">comint</span>)
+
+(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">coq-program-name</span> <span style="font-style: italic;">"coqtop"</span>)
+
+(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">coq-buffer</span>)
+
+(<span style="font-weight: bold;">define-derived-mode</span> <span style="font-weight: bold;">inferior-coq-mode</span> comint-mode <span style="font-style: italic;">"Run Coq"</span>
+  <span style="font-style: italic;">""</span>
+  (setq comint-prompt-regexp <span style="font-style: italic;">"^[</span><span style="font-style: italic;">^</span><span style="font-style: italic;">&lt;]* &lt; *"</span>))
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">coq-args-to-list</span> (string)
+  (<span style="font-weight: bold;">let</span> ((where (string-match <span style="font-style: italic;">"[ \t]"</span> string)))
+    (<span style="font-weight: bold;">cond</span> ((null where) (list string))
+    ((not (= where 0))
+     (cons (substring string 0 where)
+     (coq-args-to-list (substring string (+ 1 where)
+             (length string)))))
+    (t (<span style="font-weight: bold;">let</span> ((pos (string-match <span style="font-style: italic;">"[</span><span style="font-style: italic;">^</span><span style="font-style: italic;"> \t]"</span> string)))
+         (<span style="font-weight: bold;">if</span> (null pos)
+       nil
+     (coq-args-to-list (substring string pos
+             (length string)))))))))
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">run-coq</span> (cmd)
+  (interactive (list (<span style="font-weight: bold;">if</span> current-prefix-arg
+       (read-string <span style="font-style: italic;">"Run Coq: "</span> coq-program-name)
+       coq-program-name)))
+  (<span style="font-weight: bold;">if</span> (not (comint-check-proc <span style="font-style: italic;">"*coq*"</span>))
+      (<span style="font-weight: bold;">let</span> ((cmdlist (coq-args-to-list cmd)))
+  (set-buffer (apply 'make-comint <span style="font-style: italic;">"coq"</span> (car cmdlist)
+         nil (cdr cmdlist)))
+  (inferior-coq-mode)))
+  (setq coq-program-name cmd)
+  (setq coq-buffer <span style="font-style: italic;">"*coq*"</span>)
+  (switch-to-buffer <span style="font-style: italic;">"*coq*"</span>))
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">coq-proc</span> ()
+  <span style="font-style: italic;">"Return the current coq process.  See variable `</span><span style="font-weight: bold; font-style: italic; text-decoration: underline;">coq-buffer</span><span style="font-style: italic;">'."</span>
+  (<span style="font-weight: bold;">let</span> ((proc (get-buffer-process (<span style="font-weight: bold;">if</span> (eq major-mode 'inferior-coq-mode)
+              (current-buffer)
+              coq-buffer))))
+    (or proc
+  (<span style="font-weight: bold;">error</span> <span style="font-style: italic;">"No current process.  See variable `</span><span style="font-weight: bold; font-style: italic; text-decoration: underline;">coq-buffer</span><span style="font-style: italic;">'"</span>))))
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((coq . t)))
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">I need to redefine these function, as they have some issues.</span>
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">org-babel-coq-split-phrases</span> (body)
+  (split-string body <span style="font-style: italic;">"\\.[ \t\n\r]+"</span>))
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">org-babel-coq-run-one-phrase</span> (phrase session)
+  (<span style="font-weight: bold;">let</span> ((pt (<span style="font-weight: bold;">lambda</span> ()
+        (marker-position
+         (process-mark (get-buffer-process (current-buffer)))))))
+    (org-babel-coq-clean-prompt
+     (org-babel-comint-in-buffer session
+       (<span style="font-weight: bold;">let</span> ((start (funcall pt)))
+   (<span style="font-weight: bold;">with-temp-buffer</span>
+     (insert phrase)
+     (comint-send-region (coq-proc) (point-min) (point-max))
+     (comint-send-string (coq-proc)
+      (<span style="font-weight: bold;">if</span> (string= (buffer-substring (- (point-max) 1) (point-max)) <span style="font-style: italic;">"."</span>)
+    <span style="font-style: italic;">"\n"</span>
+        <span style="font-style: italic;">".\n"</span>)))
+   (<span style="font-weight: bold;">while</span> (equal start (funcall pt)) (sleep-for 0.1))
+   (buffer-substring start (funcall pt)))))))
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">org-babel-execute:coq</span> (body param)
+  (<span style="font-weight: bold;">let</span> ((full-body (org-babel-expand-body:generic body param))
+        (session (org-babel-coq-initiate-session)))
+    (<span style="font-weight: bold;">let</span> ((phrases (org-babel-coq-split-phrases full-body))
+          results)
+      (<span style="font-weight: bold;">while</span> phrases
+        (<span style="font-weight: bold;">unless</span> (string-match <span style="font-style: italic;">"^\s*\\'"</span> (car phrases))
+          (setq results
+                (cons (org-babel-coq-run-one-phrase (car phrases) session) results)))
+        (setq phrases (cdr phrases)))
+      (apply #'concat (reverse results)))))
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">org-babel-coq-initiate-session</span> ()
+  <span style="font-style: italic;">"Initiate a coq session.</span>
+<span style="font-style: italic;">If there is not a current inferior-process-buffer in SESSION then</span>
+<span style="font-style: italic;">create one.  Return the initialized session."</span>
+  (<span style="font-weight: bold;">unless</span> (fboundp 'run-coq)
+    (<span style="font-weight: bold;">error</span> <span style="font-style: italic;">"`</span><span style="font-weight: bold; font-style: italic; text-decoration: underline;">run-coq</span><span style="font-style: italic;">' not defined, load coq-inferior.el"</span>))
+  (<span style="font-weight: bold;">save-window-excursion</span> (run-coq coq-program-name))
+  (sit-for 0.1)
+  (get-buffer org-babel-coq-buffer))
+
+(setq coq-program-name <span style="font-style: italic;">"coqtop -R /home/ubuntu/OOO1337777/repocache OOO1337777"</span>)
+</pre>
+</div>
+</div>
+</body>
+</html>

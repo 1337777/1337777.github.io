@@ -1,0 +1,89 @@
+#+BEGIN_SRC bash
+#!/bin/bash
+
+# ** config memo
+# :exports results :results silent < :exports code < :exports both :results silent < :exports both
+#         nothing                  <    code       <     code, execution           <   code, execution, result 
+#
+# repoimport: .gitignore
+# theindex.inc
+# theindex.org
+# sitemap.org
+# repocache: .gitignore
+# .*
+# *.v.d
+# *.vo
+# *.vio
+# *.glob
+# *.*~
+# \#*#
+# Makefile
+#
+# ssh key:  ~/.ssh/OOO1337777.pem
+#
+# apt-get install xpra
+# Xwrapper.config   dpkg-reconfigure x11-common
+# allowed_users=anybody
+# cp /etc/xpra/xorg.conf .xpra/
+# cp /etc/xpra/xpra.conf .xpra/
+# /!\ MUST USE  THIS WHEN IN  ELEVATED PRIVILEGE, AND RUN XPRA FROM HOME DIR /!\                                
+# xvfb=Xorg -noreset -nolisten tcp +extension GLX +extension RANDR +extension RENDER -auth $XAUTHORITY -config    
+#   .xpra/xorg.conf  
+# cd ~ ; xpra start :37
+#
+# ALT SUCCESS:
+# sudo Xorg -noreset +extension GLX +extension RANDR +extension RENDER -logfile ./37.log -config ./xorg.conf :37 & disown
+#
+# crontab -e
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+# m h  dom mon dow   command
+# 0-59/15 * * * * /bin/bash /home/ubuntu/OOO1337777/repocache/.makegit.sh
+#
+# ALT SUCCESS:
+# tmux
+# while [ 1 ] ; do sleep 15m; /bin/bash /home/ubuntu/OOO1337777/repocache/.makegit.sh; done
+
+cd /home/ubuntu/OOO1337777/repoimport ;
+
+eval "$(ssh-agent)" ;
+ssh-add ~/.ssh/ooo1337777.pem ;
+
+comm=0 ;
+
+for repo in $( ls -1 /home/ubuntu/OOO1337777/repocache/.branches | sed 's/^[0-9]\+_//' ) ; do
+    { git pull -X ours --no-ff --no-edit ${repo}    \
+	    | grep -q -s 'Already up-to-date\.$' ; }    \
+	|| { comm=$(( $comm + 1 )) ;
+	     echo ${repo} >> /home/ubuntu/OOO1337777/repocache/.touched ; } ;
+done
+
+# git push --all repoexport ;
+
+if (( $comm > 0 )) ; then
+
+    git push --all repoexport ;
+
+    cd /home/ubuntu/OOO1337777/repocache ;
+
+    # TODO compage git log with .coqignore and erase from .coqignore the files which are touched by git log
+    cat ./.coqignore | grep -Fve "$(git log -${comm} --name-only --format= | sed 's/\.\w\+$/\./' )" | tee ./.coqignore 1>/dev/null ;
+
+    #echo -n -e "\n--8<--GIT--$( wc -l ./.touched 2>/dev/null | cut -d ' ' -f 1 )--GIT-->8--\n" ;
+    echo -n -e "\n--8<--GIT--TOUCHES-${comm}--GIT-->8--\n" ;
+    cat ./.touched | xargs echo ;
+
+    nowdate=$(date +%s.%Y_%m_%d_%H_%M_%S) ;
+    cp ./.touched "./.${nowdate}.touched" ;
+
+    # crontab every 15 mins * 4 touches in queue -> more than 1h old processes
+    if (( $(pgrep --count -f '\.makeemacs\.sh.+|\.makecoq\.sh.+') >= 5 )) ; then
+	pkill --oldest -f '\.makecoq\.sh.+' ; pkill --oldest -f '\.makeemacs\.sh.+' ;
+    fi
+    
+    ./.makeemacs.sh "${nowdate}" & disown
+fi
+
+echo -n -e "\n--8<--GITFINISH----GITFINISH-->8--\n" ;
+#+END_SRC

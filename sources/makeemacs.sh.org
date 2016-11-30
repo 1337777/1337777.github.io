@@ -1,0 +1,35 @@
+#+BEGIN_SRC bash
+#!/bin/bash
+
+cd /home/ubuntu/OOO1337777/repocache ;
+
+if [[ -e ./.touched ]] ; then
+    echo -n -e "\n--8<--EMACS--${1}--EMACS-->8--\n" ;
+    touched=$( cat ./.touched | xargs echo ) ;
+    rm ./.touched ;
+    pgrep -d ' ' -f '\.makeemacs\.sh.+' | sed "s/\\b${$}\\b//" | xargs ./.anywait.sh ;
+
+    git checkout master ;
+    # TODO loop to ignore anyfile which cause error
+    # monochrome only
+    # emacs --batch -l /home/ubuntu/OOO1337777/repocache/.makeemacs_publish_init.el -f publish-worg ;
+    # alternative for colors
+    # /!\ PERF ... /!\
+    if [[ -e ./.monochrome ]] ; then
+	emacs --batch -l /home/ubuntu/OOO1337777/repocache/.makeemacs_publish_init.el -f publish-worg ;
+    else
+	# xpra list | grep ':37' || (cd ~ ; xpra start :37) &
+	# ALT:
+	# sudo Xorg -noreset +extension GLX +extension RANDR +extension RENDER -logfile ./37.log -config ./xorg.conf :37 & disown
+	emacs -d ':37' -Q -l /home/ubuntu/OOO1337777/repocache/.makeemacs_publish_init.el -f publish-worg --kill ;
+    fi	     
+
+    git add '*' ;
+    git commit -am "TOUCHED: ${touched}" ;
+    git push repopub master ;
+
+    ./.makecoq.sh "${1}" & disown ;
+    echo -n -e "\n--8<--EMACSFINISH--${1}--EMACSFINISH-->8--\n" ;
+fi
+#+END_SRC
+

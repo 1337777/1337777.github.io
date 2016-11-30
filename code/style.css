@@ -1,3 +1,9 @@
+#preamble {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
 #content {
     display: block;
     width: 850px;

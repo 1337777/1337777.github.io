@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title></title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Ubuntu" />
+<link rel="stylesheet" type="text/css" href="./code/style.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<p><a href="index.html">top</a> | <a href="theindex.html">index</a> | <a href="sitemap.html">sitemap</a></p>
+</div>
+<div id="content">
+<div class="org-src-container">
+<pre class="src src-bash"><span style="font-weight: bold; font-style: italic;">#</span><span style="font-weight: bold; font-style: italic;">!/bin/</span><span style="font-weight: bold;">bash</span>
+
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">** config memo</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">:exports results :results silent &lt; :exports code &lt; :exports both :results silent &lt; :exports both</span>
+<span style="font-weight: bold; font-style: italic;">#         </span><span style="font-weight: bold; font-style: italic;">nothing                  &lt;    code       &lt;     code, execution           &lt;   code, execution, result </span>
+<span style="font-weight: bold; font-style: italic;">#</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">repoimport: .gitignore</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">theindex.inc</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">theindex.org</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">sitemap.org</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">repocache: .gitignore</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">.*</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">*.v.d</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">*.vo</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">*.vio</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">*.glob</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">*.*~</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">\#*#</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">Makefile</span>
+<span style="font-weight: bold; font-style: italic;">#</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">ssh key:  ~/.ssh/OOO1337777.pem</span>
+<span style="font-weight: bold; font-style: italic;">#</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">apt-get install xpra</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">Xwrapper.config   dpkg-reconfigure x11-common</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">allowed_users=anybody</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">cp /etc/xpra/xorg.conf .xpra/</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">cp /etc/xpra/xpra.conf .xpra/</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">/!\ MUST USE  THIS WHEN IN  ELEVATED PRIVILEGE, AND RUN XPRA FROM HOME DIR /!\                                </span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">xvfb=Xorg -noreset -nolisten tcp +extension GLX +extension RANDR +extension RENDER -auth $XAUTHORITY -config    </span>
+<span style="font-weight: bold; font-style: italic;">#   </span><span style="font-weight: bold; font-style: italic;">.xpra/xorg.conf  </span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">cd ~ ; xpra start :37</span>
+<span style="font-weight: bold; font-style: italic;">#</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">ALT SUCCESS:</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">sudo Xorg -noreset +extension GLX +extension RANDR +extension RENDER -logfile ./37.log -config ./xorg.conf :37 &amp; disown</span>
+<span style="font-weight: bold; font-style: italic;">#</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">crontab -e</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">For example, you can run a backup of all your user accounts</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">at 5 a.m every week with:</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">0 5 * * 1 tar -zcf /var/backups/home.tgz /home/</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">m h  dom mon dow   command</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">0-59/15 * * * * /bin/bash /home/ubuntu/OOO1337777/repocache/.makegit.sh</span>
+<span style="font-weight: bold; font-style: italic;">#</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">ALT SUCCESS:</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">tmux</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">while [ 1 ] ; do sleep 15m; /bin/bash /home/ubuntu/OOO1337777/repocache/.makegit.sh; done</span>
+
+<span style="font-weight: bold;">cd</span> /home/ubuntu/OOO1337777/repoimport ;
+
+<span style="font-weight: bold;">eval</span> <span style="font-style: italic;">"$(</span><span style="font-weight: bold;">ssh-agent</span><span style="font-style: italic;">)"</span> ;
+ssh-add ~/.ssh/ooo1337777.pem ;
+
+<span style="font-weight: bold; font-style: italic;">comm</span>=0 ;
+
+<span style="font-weight: bold;">for</span> repo<span style="font-weight: bold;"> in</span> $( ls -1 /home/ubuntu/OOO1337777/repocache/.branches | sed <span style="font-style: italic;">'s/^[0-9]\+_//'</span> ) ; <span style="font-weight: bold;">do</span>
+    { git pull -X ours --no-ff --no-edit ${<span style="font-weight: bold; font-style: italic;">repo</span>}    <span style="font-style: italic;">\</span>
+            | grep -q -s <span style="font-style: italic;">'Already up-to-date\.$'</span> ; }    <span style="font-style: italic;">\</span>
+        || { <span style="font-weight: bold; font-style: italic;">comm</span>=$(( $<span style="font-weight: bold; font-style: italic;">comm</span> + 1 )) ;
+             <span style="font-weight: bold;">echo</span> ${<span style="font-weight: bold; font-style: italic;">repo</span>} &gt;&gt; /home/ubuntu/OOO1337777/repocache/.touched ; } ;
+<span style="font-weight: bold;">done</span>
+
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">git push --all repoexport ;</span>
+
+<span style="font-weight: bold;">if</span> (( $<span style="font-weight: bold; font-style: italic;">comm</span> &gt; 0 )) ; <span style="font-weight: bold;">then</span>
+
+    git push --all repoexport ;
+
+    <span style="font-weight: bold;">cd</span> /home/ubuntu/OOO1337777/repocache ;
+
+    <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">TODO compage git log with .coqignore and erase from .coqignore the files which are touched by git log</span>
+    cat ./.coqignore | grep -Fve <span style="font-style: italic;">"$(</span><span style="font-weight: bold;">git</span><span style="font-style: italic;"> log -${comm} --name-only --format= | sed 's/\.\w\+$/\./' )"</span> | tee ./.coqignore 1&gt;/dev/null ;
+
+    <span style="font-weight: bold; font-style: italic;">#</span><span style="font-weight: bold; font-style: italic;">echo -n -e "\n--8&lt;--GIT--$( wc -l ./.touched 2&gt;/dev/null | cut -d ' ' -f 1 )--GIT--&gt;8--\n" ;</span>
+    <span style="font-weight: bold;">echo</span> -n -e <span style="font-style: italic;">"\n--8&lt;--GIT--TOUCHES-${comm}--GIT--&gt;8--\n"</span> ;
+    cat ./.touched | xargs echo ;
+
+    <span style="font-weight: bold; font-style: italic;">nowdate</span>=$(<span style="font-weight: bold;">date</span> +%s.%Y_%m_%d_%H_%M_%S) ;
+    cp ./.touched <span style="font-style: italic;">"./.${nowdate}.touched"</span> ;
+
+    <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">crontab every 15 mins * 4 touches in queue -&gt; more than 1h old processes</span>
+    <span style="font-weight: bold;">if</span> (( $(<span style="font-weight: bold;">pgrep</span> --count -f <span style="font-style: italic;">'\.makeemacs\.sh.+|\.makecoq\.sh.+'</span>) &gt;= 5 )) ; <span style="font-weight: bold;">then</span>
+        pkill --oldest -f <span style="font-style: italic;">'\.makecoq\.sh.+'</span> ; pkill --oldest -f <span style="font-style: italic;">'\.makeemacs\.sh.+'</span> ;
+    <span style="font-weight: bold;">fi</span>
+
+    ./.makeemacs.sh <span style="font-style: italic;">"${nowdate}"</span> &amp; <span style="font-weight: bold;">disown</span>
+<span style="font-weight: bold;">fi</span>
+
+<span style="font-weight: bold;">echo</span> -n -e <span style="font-style: italic;">"\n--8&lt;--GITFINISH----GITFINISH--&gt;8--\n"</span> ;
+</pre>
+</div>
+</div>
+</body>
+</html>

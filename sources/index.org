@@ -1,8 +1,5 @@
-index
+#+TITLE: Top
 
-#+BEGIN_SRC coq :exports both
-Print nat.
-Print nat_rect.
-#+END_SRC
+TOP
 
-« TOUCH 7 »
+[[file:init.org]]

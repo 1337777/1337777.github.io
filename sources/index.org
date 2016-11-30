@@ -1,0 +1,10 @@
+index
+
+« TOUCH »
+
+#+BEGIN_SRC coq :exports both
+Print nat.
+Print nat_rect.
+#+END_SRC
+
+end

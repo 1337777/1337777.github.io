@@ -762,3 +762,20 @@ have /(IHn _ q.+1) : m - d <= n by rewrite (leq_trans (leq_subr d m)).
 
 by rewrite /= mulSnr -addnA -subSS subnKC.
 Qed.
+
+Eval compute in all_words 2 [:: 1; 2; 3].
+
+Definition all_words (n : nat) (T : Type) (alphabet : seq T) :=
+  let prepend x wl := [seq x :: w | w <- wl] in
+  let extend wl := flatten [seq prepend x wl | x <- alphabet] in
+    iter n extend [::].
+
+Lemma size_all_words n T (alphabet : seq T) :
+  size (all_words n alphabet) = size alphabet ^ n.
+
+elim: n => [|n IHn]; first by rewrite expn0.
+rewrite expnS -{}(** ???1 **) [in LHS]/all_words iterS -/(all_words _ _).
+
+elim: alphabet (all_words _ _) => //= w ws IHws aw.
+by rewrite size_cat (** ???2 **) size_map mulSn.
+Qed.

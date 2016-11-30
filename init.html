@@ -108,7 +108,7 @@ for the JavaScript code in this tag.
 <li><a href="#org8f25d05">6.1. inference</a></li>
 <li><a href="#orgde10255">6.2. classifying inference</a></li>
 <li><a href="#org259b9f1">6.3. alternative</a></li>
-<li><a href="#org333ac43">6.4. recursion</a></li>
+<li><a href="#org5279c4c">6.4. recursion</a></li>
 </ul>
 </li>
 <li><a href="#org5343b48">7. Deduction : classification</a>
@@ -116,7 +116,7 @@ for the JavaScript code in this tag.
 <li><a href="#org6116e68">7.1. meta-computation</a></li>
 <li><a href="#orgc5b14c7">7.2. boolean-computational reflection</a></li>
 <li><a href="#org9b17275">7.3. boolean simultaneous-substitution</a></li>
-<li><a href="#org5279c4c">7.4. recursion</a></li>
+<li><a href="#org58b1a43">7.4. recursion</a></li>
 </ul>
 </li>
 <li><a href="#orgf9d80cf">8. Review of some long deductions</a>
@@ -125,7 +125,12 @@ for the JavaScript code in this tag.
 <li><a href="#org116e8b9">8.2. Review of OOO1337777</a></li>
 </ul>
 </li>
-<li><a href="#orga8b5618">9. ConfusPlay</a></li>
+<li><a href="#orga8b5618">9. ConfusPlay</a>
+<ul>
+<li><a href="#org3bb20a0">9.1. ConfusPlay 1</a></li>
+<li><a href="#org86b2750">9.2. ConfusPlay 2, refer ConfusPlay 1</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -2333,6 +2338,13 @@ Error: y is used in hypothesis odd_y.
   odd_y : odd y
   ============================
   2 &lt; y + x
+
+1 subgoal
+  
+  x : nat
+  x_gt1 : 1 &lt; x
+  ============================
+  forall y : nat, odd y -&gt; 2 &lt; y + x
 </pre>
 
 <p>
@@ -2840,6 +2852,15 @@ question is some instance :
 subgoal 2 is:
  forall n : nat,
  n &lt;= m.+1 -&gt; 11 &lt; n -&gt; exists s4 s5 : nat, s4 * 4 + s5 * 5 = n
+
+subgoal 2 is:
+  
+  m : nat
+  IHm : forall n : nat,
+        n &lt;= m -&gt; 11 &lt; n -&gt; exists s4 s5 : nat, s4 * 4 + s5 * 5 = n
+  ============================
+  forall n : nat,
+  n &lt;= m.+1 -&gt; 11 &lt; n -&gt; exists s4 s5 : nat, s4 * 4 + s5 * 5 = n
 </pre>
 
 <div class="org-src-container">
@@ -3418,7 +3439,6 @@ case.
 (move =&gt; a b; exact : a).
 
 Defined.
-fst is defined
 </pre>
 </div>
 </div>
@@ -3465,6 +3485,11 @@ Primo, the <code>COQ</code> deduction / tactic command corresponding to the cons
 No more subgoals.
 
 (existT ilist 3 (icons 6 (icons 7 (icons 5 inil))))
+
+exists 3.
+exact : (icons 6 (icons 7 (icons 5 inil))).
+
+Defined.
 </pre>
 
 <p>
@@ -3545,8 +3570,8 @@ description</i> :
 </div>
 </div>
 
-<div id="outline-container-org333ac43" class="outline-3">
-<h3 id="org333ac43"><span class="section-number-3">6.4</span> recursion</h3>
+<div id="outline-container-org5279c4c" class="outline-3">
+<h3 id="org5279c4c"><span class="section-number-3">6.4</span> recursion</h3>
 <div class="outline-text-3" id="text-6-4">
 <p>
 Whenever oneself does some grammatical / inductive description / definition <code>idef1</code>
@@ -4208,6 +4233,8 @@ numbers</span>.
 <pre class="example">
 compare_nat is defined
 compare_nat_rect is defined
+compare_nat_ind is defined
+compare_nat_rec is defined
 </pre>
 
 <p>
@@ -4228,8 +4255,8 @@ lemma <code>leqP</code> .
 </div>
 </div>
 
-<div id="outline-container-org5279c4c" class="outline-3">
-<h3 id="org5279c4c"><span class="section-number-3">7.4</span> recursion</h3>
+<div id="outline-container-org58b1a43" class="outline-3">
+<h3 id="org58b1a43"><span class="section-number-3">7.4</span> recursion</h3>
 <div class="outline-text-3" id="text-7-4">
 <p>
 For <i>classifiers</i>, as for <i>classes</i>, the <span class="underline">recursion</span> <code>fix .. := ..</code> grammatical
@@ -4484,15 +4511,6 @@ injectivity lemma :
   nat * ilist m'
 
 No more subgoals.
-
-case  Heq: (S _) / l =&gt; [|j m' l'].
- by [  ].
-
- case : Heq =&gt; Heq_injective.
- rewrite [m]Heq_injective.
- exact : (j, l').
-
-Defined.
 </pre>
 
 <p>
@@ -4888,9 +4906,53 @@ of playing 100carats, therefore the questions is : how to search for some random
 <div id="outline-container-orga8b5618" class="outline-2">
 <h2 id="orga8b5618"><span class="section-number-2">9</span> ConfusPlay</h2>
 <div class="outline-text-2" id="text-9">
+</div><div id="outline-container-org3bb20a0" class="outline-3">
+<h3 id="org3bb20a0"><span class="section-number-3">9.1</span> ConfusPlay 1</h3>
+<div class="outline-text-3" id="text-9-1">
 <p>
-Haha
+Correct this <code>all_words</code> program which input from some length <code>(n : nat)</code> and some
+sequence of symbols alphabet <code>(alphabet : seq T)</code> and shall generate some list
+containing any word-of-size-n, which signifies : some list of list-of-size-n.
 </p>
+
+<div class="org-src-container">
+<pre class="src src-coq"><span style="color: #a020f0;">Eval</span> <span style="color: #00008b;">compute</span> <span style="color: #228b22;">in</span> all_words 2 [:: 1; 2; 3].
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-coq"><span style="color: #a020f0;">Definition</span> <span style="color: #0000ff;">all_words</span> (<span style="color: #a0522d;">n</span> : nat) (<span style="color: #a0522d;">T</span> : <span style="color: #228b22;">Type</span>) (<span style="color: #a0522d;">alphabet</span> : seq T) :=
+  <span style="color: #228b22;">let</span> prepend x wl := [seq x :: w | w &lt;- wl] <span style="color: #228b22;">in</span>
+  <span style="color: #228b22;">let</span> extend wl := flatten [seq prepend x wl | x &lt;- alphabet] <span style="color: #228b22;">in</span>
+    iter n extend [::].
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org86b2750" class="outline-3">
+<h3 id="org86b2750"><span class="section-number-3">9.2</span> ConfusPlay 2, refer <a href="#org3bb20a0">ConfusPlay 1</a></h3>
+<div class="outline-text-3" id="text-9-2">
+<p>
+Complete this <code>size_all_words</code> lemma by filling-in the two blank spaces marked by
+<code>(** ???1 **)</code> and <code>(** ???2 **)</code> . Then separate this lemma in two distincts lemmas
+<code>size_extend</code> and <code>size_all_words</code> such that this
+nested-(double)-induction-in-single-lemma is erased.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-coq"><span style="color: #a020f0;">Lemma</span> <span style="color: #0000ff;">size_all_words</span> n T (<span style="color: #a0522d;">alphabet</span> : seq T) :
+  size (all_words n alphabet) = size alphabet ^ n.
+
+<span style="color: #00008b;">elim</span>: n =&gt; [|n IHn]; <span style="color: #b452cd;">first</span> <span style="color: #ff0000;">by</span> <span style="color: #00008b;">rewrite</span> expn0.
+<span style="color: #00008b;">rewrite</span> expnS -{}<span style="color: #b22222;">(** </span><span style="color: #b22222;">???1 *</span><span style="color: #b22222;">*)</span> [<span style="color: #228b22;">in</span> LHS]/all_words iterS -/(all_words _ _).
+
+<span style="color: #00008b;">elim</span>: alphabet (all_words _ _) =&gt; //= w ws IHws aw.
+<span style="color: #ff0000;">by</span> <span style="color: #00008b;">rewrite</span> size_cat <span style="color: #b22222;">(** </span><span style="color: #b22222;">???2 *</span><span style="color: #b22222;">*)</span> size_map mulSn.
+<span style="color: #a020f0;">Qed</span>.
+</pre>
+</div>
+</div>
 </div>
 </div>
 <div id="footnotes">

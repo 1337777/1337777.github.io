@@ -187,6 +187,4 @@
    'worg-fortune-insert-javascript-pre
    'worg-fortune-insert-javascript-post))
 
-	  
-
 #+END_SRC

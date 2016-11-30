@@ -4385,5 +4385,45 @@ of playing 100carats, therefore the questions is : how to search for some random
 
 * ConfusPlay
 
-  Haha
-  
+** ConfusPlay 1
+
+  Correct this =all_words= program which input from some length =(n : nat)= and some
+sequence of symbols alphabet =(alphabet : seq T)= and shall generate some list
+containing any word-of-size-n, which signifies : some list of list-of-size-n.
+
+#+BEGIN_SRC coq :exports code
+Eval compute in all_words 2 [:: 1; 2; 3].
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+= [:: [:: 1; 1]; [:: 1; 2]; [:: 1; 3];
+[:: 2; 1]; [:: 2; 2]; [:: 2; 3];
+[:: 3; 1]; [:: 3; 2]; [:: 3; 3]]
+#+end_example
+
+#+BEGIN_SRC coq :exports code
+Definition all_words (n : nat) (T : Type) (alphabet : seq T) :=
+  let prepend x wl := [seq x :: w | w <- wl] in
+  let extend wl := flatten [seq prepend x wl | x <- alphabet] in
+    iter n extend [::].
+#+END_SRC
+
+** ConfusPlay 2, refer [[ConfusPlay 1][ConfusPlay 1]]
+
+   Complete this =size_all_words= lemma by filling-in the two blank spaces marked by
+=(** ???1 **)= and =(** ???2 **)= . Then separate this lemma in two distincts lemmas
+=size_extend= and =size_all_words= such that this
+nested-(double)-induction-in-single-lemma is erased.
+
+#+BEGIN_SRC coq :exports code
+Lemma size_all_words n T (alphabet : seq T) :
+  size (all_words n alphabet) = size alphabet ^ n.
+
+elim: n => [|n IHn]; first by rewrite expn0.
+rewrite expnS -{}(** ???1 **) [in LHS]/all_words iterS -/(all_words _ _).
+
+elim: alphabet (all_words _ _) => //= w ws IHws aw.
+by rewrite size_cat (** ???2 **) size_map mulSn.
+Qed.
+#+END_SRC

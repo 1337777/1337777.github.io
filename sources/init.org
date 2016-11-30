@@ -2959,7 +2959,7 @@ _computationally or logically fulfill_ / _support_ this class, which is that it 
 sufficient to focus / touch on these (recursively) constructored data when holding
 this class, which is that any (random) data in the class may be such (recursively)
 _destructed_ / _eliminated_ / _matched_ / _filtered_. This is described by one
-(grammatical) _destructor/match function_ , as shown for instance in :
+(grammatical) _destructor / match function_ , as shown for instance in :
 
 #+BEGIN_SRC coq :exports both :results silent
 Definition fst (A B : Type) (p : prod A B) : A :=
@@ -3092,7 +3092,7 @@ Inductive empty : Type :=           .
 #+END_SRC
 
 Memo that zero constructor is sufficient to _computationally or logically
-fulfill_ / _support_ the class =empty=, which is that it is sufficient to touch none
+fulfill_ / _support_ the class =empty= , which is that it is sufficient to touch none
 data when holding this class, which is that any (formal / grammatical) data in the
 class may be such _destructed_ / _eliminated_ / _matched_ / _filtered_ as none
 data. This is show for instance in :
@@ -3312,8 +3312,8 @@ From the meta (outer) angle of view, =eq_refl= is some primitive _deduction / pr
 term / value_ which says ( asserts / deduces / proves ) that the parameter =x= is "eq"
 ("equal") to any index-argument =y= which _by-computation-is_ ( _by-convertibility-is_
 ) =x= ; and =eq_refl= is precisely-classified inside =@eq A x y= by any index-argument
-=y= which by-computation-is =x=. And the ~COQ~ deduction / tactic command
-corresponding to the constructor function =eq_refl= is =reflexivity=.
+=y= which by-computation-is =x= . And the ~COQ~ deduction / tactic command
+corresponding to the constructor function =eq_refl= is =reflexivity= .
 
 #+BEGIN_SRC coq :exports both
 Check @Logic.eq_refl nat (3 + 2) : @Logic.eq nat (3 + 2) (S (S (1 + 2))).
@@ -3450,10 +3450,9 @@ subgoal 2 is:
 
 #+end_example
 
-where, in the third command =rewrite -Heq.= , the subterms to rewrite are
-_all the occurrences of the first match of the filter_ which has been
-inferred ( here =( _ * 0 )= ) from the right-hand-side of the equality
-=Heq=.
+where, in the third command =rewrite -Heq.= , the subterms to rewrite are _all the
+occurrences of the first match of the filter_ which has been inferred ( here =( _ * 0
+)= ) from the right-hand-side of the equality =Heq=.
 
 And the rest of the modifiers for the =rewrite= command explains itself :
 
@@ -3500,7 +3499,7 @@ subgoal 2 is:
 #+end_example
 
 where any =[ in .. ]= modifier such as =[ in X in P _ X ]= is named some
-_imprecise-contextual filter_ , and any ={ .. }= modifier such as ={2}= is named some
+_imprecise-contextual filter_, and any ={ .. }= modifier such as ={2}= is named some
 _occurence modifier_, further more :
 
 #+BEGIN_SRC coq :exports results :results silent
@@ -3757,7 +3756,7 @@ Inductive compare_nat (m n : nat) : bool -> bool -> bool -> Set :=
 Reset compare_nat.
 #+END_SRC
 
-And with this comparaison lemma =ltngtP=, it may be used to do _boolean
+And with this comparaison lemma =ltngtP= , it may be used to do _boolean
 simultaneous-substitution_ of all the occurrences of =(m < n)= and =(n < m)= and ~(m
 == n)~ in the goal :
 
@@ -4103,7 +4102,7 @@ Definition edivn m d := if d > 0 then edivn_rec d.-1 m 0 else (0, m).
 #+END_SRC
 
 Memo that And the ~COQ~ computer is very good at detecting that the accumulator =m= is
-degrading for the =fix= command, although the term =m=' is not some
+degrading for the =fix= command, although the term ~m'~ is not some
 /immediate-subterm/ of =m=. Elsewhere the =edivn= program handles the case of some
 zero divisor, producing the dummy pair =(0,m)= for the quotient and the remainder
 correspondingly.
@@ -4360,7 +4359,6 @@ edivnP is defined
 
 #+end_example
 
-   
 ** Review of OOO1337777
 
 * ConfusPlay

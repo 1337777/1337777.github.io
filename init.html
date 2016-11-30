@@ -108,7 +108,7 @@ for the JavaScript code in this tag.
 <li><a href="#org8f25d05">6.1. inference</a></li>
 <li><a href="#orgde10255">6.2. classifying inference</a></li>
 <li><a href="#org259b9f1">6.3. alternative</a></li>
-<li><a href="#org3c8c978">6.4. recursion</a></li>
+<li><a href="#orge19edd1">6.4. recursion</a></li>
 </ul>
 </li>
 <li><a href="#org5343b48">7. Deduction : classification</a>
@@ -116,7 +116,7 @@ for the JavaScript code in this tag.
 <li><a href="#org6116e68">7.1. meta-computation</a></li>
 <li><a href="#orgc5b14c7">7.2. boolean-computational reflection</a></li>
 <li><a href="#org9b17275">7.3. boolean simultaneous-substitution</a></li>
-<li><a href="#orge19edd1">7.4. recursion</a></li>
+<li><a href="#org333ac43">7.4. recursion</a></li>
 </ul>
 </li>
 <li><a href="#orgf9d80cf">8. Review of some long deductions</a>
@@ -379,9 +379,6 @@ The name of the two constructors are <code>true</code> and <code>false</code> , 
 
 <pre class="example">
 bool is defined
-bool_rect is defined
-bool_ind is defined
-bool_rec is defined
 </pre>
 
 <p>
@@ -754,6 +751,17 @@ p is declared
 
 add is defined
 add is recursively defined (decreasing on 1st argument)
+
+
+add = 
+fun p : nat =&gt;
+fix add (n : nat) : nat := match n with
+                           | 0 =&gt; p
+                           | t.+1 =&gt; (add t).+1
+                           end
+     : nat -&gt; nat -&gt; nat
+
+Argument scopes are [nat_scope nat_scope]
 </pre>
 
 <div class="org-src-container">
@@ -2325,13 +2333,6 @@ Error: y is used in hypothesis odd_y.
   odd_y : odd y
   ============================
   2 &lt; y + x
-
-1 subgoal
-  
-  x : nat
-  x_gt1 : 1 &lt; x
-  ============================
-  forall y : nat, odd y -&gt; 2 &lt; y + x
 </pre>
 
 <p>
@@ -3381,7 +3382,7 @@ Secondo as is common, the only alternate constructor <code>pair</code> of the cl
 sufficient to focus / touch on these (recursively) constructored data when holding
 this class, which is that any (random) data in the class may be such (recursively)
 <span class="underline">destructed</span> / <span class="underline">eliminated</span> / <span class="underline">matched</span> / <span class="underline">filtered</span>. This is described by one
-(grammatical) <span class="underline">destructor/match function</span> , as shown for instance in :
+(grammatical) <span class="underline">destructor / match function</span> , as shown for instance in :
 </p>
 
 <div class="org-src-container">
@@ -3472,12 +3473,6 @@ Primo, the <code>COQ</code> deduction / tactic command corresponding to the cons
 No more subgoals.
 
 (existT ilist 3 (icons 6 (icons 7 (icons 5 inil))))
-
-exists 3.
-exact : (icons 6 (icons 7 (icons 5 inil))).
-
-Defined.
-existsT_3_icons675inil is defined
 </pre>
 
 <p>
@@ -3525,7 +3520,7 @@ data type correspondingly internalizes the <span class="underline">1-iterated or
 
 <p>
 Memo that zero constructor is sufficient to <span class="underline">computationally or logically
-fulfill</span> / <span class="underline">support</span> the class <code>empty</code>, which is that it is sufficient to touch none
+fulfill</span> / <span class="underline">support</span> the class <code>empty</code> , which is that it is sufficient to touch none
 data when holding this class, which is that any (formal / grammatical) data in the
 class may be such <span class="underline">destructed</span> / <span class="underline">eliminated</span> / <span class="underline">matched</span> / <span class="underline">filtered</span> as none
 data. This is show for instance in :
@@ -3558,8 +3553,8 @@ description</i> :
 </div>
 </div>
 
-<div id="outline-container-org3c8c978" class="outline-3">
-<h3 id="org3c8c978"><span class="section-number-3">6.4</span> recursion</h3>
+<div id="outline-container-orge19edd1" class="outline-3">
+<h3 id="orge19edd1"><span class="section-number-3">6.4</span> recursion</h3>
 <div class="outline-text-3" id="text-6-4">
 <p>
 Whenever oneself does some grammatical / inductive description / definition <code>idef1</code>
@@ -3761,8 +3756,8 @@ From the meta (outer) angle of view, <code>eq_refl</code> is some primitive <spa
 term / value</span> which says ( asserts / deduces / proves ) that the parameter <code>x</code> is "eq"
 ("equal") to any index-argument <code>y</code> which <span class="underline">by-computation-is</span> ( <span class="underline">by-convertibility-is</span>
 ) <code>x</code> ; and <code>eq_refl</code> is precisely-classified inside <code>@eq A x y</code> by any index-argument
-<code>y</code> which by-computation-is <code>x</code>. And the <code>COQ</code> deduction / tactic command
-corresponding to the constructor function <code>eq_refl</code> is <code>reflexivity</code>.
+<code>y</code> which by-computation-is <code>x</code> . And the <code>COQ</code> deduction / tactic command
+corresponding to the constructor function <code>eq_refl</code> is <code>reflexivity</code> .
 </p>
 
 <div class="org-src-container">
@@ -3887,27 +3882,12 @@ subgoal 2 is:
   n1, n2 : nat
   ============================
   P (n1 * 0) (n2 * 0 * (n2 * 0))
-
-2 subgoals
-  
-  P : nat -&gt; nat -&gt; Type
-  c : nat
-  pcc : P c (c * c)
-  Hc : c + c = 0
-  Heq : forall n : nat, c + c = n - n -&gt; c = n * 0
-  n1, n2 : nat
-  ============================
-  P c (n2 * 0 * (n2 * 0))
-
-subgoal 2 is:
- c + c = n1 - n1
 </pre>
 
 <p>
-where, in the third command <code>rewrite -Heq.</code> , the subterms to rewrite are
-<span class="underline">all the occurrences of the first match of the filter</span> which has been
-inferred ( here <code>( _ * 0 )</code> ) from the right-hand-side of the equality
-<code>Heq</code>.
+where, in the third command <code>rewrite -Heq.</code> , the subterms to rewrite are <span class="underline">all the
+occurrences of the first match of the filter</span> which has been inferred ( here <code>( _ * 0
+)</code> ) from the right-hand-side of the equality <code>Heq</code>.
 </p>
 
 <p>
@@ -3940,7 +3920,7 @@ of Heq
 
 <p>
 where any <code>[ in .. ]</code> modifier such as <code>[ in X in P _ X ]</code> is named some
-<span class="underline">imprecise-contextual filter</span> , and any <code>{ .. }</code> modifier such as <code>{2}</code> is named some
+<span class="underline">imprecise-contextual filter</span>, and any <code>{ .. }</code> modifier such as <code>{2}</code> is named some
 <span class="underline">occurence modifier</span>, further more :
 </p>
 
@@ -4203,7 +4183,7 @@ compare_nat_rec is defined
 </pre>
 
 <p>
-And with this comparaison lemma <code>ltngtP</code>, it may be used to do <span class="underline">boolean
+And with this comparaison lemma <code>ltngtP</code> , it may be used to do <span class="underline">boolean
 simultaneous-substitution</span> of all the occurrences of <code>(m &lt; n)</code> and <code>(n &lt; m)</code> and <code>(m
 == n)</code> in the goal :
 </p>
@@ -4220,8 +4200,8 @@ lemma <code>leqP</code> .
 </div>
 </div>
 
-<div id="outline-container-orge19edd1" class="outline-3">
-<h3 id="orge19edd1"><span class="section-number-3">7.4</span> recursion</h3>
+<div id="outline-container-org333ac43" class="outline-3">
+<h3 id="org333ac43"><span class="section-number-3">7.4</span> recursion</h3>
 <div class="outline-text-3" id="text-7-4">
 <p>
 For <i>classifiers</i>, as for <i>classes</i>, the <span class="underline">recursion</span> <code>fix .. := ..</code> grammatical
@@ -4372,6 +4352,14 @@ subgoal 2 is:
 
 subgoal 2 is:
  nat * ilist m
+
+1 subgoal
+  
+  m, j, m' : nat
+  l' : ilist m'
+  Heq : m.+1 = m'.+1
+  ============================
+  nat * ilist m
 </pre>
 
 <p>
@@ -4468,15 +4456,6 @@ injectivity lemma :
   nat * ilist m'
 
 No more subgoals.
-
-case  Heq: (S _) / l =&gt; [|j m' l'].
- by [  ].
-
- case : Heq =&gt; Heq_injective.
- rewrite [m]Heq_injective.
- exact : (j, l').
-
-Defined.
 </pre>
 
 <p>
@@ -4564,7 +4543,7 @@ accumulator-memory.</li>
 
 <p>
 Memo that And the <code>COQ</code> computer is very good at detecting that the accumulator <code>m</code> is
-degrading for the <code>fix</code> command, although the term <code>m</code>' is not some
+degrading for the <code>fix</code> command, although the term <code>m'</code> is not some
 <i>immediate-subterm</i> of <code>m</code>. Elsewhere the <code>edivn</code> program handles the case of some
 zero divisor, producing the dummy pair <code>(0,m)</code> for the quotient and the remainder
 correspondingly.
@@ -4845,7 +4824,6 @@ edivnP is defined
 </pre>
 </div>
 </div>
-
 
 <div id="outline-container-org116e8b9" class="outline-3">
 <h3 id="org116e8b9"><span class="section-number-3">8.2</span> Review of OOO1337777</h3>

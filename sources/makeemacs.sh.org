@@ -21,7 +21,7 @@ if [[ -e ./.touched ]] ; then
 	# xpra list | grep ':37' || (cd ~ ; xpra start :37) &
 	# ALT:
 	# sudo Xorg -noreset +extension GLX +extension RANDR +extension RENDER -logfile ./37.log -config ./xorg.conf :37 & disown
-	emacs -d ':37' -Q -l /home/ubuntu/OOO1337777/repocache/.makeemacs_publish_init.el -f publish-worg --kill ;
+	emacs -D -d ':37' -q -l /home/ubuntu/OOO1337777/repocache/.makeemacs_publish_init.el -f publish-worg --kill ;
     fi	     
 
     git add '*' ;

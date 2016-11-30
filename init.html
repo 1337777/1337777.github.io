@@ -108,7 +108,7 @@ for the JavaScript code in this tag.
 <li><a href="#org8f25d05">6.1. inference</a></li>
 <li><a href="#orgde10255">6.2. classifying inference</a></li>
 <li><a href="#org259b9f1">6.3. alternative</a></li>
-<li><a href="#orge19edd1">6.4. recursion</a></li>
+<li><a href="#org333ac43">6.4. recursion</a></li>
 </ul>
 </li>
 <li><a href="#org5343b48">7. Deduction : classification</a>
@@ -116,7 +116,7 @@ for the JavaScript code in this tag.
 <li><a href="#org6116e68">7.1. meta-computation</a></li>
 <li><a href="#orgc5b14c7">7.2. boolean-computational reflection</a></li>
 <li><a href="#org9b17275">7.3. boolean simultaneous-substitution</a></li>
-<li><a href="#org333ac43">7.4. recursion</a></li>
+<li><a href="#org5279c4c">7.4. recursion</a></li>
 </ul>
 </li>
 <li><a href="#orgf9d80cf">8. Review of some long deductions</a>
@@ -2840,15 +2840,6 @@ question is some instance :
 subgoal 2 is:
  forall n : nat,
  n &lt;= m.+1 -&gt; 11 &lt; n -&gt; exists s4 s5 : nat, s4 * 4 + s5 * 5 = n
-
-subgoal 2 is:
-  
-  m : nat
-  IHm : forall n : nat,
-        n &lt;= m -&gt; 11 &lt; n -&gt; exists s4 s5 : nat, s4 * 4 + s5 * 5 = n
-  ============================
-  forall n : nat,
-  n &lt;= m.+1 -&gt; 11 &lt; n -&gt; exists s4 s5 : nat, s4 * 4 + s5 * 5 = n
 </pre>
 
 <div class="org-src-container">
@@ -3427,6 +3418,7 @@ case.
 (move =&gt; a b; exact : a).
 
 Defined.
+fst is defined
 </pre>
 </div>
 </div>
@@ -3553,8 +3545,8 @@ description</i> :
 </div>
 </div>
 
-<div id="outline-container-orge19edd1" class="outline-3">
-<h3 id="orge19edd1"><span class="section-number-3">6.4</span> recursion</h3>
+<div id="outline-container-org333ac43" class="outline-3">
+<h3 id="org333ac43"><span class="section-number-3">6.4</span> recursion</h3>
 <div class="outline-text-3" id="text-6-4">
 <p>
 Whenever oneself does some grammatical / inductive description / definition <code>idef1</code>
@@ -3882,6 +3874,20 @@ subgoal 2 is:
   n1, n2 : nat
   ============================
   P (n1 * 0) (n2 * 0 * (n2 * 0))
+
+2 subgoals
+  
+  P : nat -&gt; nat -&gt; Type
+  c : nat
+  pcc : P c (c * c)
+  Hc : c + c = 0
+  Heq : forall n : nat, c + c = n - n -&gt; c = n * 0
+  n1, n2 : nat
+  ============================
+  P c (n2 * 0 * (n2 * 0))
+
+subgoal 2 is:
+ c + c = n1 - n1
 </pre>
 
 <p>
@@ -3916,6 +3922,20 @@ of Heq
   n1, n2 : nat
   ============================
   P (n1 * 0) (n2 * 0 * (n2 * 0))
+
+2 subgoals
+  
+  P : nat -&gt; nat -&gt; Type
+  c : nat
+  pcc : P c (c * c)
+  Hc : c + c = 0
+  Heq : forall n : nat, c + c = n - n -&gt; c = n * 0
+  n1, n2 : nat
+  ============================
+  P (n1 * 0) (n2 * 0 * c)
+
+subgoal 2 is:
+ c + c = n2 - n2
 </pre>
 
 <p>
@@ -4155,6 +4175,16 @@ Argument b1 is implicit and maximally inserted
 Argument scope is [bool_scope]
 idP is opaque
 Expands to: Constant mathcomp.ssreflect.ssrbool.idP
+
+iffP :
+forall (P Q : Prop) (b : bool),
+reflect P b -&gt; (P -&gt; Q) -&gt; (Q -&gt; P) -&gt; reflect Q b
+
+Arguments P, Q, b are implicit
+Argument scopes are [type_scope type_scope bool_scope _ function_scope
+  function_scope]
+iffP is opaque
+Expands to: Constant mathcomp.ssreflect.ssrbool.iffP
 </pre>
 </div>
 </div>
@@ -4178,8 +4208,6 @@ numbers</span>.
 <pre class="example">
 compare_nat is defined
 compare_nat_rect is defined
-compare_nat_ind is defined
-compare_nat_rec is defined
 </pre>
 
 <p>
@@ -4200,8 +4228,8 @@ lemma <code>leqP</code> .
 </div>
 </div>
 
-<div id="outline-container-org333ac43" class="outline-3">
-<h3 id="org333ac43"><span class="section-number-3">7.4</span> recursion</h3>
+<div id="outline-container-org5279c4c" class="outline-3">
+<h3 id="org5279c4c"><span class="section-number-3">7.4</span> recursion</h3>
 <div class="outline-text-3" id="text-7-4">
 <p>
 For <i>classifiers</i>, as for <i>classes</i>, the <span class="underline">recursion</span> <code>fix .. := ..</code> grammatical
@@ -4456,6 +4484,15 @@ injectivity lemma :
   nat * ilist m'
 
 No more subgoals.
+
+case  Heq: (S _) / l =&gt; [|j m' l'].
+ by [  ].
+
+ case : Heq =&gt; Heq_injective.
+ rewrite [m]Heq_injective.
+ exact : (j, l').
+
+Defined.
 </pre>
 
 <p>
@@ -4827,6 +4864,24 @@ edivnP is defined
 
 <div id="outline-container-org116e8b9" class="outline-3">
 <h3 id="org116e8b9"><span class="section-number-3">8.2</span> Review of OOO1337777</h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+The <code>SOLUTION PROGRAMME</code> is some continuation of the <code>MATHCOMP
+PROGRAMME</code> <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>. The <code>SOLUTION PROGRAMME</code> has discovered <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> that the attempt to
+deduce associative coherence by Maclance is in fact not the reality, because this
+famous pentagone is in fact some recursive square. Moreover the <code>SOLUTION PROGRAMME</code>
+has discovered <sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup> that the categories only-named by the homologist Maclance are in
+fact the natural polymorphism of the logic of Gentzen, this enables some programming
+of congruent resolution by cut-elimination <sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup> which will serve as specification
+(reflection) technique to semi-decide the questions of coherence, in comparasion from
+the ssreflect-style. Furthermore the <code>SOLUTION PROGRAMME</code> has discovered <sup><a id="fnr.5" class="footref" href="#fn.5">5</a></sup> that
+the Galois-action for the resolution-modulo, is in fact some instance of polymorph
+functors. The motivation is that the maths are done and are communicated in some
+predictable/deterministic « time » and also in some random « moment » , without fear
+of playing 100carats, therefore the questions is : how to search for some random trick
+? &#x2026;
+</p>
+</div>
 </div>
 </div>
 
@@ -4838,6 +4893,32 @@ Haha
 </p>
 </div>
 </div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+<code>Mathematical Components</code> <a href="https://math-comp.github.io/math-comp/">https://math-comp.github.io/math-comp/</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+<code>1337777.OOO</code> <a href="https://github.com/1337777/dosen/blob/master/coherence2.v">https://github.com/1337777/dosen/blob/master/coherence2.v</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara"><p class="footpara">
+<code>1337777.OOO</code> <a href="https://github.com/1337777/borceux/blob/master/borceuxSolution2.v">https://github.com/1337777/borceux/blob/master/borceuxSolution2.v</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4">4</a></sup> <div class="footpara"><p class="footpara">
+<code>1337777.OOO</code> <a href="https://github.com/1337777/dosen/blob/master/dosenSolution3.v">https://github.com/1337777/dosen/blob/master/dosenSolution3.v</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5">5</a></sup> <div class="footpara"><p class="footpara">
+<code>1337777.OOO</code> <a href="https://github.com/1337777/aigner/blob/master/aignerSolution.v">https://github.com/1337777/aigner/blob/master/aignerSolution.v</a>
+</p></div></div>
+
+
 </div>
+</div></div>
 </body>
 </html>

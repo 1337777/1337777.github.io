@@ -4360,6 +4360,28 @@ edivnP is defined
 #+end_example
 
 ** Review of OOO1337777
+   
+   The ~SOLUTION PROGRAMME~ is some continuation of the ~MATHCOMP
+PROGRAMME~ [fn:1]. The ~SOLUTION PROGRAMME~ has discovered [fn:2] that the attempt to
+deduce associative coherence by Maclance is in fact not the reality, because this
+famous pentagone is in fact some recursive square. Moreover the ~SOLUTION PROGRAMME~
+has discovered [fn:3] that the categories only-named by the homologist Maclance are in
+fact the natural polymorphism of the logic of Gentzen, this enables some programming
+of congruent resolution by cut-elimination [fn:4] which will serve as specification
+(reflection) technique to semi-decide the questions of coherence, in comparasion from
+the ssreflect-style. Furthermore the ~SOLUTION PROGRAMME~ has discovered [fn:5] that
+the Galois-action for the resolution-modulo, is in fact some instance of polymorph
+functors. The motivation is that the maths are done and are communicated in some
+predictable/deterministic « time » and also in some random « moment » , without fear
+of playing 100carats, therefore the questions is : how to search for some random trick
+? ...
+
+
+[fn:1] ~Mathematical Components~ [[https://math-comp.github.io/math-comp/]]
+[fn:2] ~1337777.OOO~ [[https://github.com/1337777/dosen/blob/master/coherence2.v]]
+[fn:3] ~1337777.OOO~ [[https://github.com/1337777/borceux/blob/master/borceuxSolution2.v]]
+[fn:4] ~1337777.OOO~ [[https://github.com/1337777/dosen/blob/master/dosenSolution3.v]]
+[fn:5] ~1337777.OOO~ [[https://github.com/1337777/aigner/blob/master/aignerSolution.v]]
 
 * ConfusPlay
 

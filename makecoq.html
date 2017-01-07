@@ -66,7 +66,8 @@ for the JavaScript code in this tag.
 
 <span style="font-weight: bold;">echo</span> -n -e <span style="font-style: italic;">"\n--8&lt;--COQ--${1}--COQ--&gt;8--\n"</span> ;
 pgrep -d <span style="font-style: italic;">' '</span> -f <span style="font-style: italic;">'makecoq\.bash'</span> | sed <span style="font-style: italic;">"s/\\b${$}\\b//"</span> |
-sed <span style="font-style: italic;">"s/\\b${BASHPID}\\b//"</span> | sed <span style="font-style: italic;">"s/\\b${PPID}\\b//"</span> | xargs ./anywait.bash ;
+sed <span style="font-style: italic;">"s/\\b${BASHPID}\\b//"</span> | sed <span style="font-style: italic;">"s/\\b${PPID}\\b//"</span> &gt; .pids_coq ;
+cat .pids_coq | xargs ./anywait.bash ;
 
 <span style="font-weight: bold;">cd</span> ~/OOO1337777/repocache ;
 

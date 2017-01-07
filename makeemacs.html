@@ -70,7 +70,8 @@ for the JavaScript code in this tag.
     <span style="font-weight: bold;">echo</span> -n -e <span style="font-style: italic;">"\n--8&lt;--EMACS--${1}--EMACS--&gt;8--\n"</span> ;
     <span style="font-weight: bold; font-style: italic;">touched</span>=$( cat ./.touched | xargs echo ) ;
     rm ./.touched ;
-    pgrep -d <span style="font-style: italic;">' '</span> -f <span style="font-style: italic;">'makeemacs\.bash'</span> | sed <span style="font-style: italic;">"s/\\b${$}\\b//"</span> | xargs ./anywait.bash ;
+    pgrep -d <span style="font-style: italic;">' '</span> -f <span style="font-style: italic;">'makeemacs\.bash'</span> | sed <span style="font-style: italic;">"s/\\b${$}\\b//"</span> |
+    sed <span style="font-style: italic;">"s/\\b${BASHPID}\\b//"</span> | sed <span style="font-style: italic;">"s/\\b${PPID}\\b//"</span> | xargs ./anywait.bash ;
 
     <span style="font-weight: bold;">if</span> [[ -e ./.emacsgit ]] ; <span style="font-weight: bold;">then</span>
     git checkout master ;

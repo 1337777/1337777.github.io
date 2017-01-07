@@ -441,7 +441,7 @@ Module LOGIC.
   Arguments ReflV {_ _} _ _ _ .
   Arguments TransV {_ _} _ _ _ _ _ _ _ .
   Arguments SymV {_ _} _ _ _ _ _ .
-  Arguments Cong_polyV_relT {_ _} [_ _ _ _ _ _ _ _]  _ _ _ .
+  Arguments Cong_polyV_relT {_ _} [_ _ _ _ _] _ [_ _ _] _ _ .
   Arguments polyV_relT_arrow {_ _} {_ _ _ _} _ _ {_ _ _} _ _ .
   Arguments polyV_relT_morphism {_ _} {_ _ _ _ _} _ _ {_} _ _ .
   Arguments polyV_relT_unitV {_ _} [_ _ _ _] _ .
@@ -520,7 +520,7 @@ Module LOGIC.
     Proof.
       intros. eapply  (@Cong_polyV_relT _ log)  with (f:=fun _ : unit => f)  (f':=fun _ : unit => f'); intros; assumption.
     Qed.
-    Arguments Cong_polyV_relT_constant [_ _ _ _ _ _ _] _ _ .
+    Arguments Cong_polyV_relT_constant [_ _ _ _] _ [_ _] _ _ .
 
     Lemma CongCom_identitary : forall (A2 A3 : obV log), forall (f2 f2' : V(0 A2 |- A3 )0), f2 ~~ f2' -> forall A1, forall (f1 f1' : V(0 A1 |- A2 )0), f1 ~~ f1' -> f2 <o f1 ~~ f2' <o f1'.
     Proof.

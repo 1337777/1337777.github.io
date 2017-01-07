@@ -57,6 +57,9 @@ for the JavaScript code in this tag.
 </script>
 </head>
 <body>
+<div id="preamble" class="status">
+<p><a href="index.html">top</a> | <a href="theindex.html">index</a> | <a href="sitemap.html">sitemap</a> | <a href="https://github.com/1337777/OOO1337777">edit</a></p>
+</div>
 <div id="content">
 <h1 class="title">borceuxSolution.v</h1>
 <div class="org-src-container">
@@ -505,7 +508,7 @@ for the JavaScript code in this tag.
   <span style="font-weight: bold;">Arguments</span> ReflV {_ _} _ _ _ .
   <span style="font-weight: bold;">Arguments</span> TransV {_ _} _ _ _ _ _ _ _ .
   <span style="font-weight: bold;">Arguments</span> SymV {_ _} _ _ _ _ _ .
-  <span style="font-weight: bold;">Arguments</span> Cong_polyV_relT {_ _} [_ _ _ _ _ _ _ _]  _ _ _ .
+  <span style="font-weight: bold;">Arguments</span> Cong_polyV_relT {_ _} [_ _ _ _ _] _ [_ _ _] _ _ .
   <span style="font-weight: bold;">Arguments</span> polyV_relT_arrow {_ _} {_ _ _ _} _ _ {_ _ _} _ _ .
   <span style="font-weight: bold;">Arguments</span> polyV_relT_morphism {_ _} {_ _ _ _ _} _ _ {_} _ _ .
   <span style="font-weight: bold;">Arguments</span> polyV_relT_unitV {_ _} [_ _ _ _] _ .
@@ -584,7 +587,7 @@ for the JavaScript code in this tag.
     <span style="font-weight: bold;">Proof</span>.
       <span style="text-decoration: underline;">intros</span>. <span style="text-decoration: underline;">eapply</span>  (@Cong_polyV_relT _ log)  <span style="font-weight: bold; text-decoration: underline;">with</span> (f:=<span style="font-weight: bold; text-decoration: underline;">fun</span> <span style="font-weight: bold; font-style: italic;">_</span> : unit =&gt; f)  (f':=<span style="font-weight: bold; text-decoration: underline;">fun</span> <span style="font-weight: bold; font-style: italic;">_</span> : unit =&gt; f'); <span style="text-decoration: underline;">intros</span>; assumption.
     <span style="font-weight: bold;">Qed</span>.
-    <span style="font-weight: bold;">Arguments</span> Cong_polyV_relT_constant [_ _ _ _ _ _ _] _ _ .
+    <span style="font-weight: bold;">Arguments</span> Cong_polyV_relT_constant [_ _ _ _] _ [_ _] _ _ .
 
     <span style="font-weight: bold;">Lemma</span> <span style="font-weight: bold;">CongCom_identitary</span> : <span style="font-weight: bold; text-decoration: underline;">forall</span> (<span style="font-weight: bold; font-style: italic;">A2 A3</span> : obV log), <span style="font-weight: bold; text-decoration: underline;">forall</span> (<span style="font-weight: bold; font-style: italic;">f2 f2'</span> : V(0 A2 |- A3 )0), f2 ~~ f2' -&gt; <span style="font-weight: bold; text-decoration: underline;">forall</span> <span style="font-weight: bold; font-style: italic;">A1</span>, <span style="font-weight: bold; text-decoration: underline;">forall</span> (<span style="font-weight: bold; font-style: italic;">f1 f1'</span> : V(0 A1 |- A2 )0), f1 ~~ f1' -&gt; f2 &lt;o f1 ~~ f2' &lt;o f1'.
     <span style="font-weight: bold;">Proof</span>.

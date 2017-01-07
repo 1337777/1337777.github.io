@@ -57,6 +57,9 @@ for the JavaScript code in this tag.
 </script>
 </head>
 <body>
+<div id="preamble" class="status">
+<p><a href="index.html">top</a> | <a href="theindex.html">index</a> | <a href="sitemap.html">sitemap</a> | <a href="https://github.com/1337777/OOO1337777">edit</a></p>
+</div>
 <div id="content">
 <div class="org-src-container">
 <pre class="src src-bash"><span style="font-weight: bold; font-style: italic;">#</span><span style="font-weight: bold; font-style: italic;">!/bin/</span><span style="font-weight: bold;">bash</span>
@@ -67,7 +70,7 @@ for the JavaScript code in this tag.
     <span style="font-weight: bold;">echo</span> -n -e <span style="font-style: italic;">"\n--8&lt;--EMACS--${1}--EMACS--&gt;8--\n"</span> ;
     <span style="font-weight: bold; font-style: italic;">touched</span>=$( cat ./.touched | xargs echo ) ;
     rm ./.touched ;
-    pgrep -d <span style="font-style: italic;">' '</span> -f <span style="font-style: italic;">'makeemacs\.bash.+'</span> | sed <span style="font-style: italic;">"s/\\b${$}\\b//"</span> | xargs ./anywait.bash ;
+    pgrep -d <span style="font-style: italic;">' '</span> -f <span style="font-style: italic;">'makeemacs\.bash'</span> | sed <span style="font-style: italic;">"s/\\b${$}\\b//"</span> | xargs ./anywait.bash ;
 
     <span style="font-weight: bold;">if</span> [[ -e ./.emacsgit ]] ; <span style="font-weight: bold;">then</span>
     git checkout master ;

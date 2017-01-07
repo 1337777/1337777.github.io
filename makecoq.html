@@ -57,12 +57,15 @@ for the JavaScript code in this tag.
 </script>
 </head>
 <body>
+<div id="preamble" class="status">
+<p><a href="index.html">top</a> | <a href="theindex.html">index</a> | <a href="sitemap.html">sitemap</a> | <a href="https://github.com/1337777/OOO1337777">edit</a></p>
+</div>
 <div id="content">
 <div class="org-src-container">
 <pre class="src src-bash"><span style="font-weight: bold; font-style: italic;">#</span><span style="font-weight: bold; font-style: italic;">!/bin/</span><span style="font-weight: bold;">bash</span>
 
 <span style="font-weight: bold;">echo</span> -n -e <span style="font-style: italic;">"\n--8&lt;--COQ--${1}--COQ--&gt;8--\n"</span> ;
-pgrep -d <span style="font-style: italic;">' '</span> -f <span style="font-style: italic;">'makecoq\.bash.+'</span> | sed <span style="font-style: italic;">"s/\\b${$}\\b//"</span> | xargs ./anywait.bash ;
+pgrep -d <span style="font-style: italic;">' '</span> -f <span style="font-style: italic;">'makecoq\.bash'</span> | sed <span style="font-style: italic;">"s/\\b${$}\\b//"</span> | xargs ./anywait.bash ;
 
 <span style="font-weight: bold;">cd</span> ~/OOO1337777/repocache ;
 

@@ -57,6 +57,9 @@ for the JavaScript code in this tag.
 </script>
 </head>
 <body>
+<div id="preamble" class="status">
+<p><a href="index.html">top</a> | <a href="theindex.html">index</a> | <a href="sitemap.html">sitemap</a> | <a href="https://github.com/1337777/OOO1337777">edit</a></p>
+</div>
 <div id="content">
 <div class="org-src-container">
 <pre class="src src-bash"><span style="font-weight: bold; font-style: italic;">#</span><span style="font-weight: bold; font-style: italic;">!/bin/</span><span style="font-weight: bold;">bash</span>
@@ -140,8 +143,8 @@ ssh-add ~/.ssh/ooo1337777.pem ;
     cp ./.touched <span style="font-style: italic;">"./.${nowdate}.touched"</span> ;
 
     <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">crontab every 15 mins * 4 touches in queue -&gt; more than 1h old processes</span>
-    <span style="font-weight: bold;">if</span> (( $(<span style="font-weight: bold;">pgrep</span> --count -f <span style="font-style: italic;">'makeemacs\.bash.+|makecoq\.bash.+'</span>) &gt;= 5 )) ; <span style="font-weight: bold;">then</span>
-        pkill --oldest -f <span style="font-style: italic;">'makecoq\.bash.+'</span> ; pkill --oldest -f <span style="font-style: italic;">'makeemacs\.bash.+'</span> ;
+    <span style="font-weight: bold;">if</span> (( $(<span style="font-weight: bold;">pgrep</span> --count -f <span style="font-style: italic;">'makeemacs\.bash|makecoq\.bash'</span>) &gt;= 5 )) ; <span style="font-weight: bold;">then</span>
+        pkill --oldest -f <span style="font-style: italic;">'makecoq\.bash'</span> ; pkill --oldest -f <span style="font-style: italic;">'makeemacs\.bash'</span> ;
     <span style="font-weight: bold;">fi</span>
 
     ./makeemacs.bash <span style="font-style: italic;">"${nowdate}"</span> &amp; <span style="font-weight: bold;">disown</span>

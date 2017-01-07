@@ -3608,7 +3608,7 @@ Abort.
 #+BEGIN_SRC coq :exports both
 Inductive reflect (P : Type) : bool -> Type :=
 | ReflectT (p : P) : reflect P true
-| ReflectF (np : P -> False) : reflect P false
+| ReflectF (np : P -> False) : reflect P false.
 #+END_SRC
 
 #+RESULTS:
@@ -4361,27 +4361,35 @@ edivnP is defined
 
 ** Review of OOO1337777
    
-   The ~SOLUTION PROGRAMME~ is some continuation of the ~MATHCOMP
-PROGRAMME~ [fn:1]. The ~SOLUTION PROGRAMME~ has discovered [fn:2] that the attempt to
-deduce associative coherence by Maclance is in fact not the reality, because this
-famous pentagone is in fact some recursive square. Moreover the ~SOLUTION PROGRAMME~
-has discovered [fn:3] that the categories only-named by the homologist Maclance are in
-fact the natural polymorphism of the logic of Gentzen, this enables some programming
-of congruent resolution by cut-elimination [fn:4] which will serve as specification
-(reflection) technique to semi-decide the questions of coherence, in comparasion from
-the ssreflect-style. Furthermore the ~SOLUTION PROGRAMME~ has discovered [fn:5] that
-the Galois-action for the resolution-modulo, is in fact some instance of polymorph
-functors. The motivation is that the maths are done and are communicated in some
-predictable/deterministic « time » and also in some random « moment » , without fear
-of playing 100carats, therefore the questions is : how to search for some random trick
-? ...
+   The ~SOLUTION PROGRAMME~ is some continuation of the ~DOSEN PROGRAMME~ [fn:1] and
+the ~COQ MATH-COMP PROGRAMME~ [fn:2] [fn:3].
+   
+   The ~SOLUTION PROGRAMME~ has discovered [fn:4] [fn:5] that the attempt to deduce
+associative coherence by Maclance is in fact not the reality, because this famous
+pentagone is in fact some recursive square.
 
+   Moreover the ~SOLUTION PROGRAMME~ has discovered [fn:6] [fn:7] that the categories
+only-named by the homologist Maclane are in fact the natural polymorphism of the logic
+of Gentzen, this enables some programming of congruent resolution by
+cut-elimination [fn:8] which will serve as specification (reflection) technique to
+semi-decide the questions of coherence, in comparasion from the ssreflect-style.
 
-[fn:1] ~Mathematical Components~ [[https://math-comp.github.io/math-comp/]]
-[fn:2] ~1337777.OOO~ [[https://github.com/1337777/dosen/blob/master/coherence2.v]]
-[fn:3] ~1337777.OOO~ [[https://github.com/1337777/borceux/blob/master/borceuxSolution2.v]]
-[fn:4] ~1337777.OOO~ [[https://github.com/1337777/dosen/blob/master/dosenSolution3.v]]
-[fn:5] ~1337777.OOO~ [[https://github.com/1337777/aigner/blob/master/aignerSolution.v]]
+Furthermore the ~SOLUTION PROGRAMME~ has discovered [fn:9] [fn:10] that the
+Galois-action for the resolution-modulo, is in fact some instance of polymorph
+functors.
+
+And the ~SOLUTION PROGRAMME~ has discovered [fn:11] [fn:12] how to program polymorph
+coparametrism functors ( "comonad" ).
+
+Additionnally, the ~SOLUTION PROGRAMME~ has discovered
+information-technology [fn:13] [fn:14] [fn:15] based on the _EMACS org-mode_ logiciel
+which enables communication of _timed-synchronized_ _geolocated_
+_simultaneously-edited_ _multi-authors_ _searchable_ text, and therefore communication
+of textual COQ math programming, and which enables _webcitations / reviews_.
+
+Whatever is discovered, its format, its communication is simultaneously some
+predictable logical discovery and some random dia-para-logical discovery.
+
 
 * ConfusPlay
 
@@ -4391,23 +4399,23 @@ of playing 100carats, therefore the questions is : how to search for some random
 sequence of symbols alphabet =(alphabet : seq T)= and shall generate some list
 containing any word-of-size-n, which signifies : some list of list-of-size-n.
 
-#+BEGIN_SRC coq :exports code
-Eval compute in all_words 2 [:: 1; 2; 3].
-#+END_SRC
 
-#+RESULTS:
-#+begin_example
+#+BEGIN_EXAMPLE coq
+Eval compute in all_words 2 [:: 1; 2; 3].
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE coq
 = [:: [:: 1; 1]; [:: 1; 2]; [:: 1; 3];
 [:: 2; 1]; [:: 2; 2]; [:: 2; 3];
 [:: 3; 1]; [:: 3; 2]; [:: 3; 3]]
-#+end_example
+#+END_EXAMPLE
 
-#+BEGIN_SRC coq :exports code
+#+BEGIN_EXAMPLE coq
 Definition all_words (n : nat) (T : Type) (alphabet : seq T) :=
   let prepend x wl := [seq x :: w | w <- wl] in
   let extend wl := flatten [seq prepend x wl | x <- alphabet] in
     iter n extend [::].
-#+END_SRC
+#+END_EXAMPLE
 
 ** ConfusPlay 2, refer [[ConfusPlay 1][ConfusPlay 1]]
 
@@ -4416,7 +4424,7 @@ Definition all_words (n : nat) (T : Type) (alphabet : seq T) :=
 =size_extend= and =size_all_words= such that this
 nested-(double)-induction-in-single-lemma is erased.
 
-#+BEGIN_SRC coq :exports code
+#+BEGIN_EXAMPLE coq
 Lemma size_all_words n T (alphabet : seq T) :
   size (all_words n alphabet) = size alphabet ^ n.
 
@@ -4426,4 +4434,36 @@ rewrite expnS -{}(** ???1 **) [in LHS]/all_words iterS -/(all_words _ _).
 elim: alphabet (all_words _ _) => //= w ws IHws aw.
 by rewrite size_cat (** ???2 **) size_map mulSn.
 Qed.
-#+END_SRC
+#+END_EXAMPLE
+
+* Reviews
+
+[fn:1] ~DOSEN~ [[http://www.mi.sanu.ac.rs/~kosta]]
+
+[fn:2] ~COQ~ [[https://coq.inria.fr]]
+
+[fn:3] ~1337777.OOO~ [[https://1337777.github.io/init.html]]
+
+[fn:4] ~1337777.OOO~ [[https://github.com/1337777/dosen/blob/master/coherence2.v]]
+
+[fn:5] ~1337777.OOO~ [[https://github.com/1337777/dosen/blob/master/coherence.v]]
+
+[fn:6] ~1337777.OOO~ [[https://github.com/1337777/borceux/blob/master/borceuxSolution2.v]]
+
+[fn:7] ~1337777.OOO~ [[https://github.com/1337777/borceux/blob/master/chic05.pdf]]
+
+[fn:8] ~1337777.OOO~ [[https://github.com/1337777/dosen/blob/master/dosenSolution3.v]]
+
+[fn:9] ~1337777.OOO~ [[https://github.com/1337777/aigner/blob/master/aignerSolution.v]]
+
+[fn:10] ~1337777.OOO~ [[https://github.com/1337777/aigner/blob/master/ocic04-where-is-combinatorics.pdf]]
+
+[fn:11] ~1337777.OOO~ [[https://github.com/1337777/laozi/blob/master/ocic03-what-is-normal.djvu]]
+
+[fn:12] ~1337777.OOO~ [[https://github.com/1337777/laozi/blob/master/laoziSolution2.v]]
+
+[fn:13] ~1337777.OOO~ [[https://github.com/1337777/OOO1337777/blob/master/makegit.sh.org]]
+
+[fn:14] ~1337777.OOO~ [[http://1337777.link/ooo/guJAH-jSeQcTEST/2016/1/5/11/9/11/1]]
+
+[fn:15] ~1337777.OOO~ [[https://github.com/1337777/upo/blob/master/editableTree.urp]]

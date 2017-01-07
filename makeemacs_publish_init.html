@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title></title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Ubuntu" />
+<link rel="stylesheet" type="text/css" href="./code/style.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">package</span>)
+(add-to-list 'load-path (expand-file-name <span style="font-style: italic;">"~/.emacs.d/elpa"</span>))
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">for package htmlize</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)</span>
+(package-initialize)
+
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">org</span>)
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">ob</span>)
+<span style="font-weight: bold; font-style: italic;">;;</span><span style="font-weight: bold; font-style: italic;">(require 'ob-coq)</span>
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">ox</span>)
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">ox-html</span>)
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">ox-org</span>)
+
+<span style="font-weight: bold; font-style: italic;">;;;;;;;;;;;;;;;;;</span><span style="font-weight: bold; font-style: italic;">change export;;;;;;;;;;;;;;;;;;;</span>
+(load (expand-file-name <span style="font-style: italic;">"~/OOO1337777/repocache/makeemacs_export_init.el"</span>))
+<span style="font-weight: bold; font-style: italic;">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+
+<span style="font-weight: bold; font-style: italic;">;;</span><span style="font-weight: bold; font-style: italic;">(show-paren-mode 1)</span>
+<span style="font-weight: bold; font-style: italic;">;;</span><span style="font-weight: bold; font-style: italic;">(menu-bar-mode 0)</span>
+(setq make-backup-files nil
+      vc-handled-backends nil)
+
+(setq org-export-default-language <span style="font-style: italic;">"en"</span>
+      org-export-html-extension <span style="font-style: italic;">"html"</span>
+      org-html-postamble nil
+      org-export-with-timestamps t
+      org-export-time-stamp-file nil
+      org-export-with-section-numbers t
+      org-export-with-tags 'not-in-toc
+      org-export-skip-text-before-1st-heading nil
+      org-export-with-sub-superscripts '{}
+      org-export-with-LaTeX-fragments t
+      org-export-with-archived-trees nil
+      org-export-highlight-first-table-line t
+      org-export-latex-listings-w-names nil
+      org-html-head-include-default-style nil
+      org-html-head <span style="font-style: italic;">"&lt;link rel=\"stylesheet\" type=\"text/css\" href=\"./code/style.css\"/&gt;"</span>
+      org-export-htmlize-output-type 'css
+      org-startup-folded nil
+      org-export-allow-BIND t
+      org-publish-list-skipped-files t
+      org-publish-use-timestamps-flag t
+      org-confirm-babel-evaluate nil)
+
+
+(eval-after-load <span style="font-style: italic;">"org-html"</span>
+'(setq org-html-scripts
+       (concat org-html-scripts <span style="font-style: italic;">"\n"</span>
+               <span style="font-style: italic;">"&lt;script type=\"text/javascript\"&gt;</span>
+<span style="font-style: italic;">    function rpl(expr,a,b) {</span>
+<span style="font-style: italic;">      var i=0</span>
+<span style="font-style: italic;">      while (i!=-1) {</span>
+<span style="font-style: italic;">         i=expr.indexOf(a,i);</span>
+<span style="font-style: italic;">         if (i&gt;=0) {</span>
+<span style="font-style: italic;">            expr=expr.substring(0,i)+b+expr.substring(i+a.length);</span>
+<span style="font-style: italic;">            i+=b.length;</span>
+<span style="font-style: italic;">         }</span>
+<span style="font-style: italic;">      }</span>
+<span style="font-style: italic;">      return expr</span>
+<span style="font-style: italic;">    }</span>
+
+<span style="font-style: italic;">    function show_org_source(){</span>
+<span style="font-style: italic;">       document.location.href = rpl(document.location.href,\"html\",\"org.html\");</span>
+<span style="font-style: italic;">    }</span>
+<span style="font-style: italic;">&lt;/script&gt;</span>
+<span style="font-style: italic;">"</span>)))
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">re-export everything regardless of whether or not it's been modified</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">(setq org-publish-use-timestamps-flag nil)</span>
+
+(setq worg-base (expand-file-name <span style="font-style: italic;">"~/OOO1337777/repoimport/"</span>))
+(setq worg-htmlroot (expand-file-name <span style="font-style: italic;">"~/OOO1337777/repocache/"</span>))
+(setq worg-base-directory worg-base)
+(setq worg-base-style-directory (concat worg-base <span style="font-style: italic;">"style/"</span>))
+(setq worg-base-code-directory (concat worg-base <span style="font-style: italic;">"code/"</span>))
+(setq worg-base-color-themes-directory (concat worg-base <span style="font-style: italic;">"color-themes/"</span>))
+(setq worg-base-images-directory (concat worg-base <span style="font-style: italic;">"images/"</span>))
+(setq worg-publish-directory worg-htmlroot)
+(setq worg-publish-style-directory (concat worg-htmlroot <span style="font-style: italic;">"style/"</span>))
+(setq worg-publish-code-directory (concat worg-htmlroot <span style="font-style: italic;">"code/"</span>))
+(setq worg-publish-sources-directory (concat worg-htmlroot <span style="font-style: italic;">"sources/"</span>))
+(setq worg-publish-color-themes-directory (concat worg-htmlroot <span style="font-style: italic;">"color-themes/"</span>))
+(setq worg-publish-images-directory (concat worg-htmlroot <span style="font-style: italic;">"images/"</span>))
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">set-org-publish-project-alist</span> ()
+  <span style="font-style: italic;">"Set publishing projects for Orgweb and Worg."</span>
+  (interactive)
+  (setq org-publish-project-alist
+        `((<span style="font-style: italic;">"worg"</span> 
+           <span style="font-weight: bold;">:components</span> (<span style="font-style: italic;">"worg-pages"</span> <span style="font-style: italic;">"worg-code"</span> <span style="font-style: italic;">"worg-sources"</span>)
+           )
+          (<span style="font-style: italic;">"worg-pages"</span>
+           <span style="font-weight: bold;">:base-directory</span> ,worg-base-directory
+           <span style="font-weight: bold;">:base-extension</span> <span style="font-style: italic;">"org"</span>
+           <span style="font-weight: bold;">:exclude</span> <span style="font-style: italic;">"FIXME"</span>
+           <span style="font-weight: bold;">:makeindex</span> t
+           <span style="font-weight: bold;">:auto-sitemap</span> t
+           <span style="font-weight: bold;">:sitemap-ignore-case</span> t
+           <span style="font-weight: bold;">:html-extension</span> <span style="font-style: italic;">"html"</span>
+           <span style="font-weight: bold;">:publishing-directory</span> ,worg-publish-directory
+           <span style="font-weight: bold;">:publishing-function</span> (org-html-publish-to-html ( lambda (pl fn dn) (org-babel-tangle-file fn (concat (file-name-as-directory dn) (file-name-base fn) <span style="font-style: italic;">".v"</span>) <span style="font-style: italic;">"coq"</span>) ))
+           <span style="font-weight: bold;">:htmlized-source</span> t
+<span style="font-weight: bold; font-style: italic;">;;</span><span style="font-weight: bold; font-style: italic;">         :section-numbers nil</span>
+           <span style="font-weight: bold;">:with-toc</span> t
+<span style="font-weight: bold; font-style: italic;">;;</span><span style="font-weight: bold; font-style: italic;">         :table-of-contents nil</span>
+           <span style="font-weight: bold;">:with-timestamps</span> t
+           <span style="font-weight: bold;">:timestamps</span> nil
+           <span style="font-weight: bold;">:html-style</span> nil  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">org-html-head-include-default-style</span>
+           <span style="font-weight: bold;">:html-head</span> <span style="font-style: italic;">"&lt;link rel=\"stylesheet\" type=\"text/css\" href=\"./code/style.css\"/&gt;"</span>
+           <span style="font-weight: bold;">:recursive</span> t
+           <span style="font-weight: bold;">:html-preamble</span> nil
+<span style="font-weight: bold; font-style: italic;">;;</span><span style="font-weight: bold; font-style: italic;">         :html-preamble ,(with-temp-buffer (insert-file-contents "/home/emacs/git/worg/preamble.html") (buffer-string))</span>
+           <span style="font-weight: bold;">:html-postamble</span> nil
+<span style="font-weight: bold; font-style: italic;">;;</span><span style="font-weight: bold; font-style: italic;">         :html-postamble "&lt;div id=\"show_source\"&gt;&lt;input type=\"button\" value=\"Show Org source\" onClick='show_org_source()'&gt;&lt;/div&gt;&lt;div id=\"license\"&gt;&lt;p&gt;Documentation from the http://orgmode.org/worg/ website (either in its HTML format or in its Org format) is licensed under the &lt;a href=\"http://www.gnu.org/copyleft/fdl.html\"&gt;GNU Free Documentation License version 1.3&lt;/a&gt; or later.  The code examples and css stylesheets are licensed under the &lt;a href=\"http://www.gnu.org/licenses/gpl.html\"&gt;GNU General Public License v3&lt;/a&gt; or later.&lt;/p&gt;&lt;/div&gt;"</span>
+           )
+          (<span style="font-style: italic;">"worg-code"</span>
+           <span style="font-weight: bold;">:base-directory</span> ,worg-base-code-directory
+           <span style="font-weight: bold;">:base-extension</span> <span style="font-style: italic;">"v</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">|</span><span style="font-style: italic;">css</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">|</span><span style="font-style: italic;">js</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">|</span><span style="font-style: italic;">sh"</span> <span style="font-weight: bold; font-style: italic;">;;</span><span style="font-weight: bold; font-style: italic;">"v\\|html\\|css\\|png\\|js\\|sh\\|bz2\\|el\\|sty\\|awk\\|pl"</span>
+           <span style="font-weight: bold;">:publishing-directory</span> ,worg-publish-code-directory
+           <span style="font-weight: bold;">:recursive</span> t
+           <span style="font-weight: bold;">:publishing-function</span> (org-publish-attachment (<span style="font-weight: bold;">lambda</span> (pl fn dn) (htmlize-file fn dn)))
+           )
+          (<span style="font-style: italic;">"worg-sources"</span>
+           <span style="font-weight: bold;">:base-directory</span> ,worg-base-directory
+           <span style="font-weight: bold;">:base-extension</span> <span style="font-style: italic;">"org"</span>
+           <span style="font-weight: bold;">:exclude</span> <span style="font-style: italic;">"theindex\\.org</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">|</span><span style="font-style: italic;">sitemap\\.org"</span>
+           <span style="font-weight: bold;">:publishing-directory</span> ,worg-publish-sources-directory
+           <span style="font-weight: bold;">:recursive</span> t
+           <span style="font-weight: bold;">:publishing-function</span> org-publish-attachment )
+          (<span style="font-style: italic;">"worg-images"</span>
+           <span style="font-weight: bold;">:base-directory</span> ,worg-base-directory
+           <span style="font-weight: bold;">:base-extension</span> <span style="font-style: italic;">"png</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">|</span><span style="font-style: italic;">jpg</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">|</span><span style="font-style: italic;">gif</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">|</span><span style="font-style: italic;">pdf</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">|</span><span style="font-style: italic;">csv</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">|</span><span style="font-style: italic;">css</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">|</span><span style="font-style: italic;">tex"</span>
+           <span style="font-weight: bold;">:publishing-directory</span> ,worg-publish-images-directory
+           <span style="font-weight: bold;">:recursive</span> t
+           <span style="font-weight: bold;">:publishing-function</span> org-publish-attachment)
+          (<span style="font-style: italic;">"worg-extra"</span>
+           <span style="font-weight: bold;">:base-directory</span> ,worg-base-style-directory
+           <span style="font-weight: bold;">:base-extension</span> <span style="font-style: italic;">"css"</span>
+           <span style="font-weight: bold;">:publishing-directory</span> ,worg-publish-style-directory
+           <span style="font-weight: bold;">:publishing-function</span> org-publish-attachment)
+)))
+
+(set-org-publish-project-alist)
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">worg-fix-symbol-table</span> ()
+  (<span style="font-weight: bold;">when</span> (string-match <span style="font-style: italic;">"org-symbols\\.html"</span> buffer-file-name)
+    (goto-char (point-min))
+    (<span style="font-weight: bold;">while</span> (re-search-forward <span style="font-style: italic;">"&lt;td&gt;&amp;amp;</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">(</span><span style="font-style: italic;">[</span><span style="font-style: italic;">^</span><span style="font-style: italic;">&lt;;]+;</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">)</span><span style="font-style: italic;">"</span> nil t)
+      (replace-match (concat <span style="font-style: italic;">"&lt;td&gt;&amp;"</span> (match-string 1)) t t))))
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">publish-worg</span> nil
+   <span style="font-style: italic;">"Publish Worg."</span>
+   (interactive)
+   (add-hook 'org-publish-after-export-hook 'worg-fix-symbol-table)
+   (<span style="font-weight: bold;">let</span> ((org-format-latex-signal-error nil)
+         (worg-base-directory worg-base)
+         (worg-base-code-directory (concat worg-base <span style="font-style: italic;">"code/"</span>))
+         (worg-base-color-themes-directory (concat worg-base <span style="font-style: italic;">"color-themes/"</span>))
+         (worg-base-images-directory (concat worg-base <span style="font-style: italic;">"images/"</span>))
+         (worg-publish-directory worg-htmlroot))
+     (set-org-publish-project-alist)
+     (message <span style="font-style: italic;">"Emacs %s"</span> emacs-version)
+     (org-version)
+     (<span style="font-weight: bold;">ignore-errors</span> (org-publish-project <span style="font-style: italic;">"worg"</span>))
+     (kill-emacs)))
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">publish-orgweb</span> nil
+   <span style="font-style: italic;">"Publish Org web pages."</span>
+   (interactive)
+   (add-hook 'org-publish-after-export-hook 'worg-fix-symbol-table)
+   (<span style="font-weight: bold;">let</span> ((org-format-latex-signal-error nil)
+         (org-export-with-sub-superscripts nil))
+     (set-org-publish-project-alist)
+     (org-publish-project <span style="font-style: italic;">"orgweb"</span>)))
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">parse-org-quotes</span> ()
+  <span style="font-style: italic;">"Create ~/orgmode.org/org-quotes.js from org-quotes.org."</span>
+  (interactive)
+  (load (concat worg-base <span style="font-style: italic;">"code/elisp/worg-fortune.el"</span>))
+  (worg-write-fortune-file
+   (concat worg-base <span style="font-style: italic;">"org-quotes.org"</span>)
+   <span style="font-style: italic;">"~/orgmode.org/org-quotes.js"</span>
+   120
+   <span style="font-style: italic;">"r_text[%d] = \"%s\";"</span> <span style="font-style: italic;">"\n"</span>
+   'worg-fortune-insert-javascript-pre
+   'worg-fortune-insert-javascript-post))
+</pre>
+</div>
+</div>
+</body>
+</html>

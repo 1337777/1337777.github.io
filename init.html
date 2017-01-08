@@ -57,6 +57,9 @@ for the JavaScript code in this tag.
 </script>
 </head>
 <body>
+<div id="preamble" class="status">
+<p><a href="index.html">top</a> | <a href="theindex.html">index</a> | <a href="sitemap.html">sitemap</a> | <a href="https://github.com/1337777/OOO1337777">edit</a></p>
+</div>
 <div id="content">
 <h1 class="title">Initial</h1>
 <div id="table-of-contents">
@@ -70,7 +73,7 @@ for the JavaScript code in this tag.
 <li><a href="#orgc6fa629">2.2. Numbers data</a></li>
 </ul>
 </li>
-<li><a href="#orgc00d4d2">3. Polymorphism : polymorphic data, polymorphic functions</a>
+<li><a href="#org61b34fe">3. Parametrism : parametric data, parametric functions</a>
 <ul>
 <li><a href="#orgf587c97">3.1. Option data</a></li>
 <li><a href="#orgd9d18ca">3.2. List data</a></li>
@@ -105,7 +108,7 @@ for the JavaScript code in this tag.
 <li><a href="#org78af1ae">6.1. inference</a></li>
 <li><a href="#org1025155">6.2. classifying inference</a></li>
 <li><a href="#org287d260">6.3. alternative</a></li>
-<li><a href="#org66d441c">6.4. recursion</a></li>
+<li><a href="#orga148bcb">6.4. recursion</a></li>
 </ul>
 </li>
 <li><a href="#orgd8d9bee">7. Deduction : classification</a>
@@ -113,7 +116,7 @@ for the JavaScript code in this tag.
 <li><a href="#orga09a6b7">7.1. meta-computation</a></li>
 <li><a href="#org8bd99e8">7.2. boolean-computational reflection</a></li>
 <li><a href="#org8625402">7.3. boolean simultaneous-substitution</a></li>
-<li><a href="#orga148bcb">7.4. recursion</a></li>
+<li><a href="#orge4c4b54">7.4. recursion</a></li>
 </ul>
 </li>
 <li><a href="#orgf1dddce">8. Review of some long deductions</a>
@@ -381,6 +384,9 @@ The name of the two constructors are <code>true</code> and <code>false</code> , 
 
 <pre class="example">
 bool is defined
+bool_rect is defined
+bool_ind is defined
+bool_rec is defined
 </pre>
 
 <p>
@@ -541,10 +547,6 @@ level 10). Attempt :
 <pre class="example">
 fun x : nat =&gt; id x.+1
      : nat -&gt; nat
-
-Notation            Scope     
-"n .+1" := S n       : nat_scope
-                      (default interpretation)
 </pre>
 
 <p>
@@ -757,17 +759,6 @@ p is declared
 
 add is defined
 add is recursively defined (decreasing on 1st argument)
-
-
-add = 
-fun p : nat =&gt;
-fix add (n : nat) : nat := match n with
-                           | 0 =&gt; p
-                           | t.+1 =&gt; (add t).+1
-                           end
-     : nat -&gt; nat -&gt; nat
-
-Argument scopes are [nat_scope nat_scope]
 </pre>
 
 <div class="org-src-container">
@@ -873,8 +864,8 @@ element <code>3</code>.
 </div>
 </div>
 
-<div id="outline-container-orgc00d4d2" class="outline-2">
-<h2 id="orgc00d4d2"><span class="section-number-2">3</span> Polymorphism : polymorphic data, polymorphic functions</h2>
+<div id="outline-container-org61b34fe" class="outline-2">
+<h2 id="org61b34fe"><span class="section-number-2">3</span> Parametrism : parametric data, parametric functions</h2>
 <div class="outline-text-2" id="text-3">
 </div><div id="outline-container-orgf587c97" class="outline-3">
 <h3 id="orgf587c97"><span class="section-number-3">3.1</span> Option data</h3>
@@ -933,6 +924,14 @@ None is template universe polymorphic
 Argument A is implicit and maximally inserted
 Argument scope is [type_scope]
 Expands to: Constructor Coq.Init.Datatypes.None
+
+Some : forall A : Type, A -&gt; option A
+
+Some is template universe polymorphic
+Arguments are renamed to A, a
+Argument A is implicit and maximally inserted
+Argument scopes are [type_scope _]
+Expands to: Constructor Coq.Init.Datatypes.Some
 </pre>
 
 <p>
@@ -953,7 +952,7 @@ Type)</code> are of class <code>Type</code>, and may be used in place of <code>A
 </div>
 
 <p>
-Memo that all the constructors of this polymorphic data type definition, in reality,
+Memo that all the constructors of this parametric / polymorphic data type definition, in reality,
 have some type parameter, where as described in some section above, the <i>classifying
 inference</i> keytext <code>forall .. , ..</code> is some more general form of the <i>inference</i>
 keytext <code>.. -&gt; ..</code> .
@@ -1024,8 +1023,8 @@ translates it to <code>@None _</code>.
 <p>
 Now oneself wants some version of the data type <code>nat</code> which is <span class="underline">container</span> for more
 information / data, which is that each alternative <code>O | S (n : nat)</code> may contain more
-data which says <i>how</i> successor (or how zero). This is precisely the <code>polymorphic list
-/ seq type</code> :
+data which says <i>how</i> successor (or how zero). This is precisely the <code>parametric /
+polymorphic list / seq type</code> :
 </p>
 
 <div class="org-src-container">
@@ -1034,7 +1033,7 @@ data which says <i>how</i> successor (or how zero). This is precisely the <code>
 </div>
 
 <p>
-This polymorphic data type may indeed be instantiated to contain booleans <code>(seq bool)</code>
+This parametric data type may indeed be instantiated to contain booleans <code>(seq bool)</code>
 or be instantiated to contain numbers <code>(seq nat)</code> :
 </p>
 
@@ -1059,16 +1058,13 @@ or be instantiated to contain numbers <code>(seq nat)</code> :
 
 [:: 2; 1; 3]
      : seq nat
-
-fun l : seq nat =&gt; [:: 2, 1, 3 &amp; l]
-     : seq nat -&gt; seq nat
 </pre>
 
 <p>
 In addition to the common functions which <i>precisely-inspect</i> the input, oneself may
-write <span class="underline">polymorphic functions</span> which <i>only-touch the form</i> of the input. For example
-oneself may write one single function which compute the number form (size) of any list
-(booleans list or numbers list or else) :
+write <span class="underline">parametric / polymorphic functions</span> which <i>only-touch the form</i> of the
+input. For example oneself may write one single function which compute the number form
+(size) of any list (booleans list or numbers list or else) :
 </p>
 
 <div class="org-src-container">
@@ -1090,7 +1086,7 @@ Elsewhere, memo that any sequence <code>[:: true; false; true]</code> may be com
 some function <code>[:: 0 |-&gt; true; 1 |-&gt; false; 2 |-&gt; true]</code> which when given some
 position <code>0</code> , <code>1</code> or <code>2</code> output the corresponding item <code>true</code> , <code>false</code> or <code>true</code> of
 the sequence. Therefore oneself may input any sequence and input another function as
-both arguments to some <span class="underline">composition</span> / <span class="underline">map</span> (polymorphic) function :
+both arguments to some <span class="underline">composition</span> / <span class="underline">map</span> (parametric) function :
 </p>
 
 <div class="org-src-container">
@@ -1137,7 +1133,7 @@ used ( the identifier <code>i</code> is bound / held in the term <code>E</code> 
 </div>
 
 <p>
-In addition to the function <code>map</code> there are more <i>advanced-polymorphic</i> function which
+In addition to the function <code>map</code> there are more <i>advanced-parametric</i> function which
 only-touch sequences, as described in the file <code>seq.v</code>. For instance the <code>filter</code>
 function and its notation <code>[seq i &lt;- s | p]</code> filters the sequence <code>s</code> keeping only the
 values selected by the boolean test <code>p</code>, whenever the common parameter <code>A</code>
@@ -1159,14 +1155,11 @@ function</i> when <code>map</code> is only <span class="underline">partially app
 <pre class="example">
 [seq ~~ i | i &lt;- [:: true; false; true]]
      : seq bool
-
-map [eta negb]
-     : seq bool -&gt; seq bool
 </pre>
 
 <p>
 Finally, oneself shall clarify the link of <code>bool</code> with <code>option</code>, and the link of <code>nat</code>
-with <code>seq</code>. Primo, define the (non-polymorphic) <span class="underline">unit type / class</span> which has some
+with <code>seq</code>. Primo, define the (non-parametric) <span class="underline">unit type / class</span> which has some
 single constructor <code>tt</code> (and only one inhabitant) :
 </p>
 
@@ -1356,6 +1349,7 @@ is by whatelse (inner) arguments / indices this fixed parameter <code>x</code> i
 eq is defined
 eq_rect is defined
 eq_ind is defined
+eq_rec is defined
 </pre>
 
 <div class="org-src-container">
@@ -1929,12 +1923,6 @@ notation</code> ( or <code>automatic declassification</code> ) and is based from
 </div>
 
 <pre class="example">
-1 subgoal
-  
-  ============================
-  forall (xy : prod nat nat) (_ : is_true (prime (fst (xy : prod nat nat))))
-    (_ : Logic.eq (odd (snd xy)) true),
-  is_true (leq (S (S O)) (addn (snd xy) (fst xy)))
 </pre>
 </div>
 </div>
@@ -3385,6 +3373,7 @@ split.
  exact : (S (S O)).
 
 Defined.
+pair_false_2 is defined
 </pre>
 
 <p>
@@ -3433,11 +3422,6 @@ deduction-term as the manually written deduction-term above :
   A -&gt; B -&gt; A
 
 No more subgoals.
-
-case.
-(move =&gt; a b; exact : a).
-
-Defined.
 </pre>
 </div>
 </div>
@@ -3484,6 +3468,11 @@ Primo, the <code>COQ</code> deduction / tactic command corresponding to the cons
 No more subgoals.
 
 (existT ilist 3 (icons 6 (icons 7 (icons 5 inil))))
+
+exists 3.
+exact : (icons 6 (icons 7 (icons 5 inil))).
+
+Defined.
 </pre>
 
 <p>
@@ -3564,8 +3553,8 @@ description</i> :
 </div>
 </div>
 
-<div id="outline-container-org66d441c" class="outline-3">
-<h3 id="org66d441c"><span class="section-number-3">6.4</span> recursion</h3>
+<div id="outline-container-orga148bcb" class="outline-3">
+<h3 id="orga148bcb"><span class="section-number-3">6.4</span> recursion</h3>
 <div class="outline-text-3" id="text-6-4">
 <p>
 Whenever oneself does some grammatical / inductive description / definition <code>idef1</code>
@@ -4072,6 +4061,9 @@ The <span class="underline">reflect classifier</span> internalizes the <span cla
 
 <pre class="example">
 reflect is defined
+reflect_rect is defined
+reflect_ind is defined
+reflect_rec is defined
 </pre>
 
 <p>
@@ -4147,6 +4139,17 @@ command <code>case : .. / ..</code> shall be queried directly.
   a, b : bool
   ============================
   (a || ~~ a) &amp;&amp; (a &amp;&amp; b ==&gt; (a == b))
+
+2 subgoals
+  
+  a, b : bool
+  _p_ : a /\ b
+  E : a &amp;&amp; b = true
+  ============================
+  (a || ~~ a) &amp;&amp; (true ==&gt; (a == b))
+
+subgoal 2 is:
+ (a || ~~ a) &amp;&amp; (false ==&gt; (a == b))
 </pre>
 
 <p>
@@ -4198,6 +4201,9 @@ numbers</span>.
 
 <pre class="example">
 compare_nat is defined
+compare_nat_rect is defined
+compare_nat_ind is defined
+compare_nat_rec is defined
 </pre>
 
 <p>
@@ -4218,8 +4224,8 @@ lemma <code>leqP</code> .
 </div>
 </div>
 
-<div id="outline-container-orga148bcb" class="outline-3">
-<h3 id="orga148bcb"><span class="section-number-3">7.4</span> recursion</h3>
+<div id="outline-container-orge4c4b54" class="outline-3">
+<h3 id="orge4c4b54"><span class="section-number-3">7.4</span> recursion</h3>
 <div class="outline-text-3" id="text-7-4">
 <p>
 For <i>classifiers</i>, as for <i>classes</i>, the <span class="underline">recursion</span> <code>fix .. := ..</code> grammatical

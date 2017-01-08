@@ -665,7 +665,7 @@ where =False= is the _empty class / nat_. Indeed =nat_empty : nat -> False= woul
 that the class =nat= is /empty/ when in reality the class =nat= does contain the data
 element =3=.
 
-* Polymorphism : polymorphic data, polymorphic functions
+* Parametrism : parametric data, parametric functions
 
 ** Option data
 
@@ -740,7 +740,7 @@ Check pred_for_only_odd : nat -> option nat.
 Check odd_for_only_small : nat -> option bool.
 #+END_SRC
 
-Memo that all the constructors of this polymorphic data type definition, in reality,
+Memo that all the constructors of this parametric / polymorphic data type definition, in reality,
 have some type parameter, where as described in some section above, the /classifying
 inference/ keytext =forall .. , ..= is some more general form of the /inference/
 keytext =.. -> ..= .
@@ -803,8 +803,8 @@ translates it to =@None _=.
 
    Now oneself wants some version of the data type =nat= which is _container_ for more
 information / data, which is that each alternative =O | S (n : nat)= may contain more
-data which says /how/ successor (or how zero). This is precisely the =polymorphic list
-/ seq type= :
+data which says /how/ successor (or how zero). This is precisely the =parametric /
+polymorphic list / seq type= :
 
 #+BEGIN_SRC coq :exports both :results silent
 Inductive seq (A : Type) := nil : seq A | cons : A -> seq A -> seq A.
@@ -814,7 +814,7 @@ Inductive seq (A : Type) := nil : seq A | cons : A -> seq A -> seq A.
 Reset seq.
 #+END_SRC
 
-This polymorphic data type may indeed be instantiated to contain booleans =(seq bool)=
+This parametric data type may indeed be instantiated to contain booleans =(seq bool)=
 or be instantiated to contain numbers =(seq nat)= :
 
 #+BEGIN_SRC coq :exports both
@@ -845,9 +845,9 @@ fun l : seq nat => [:: 2, 1, 3 & l]
 #+end_example
 
 In addition to the common functions which /precisely-inspect/ the input, oneself may
-write _polymorphic functions_ which /only-touch the form/ of the input. For example
-oneself may write one single function which compute the number form (size) of any list
-(booleans list or numbers list or else) :
+write _parametric / polymorphic functions_ which /only-touch the form/ of the
+input. For example oneself may write one single function which compute the number form
+(size) of any list (booleans list or numbers list or else) :
 
 #+BEGIN_SRC coq :exports both :results silent
 Fixpoint number A (s : seq A) : nat :=
@@ -864,7 +864,7 @@ Elsewhere, memo that any sequence =[:: true; false; true]= may be commonly viewe
 some function =[:: 0 |-> true; 1 |-> false; 2 |-> true]= which when given some
 position =0= , =1= or =2= output the corresponding item =true= , =false= or =true= of
 the sequence. Therefore oneself may input any sequence and input another function as
-both arguments to some _composition_ / _map_ (polymorphic) function :
+both arguments to some _composition_ / _map_ (parametric) function :
 
 #+BEGIN_SRC coq :exports both :results silent
 Fixpoint map (A : Type) (B : Type) (f : A -> B) (s : seq A) : seq B :=
@@ -904,7 +904,7 @@ Notation "[ 'seq' E | i <- s ]" := (map (fun i => E) s).
 Reset map.
 #+END_SRC
 
-In addition to the function =map= there are more /advanced-polymorphic/ function which
+In addition to the function =map= there are more /advanced-parametric/ function which
 only-touch sequences, as described in the file =seq.v=. For instance the =filter=
 function and its notation =[seq i <- s | p]= filters the sequence =s= keeping only the
 values selected by the boolean test =p=, whenever the common parameter =A=
@@ -928,7 +928,7 @@ Check map (fun i : bool => ~~ i) .
 : 
 
 Finally, oneself shall clarify the link of =bool= with =option=, and the link of =nat=
-with =seq=. Primo, define the (non-polymorphic) _unit type / class_ which has some
+with =seq=. Primo, define the (non-parametric) _unit type / class_ which has some
 single constructor =tt= (and only one inhabitant) :
 
 #+BEGIN_SRC coq :exports both :results silent

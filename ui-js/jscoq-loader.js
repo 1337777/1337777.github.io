@@ -44,30 +44,30 @@ var loadJsCoq;
     // - D3
     // - jsCoq = cm-provider + coq-packages + coq-manager
 
-    loadJsCoq = function(base_path, node_modules_path) {
+    loadJsCoq = function(base_path, myfolder_path) {
 
         base_path = base_path || "./";
         if (/[^/]$/.exec(base_path)) base_path += "/";
 
-        node_modules_path = node_modules_path || base_path + "node_modules/";
-        if (/[^/]$/.exec(node_modules_path)) node_modules_path += "/";
+        myfolder_path = myfolder_path || base_path + "myfolder/";
+        if (/[^/]$/.exec(myfolder_path)) myfolder_path += "/";
 
-        loadCss(node_modules_path + 'codemirror/lib/codemirror');
-        loadCss(node_modules_path + 'codemirror/theme/blackboard');
-        loadCss(node_modules_path + 'codemirror/theme/blackboard');
-        loadCss(node_modules_path + 'codemirror/addon/hint/show-hint');
+        loadCss(myfolder_path + 'codemirror/lib/codemirror');
+        loadCss(myfolder_path + 'codemirror/theme/blackboard');
+        loadCss(myfolder_path + 'codemirror/theme/blackboard');
+        loadCss(myfolder_path + 'codemirror/addon/hint/show-hint');
         loadCss(base_path + 'ui-css/coq-log');
         loadCss(base_path + 'ui-css/coq-base');
         loadCss(base_path + 'ui-css/coq-light');
 
-        var files = [node_modules_path + 'codemirror/lib/codemirror',
-                     node_modules_path + 'codemirror/keymap/emacs',
-                     node_modules_path + 'codemirror/addon/selection/mark-selection',
-                     node_modules_path + 'codemirror/addon/edit/matchbrackets',
-                     node_modules_path + 'codemirror/addon/hint/show-hint',
-                     node_modules_path + 'jquery/dist/jquery.min',
-                     node_modules_path + 'jszip/dist/jszip.min',
-                     node_modules_path + 'localforage/dist/localforage.min',
+        var files = [myfolder_path + 'codemirror/lib/codemirror',
+                     myfolder_path + 'codemirror/keymap/emacs',
+                     myfolder_path + 'codemirror/addon/selection/mark-selection',
+                     myfolder_path + 'codemirror/addon/edit/matchbrackets',
+                     myfolder_path + 'codemirror/addon/hint/show-hint',
+                     myfolder_path + 'jquery/dist/jquery.min',
+                     myfolder_path + 'jszip/dist/jszip.min',
+                     myfolder_path + 'localforage/dist/localforage.min',
                      base_path + 'ui-external/CodeMirror-TeX-input/addon/hint/tex-input-hint',
                      base_path + 'ui-js/jscoq',
                      base_path + 'ui-js/mode/coq-mode',

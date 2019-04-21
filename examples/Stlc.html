@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../myfolder/bootstrap/dist/css/bootstrap.min.css" />
 
     <title>Use Coq in Your Browser: The Js Coq Theorem Prover Online IDE!</title>
   </head>
@@ -954,8 +954,8 @@ End STLC.
    };
 
    loadJsCoq(jscoq_opts.base_path)
-       .then(loadJs("../node_modules/codemirror/addon/runmode/runmode"))
-       .then(loadJs("../node_modules/codemirror/addon/runmode/colorize"))
+       .then(loadJs("../myfolder/codemirror/addon/runmode/runmode"))
+       .then(loadJs("../myfolder/codemirror/addon/runmode/colorize"))
        .then( function () {
            var coqInline = document.getElementsByClassName("inline-coq");
            CodeMirror.colorize(coqInline);

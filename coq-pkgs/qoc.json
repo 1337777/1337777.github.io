@@ -1,0 +1,17 @@
+{
+  "desc": "qoc",
+  "deps": [],
+  "pkgs": [
+    {
+      "pkg_id": [ "Qoc" ],
+      "vo_files": [
+        [ "Index.vo", "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~" ],
+        [ "Jisuanji.vo", "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~" ],
+        [ "Jisuanji2.vo", "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~" ]
+      ],
+      "cma_files": [
+        [ "jisuanji_plugin.cma", "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~" ]
+      ]
+    }
+  ]
+}

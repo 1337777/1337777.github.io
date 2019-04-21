@@ -1,78 +1,105 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Top</title>
-<meta name="generator" content="Org mode" />
-<meta name="author" content="Ubuntu" />
-<link rel="stylesheet" type="text/css" href="./code/style.css"/>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
+<!--
+  This sample contains two very simple introductory exercises of
+  interactive proofs in Coq, one with natural numbers and one with lists.
+  It can be used as a gentle landing page, which requires no knowledge
+  of math-comp.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="description" content="An Online IDE for the Coq Theorem Prover" />
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+    <title>Use Coq in Your Browser: The Js Coq Theorem Prover Online IDE!</title>
+  </head>
 
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
-</head>
 <body>
-<div id="preamble" class="status">
-<p><a href="index.html">top</a> | <a href="theindex.html">index</a> | <a href="sitemap.html">sitemap</a> | <a href="https://github.com/1337777/OOO1337777">edit</a></p>
-</div>
-<div id="content">
-<h1 class="title">Top</h1>
-<p>
-TOP
-</p>
+  <div id="ide-wrapper" class="toggled">
+  <div id="code-wrapper">
+  <div id="document">
+    <p>
+    Alt+↑/↓ – move through proof; Alt+→ or Alt+⏎ – go to cursor. <br/>
+    Alt+hover executed sentences to watch intermediate steps. <br/>
+    Hover identifiers in goals to view their types. Alt+hover to view definitions.<br/>
+    <i style="color: rgb(51, 51, 150)">Company-coq</i> addon is enabled: it will auto-complete names of tactics and lemmas 
+    from the standard library, and also show types of lemmas in the right pane.
+  </p>
+    <textarea id="workspace">
+From Qoc Require Import Jisuanji.
 
-<p>
-<a href="init.html">init.html</a>
-</p>
+模块 ABC一二三 .
 
-<p>
-<a href="laoziSolution2.html">laoziSolution2.html</a>
-</p>
-</div>
+  归纳的 haha := .
+  
+  定义 我的定义 := 0 .
+
+  论点 我的论点123 : forall n : nat, 我的定义 + n = n .
+  Proof.
+    reflexivity.
+  Qed.
+
+  Print Grammar constr.
+  Print Grammar pattern.
+  Print Grammar tactic.
+
+End ABC一二三 .
+
+Check nat.
+
+Theorem plus_two : forall n : nat, n + 2 = S (S n).
+Proof.
+  induction n.
+  - simpl. reflexivity.
+  - simpl. rewrite IHn. reflexivity.
+Qed.
+
+
+Require Import List.
+Import ListNotations.
+
+Check [1;3].
+
+Fixpoint nonzeros (l : list nat) :=
+  match l with
+  | [] => []
+  | 0 :: xs => nonzeros xs
+  | x :: xs => x :: nonzeros xs
+  end.
+  
+Arguments nonzeros l : simpl nomatch.
+
+Lemma nonzeros_app : forall l1 l2 : list nat,
+  nonzeros (l1 ++ l2) = (nonzeros l1) ++ (nonzeros l2).
+Proof.
+  intros l1 l2. induction l1 as [| n' l' IHl'].
+  - simpl. reflexivity.
+  - simpl. case n'.
+    + simpl; apply IHl'.
+    + simpl; rewrite IHl'. reflexivity.
+Qed.
+</textarea>
+  </div> <!-- /#document -->
+  </div> <!-- /#code-wrapper -->
+  </div> <!-- /#ide-wrapper -->
+
+  <script src="../ui-js/jscoq-loader.js" type="text/javascript"></script>
+  <script type="text/javascript">
+
+    var jscoq_ids  = ['workspace'];
+    var jscoq_opts = {
+        prelude:   true,
+        base_path: '../',
+        init_pkgs: ['init' , 'qoc' ],
+        all_pkgs:  ['init', 'qoc' , 'coq-base', 'coq-collections', 'coq-arith', 'coq-reals', 'math-comp'],
+        implicit_libs: true,
+        editor: { mode: { 'company-coq': true }, keyMap: 'default' }
+    };
+
+    /* Global reference */
+    var coq;
+
+    loadJsCoq(jscoq_opts.base_path)
+        .then( () => coq = new CoqManager(jscoq_ids, jscoq_opts) );
+  </script>
 </body>
 </html>

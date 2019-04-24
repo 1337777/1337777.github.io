@@ -18,13 +18,27 @@
   <div id="code-wrapper">
   <div id="document">
     <p>
+      Short ：the objective of the "鸡算计.在线" is to enable everyone to read and write mathematics . In the next 5 years to 10 years , this could be used in the national education .
+    </p>
+    <p>
+      短 : “鸡算计.在线”的目的是让每个人都能读写数学。在未来5年到10年，这可以用于国民教育。
+    </p>
+    <p>
     Alt+↑/↓ – move through proof; Alt+→ or Alt+⏎ – go to cursor. <br/>
     Alt+hover executed sentences to watch intermediate steps. <br/>
     Hover identifiers in goals to view their types. Alt+hover to view definitions.<br/>
     <i style="color: rgb(51, 51, 150)">Company-coq</i> addon is enabled: it will auto-complete names of tactics and lemmas 
     from the standard library, and also show types of lemmas in the right pane.
-  </p>
+    </p>
+    <p>
+      “Alt +↑/↓” : 通过证明。 “Alt +→”或“Alt +⏎” : 转到光标。
+      <br/> “Alt +”悬停执行句子以观察中间步骤。
+      <br/> 将目标中的标识符悬停在其中以查看其类型。 “Alt +”悬停以查看定义。
+      <br/> 启用“Company-coq”加载项：它将自动完成标准库中的策略和引理名称，并在右侧窗格中显示引导类型。
+    </p>
     <textarea id="workspace">
+Check nat.
+
 From Qoc Require Import Jisuanji.
 
 模块 ABC一二三 .
@@ -82,15 +96,15 @@ Qed.
   </div> <!-- /#code-wrapper -->
   </div> <!-- /#ide-wrapper -->
 
-  <script src="https://1337777.github.io/ui-js/jscoq-loader.js" type="text/javascript"></script>
+  <script src="../ui-js/jscoq-loader.js" type="text/javascript"></script>
   <script type="text/javascript">
 
     var jscoq_ids  = ['workspace'];
     var jscoq_opts = {
         prelude:   true,
-        base_path: 'https://1337777.github.io/',
-        init_pkgs: ['init' , 'qoc' ],
-        all_pkgs:  ['init', 'qoc' , 'coq-base', 'coq-collections', 'coq-arith', 'coq-reals', 'math-comp'],
+        base_path: '../',
+        init_pkgs: ['init', 'qoc'],
+        all_pkgs:  ['init', 'qoc', 'coq-base', 'coq-collections', 'coq-arith', 'coq-reals', 'math-comp'],
         implicit_libs: true,
         editor: { mode: { 'company-coq': true }, keyMap: 'default' }
     };

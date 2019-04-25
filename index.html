@@ -37,60 +37,504 @@
       <br/> 启用“Company-coq”加载项：它将自动完成标准库中的策略和引理名称，并在右侧窗格中显示引导类型。
     </p>
     <textarea id="workspace">
-Check nat.
+From Qoc Require Import Jisuanji .
 
-From Qoc Require Import Jisuanji.
+(** 
 
-模块 ABC一二三 .
 
-  归纳的 haha := .
-  
-  定义 我的定义 := 0 .
+短 : “鸡算计.在线”的目的是让每个人都能读写数学。在未来5年到10年，这可以用于国民教育。
 
-  论点 我的论点123 : forall n : nat, 我的定义 + n = n .
-  Proof.
-    reflexivity.
-  Qed.
+Short ：the objective of the "鸡算计.在线" is to enable everyone to read and write mathematics . In the next 5 years to 10 years , this could be used in the national education .
 
-  Print Grammar constr.
-  Print Grammar pattern.
-  Print Grammar tactic.
+Outline ::
+ * PART 1 : ENDS . 第1部分 : 目的们
+ * PART 2 : MORE TACTICS . 第2部分：更多战术们
 
-End ABC一二三 .
+*)
 
-Check nat.
+(** * PART 1 : ENDS . 第1部分 : 目的们 *)
 
-Theorem plus_two : forall n : nat, n + 2 = S (S n).
+(** 
+
+http://鸡算计.在线
+http://xn--lzzm24a52n.xn--3ds443g/
+
+短 : “鸡算计.在线”的目的是让每个人都能读写数学。在未来5年到10年，这可以用于国民教育。
+
+Short ：the objective of the "鸡算计.在线" is to enable everyone to read and write mathematics . In the next 5 years to 10 years , this could be used in the national education .
+
+
+*)
+
+
+(** * PART 2 : MORE TACTICS . 第2部分：更多战术们 *)
+
+(**cs3110 *)
+
+(** 假设 *)
+论点 p_implies_p : forall P : Prop,
+  P -> P.
+证明.
+  移动外 P P_holds.
+  假设.
+据证实.
+
+
+(** 同一 , 对称 , transitivity *)
+论点 forty_two : 41 + 1 = 42.
+证明.
+  同一. 复原.
+  对称. 同一. 复原 2.
+  外传递. 确切 (eq_refl (3 + (38 + 1))).
+  同一.
+退出.
+
+(** 琐细 *)
+论点 p_implies_p' : forall P : Prop,
+  P  -> P .
+证明.
+  琐细.
+据证实.
+
+(** 自动 *)
+论点 modus_tollens: forall (P Q : Prop),
+  (P -> Q) -> ~Q -> ~P.
+证明.
+  自动.
+据证实.
+
+(** 辨析 *)
+论点 false_implies_anything : forall P : Prop,
+  0 = 1 -> P.
+证明.
+  移动外 P zero_equals_one.
+  辨析.
+据证实.
+
+(** 确切 *)
+论点 everything : 42 = 42.
+证明.
+  确切 (eq_refl 42).
+据证实.
+
+(** 矛盾 *)
+
+论点 law_of_矛盾 : forall (P Q : Prop),
+  P -> ~P -> Q.
+证明.
+  移动外 P Q P_and_not_P.
+  矛盾.
+据证实.
+
+(** Transforming goals *)
+
+(** 移动外 *)
+论点 my移动外 : forall A B C D : Prop, D .
+证明.
+  移动外 A B C .
+退出.
+
+(** 简化 *)
+论点 switch_to_honors : 10 + 2 = 12.
+证明.
+  计时了 简化.
+  计时了 同一.
+退出.
+
+(** 展开 *)
+定义 plus_two (x : nat) : nat :=
+  x + 2.
+
+论点 switch_to_honors_again : 
+  plus_two 10 = 12.
+证明.
+  展开 plus_two.
+  同一.
+据证实.
+
+(** 应用 *)
+论点 modus_ponens : forall (P Q : Prop),
+  (P -> Q) -> P -> Q.
+证明.
+  移动外 P Q P_implies_Q P_holds.
+  应用 P_implies_Q.
+退出. 
+
+论点 modus_ponens'' : forall (P Q : Prop),
+  P -> (P -> Q) -> Q.
+证明.
+  自动.
+据证实.
+
+论点 double_negation : forall (P : Prop),
+  P -> ~~P.
+证明.
+  展开 not. 移动外个 P.
+  应用 modus_ponens''.
+据证实.
+
+(** rewrite *)
+论点 add_comm : forall (x y : nat),
+  x + y = y + x.
+证明.
+  移动外. 归纳 x 如 [ | x' IHx' ].
+  - 琐细.
+  - 简化. 改写 -> IHx'.
+    琐细.
+据证实.
+
+(** 逆温 *)
+论点 succ_eq_implies_eq : forall (x y : nat),
+  S x = S y -> x = y.
+证明.
+  移动外 x y succ_eq.
+  逆温 succ_eq.
+  琐细.
+据证实.
+
+(** 左 , 右 *)
+
+论点 or_左 : forall (P Q : Prop),
+  P -> P \/ Q.
+证明.
+  移动外 P Q P_holds.
+  左.
+退出.
+
+论点 or_右 : forall (P Q : Prop),
+  Q -> P \/ Q.
+证明.
+  移动外 P Q Q_holds.
+  右.
+退出.
+
+(** 更换 *)
+论点 one_x_one : forall (x : nat),
+  1 + x + 1 = 2 + x.
+证明.
+  移动外个. 简化.
+  更换 (x + 1) 与 (S x).
+退出.
+
+(** 分裂 *)
+论点 implies_and : forall (P Q R : Prop),
+  P -> (P -> Q) -> (P -> R) -> (Q /\ R).
+证明.
+  移动外 P Q R P_holds.
+  移动外 P_implies_Q P_implies_R. 
+  分裂. 复原. 构造函数.
+  - 应用 P_implies_Q . 假设 .
+  - 应用 P_implies_R . 假设 .
+据证实.
+
+论点 and_左 : forall (P Q : Prop),
+  (P /\ Q) -> P.
+证明.
+  移动外 P Q P_and_Q.
+  解构 P_and_Q 如 [P_holds Q_holds].
+  假设.
+据证实.
+
+论点 or_comm : forall (P Q : Prop),
+  P \/ Q -> Q \/ P.
+证明.
+  移动外 P Q P_or_Q.
+  解构 P_or_Q 如 [P_holds | Q_holds].
+  - 右. 复原. 构造函数 2.  假设.
+  - 左. 复原. 构造函数 1. 假设.
+据证实.
+
+归纳的 element :=
+| grass : element
+| fire : element
+| water : element.
+
+定义 weakness (e : element) : element :=
+  匹配 e 与
+  | grass => fire
+  | fire => water
+  | water => grass
+  结束.
+
+论点 never_weak_to_self : forall (e : element),
+  weakness e <> e.
+证明.
+  解构 e.
+  - 简化. 辨析.
+  - 简化. 辨析.
+  - 简化. 辨析.
+退出.
+
+
+论点 n_plus_n : forall (n : nat),
+  n + n = n * 2.
+证明.
+  归纳 n 如 [| x IH].
+  - 同一.
+  - 简化. 改写 <- IH. 自动.
+据证实.
+
+
+(** 自动 *)
+
+(** logical t自动 *)
+论点 demorgan : forall (P Q : Prop),
+  ~(P \/ Q) -> ~P /\ ~Q.
+证明.
+  同义反复.
+据证实.
+
+从 Coq 要求 进口 Lia.
+论点 dfoil : forall a ,
+  (a + 2) * (1 + 2) = a*1 + 2*1 + a*2 + 2*2.
+证明. 
+  移动外. lia.
+据证实.
+
+从 Coq 要求 进口 Arith.
+(** algebraic rihg *)
+论点 foil : forall a b c d,
+  (a + b) * (c + d) = a*c + b*c + a*d + b*d.
+证明. 
+  移动外. ring.
+据证实.
+
+
+
+(** ** alt
+----------------------------------------------------------------------------- *)
+
+Reset p_implies_p.
+
+
+(** assumption *)
+Lemma p_implies_p : forall P : Prop,
+  P -> P.
 Proof.
-  induction n.
-  - simpl. reflexivity.
-  - simpl. rewrite IHn. reflexivity.
+  intros P P_holds.
+  assumption.
 Qed.
 
 
-Require Import List.
-Import ListNotations.
+(** reflexivity , symmetry , transitivity *)
+Lemma forty_two : 41 + 1 = 42.
+Proof.
+  reflexivity. Undo.
+  symmetry. reflexivity. Undo 2.
+  etransitivity. exact (eq_refl (3 + (38 + 1))).
+  reflexivity.
+Abort.
 
-Check [1;3].
+(** trivial *)
+Lemma p_implies_p' : forall P : Prop,
+  P  -> P .
+Proof.
+  trivial.
+Qed.
 
-Fixpoint nonzeros (l : list nat) :=
-  match l with
-  | [] => []
-  | 0 :: xs => nonzeros xs
-  | x :: xs => x :: nonzeros xs
+(** auto *)
+Lemma modus_tollens: forall (P Q : Prop),
+  (P -> Q) -> ~Q -> ~P.
+Proof.
+  auto.
+Qed.
+
+(** discriminate *)
+Lemma false_implies_anything : forall P : Prop,
+  0 = 1 -> P.
+Proof.
+  intros P zero_equals_one.
+  discriminate.
+Qed.
+
+(** exact *)
+Lemma everything : 42 = 42.
+Proof.
+  exact (eq_refl 42).
+Qed.
+
+(** contradiction *)
+
+Lemma law_of_contradiction : forall (P Q : Prop),
+  P -> ~P -> Q.
+Proof.
+  intros P Q P_and_not_P.
+  contradiction.
+Qed.
+
+(** Transforming goals *)
+
+(** intros *)
+Lemma myintros : forall A B C D : Prop, D .
+Proof.
+  intros A B C .
+Abort.
+
+(** simpl *)
+Lemma switch_to_honors : 10 + 2 = 12.
+Proof.
+  Time simpl.
+  Time reflexivity.
+Abort.
+
+(** unfold *)
+Definition plus_two (x : nat) : nat :=
+  x + 2.
+
+Lemma switch_to_honors_again : 
+  plus_two 10 = 12.
+Proof.
+  unfold plus_two.
+  reflexivity.
+Qed.
+
+(** apply *)
+Lemma modus_ponens : forall (P Q : Prop),
+  (P -> Q) -> P -> Q.
+Proof.
+  intros P Q P_implies_Q P_holds.
+  apply P_implies_Q.
+Abort. 
+
+Lemma modus_ponens'' : forall (P Q : Prop),
+  P -> (P -> Q) -> Q.
+Proof.
+  auto.
+Qed.
+
+Lemma double_negation : forall (P : Prop),
+  P -> ~~P.
+Proof.
+  unfold not. intro P.
+  apply modus_ponens''.
+Qed.
+
+(** rewrite *)
+Lemma add_comm : forall (x y : nat),
+  x + y = y + x.
+Proof.
+  intros. induction x as [ | x' IHx' ].
+  - trivial.
+  - simpl. rewrite -> IHx'.
+    trivial.
+Qed.
+
+(** inversion *)
+Lemma succ_eq_implies_eq : forall (x y : nat),
+  S x = S y -> x = y.
+Proof.
+  intros x y succ_eq.
+  inversion succ_eq.
+  trivial.
+Qed.
+
+(** left , right *)
+
+Lemma or_left : forall (P Q : Prop),
+  P -> P \/ Q.
+Proof.
+  intros P Q P_holds.
+  left.
+Abort.
+
+Lemma or_right : forall (P Q : Prop),
+  Q -> P \/ Q.
+Proof.
+  intros P Q Q_holds.
+  right.
+Abort.
+
+(** replace *)
+Lemma one_x_one : forall (x : nat),
+  1 + x + 1 = 2 + x.
+Proof.
+  intro. simpl.
+  replace (x + 1) with (S x).
+Abort.
+
+(** split *)
+Lemma implies_and : forall (P Q R : Prop),
+  P -> (P -> Q) -> (P -> R) -> (Q /\ R).
+Proof.
+  intros P Q R P_holds.
+  intros P_implies_Q P_implies_R. 
+  split. Undo. constructor.
+  - apply P_implies_Q . assumption .
+  - apply P_implies_R . assumption .
+Qed.
+
+Lemma and_left : forall (P Q : Prop),
+  (P /\ Q) -> P.
+Proof.
+  intros P Q P_and_Q.
+  destruct P_and_Q as [P_holds Q_holds].
+  assumption.
+Qed.
+
+Lemma or_comm : forall (P Q : Prop),
+  P \/ Q -> Q \/ P.
+Proof.
+  intros P Q P_or_Q.
+  destruct P_or_Q as [P_holds | Q_holds].
+  - right. Undo. constructor 2.  assumption.
+  - left. Undo. constructor 1. assumption.
+Qed.
+
+Inductive element :=
+| grass : element
+| fire : element
+| water : element.
+
+Definition weakness (e : element) : element :=
+  match e with
+  | grass => fire
+  | fire => water
+  | water => grass
   end.
-  
-Arguments nonzeros l : simpl nomatch.
 
-Lemma nonzeros_app : forall l1 l2 : list nat,
-  nonzeros (l1 ++ l2) = (nonzeros l1) ++ (nonzeros l2).
+Lemma never_weak_to_self : forall (e : element),
+  weakness e <> e.
 Proof.
-  intros l1 l2. induction l1 as [| n' l' IHl'].
-  - simpl. reflexivity.
-  - simpl. case n'.
-    + simpl; apply IHl'.
-    + simpl; rewrite IHl'. reflexivity.
+  destruct e.
+  - simpl. discriminate.
+  - simpl. discriminate.
+  - simpl. discriminate.
+Abort.
+
+
+Lemma n_plus_n : forall (n : nat),
+  n + n = n * 2.
+Proof.
+  induction n as [| x IH].
+  - reflexivity.
+  - simpl. rewrite <- IH. auto.
 Qed.
+
+
+(** auto *)
+
+(** logical tauto *)
+Lemma demorgan : forall (P Q : Prop),
+  ~(P \/ Q) -> ~P /\ ~Q.
+Proof.
+  tauto.
+Qed.
+
+From Coq Require Import Lia.
+Lemma dfoil : forall a ,
+  (a + 2) * (1 + 2) = a*1 + 2*1 + a*2 + 2*2.
+Proof. 
+  intros. lia.
+Qed.
+
+From Coq Require Import Arith.
+(** algebraic rihg *)
+Lemma foil : forall a b c d,
+  (a + b) * (c + d) = a*c + b*c + a*d + b*d.
+Proof. 
+  intros. ring.
+Qed.
+
 </textarea>
   </div> <!-- /#document -->
   </div> <!-- /#code-wrapper -->

@@ -83,8 +83,12 @@ Short ：the objective of the "鸡算计.在线" is to enable everyone to read a
 (** 同一 , 对称 , transitivity *)
 论点 forty_two : 41 + 1 = 42.
 证明.
-  同一. 复原.
-  对称. 同一. 复原 2.
+  同一.
+退出.
+论点 forty_two : 41 + 1 = 42.
+  对称. 同一.
+退出.
+论点 forty_two : 41 + 1 = 42.
   外传递. 确切 (eq_refl (3 + (38 + 1))).
   同一.
 退出.
@@ -222,7 +226,7 @@ Short ：the objective of the "鸡算计.在线" is to enable everyone to read a
 证明.
   移动外 P Q R P_holds.
   移动外 P_implies_Q P_implies_R. 
-  分裂. 复原. 构造函数.
+  分裂. (* 复原. 构造函数. *)
   - 应用 P_implies_Q . 假设 .
   - 应用 P_implies_R . 假设 .
 据证实.
@@ -240,8 +244,8 @@ Short ：the objective of the "鸡算计.在线" is to enable everyone to read a
 证明.
   移动外 P Q P_or_Q.
   解构 P_or_Q 如 [P_holds | Q_holds].
-  - 右. 复原. 构造函数 2.  假设.
-  - 左. 复原. 构造函数 1. 假设.
+  - 右. (* 复原. 构造函数 2. *)  假设.
+  - 左. (* 复原. 构造函数 1. *) 假设.
 据证实.
 
 归纳的 element :=

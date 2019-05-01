@@ -7,7 +7,29 @@
       "vo_files": [
         [ "Index.vo", "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~" ],
         [ "Jisuanji.vo", "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~" ],
-        [ "qoc_jisuanji_ends.vo", "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~" ]
+        [ "qoc_jisuanji_ends.vo", "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~" ],
+        [
+          "qoc_jisuanji_logic_variables_proof.vo",
+          "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~"
+        ],
+        [
+          "qoc_jisuanji_environmental_parametrized_module.vo",
+          "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~"
+        ],
+        [
+          "qoc_jisuanji_parameter_option.vo",
+          "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~"
+        ],
+        [
+          "qoc_jisuanji_polymorphism_notation.vo",
+          "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~"
+        ],
+        [ "qoc_jisuanji_tactics.vo", "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~" ],
+        [ "qoc_jisuanji_tactical.vo", "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~" ],
+        [ "qoc_jisuanji_inductive.vo", "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~" ],
+        [
+          "qoc_jisuanji_search_error.vo", "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~"
+        ]
       ],
       "cma_files": [
         [ "jisuanji_plugin.cma", "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~" ]

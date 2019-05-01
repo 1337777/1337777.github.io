@@ -1,0 +1,117 @@
+<!--
+  This sample contains two very simple introductory exercises of
+  interactive proofs in Coq, one with natural numbers and one with lists.
+  It can be used as a gentle landing page, which requires no knowledge
+  of math-comp.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="description" content="An Online IDE for the Coq Theorem Prover" />
+
+    <title>Use Coq in Your Browser: The Js Coq Theorem Prover Online IDE!</title>
+  </head>
+
+<body>
+  <div id="ide-wrapper" class="toggled">
+  <div id="code-wrapper">
+  <div id="document">
+    <p>
+ + ‎Saturday, ‎March ‎9, ‎2019, ‏‎00:37:41
+<br/> OOO1337777 , COQ , 鸡算计 , mathematics , 数学 - logic , variables , proof - 逻辑，变量，证明
+<br/> https://www.bilibili.com/video/av45747037
+    </p>
+    <p>
+    Alt+↑/↓ – move through proof; Alt+→ or Alt+⏎ – go to cursor. <br/>
+    Alt+hover executed sentences to watch intermediate steps. <br/>
+    Hover identifiers in goals to view their types. Alt+hover to view definitions.<br/>
+    <i style="color: rgb(51, 51, 150)">Company-coq</i> addon is enabled: it will auto-complete names of tactics and lemmas 
+    from the standard library, and also show types of lemmas in the right pane.
+    </p>
+    <p>
+      “Alt +↑/↓” : 通过证明。 “Alt +→”或“Alt +⏎” : 转到光标。
+      <br/> “Alt +”悬停执行句子以观察中间步骤。
+      <br/> 将目标中的标识符悬停在其中以查看其类型。 “Alt +”悬停以查看定义。
+      <br/> 启用“Company-coq”加载项：它将自动完成标准库中的策略和引理名称，并在右侧窗格中显示引导类型。
+    </p>
+    <textarea id="workspace">
+From Qoc Require Import Jisuanji .
+
+归纳的 我的二进制  := 真 : 我的二进制
+                    | 假 : 我的二进制 .
+
+定义 abc或 ( x : 我的二进制 ) ( y : 我的二进制 ) :=
+  ( 若 x 则 真 否则 y ) . 
+
+(** true or true = true. 1 + 1 = 1
+true or false = true. 1 + 0 = 1
+false or true  = true. 0 + 1 = 1
+false or false = false. 0 + 0 = 0 *)
+部分 我的分1.
+  变量 x : 我的二进制.
+  变量 y : 我的二进制.
+
+  论点 我的论点1 :  abc或 x y  =  abc或 y x .
+  证明.
+    展开 abc或.
+    例子 x.
+    - (** x 真*)
+      例子 y.
+      + (** y 真 *) 同一.
+      + (** y 假 *) 同一.
+    - (** x 假 *)
+      例子 y.
+      + (** y 真 *) 同一.
+      + (** y 假 *) 同一.
+  据证实.
+结束 我的分1.
+
+(** Guīnà yì wǒ de èrjìnzhì  := Zhēn: Wǒ de èrjìnzhì | jiǎ: Wǒ de èrjìnzhì.
+
+Dìngyì huò (x : Wǒ de èrjìnzhì) (y : Wǒ de èrjìnzhì):= (Ruò x zé zhēn fǒuzé y). 
+
+Bùfèn wǒ de fēn 1.
+  Biànliàng x: Wǒ de èrjìnzhì.
+  Biànliàng y: Wǒ de èrjìnzhì.
+
+  Lùndiǎn wǒ dì lùndiǎn 1: Huò x y  =  huò y x.
+  Zhèngmíng.
+    Zhǎnkāi huò.
+    Lìzi x.
+    - Lìzi y.
+      + Tóngyī.
+      + Tóngyī.
+    - Lìzi y.
+      + Tóngyī.
+      + Tóngyī.
+   Jù zhèngshí.
+Jiéshù wǒ de fēn 1.
+*)
+
+</textarea>
+  </div> <!-- /#document -->
+  </div> <!-- /#code-wrapper -->
+  </div> <!-- /#ide-wrapper -->
+
+  <script src="../ui-js/jscoq-loader.js" type="text/javascript"></script>
+  <script type="text/javascript">
+
+    var jscoq_ids  = ['workspace'];
+    var jscoq_opts = {
+        prelude:   true,
+        base_path: '../',
+        init_pkgs: ['init', 'qoc'],
+        all_pkgs:  ['init', 'qoc', 'coq-base', 'coq-collections', 'coq-arith', 'coq-reals', 'math-comp'],
+        implicit_libs: true,
+        editor: { mode: { 'company-coq': true }, keyMap: 'default' }
+    };
+
+    /* Global reference */
+    var coq;
+
+    loadJsCoq(jscoq_opts.base_path)
+        .then( () => coq = new CoqManager(jscoq_ids, jscoq_opts) );
+  </script>
+</body>
+</html>

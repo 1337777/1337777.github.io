@@ -1,0 +1,745 @@
+<!--
+  This sample contains two very simple introductory exercises of
+  interactive proofs in Coq, one with natural numbers and one with lists.
+  It can be used as a gentle landing page, which requires no knowledge
+  of math-comp.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="description" content="An Online IDE for the Coq Theorem Prover" />
+
+    <title>Use Coq in Your Browser: The Js Coq Theorem Prover Online IDE!</title>
+  </head>
+
+<body>
+  <div id="ide-wrapper" class="toggled">
+  <div id="code-wrapper">
+  <div id="document">
+    <p>
+ + Tuesday, April 9, 2019,  23:23:00
+<br/> OOO1337777 , COQ , 鸡算计 , mathematics , 数学 - tactical 1 - 战术的 1
+<br/> https://www.bilibili.com/video/av48844477/
+    </p>
+    <p>
+ + Friday, April 12, 2019,  23:06:00
+<br/> OOO1337777 , COQ , 鸡算计 , mathematics , 数学 - tactical 2 - 战术的 2
+<br/> https://www.bilibili.com/video/av49126093/
+    </p>
+    <p>
+    Alt+↑/↓ – move through proof; Alt+→ or Alt+⏎ – go to cursor. <br/>
+    Alt+hover executed sentences to watch intermediate steps. <br/>
+    Hover identifiers in goals to view their types. Alt+hover to view definitions.<br/>
+    <i style="color: rgb(51, 51, 150)">Company-coq</i> addon is enabled: it will auto-complete names of tactics and lemmas 
+    from the standard library, and also show types of lemmas in the right pane.
+    </p>
+    <p>
+      “Alt +↑/↓” : 通过证明。 “Alt +→”或“Alt +⏎” : 转到光标。
+      <br/> “Alt +”悬停执行句子以观察中间步骤。
+      <br/> 将目标中的标识符悬停在其中以查看其类型。 “Alt +”悬停以查看定义。
+      <br/> 启用“Company-coq”加载项：它将自动完成标准库中的策略和引理名称，并在右侧窗格中显示引导类型。
+    </p>
+    <textarea id="workspace">
+From Qoc Require Import Jisuanji .
+
+(** 
+
+短 :: 示例：“A ; [> W & [+ T1 | T2 ] ]”。
+建筑师“A”将主要问题“（1）”计划为两个“后续”子问题：工人“W”的子问题“（1> 1）”以及“并行”子问题“ （1> 2）”为工人“T”。
+工人“W”尝试他的唯一战术“W”，解决了他的子问题“（1> 1）”。
+与此同时，工人“T”尝试了他的第一个失败了的战术“T1”;但他的“替代”策略“T2”解决了他的子问题“（1> 2）”。
+
+Short :: Example : "A ; [> W & [+ T1 | T2 ] ]" .
+The architech "A" plans the main problem "(1)" into two "subsequent" sub-problems : the sub-problem "(1>1)" for the worker "W" and also the "parallel" sub-problem "(1>2)" for the worker "T" . 
+The worker "W" tries his only tactic "W" which solves his sub-problem "(1>1)" . 
+Meanwhile the worker "T" tries his first tactic "T1" which fails ;  but his "alternative" tactic "T2" solves his sub-problem "(1>2)" .
+
+Outline ::
+ * PART 1 : PARALLEL SUBSEQUENT TACTICS . 第1部分 : 平行随后的战术
+ * PART 2 : ALTERNATIVE PRECEDENT TACTICS . 第2部分 : 替代先例的战术  
+
+
+(** MEMO :  Example expression : [
+
+   outer inner alter with
+     T1 ;=> I
+   | T2 ;=> J
+   end ; O 
+
+   ] . 
+
+   Here the two alternative precedent tactics are "T1" "T2" .
+   And the two inner subsequent tactics are "I" "J" .
+   And the only outer subsequent tactic is "O" .
+   
+   The keyword "inner" in "outer inner alter" tells that any failing inner subsequent tactic "I" may cause to change the alternative tactic from "T1" to "T2" ( and similar for "J" ... ) .
+   The keyword "outer" in "outer inner alter" tells that any failing outer subsequent tactic "O" may cause to change the alternative tactic from "T1" to "T2"  ( or from "T1" to "T1" and then change any alternative tactic within "I" ) ( and similar for "J" ... )
+
+ *)
+
+*)
+
+
+(** * PART 1 : PARALLEL SUBSEQUENT TACTICS . 第1部分 : 平行随后的战术 *)
+
+目的 forall n : nat + nat , forall b : bool + bool , ( n = n /\ b = b ) .
+  移动外 n b.
+  解构 n. 解构 b.  Undo 2.
+  解构 n  ; 解构 b . Undo .
+
+  解构 n; ( 解构 b ;
+                [> 零战术 & 零战术 & 零战术 & 零战术 ] ) . Undo.
+  解构 n; ( 内: 解构 b ;
+               [> 零战术 & 零战术 ] ) . Undo.
+  解构 n; 内: 解构 b ;
+                       [> 零战术 & 零战术 ]  . Undo.
+  解构 n; ( 解构 b;
+                [ 零战术 & 零战术 ] ) . Undo.
+  
+Abort .
+
+目的 forall n m : nat, ( n * 0 = m * 0 ) /\ True  .
+  移动外个 ; 移动外个 . Undo.
+  做 2 移动外个. Undo.
+  重复 移动外个. Undo.
+  进展 重复 移动外个.
+  split.
+  2 : {
+    Fail 进展 重复 移动外个.
+    尝试 进展 重复 移动外个.
+    确切: I. 
+  }
+  承认.
+Abort.
+
+
+(** ** alt
+----------------------------------------------------------------------------- *)
+
+Goal forall n : nat + nat , forall b : bool + bool , ( n = n /\ b = b ) .
+  intros n b.
+  destruct n. Undo.
+  destruct n  ; destruct b . Undo .
+
+  destruct n; ( destruct b ;
+                [> idtac & idtac & idtac & idtac ] ) . Undo.
+  destruct n; ( inner: destruct b ;
+               [> idtac & idtac ] ) . Undo.
+  destruct n; inner: destruct b ;
+                       [> idtac & idtac ]  . Undo.
+  destruct n; ( destruct b;
+                [ idtac & idtac ] ) . Undo.
+
+  (** nei *)
+  destruct n; ( 内: destruct b ;
+               [> idtac & idtac ] ) . Undo.
+  
+Abort .
+
+Goal forall n m : nat, ( n * 0 = m * 0 ) /\ True  .
+  intro ; intro . Undo.
+  do 2 intro. Undo.
+  repeat intro. Undo.
+  progress repeat intro.
+  split.
+  2 : {
+    Fail progress repeat intro.
+    try progress repeat intro.
+    exact: I. 
+  }
+  admit.
+Abort.
+
+(**
+----------------------------------------------------------------------------- *)
+
+
+(** * PART 2 : ALTERNATIVE PRECEDENT TACTICS . 第2部分 : 替代先例的战术  *)
+
+(** MEMO :  Example expression : [
+
+   outer inner alter with
+     T1 ;=> I
+   | T2 ;=> J
+   end ; O 
+
+   ] . 
+
+   Here the two alternative precedent tactics are "T1" "T2" .
+   And the two inner subsequent tactics are "I" "J" .
+   And the only outer subsequent tactic is "O" .
+   
+   The keyword "inner" in "outer inner alter" tells that any failing inner subsequent tactic "I" may cause to change the alternative tactic from "T1" to "T2" ( and similar for "J" ... ) .
+   The keyword "outer" in "outer inner alter" tells that any failing outer subsequent tactic "O" may cause to change the alternative tactic from "T1" to "T2"  ( or from "T1" to "T1" and then change any alternative tactic within "I" ) ( and similar for "J" ... )
+
+ *)
+
+(** _ + _ *)  (** first [ _ ] *)  (** tryif _ 否则 _ 则 *)
+目的 True .
+  [+ 失败 | 零战术 "a" ]. (** = _ + _ *)
+  外 重试们 [失败 | 零战术 "a" ]. (** = _ + _ *)
+  重试们 [失败 | 零战术 "a" ]. (** = first [ _ ] *)
+
+  
+  失败了 外 重试们 [ ] .
+  失败了 重试们 [ ] .
+
+  
+  失败了 外 重试们 [ 失败 | 零战术 "a" | 零战术 "b"  ]; 零战术 "c"; 失败 .
+  (* a c b c *)
+  失败了 无外 (外 重试们 [ 失败 | 零战术 "a" | 零战术 "b"  ]); 零战术 "c"; 失败 .
+  (* a c *)
+  失败了 重试们 [ 失败 | 零战术 "a" | 零战术 "b"  ]; 零战术 "c"; 失败 .
+  (* a c *)
+
+  
+  外 内 重试 失败 则 零战术 "a"
+                    否则 零战术 "b" .
+  外 重试 失败 则 零战术 "a"
+                    否则 零战术 "b" . (** = tryif _ 否则 _ 则 *)
+  内 重试 失败 则 零战术 "a"
+                    否则 零战术 "b" .
+  重试 失败 则 零战术 "a"
+                    否则 零战术 "b" .
+
+  
+  外 内 重试 与
+    失败 ;=> 零战术 "a"
+  | 零战术 "b" ;=> 零战术 "b'" ; 失败
+  | _ ;=> 零战术 "c"
+  结束.
+  外 重试 与
+    失败 ;=> 零战术 "a"
+  | 零战术 "b" ;=> 零战术 "b'"
+  | _ ;=> 零战术 "c"
+  结束.
+  内 重试 与
+    失败 ;=> 零战术 "a"
+  | 零战术 "b" ;=> 零战术 "b'" ; 失败
+  | _ ;=> 零战术 "c"
+  结束.
+  重试 与
+    失败 ;=> 零战术 "a"
+  | 零战术 "b" ;=> 零战术 "b'"
+  | _ ;=> 零战术 "c"
+  结束.
+
+
+  失败了 (          外 内 重试 零战术 "a" 则 外 重试们 [零战术 "b" | 零战术 "b'"]; 失败
+                           否则 外 重试们 [零战术 "i" | 零战术 "i'"] ); 零战术 "o"; 失败 .
+  (*  a b b' i o i' o *)
+  失败了 (          外 内 重试 与
+                  零战术 "a1" ;=> 外 重试们 [零战术 "b" | 零战术 "b'"]; 失败
+                | 零战术 "a2" ;=> 外 重试们 [零战术 "i" | 零战术 "i'"]
+                  结束); 零战术 "o"; 失败 .
+  (*  a1 b b' a2 i o i' o *)
+  失败了 (                内 重试 零战术 "a" 则 外 重试们 [零战术 "b" | 零战术 "b'"]; 失败
+                          否则 外 重试们 [零战术 "i" | 零战术 "i'"] ); 零战术 "o"; 失败 .
+  (* a b b' i o *)
+  失败了 (                内 重试 与
+                        零战术 "a1" ;=> 外 重试们 [零战术 "b" | 零战术 "b'"]; 失败
+                      | 零战术 "a2" ;=> 外 重试们 [零战术 "i" | 零战术 "i'"]
+                      | 零战术 "a3" ;=> 失败 结束); 零战术 "o"; 失败 .
+  (* a1 b b' a2 i o *)
+  失败了 (无外 (外 内 重试 零战术 "a" 则 外 重试们 [零战术 "b" | 零战术 "b'"]; 失败
+                           否则 外 重试们 [零战术 "i" | 零战术 "i'"] )); 零战术 "o"; 失败 .
+  (* a b b' i o *)
+  失败了 (          外       重试 零战术 "a" 则 外 重试们 [零战术 "b" | 零战术 "b'"]; 失败
+                          否则 外 重试们 [零战术 "i" | 零战术 "i'"] ); 零战术 "o"; 失败 .
+  (* a b b' *)
+  失败了 (          外       重试 与
+                  零战术 "a1" ;=> 外 重试们 [零战术 "b" | 零战术 "b'"]; 失败
+                | 零战术 "a2" ;=> 外 重试们 [零战术 "i" | 零战术 "i'"] 结束); 零战术 "o"; 失败 .
+  (* a1 b b' *)
+  失败了 (无外 (外       重试 零战术 "a" 则 外 重试们 [零战术 "b" | 零战术 "b'"]; 失败
+                          否则 外 重试们 [零战术 "i" | 零战术 "i'"] )); 零战术 "o"; 失败 .
+  (* a b b' *)
+  失败了 (                      重试 零战术 "a" 则 外 重试们 [零战术 "b" | 零战术 "b'"]; 失败
+                          否则 外 重试们 [零战术 "i" | 零战术 "i'"] ); 零战术 "o"; 失败 .
+  (* a b b' *)
+  失败了 (                      重试 与
+                              零战术 "a1" ;=> 外 重试们 [零战术 "b" | 零战术 "b'"]; 失败
+                            | 零战术 "a2" ;=> 外 重试们 [零战术 "i" | 零战术 "i'"] 结束); 零战术 "o"; 失败 .
+  (* a1 b b' *)
+
+  
+  失败了 (          外       重试 零战术 "a" 则 外 重试们 [零战术 "b" | 零战术 "b'"]
+                          否则 外 重试们 [零战术 "i" | 零战术 "i'"] ); 零战术 "o"; 失败 .
+  (* a b o b' o *)
+  失败了 (          外       重试 与
+                  零战术 "a1" ;=> 外 重试们 [零战术 "b" | 零战术 "b'"]
+                | 零战术 "a2" ;=> 外 重试们 [零战术 "i" | 零战术 "i'"] 结束); 零战术 "o"; 失败 .
+  (* a1 b o b' o *)
+  失败了 (无外 (外       重试 零战术 "a" 则 外 重试们 [零战术 "b" | 零战术 "b'"]
+                          否则 外 重试们 [零战术 "i" | 零战术 "i'"] )); 零战术 "o"; 失败 .
+  (* a b o *)
+  失败了 (                      重试 零战术 "a" 则 外 重试们 [零战术 "b" | 零战术 "b'"]
+                          否则 外 重试们 [零战术 "i" | 零战术 "i'"] ); 零战术 "o"; 失败 .
+  (* a b o *)
+  失败了 (                      重试 与
+                              零战术 "a1" ;=> 外 重试们 [零战术 "b" | 零战术 "b'"]
+                            | 零战术 "a2" ;=> 外 重试们 [零战术 "i" | 零战术 "i'"] 结束); 零战术 "o"; 失败 .
+  (* a1 b o *)
+
+Abort.
+
+(** match 目的 与 _ 结束 *)  (** match 颠倒 目的 与 _ 结束 *)
+目的 forall P N : Prop, P.
+  intros P N.
+  
+  外 内 统一 目的 与
+   |- N => 零战术 "a"
+  | |- P => 零战术 "b"            
+  结束 .
+  外 统一 目的 与
+   |- N => 零战术 "a"
+  | |- P => 零战术 "b"            
+  结束 .
+  内 统一 目的 与
+   |- N => 零战术 "a"
+  | |- P => 零战术 "b"            
+  结束 . (** = match 目的 与 _ 结束 *)
+  统一 目的 与
+   |- N => 零战术 "a"
+  | |- P => 零战术 "b"            
+  结束 .
+
+  外 内 统一 颠倒 目的 与
+   |- N => 零战术 "a"
+  | |- P => 零战术 "b"            
+  结束 .
+  外 统一 颠倒 目的 与
+   |- N => 零战术 "a"
+  | |- P => 零战术 "b"            
+  结束 .
+  内 统一 颠倒 目的 与
+   |- N => 零战术 "a"
+  | |- P => 零战术 "b"            
+  结束 . (** = match 颠倒 目的 与 _ 结束 *)
+  统一 颠倒 目的 与
+   |- N => 零战术 "a"
+  | |- P => 零战术 "b"            
+  结束 .
+  
+  失败了          外 内 统一 目的 与
+         |- P  =>  外 重试们 [零战术 "b" | 零战术 "b'"]; 失败
+       | |- P  =>  外 重试们 [零战术 "i" | 零战术 "i'"]
+       结束; 零战术 "o"; 失败 .
+  (* b b' i o i' o *)  (* compare: a b b' i o i' o *)
+  失败了                内 统一 目的 与
+         |- P  =>  外 重试们 [零战术 "b" | 零战术 "b'"]; 失败
+       | |- P  =>  外 重试们 [零战术 "i" | 零战术 "i'"]
+       结束; 零战术 "o"; 失败 .
+  (* b b' i o *)   (* compare: a b b' i o *)
+  失败了 无外 (外 内 统一 目的 与
+         |- P  =>  外 重试们 [零战术 "b" | 零战术 "b'"]; 失败
+       | |- P  =>  外 重试们 [零战术 "i" | 零战术 "i'"]
+       结束); 零战术 "o"; 失败 .
+  (* b b' i o *)   (* compare: a b b' i o *)
+  失败了          外       统一 目的 与
+         |- P  =>  外 重试们 [零战术 "b" | 零战术 "b'"]; 失败
+       | |- P  =>  外 重试们 [零战术 "i" | 零战术 "i'"]
+       结束; 零战术 "o"; 失败 .
+  (* b b' *)   (* compare: a b b' *)
+  失败了 无外 (外       统一 目的 与
+         |- P  =>  外 重试们 [零战术 "b" | 零战术 "b'"]; 失败
+       | |- P  =>  外 重试们 [零战术 "i" | 零战术 "i'"]
+       结束); 零战术 "o"; 失败 .
+  (* b b' *)   (* compare: a b b' *)
+  失败了                      统一 目的 与
+         |- P  =>  外 重试们 [零战术 "b" | 零战术 "b'"]; 失败
+       | |- P  =>  外 重试们 [零战术 "i" | 零战术 "i'"]
+       结束; 零战术 "o"; 失败 .
+  (* b b' *)   (* compare: a b b' *)
+
+  
+  失败了          外       统一 目的 与
+         |- P  =>  外 重试们 [零战术 "b" | 零战术 "b'"]
+       | |- P  =>  外 重试们 [零战术 "i" | 零战术 "i'"]
+       结束; 零战术 "o"; 失败 .
+  (* b o b' o *)   (* compare: a b o b' o *)
+  失败了 无外 (外       统一 目的 与
+         |- P  =>  外 重试们 [零战术 "b" | 零战术 "b'"]
+       | |- P  =>  外 重试们 [零战术 "i" | 零战术 "i'"]
+       结束); 零战术 "o"; 失败 .
+  (* b o *)   (* compare: a b o *)
+  失败了                      统一 目的 与
+         |- P  =>  外 重试们 [零战术 "b" | 零战术 "b'"]
+       | |- P  =>  外 重试们 [零战术 "i" | 零战术 "i'"]
+       结束; 零战术 "o"; 失败 .
+  (* b o *)   (* compare: a b o *)
+
+Abort.
+
+(** match _ 与 _ 结束 *)
+目的 forall P N : Prop, True.
+  intros P N.
+  
+  外 内 统一 P 与
+    N => 零战术 "a"
+  |  P => 零战术 "b"             
+  结束 .
+  外 统一 P 与
+    N => 零战术 "a"
+  |  P => 零战术 "b"             
+  结束 .
+  内 统一 P 与
+    N => 零战术 "a"
+  |  P => 零战术 "b"             
+  结束 . (** = match _ 与 _ 结束 *)
+  统一 P 与
+    N => 零战术 "a"
+  |  P => 零战术 "b"             
+  结束 .
+
+  
+  失败了          外 内 统一 P 与
+          P  =>  外 重试们 [零战术 "b" | 零战术 "b'"]; 失败
+       |  P  =>  外 重试们 [零战术 "i" | 零战术 "i'"]
+       结束; 零战术 "o"; 失败 .
+  (* b b' i o i' o *)  (* compare: a b b' i o i' o *)
+  失败了                内 统一 P 与
+          P  =>  外 重试们 [零战术 "b" | 零战术 "b'"]; 失败
+       |  P  =>  外 重试们 [零战术 "i" | 零战术 "i'"]
+       结束; 零战术 "o"; 失败 .
+  (* b b' i o *)   (* compare: a b b' i o *)
+  失败了 无外 (外 内 统一 P 与
+          P  =>  外 重试们 [零战术 "b" | 零战术 "b'"]; 失败
+       |  P  =>  外 重试们 [零战术 "i" | 零战术 "i'"]
+       结束); 零战术 "o"; 失败 .
+  (* b b' i o *)   (* compare: a b b' i o *)
+  失败了          外       统一 P 与
+          P  =>  外 重试们 [零战术 "b" | 零战术 "b'"]; 失败
+       |  P  =>  外 重试们 [零战术 "i" | 零战术 "i'"]
+       结束; 零战术 "o"; 失败 .
+  (* b b' *)   (* compare: a b b' *)
+  失败了 无外 (外       统一 P 与
+          P  =>  外 重试们 [零战术 "b" | 零战术 "b'"]; 失败
+       |  P  =>  外 重试们 [零战术 "i" | 零战术 "i'"]
+       结束); 零战术 "o"; 失败 .
+  (* b b' *)   (* compare: a b b' *)
+  失败了                      统一 P 与
+          P  =>  外 重试们 [零战术 "b" | 零战术 "b'"]; 失败
+       |  P  =>  外 重试们 [零战术 "i" | 零战术 "i'"]
+       结束; 零战术 "o"; 失败 .
+  (* b b' *)   (* compare: a b b' *)
+
+  
+  失败了          外       统一 P 与
+          P  =>  外 重试们 [零战术 "b" | 零战术 "b'"]
+       |  P  =>  外 重试们 [零战术 "i" | 零战术 "i'"]
+       结束; 零战术 "o"; 失败 .
+  (* b o b' o *)   (* compare: a b o b' o *)
+  失败了 无外 (外       统一 P 与
+          P  =>  外 重试们 [零战术 "b" | 零战术 "b'"]
+       |  P  =>  外 重试们 [零战术 "i" | 零战术 "i'"]
+       结束); 零战术 "o"; 失败 .
+  (* b o *)   (* compare: a b o *)
+  失败了                      统一 P 与
+          P  =>  外 重试们 [零战术 "b" | 零战术 "b'"]
+       |  P  =>  外 重试们 [零战术 "i" | 零战术 "i'"]
+       结束; 零战术 "o"; 失败 .
+  (* b o *)   (* compare: a b o *)
+
+Abort.
+
+
+(** ** alt
+----------------------------------------------------------------------------- *)
+
+
+(** _ + _ *)  (** first [ _ ] *)  (** tryif _ else _ then *)
+Goal True .
+  [+ fail | idtac "a" ]. (** = _ + _ *)
+  outer alts [fail | idtac "a" ]. (** = _ + _ *)
+  alts [fail | idtac "a" ]. (** = first [ _ ] *)
+
+  
+  Fail outer alts [ ] .
+  Fail alts [ ] .
+
+  
+  Fail outer alts [ fail | idtac "a" | idtac "b"  ]; idtac "c"; fail .
+  (* a c b c *)
+  Fail no_outer (outer alts [ fail | idtac "a" | idtac "b"  ]); idtac "c"; fail .
+  (* a c *)
+  Fail alts [ fail | idtac "a" | idtac "b"  ]; idtac "c"; fail .
+  (* a c *)
+
+  
+  outer inner alter fail then idtac "a"
+                    else idtac "b" .
+  outer alter fail then idtac "a"
+                    else idtac "b" . (** = tryif _ else _ then *)
+  inner alter fail then idtac "a"
+                    else idtac "b" .
+  alter fail then idtac "a"
+                    else idtac "b" .
+
+
+  outer inner alter with
+    fail ;=> idtac "a"
+  | idtac "b" ;=> idtac "b'" ; fail
+  | _ ;=> idtac "c"
+  end.
+  outer alter with
+    fail ;=> idtac "a"
+  | idtac "b" ;=> idtac "b'"
+  | _ ;=> idtac "c"
+  end.
+  inner alter with
+    fail ;=> idtac "a"
+  | idtac "b" ;=> idtac "b'" ; fail
+  | _ ;=> idtac "c"
+  end.
+  alter with
+    fail ;=> idtac "a"
+  | idtac "b" ;=> idtac "b'"
+  | _ ;=> idtac "c"
+  end.
+
+  
+  Fail (          outer inner alter idtac "a" then outer alts [idtac "b" | idtac "b'"]; fail
+                           else outer alts [idtac "i" | idtac "i'"] ); idtac "o"; fail .
+  (*  a b b' i o i' o *)
+  Fail (          outer inner alter with
+                  idtac "a1" ;=> outer alts [idtac "b" | idtac "b'"]; fail
+                | idtac "a2" ;=> outer alts [idtac "i" | idtac "i'"]
+                  end); idtac "o"; fail .
+  (*  a1 b b' a2 i o i' o *)
+  Fail (                inner alter idtac "a" then outer alts [idtac "b" | idtac "b'"]; fail
+                          else outer alts [idtac "i" | idtac "i'"] ); idtac "o"; fail .
+  (* a b b' i o *)
+  Fail (                inner alter with
+                        idtac "a1" ;=> outer alts [idtac "b" | idtac "b'"]; fail
+                      | idtac "a2" ;=> outer alts [idtac "i" | idtac "i'"]
+                      | idtac "a3" ;=> fail end); idtac "o"; fail .
+  (* a1 b b' a2 i o *)
+  Fail (no_outer (outer inner alter idtac "a" then outer alts [idtac "b" | idtac "b'"]; fail
+                           else outer alts [idtac "i" | idtac "i'"] )); idtac "o"; fail .
+  (* a b b' i o *)
+  Fail (          outer       alter idtac "a" then outer alts [idtac "b" | idtac "b'"]; fail
+                          else outer alts [idtac "i" | idtac "i'"] ); idtac "o"; fail .
+  (* a b b' *)
+  Fail (          outer       alter with
+                  idtac "a1" ;=> outer alts [idtac "b" | idtac "b'"]; fail
+                | idtac "a2" ;=> outer alts [idtac "i" | idtac "i'"] end); idtac "o"; fail .
+  (* a1 b b' *)
+  Fail (no_outer (outer       alter idtac "a" then outer alts [idtac "b" | idtac "b'"]; fail
+                          else outer alts [idtac "i" | idtac "i'"] )); idtac "o"; fail .
+  (* a b b' *)
+  Fail (                      alter idtac "a" then outer alts [idtac "b" | idtac "b'"]; fail
+                          else outer alts [idtac "i" | idtac "i'"] ); idtac "o"; fail .
+  (* a b b' *)
+  Fail (                      alter with
+                              idtac "a1" ;=> outer alts [idtac "b" | idtac "b'"]; fail
+                            | idtac "a2" ;=> outer alts [idtac "i" | idtac "i'"] end); idtac "o"; fail .
+  (* a1 b b' *)
+
+  
+  Fail (          outer       alter idtac "a" then outer alts [idtac "b" | idtac "b'"]
+                          else outer alts [idtac "i" | idtac "i'"] ); idtac "o"; fail .
+  (* a b o b' o *)
+  Fail (          outer       alter with
+                  idtac "a1" ;=> outer alts [idtac "b" | idtac "b'"]
+                | idtac "a2" ;=> outer alts [idtac "i" | idtac "i'"] end); idtac "o"; fail .
+  (* a1 b o b' o *)
+  Fail (no_outer (outer       alter idtac "a" then outer alts [idtac "b" | idtac "b'"]
+                          else outer alts [idtac "i" | idtac "i'"] )); idtac "o"; fail .
+  (* a b o *)
+  Fail (                      alter idtac "a" then outer alts [idtac "b" | idtac "b'"]
+                          else outer alts [idtac "i" | idtac "i'"] ); idtac "o"; fail .
+  (* a b o *)
+  Fail (                      alter with
+                              idtac "a1" ;=> outer alts [idtac "b" | idtac "b'"]
+                            | idtac "a2" ;=> outer alts [idtac "i" | idtac "i'"] end); idtac "o"; fail .
+  (* a1 b o *)
+
+Abort.
+
+(** match goal with _ end *)  (** match reverse goal with _ end *)
+Goal forall P N : Prop, P.
+  intros P N.
+  
+  outer inner unify goal with
+   |- N => idtac "a"
+  | |- P => idtac "b"            
+  end .
+  outer unify goal with
+   |- N => idtac "a"
+  | |- P => idtac "b"            
+  end .
+  inner unify goal with
+   |- N => idtac "a"
+  | |- P => idtac "b"            
+  end . (** = match goal with _ end *)
+  unify goal with
+   |- N => idtac "a"
+  | |- P => idtac "b"            
+  end .
+
+  outer inner unify reverse goal with
+   |- N => idtac "a"
+  | |- P => idtac "b"            
+  end .
+  outer unify reverse goal with
+   |- N => idtac "a"
+  | |- P => idtac "b"            
+  end .
+  inner unify reverse goal with
+   |- N => idtac "a"
+  | |- P => idtac "b"            
+  end . (** = match reverse goal with _ end *)
+  unify reverse goal with
+   |- N => idtac "a"
+  | |- P => idtac "b"            
+  end .
+  
+  Fail          outer inner unify goal with
+         |- P  =>  outer alts [idtac "b" | idtac "b'"]; fail
+       | |- P  =>  outer alts [idtac "i" | idtac "i'"]
+       end; idtac "o"; fail .
+  (* b b' i o i' o *)  (* compare: a b b' i o i' o *)
+  Fail                inner unify goal with
+         |- P  =>  outer alts [idtac "b" | idtac "b'"]; fail
+       | |- P  =>  outer alts [idtac "i" | idtac "i'"]
+       end; idtac "o"; fail .
+  (* b b' i o *)   (* compare: a b b' i o *)
+  Fail no_outer (outer inner unify goal with
+         |- P  =>  outer alts [idtac "b" | idtac "b'"]; fail
+       | |- P  =>  outer alts [idtac "i" | idtac "i'"]
+       end); idtac "o"; fail .
+  (* b b' i o *)   (* compare: a b b' i o *)
+  Fail          outer       unify goal with
+         |- P  =>  outer alts [idtac "b" | idtac "b'"]; fail
+       | |- P  =>  outer alts [idtac "i" | idtac "i'"]
+       end; idtac "o"; fail .
+  (* b b' *)   (* compare: a b b' *)
+  Fail no_outer (outer       unify goal with
+         |- P  =>  outer alts [idtac "b" | idtac "b'"]; fail
+       | |- P  =>  outer alts [idtac "i" | idtac "i'"]
+       end); idtac "o"; fail .
+  (* b b' *)   (* compare: a b b' *)
+  Fail                      unify goal with
+         |- P  =>  outer alts [idtac "b" | idtac "b'"]; fail
+       | |- P  =>  outer alts [idtac "i" | idtac "i'"]
+       end; idtac "o"; fail .
+  (* b b' *)   (* compare: a b b' *)
+
+  
+  Fail          outer       unify goal with
+         |- P  =>  outer alts [idtac "b" | idtac "b'"]
+       | |- P  =>  outer alts [idtac "i" | idtac "i'"]
+       end; idtac "o"; fail .
+  (* b o b' o *)   (* compare: a b o b' o *)
+  Fail no_outer (outer       unify goal with
+         |- P  =>  outer alts [idtac "b" | idtac "b'"]
+       | |- P  =>  outer alts [idtac "i" | idtac "i'"]
+       end); idtac "o"; fail .
+  (* b o *)   (* compare: a b o *)
+  Fail                      unify goal with
+         |- P  =>  outer alts [idtac "b" | idtac "b'"]
+       | |- P  =>  outer alts [idtac "i" | idtac "i'"]
+       end; idtac "o"; fail .
+  (* b o *)   (* compare: a b o *)
+
+Abort.
+
+(** match _ with _ end *)
+Goal forall P N : Prop, True.
+  intros P N.
+  
+  outer inner unify P with
+    N => idtac "a"
+  |  P => idtac "b"             
+  end .
+  outer unify P with
+    N => idtac "a"
+  |  P => idtac "b"             
+  end .
+  inner unify P with
+    N => idtac "a"
+  |  P => idtac "b"             
+  end . (** = match _ with _ end *)
+  unify P with
+    N => idtac "a"
+  |  P => idtac "b"             
+  end .
+
+  
+  Fail          outer inner unify P with
+          P  =>  outer alts [idtac "b" | idtac "b'"]; fail
+       |  P  =>  outer alts [idtac "i" | idtac "i'"]
+       end; idtac "o"; fail .
+  (* b b' i o i' o *)  (* compare: a b b' i o i' o *)
+  Fail                inner unify P with
+          P  =>  outer alts [idtac "b" | idtac "b'"]; fail
+       |  P  =>  outer alts [idtac "i" | idtac "i'"]
+       end; idtac "o"; fail .
+  (* b b' i o *)   (* compare: a b b' i o *)
+  Fail no_outer (outer inner unify P with
+          P  =>  outer alts [idtac "b" | idtac "b'"]; fail
+       |  P  =>  outer alts [idtac "i" | idtac "i'"]
+       end); idtac "o"; fail .
+  (* b b' i o *)   (* compare: a b b' i o *)
+  Fail          outer       unify P with
+          P  =>  outer alts [idtac "b" | idtac "b'"]; fail
+       |  P  =>  outer alts [idtac "i" | idtac "i'"]
+       end; idtac "o"; fail .
+  (* b b' *)   (* compare: a b b' *)
+  Fail no_outer (outer       unify P with
+          P  =>  outer alts [idtac "b" | idtac "b'"]; fail
+       |  P  =>  outer alts [idtac "i" | idtac "i'"]
+       end); idtac "o"; fail .
+  (* b b' *)   (* compare: a b b' *)
+  Fail                      unify P with
+          P  =>  outer alts [idtac "b" | idtac "b'"]; fail
+       |  P  =>  outer alts [idtac "i" | idtac "i'"]
+       end; idtac "o"; fail .
+  (* b b' *)   (* compare: a b b' *)
+
+  
+  Fail          outer       unify P with
+          P  =>  outer alts [idtac "b" | idtac "b'"]
+       |  P  =>  outer alts [idtac "i" | idtac "i'"]
+       end; idtac "o"; fail .
+  (* b o b' o *)   (* compare: a b o b' o *)
+  Fail no_outer (outer       unify P with
+          P  =>  outer alts [idtac "b" | idtac "b'"]
+       |  P  =>  outer alts [idtac "i" | idtac "i'"]
+       end); idtac "o"; fail .
+  (* b o *)   (* compare: a b o *)
+  Fail                      unify P with
+          P  =>  outer alts [idtac "b" | idtac "b'"]
+       |  P  =>  outer alts [idtac "i" | idtac "i'"]
+       end; idtac "o"; fail .
+  (* b o *)   (* compare: a b o *)
+
+Abort.
+    </textarea>
+  </div> <!-- /#document -->
+  </div> <!-- /#code-wrapper -->
+  </div> <!-- /#ide-wrapper -->
+
+  <script src="../ui-js/jscoq-loader.js" type="text/javascript"></script>
+  <script type="text/javascript">
+
+    var jscoq_ids  = ['workspace'];
+    var jscoq_opts = {
+        prelude:   true,
+        base_path: '../',
+        init_pkgs: ['init', 'qoc'],
+        all_pkgs:  ['init', 'qoc', 'coq-base', 'coq-collections', 'coq-arith', 'coq-reals', 'math-comp'],
+        implicit_libs: true,
+        editor: { mode: { 'company-coq': true }, keyMap: 'default' }
+    };
+
+    /* Global reference */
+    var coq;
+
+    loadJsCoq(jscoq_opts.base_path)
+        .then( () => coq = new CoqManager(jscoq_ids, jscoq_opts) );
+  </script>
+</body>
+</html>

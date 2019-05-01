@@ -1,0 +1,182 @@
+<!--
+  This sample contains two very simple introductory exercises of
+  interactive proofs in Coq, one with natural numbers and one with lists.
+  It can be used as a gentle landing page, which requires no knowledge
+  of math-comp.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="description" content="An Online IDE for the Coq Theorem Prover" />
+
+    <title>Use Coq in Your Browser: The Js Coq Theorem Prover Online IDE!</title>
+  </head>
+
+<body>
+  <div id="ide-wrapper" class="toggled">
+  <div id="code-wrapper">
+  <div id="document">
+    <p>
++ ‎‎Friday, ‎March ‎15, ‎2019, ‏‎22:22:35
+<br/> OOO1337777 , COQ , 鸡算计 , mathematics , 数学 - inductive - 归纳的
+<br/> https://www.bilibili.com/video/av46382244    </p>
+    <p>
+    Alt+↑/↓ – move through proof; Alt+→ or Alt+⏎ – go to cursor. <br/>
+    Alt+hover executed sentences to watch intermediate steps. <br/>
+    Hover identifiers in goals to view their types. Alt+hover to view definitions.<br/>
+    <i style="color: rgb(51, 51, 150)">Company-coq</i> addon is enabled: it will auto-complete names of tactics and lemmas 
+    from the standard library, and also show types of lemmas in the right pane.
+    </p>
+    <p>
+      “Alt +↑/↓” : 通过证明。 “Alt +→”或“Alt +⏎” : 转到光标。
+      <br/> “Alt +”悬停执行句子以观察中间步骤。
+      <br/> 将目标中的标识符悬停在其中以查看其类型。 “Alt +”悬停以查看定义。
+      <br/> 启用“Company-coq”加载项：它将自动完成标准库中的策略和引理名称，并在右侧窗格中显示引导类型。
+    </p>
+    <textarea id="workspace">
+From Qoc Require Import Jisuanji .
+
+模块 无限数字模块 .
+(** Bāoguǒ wúxiàn shùzì bāoguǒ. *)  
+
+归纳的 无限数字 : 类型 :=
+  零 : 无限数字
+| 下一个 : 无限数字 -> 无限数字 .
+(** Guīnà de wúxiàn shùzì: Lèixíng:=
+  Líng: Wúxiàn shùzì
+| xià yīgè: Wúxiàn shùzì -> wúxiàn shùzì. *)
+
+部分 部分1 .
+(** Bùfèn bùfèn 1. *)
+
+  变量 p外 : 无限数字 .
+  (** Biànliàng p wài: Wúxiàn shùzì. *)
+  
+  固定点 加更多 y内 : 无限数字 := 
+    匹配 y内 与
+      零 => p外
+    | 下一个 x内 => 下一个 (加更多 x内)
+    结束 .
+  (** Gùdìng diǎn jiā gèng duō y nèi: Wúxiàn shùzì:= 
+    Pǐpèi y nèi yǔ
+      líng => p wài
+    | xià yīgè x nèi => xià yīgè (jiā gèng duō x nèi)
+    jiéshù. *)
+
+结束 部分1 .
+(** Jiéshù bùfèn 1. *)
+
+打印 加更多 .
+(** Dǎyìn jiā gèng duō. *)
+
+论点 论点1 : 用 ( p外内 : 无限数字 ) ,
+    加更多 (下一个 零) p外内 = 加更多 p外内 (下一个 零) .
+(** Lùndiǎn lùndiǎn 1: Duì quánbù (p wài nèi: Wúxiàn shùzì),
+    jiā gèng duō (xià yīgè líng) p wài nèi = jiā gèng duō p wài nèi (xià yīgè líng). *)
+证明 .
+(** Zhèngmíng. *)
+  移动外 p外内 .
+  (** Jièshàomen p wài nèi. *)
+  简化 .
+  (** Jiǎnhuà. *)
+  消除 p外内 .
+  (** Xiāochú p wài nèi. *)  
+  - (** p外内 是 ( 零 ) *)
+    (** P wài nèi shì (líng) *)
+    简化 .
+    (** jiǎnhuà. *)
+    同一 .
+    (** Tóngyī. *)
+  - (** p外内 是 ( 下一个 q外内 ) *)
+    (** P wài nèi shì (xià yīgè q wài nèi) *)
+    移动外 q外内 .
+    (** jièshàomen q wài nèi. *)
+    移动外 论点1_q外内 .
+    (** Jièshàomen lùndiǎn 1_q wài nèi. *)
+    简化 .
+    (** Jiǎnhuà. *)
+    改写 论点1_q外内 .
+    (** Gǎixiě lùndiǎn 1_q wài nèi. *)
+    同一 .
+    (** Tóngyī. *)
+据证实 .
+(** Jù zhèngshí. *)
+
+结束 无限数字模块 .
+(** Jiéshù wúxiàn shùzì bāoguǒ. *)
+
+打印 无限数字模块 .
+(** Dǎyìn wúxiàn shùzì bāoguǒ. *)
+
+
+
+(** ------------------------------------------------------------------------- *)
+
+
+
+Module infiniteNumbers .
+
+Inductive infiniteNumbers : Type :=
+  Zero : infiniteNumbers
+| NextOne : infiniteNumbers -> infiniteNumbers .
+
+Section Section1 .
+  
+  Variable pOutside : infiniteNumbers .
+  
+  Fixpoint addMore yInside : infiniteNumbers := 
+    match yInside with
+      Zero => pOutside
+    | NextOne xInside => NextOne (addMore xInside)
+    end .
+
+End Section1 .
+
+Print addMore .
+
+Lemma lemma1 : forall ( pOutsideInside : infiniteNumbers ) ,
+    addMore (NextOne Zero) pOutsideInside = addMore pOutsideInside (NextOne Zero) .
+Proof .
+  intros pOutsideInside.
+  simpl .
+  elim pOutsideInside .
+  - (** pOutsideInside is ( Zero ) *)
+    simpl .
+    reflexivity .
+  - (** pOutsideInside is ( NextOne qOutsideInside ) *)
+    intros qOutsideInside .
+    intros lemma1_qOutsideInside .
+    simpl .
+    rewrite lemma1_qOutsideInside .
+    reflexivity .
+Qed .
+
+End infiniteNumbers .
+
+</textarea>
+  </div> <!-- /#document -->
+  </div> <!-- /#code-wrapper -->
+  </div> <!-- /#ide-wrapper -->
+
+  <script src="../ui-js/jscoq-loader.js" type="text/javascript"></script>
+  <script type="text/javascript">
+
+    var jscoq_ids  = ['workspace'];
+    var jscoq_opts = {
+        prelude:   true,
+        base_path: '../',
+        init_pkgs: ['init', 'qoc'],
+        all_pkgs:  ['init', 'qoc', 'coq-base', 'coq-collections', 'coq-arith', 'coq-reals', 'math-comp'],
+        implicit_libs: true,
+        editor: { mode: { 'company-coq': true }, keyMap: 'default' }
+    };
+
+    /* Global reference */
+    var coq;
+
+    loadJsCoq(jscoq_opts.base_path)
+        .then( () => coq = new CoqManager(jscoq_ids, jscoq_opts) );
+  </script>
+</body>
+</html>

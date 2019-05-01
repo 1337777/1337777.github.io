@@ -18,24 +18,11 @@
   <div id="code-wrapper">
   <div id="document">
     <p>
-      Short ：the objective of the "鸡算计.在线" is to enable everyone to read and write mathematics . In the next 5 years to 10 years , this could be used in the national education .
++ Friday, April 26, 2019,  22:22:00
+<br/> OOO1337777 , COQ , 鸡算计 , mathematics , 数学 - ends , 鸡算计.在线 - 目的们 , http://鸡算计.在线
+<br/> http://鸡算计.在线
+<br/> https://www.bilibili.com/video/av50587460/
     </p>
-    <p>
-      短 : “鸡算计.在线”的目的是让每个人都能读写数学。在未来5年到10年，这可以用于国民教育。
-    </p>
-    <p>
-    </p>
-    <ul>
-  <li><a href="qoc_jisuanji_logic_variables_proof.html">qoc_jisuanji_logic_variables_proof</a></li>
-  <li><a href="qoc_jisuanji_inductive.html">qoc_jisuanji_inductive</a></li>
-  <li><a href="qoc_jisuanji_polymorphism_notation.html">qoc_jisuanji_polymorphism_notation</a></li>
-  <li><a href="qoc_jisuanji_parameter_option.html">qoc_jisuanji_parameter_option</a></li>
-  <li><a href="qoc_jisuanji_tactics.html">qoc_jisuanji_tactics</a></li>
-  <li><a href="qoc_jisuanji_environmental_parametrized_module.html">qoc_jisuanji_environmental_parametrized_module</a></li>
-  <li><a href="qoc_jisuanji_tactical.html">qoc_jisuanji_tactical</a></li>
-  <li><a href="qoc_jisuanji_search_error.html">qoc_jisuanji_search_error</a></li>
-  <li><a href="qoc_jisuanji_ends.html">qoc_jisuanji_ends</a></li>
-</ul>
     <p>
     Alt+↑/↓ – move through proof; Alt+→ or Alt+⏎ – go to cursor. <br/>
     Alt+hover executed sentences to watch intermediate steps. <br/>
@@ -96,12 +83,8 @@ Short ：the objective of the "鸡算计.在线" is to enable everyone to read a
 (** 同一 , 对称 , transitivity *)
 论点 forty_two : 41 + 1 = 42.
 证明.
-  同一.
-退出.
-论点 forty_two : 41 + 1 = 42.
-  对称. 同一.
-退出.
-论点 forty_two : 41 + 1 = 42.
+  同一. 复原.
+  对称. 同一. 复原 2.
   外传递. 确切 (eq_refl (3 + (38 + 1))).
   同一.
 退出.
@@ -239,7 +222,7 @@ Short ：the objective of the "鸡算计.在线" is to enable everyone to read a
 证明.
   移动外 P Q R P_holds.
   移动外 P_implies_Q P_implies_R. 
-  分裂. (* 复原. 构造函数. *)
+  分裂. 复原. 构造函数.
   - 应用 P_implies_Q . 假设 .
   - 应用 P_implies_R . 假设 .
 据证实.
@@ -257,8 +240,8 @@ Short ：the objective of the "鸡算计.在线" is to enable everyone to read a
 证明.
   移动外 P Q P_or_Q.
   解构 P_or_Q 如 [P_holds | Q_holds].
-  - 右. (* 复原. 构造函数 2. *)  假设.
-  - 左. (* 复原. 构造函数 1. *) 假设.
+  - 右. 复原. 构造函数 2.  假设.
+  - 左. 复原. 构造函数 1. 假设.
 据证实.
 
 归纳的 element :=
@@ -552,7 +535,7 @@ Proof.
   intros. ring.
 Qed.
 
-</textarea>
+    </textarea>
   </div> <!-- /#document -->
   </div> <!-- /#code-wrapper -->
   </div> <!-- /#ide-wrapper -->

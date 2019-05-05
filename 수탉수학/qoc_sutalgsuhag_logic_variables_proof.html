@@ -1,0 +1,153 @@
+<!--
+  This sample contains two very simple introductory exercises of
+  interactive proofs in Coq, one with natural numbers and one with lists.
+  It can be used as a gentle landing page, which requires no knowledge
+  of math-comp.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="description" content="An Online IDE for the Coq Theorem Prover" />
+
+    <title>Use Coq in Your Browser: The Js Coq Theorem Prover Online IDE!</title>
+  </head>
+
+<body>
+  <div id="ide-wrapper" class="toggled">
+  <div id="code-wrapper">
+  <div id="document">
+    <p>
+짧은 :: "Coq"는 수학 읽기와 쓰기를위한 컴퓨터 프로그램입니다 .
+<br/> "Coq"는 복잡한 계산을 수행 할 수 있습니다.
+<br/> "Coq"는 간단한 계산을 수행 할 수도 있습니다.
+<br/> 예 : "Coq"는 요소들 [ "참된, 그릇된"]만을 포함하는 간단한 데이터에 대한 계산을 수행 할 수 있습니다. 이러한 간단한 계산은 "논리"라고합니다.
+</p>
+    <p>
+Short :: "Coq" is computer program to read and write mathematics . 
+<br/> "Coq" can do complex calculations . 
+<br/> "Coq" can also do simple calculations . 
+<br/> Example : "Coq" can do computations on the simple data which contains only the elements [ "true , false" ] . These simple computations are named "logic" .
+    </p>
+    <p>
+    Alt+↑/↓ – move through proof; Alt+→ or Alt+⏎ – go to cursor. <br/>
+    Alt+hover executed sentences to watch intermediate steps. <br/>
+    Hover identifiers in goals to view their types. Alt+hover to view definitions.<br/>
+    <i style="color: rgb(51, 51, 150)">Company-coq</i> addon is enabled: it will auto-complete names of tactics and lemmas 
+    from the standard library, and also show types of lemmas in the right pane.
+    </p>
+    <p>
+<br/> "Alt + ↑ / ↓": 증명을 전달하십시오. "Alt + →"또는 "Alt + ⏎": 커서로 이동하십시오.
+<br/> "Alt +"호버링은 문장을 실행하여 중간 단계를 관찰합니다.
+<br/> 대상에 식별자를 올려 해당 유형을 표시합니다. "Alt +"를 가리키면 정의를 볼 수 있습니다.
+<br/> "Company-coq"애드온을 활성화하십시오 : 표준 라이브러리의 정책 및 보조 정리 이름을 자동으로 완성하고 오른쪽 창에 부트 유형을 표시하십시오.
+    </p>
+    <textarea id="workspace">
+From Qoc Require Import Sutalgsuhag .
+
+(** 
+
+짧은 :: "Coq"는 수학 읽기와 쓰기를위한 컴퓨터 프로그램입니다 .
+"Coq"는 복잡한 계산을 수행 할 수 있습니다.
+"Coq"는 간단한 계산을 수행 할 수도 있습니다.
+예 : "Coq"는 요소들 [ "참된, 그릇된"]만을 포함하는 간단한 데이터에 대한 계산을 수행 할 수 있습니다. 이러한 간단한 계산은 "논리"라고합니다.
+
+Short :: "Coq" is computer program to read and write mathematics . 
+"Coq" can do complex calculations . 
+"Coq" can also do simple calculations . 
+Example : "Coq" can do computations on the simple data which contains only the elements [ "true , false" ] . These simple computations are named "logic" .
+
+*)
+
+
+유도성 이진 :=
+  참된 : 이진
+| 그릇된 : 이진 .
+
+정의 또는 ( x : 이진 ) ( y : 이진 ) :=
+  ( 만약 x 그런 참된 그밖에 y ) . 
+
+(** true or true = true. 1 + 1 = 1
+true or false = true. 1 + 0 = 1
+false or true  = true. 0 + 1 = 1
+false or false = false. 0 + 0 = 0 *)
+부분 부분1.
+  변수 x : 이진.
+  변수 y : 이진.
+
+  논증 논증1 :  또는 x y  =  또는 y x .
+  증명.
+    확장 또는.
+    경우 x.
+    - (** x 참된*)
+      경우 y.
+      + (** y 참된 *) 같은.
+      + (** y 그릇된 *) 같은.
+    - (** x 그릇된 *)
+      경우 y.
+      + (** y 참된 *) 같은.
+      + (** y 그릇된 *) 같은.
+  확인.
+끝 부분1.
+
+
+
+(** ** alt
+----------------------------------------------------------------------------- *)
+
+Reset 이진.
+
+Inductive binary  := true : binary
+                    | false  : binary .
+
+Definition or ( x : binary ) ( y : binary ) :=
+  ( if x then true else y ) . 
+
+(** true or true = true. 1 + 1 = 1
+true or false = true. 1 + 0 = 1
+false or true  = true. 0 + 1 = 1
+false or false = false. 0 + 0 = 0 *)
+Section section1.
+  Variable x : binary.
+  Variable y : binary.
+
+  Lemma lemma1 :  or x y  =  or y x .
+  Proof.
+    unfold or.
+    case x.
+    - (** x true*)
+      case y.
+      + (** y true *) 같은.
+      + (** y false *) 같은.
+    - (** x false *)
+      case y.
+      + (** y true *) 같은.
+      + (** y false *) 같은.
+  Qed.
+End section1.
+</textarea>
+  </div> <!-- /#document -->
+  </div> <!-- /#code-wrapper -->
+  </div> <!-- /#ide-wrapper -->
+
+  <script src="../ui-js/jscoq-loader.js" type="text/javascript"></script>
+  <script type="text/javascript">
+
+    var jscoq_ids  = ['workspace'];
+    var jscoq_opts = {
+        prelude:   true,
+        base_path: '../',
+        init_pkgs: ['init', 'qoc'],
+        all_pkgs:  ['init', 'qoc', 'coq-base', 'coq-collections', 'coq-arith', 'coq-reals', 'math-comp'],
+        implicit_libs: true,
+        editor: { mode: { 'company-coq': true }, keyMap: 'default' }
+    };
+
+    /* Global reference */
+    var coq;
+
+    loadJsCoq(jscoq_opts.base_path)
+        .then( () => coq = new CoqManager(jscoq_ids, jscoq_opts) );
+  </script>
+</body>
+</html>

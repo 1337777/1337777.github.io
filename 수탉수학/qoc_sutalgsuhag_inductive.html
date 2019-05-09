@@ -18,21 +18,14 @@
   <div id="code-wrapper">
   <div id="document">
     <p>
-Short :: "Coq" is computer program to read and write mathematics . 
-    </p>
-    <p>
 짧은 :: "Coq"는 수학 읽기와 쓰기를위한 컴퓨터 프로그램입니다 .
-    </p>
+<br/> 무한 데이터 [1, 2, 3, 4, ...]는 짧은 형태로 기술 될 수 있습니다 .
+<br/> 이것은 "2 = 다음에 1", "3 = 다음에 2"... 때문입니다 .
+</p>
     <p>
-    <ul>
-  <li><a href="qoc_sutalgsuhag_logic_variables_proof.html">qoc_sutalgsuhag_logic_variables_proof</a></li>
-  <li><a href="qoc_sutalgsuhag_inductive.html">qoc_sutalgsuhag_inductive</a></li>
-    </ul>
-    </p>
-    <p>
-      <ul>
-	<li><a href="../">计算鸡</a></li>
-      </ul>
+Short :: "Coq" is computer program to read and write mathematics . 
+<br/> The infinite data [ 1 , 2 , 3 , 4 , ... ] can be described in short form . 
+<br/> This is because "2 = next after 1" , "3 = next after 2" ... 
     </p>
     <p>
     Alt+↑/↓ – move through proof; Alt+→ or Alt+⏎ – go to cursor. <br/>
@@ -53,83 +46,99 @@ From Qoc Require Import Sutalgsuhag .
 (** 
 
 짧은 :: "Coq"는 수학 읽기와 쓰기를위한 컴퓨터 프로그램입니다 .
-"Coq"는 복잡한 계산을 수행 할 수 있습니다.
-"Coq"는 간단한 계산을 수행 할 수도 있습니다.
-예 : "Coq"는 요소들 [ "참된, 그릇된"]만을 포함하는 간단한 데이터에 대한 계산을 수행 할 수 있습니다. 이러한 간단한 계산은 "논리"라고합니다.
+무한 데이터 [1, 2, 3, 4, ...]는 짧은 형태로 기술 될 수 있습니다 .
+이것은 "2 = 다음에 1", "3 = 다음에 2"... 때문입니다 .
 
 Short :: "Coq" is computer program to read and write mathematics . 
-"Coq" can do complex calculations . 
-"Coq" can also do simple calculations . 
-Example : "Coq" can do computations on the simple data which contains only the elements [ "true , false" ] . These simple computations are named "logic" .
+The infinite data [ 1 , 2 , 3 , 4 , ... ] can be described in short form . 
+This is because "2 = next after 1" , "3 = next after 2" ... 
 
 *)
 
 
-유도성 이진 :=
-  참된 : 이진
-| 그릇된 : 이진 .
+꾸러미 무한'수들 .
 
-정의 또는 ( x : 이진 ) ( y : 이진 ) :=
-  ( 만약 x 면 참된 외에는 y ) . 
+유도성 무한'수들 : 종류 :=
+  제로 : 무한'수들
+| 다음한 : 무한'수들 -> 무한'수들 .
 
-(** true or true = true. 1 + 1 = 1
-true or false = true. 1 + 0 = 1
-false or true  = true. 0 + 1 = 1
-false or false = false. 0 + 0 = 0 *)
-부분 부분1.
-  변수 x : 이진.
-  변수 y : 이진.
+부분 부분1 .
+  
+  변수 pOutside : 무한'수들 .
+  
+  고정점 추가'더 yInside : 무한'수들 := 
+    일치해 yInside 돌아가 무한'수들 대
+      제로 => pOutside
+    | 다음한 xInside => 다음한 (추가'더 xInside)
+    끝 .
 
-  논증 논증1 :  또는 x y  =  또는 y x .
-  증명.
-    확장 또는.
-    경우 x.
-    - (** x 참된*)
-      경우 y.
-      + (** y 참된 *) 같은.
-      + (** y 그릇된 *) 같은.
-    - (** x 그릇된 *)
-      경우 y.
-      + (** y 참된 *) 같은.
-      + (** y 그릇된 *) 같은.
-  확인.
-끝 부분1.
+끝 부분1 .
+
+인쇄해 추가'더 .
+
+논증 논증1 : 기능 ( pOutsideInside : 무한'수들 ) ,
+    추가'더 (다음한 제로) pOutsideInside = 추가'더 pOutsideInside (다음한 제로) .
+증명 .
+  이동해'밖 pOutsideInside.
+  단순화해 .
+  제거해 pOutsideInside .
+  - (** pOutsideInside is ( 제로 ) *)
+    단순화해 .
+    같은 .
+  - (** pOutsideInside is ( 다음한 qOutsideInside ) *)
+    이동해'밖 qOutsideInside .
+    이동해'밖 lemma1_qOutsideInside .
+    단순화해 .
+    다시쓰해 lemma1_qOutsideInside .
+    같은 .
+확인 .
+
+끝 무한'수들 .
 
 
 
 (** ** alt
 ----------------------------------------------------------------------------- *)
 
-Reset 이진.
 
-Inductive binary  := true : binary
-                    | false  : binary .
+Module Type infiniteNumbers .
 
-Definition or ( x : binary ) ( y : binary ) :=
-  ( if x then true else y ) . 
+Inductive infiniteNumbers : Type :=
+  Zero : infiniteNumbers
+| NextOne : infiniteNumbers -> infiniteNumbers .
 
-(** true or true = true. 1 + 1 = 1
-true or false = true. 1 + 0 = 1
-false or true  = true. 0 + 1 = 1
-false or false = false. 0 + 0 = 0 *)
-Section section1.
-  Variable x : binary.
-  Variable y : binary.
+Section Section1 .
+  
+  Variable pOutside : infiniteNumbers .
+  
+  Fixpoint addMore yInside : infiniteNumbers := 
+    match yInside return infiniteNumbers with
+      Zero => pOutside
+    | NextOne xInside => NextOne (addMore xInside)
+    end .
 
-  Lemma lemma1 :  or x y  =  or y x .
-  Proof.
-    unfold or.
-    case x.
-    - (** x true*)
-      case y.
-      + (** y true *) 같은.
-      + (** y false *) 같은.
-    - (** x false *)
-      case y.
-      + (** y true *) 같은.
-      + (** y false *) 같은.
-  Qed.
-End section1.
+End Section1 .
+
+Print addMore .
+
+Lemma lemma1 : forall ( pOutsideInside : infiniteNumbers ) ,
+    addMore (NextOne Zero) pOutsideInside = addMore pOutsideInside (NextOne Zero) .
+Proof .
+  intros pOutsideInside.
+  simpl .
+  elim pOutsideInside .
+  - (** pOutsideInside is ( Zero ) *)
+    simpl .
+    reflexivity .
+  - (** pOutsideInside is ( NextOne qOutsideInside ) *)
+    intros qOutsideInside .
+    intros lemma1_qOutsideInside .
+    simpl .
+    rewrite lemma1_qOutsideInside .
+    reflexivity .
+Qed .
+
+End infiniteNumbers .
 </textarea>
   </div> <!-- /#document -->
   </div> <!-- /#code-wrapper -->

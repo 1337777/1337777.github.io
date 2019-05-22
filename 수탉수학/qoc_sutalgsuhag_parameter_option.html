@@ -1,0 +1,574 @@
+<!--
+  This sample contains two very simple introductory exercises of
+  interactive proofs in Coq, one with natural numbers and one with lists.
+  It can be used as a gentle landing page, which requires no knowledge
+  of math-comp.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="description" content="An Online IDE for the Coq Theorem Prover" />
+
+    <title>Use Coq in Your Browser: The Js Coq Theorem Prover Online IDE!</title>
+  </head>
+
+<body>
+  <div id="ide-wrapper" class="toggled">
+  <div id="code-wrapper">
+  <div id="document">
+    <p>
+짧은 :: 
+<br/>(1.) "Coq"는 수학 읽기와 쓰기를위한 컴퓨터 프로그램입니다 .
+<br/>(2.) 항목이 포함 된 무한한 목록은 다음과 같을 수 있습니다. [ ] ; [ "고양이" ] ; [ "개", "고양이" ] ; [ "물고기" , "개" , "고양이" ] ...
+다른 예시 : [ ] ; [ "레드" ] ; [ "파랑" , "빨강" ] ; [ "금" , "파랑" , "빨강" ]; [ "녹색" , "금색" , "파란색" , "빨간색" ] ...
+<br/>(3.) 이 표기법 [ "물고기" , "개" , "고양이" ]은이 데이터 유형 "동물"을 숨기며이 크기 번호 매개 변수 "3"을 숨 깁니다.
+이 표기법 [ "녹색" , "금색" , "파란색" , "빨간색" ]은이 데이터 유형 "색"을 숨기며이 크기 번호 매개 변수 "4"을 숨 깁니다.
+숨겨진 / 암시 적 데이터 유형 및 숨겨진 / 암시 적 크기 번호 매개 변수는 자동으로 유추 될 수 있습니다.
+이것은 "다형성"과 "매개 변수화"에 대해 "암시 적 표기법"이라고합니다.
+<br/>(4.) 또한이 함수 (나머지 [ "물고기" , "개" , "고양이" ] = [ "개" , "고양이" ])는 크기 번호 "3"을 입력하고 크기 번호 "2"를 출력합니다.
+출력의 정확한 데이터 유형은 입력의 size-number 매개 변수에 따라 달라집니다. 그것은 많은 주어진 옵션들 사이에서 정밀화된다.
+이것은 "옵션 유형"또는 "종속 유형"또는 "논리적 사양"이라고합니다.
+</p>
+    <p>
+Short ::
+<br/>(1.) "Coq" is computer program to read and write mathematics . 
+<br/>(2.) The infinite lists which contain items can be these : [ ] ; [ "cat" ] ; [ "dog" , "cat" ] ; [ "fish" , "dog" , "cat" ] ...
+Another example : [ ] ; [ "red" ] ; [ "blue" , "red" ] ; [ "gold" , "blue" , "red" ] ; [ "green" , "gold" , "blue" , "red" ] ...
+<br/>(3.) This notation [ "fish" , "dog" , "cat" ] hides this data-type "animals" and it also hides this size-number parameter "3" . 
+This notation [ "green" , "gold" , "blue" , "red" ] hides this data-type "colors" and it also hides this size-number parameter "4" .
+These hidden/implicit data-type and hidden/implicit size-number parameter can be automatically inferred .
+This is named "implicit notation" for "polymorphism" and "parametrization" .
+<br/>(4.) Moreover , this function ( rest [ "fish" , "dog" , "cat" ] = [ "dog" , "cat" ]  ) inputs the size-number "3" and it outputs the size-number "2" .
+The precise data-type of the output depends on the size-number parameter of the input ; it is precised among many given options .
+This is named "option type" or "dependent type" or "logical specification" .
+    </p>
+    <p>
+    Alt+↑/↓ – move through proof; Alt+→ or Alt+⏎ – go to cursor. <br/>
+    Alt+hover executed sentences to watch intermediate steps. <br/>
+    Hover identifiers in goals to view their types. Alt+hover to view definitions.<br/>
+    <i style="color: rgb(51, 51, 150)">Company-coq</i> addon is enabled: it will auto-complete names of tactics and lemmas 
+    from the standard library, and also show types of lemmas in the right pane.
+    </p>
+    <p>
+"Alt + ↑ / ↓": 증명을 전달하십시오. "Alt + →"또는 "Alt + ⏎": 커서로 이동하십시오.
+<br/> "Alt +"호버링은 문장을 실행하여 중간 단계를 관찰합니다.
+<br/> 대상에 식별자를 올려 해당 유형을 표시합니다. "Alt +"를 가리키면 정의를 볼 수 있습니다.
+<br/> "Company-coq"애드온을 활성화하십시오 : 표준 라이브러리의 정책 및 보조 정리 이름을 자동으로 완성하고 오른쪽 창에 부트 유형을 표시하십시오.
+    </p>
+    <textarea id="workspace">
+From Qoc Require Import Sutalgsuhag .
+
+
+(** 
+
+짧은 :: 
+
+(1.) "Coq"는 수학 읽기와 쓰기를위한 컴퓨터 프로그램입니다 .
+
+(2.) 항목이 포함 된 무한한 목록은 다음과 같을 수 있습니다. [ ] ; [ "고양이" ] ; [ "개", "고양이" ] ; [ "물고기" , "개" , "고양이" ] ...
+다른 예시 : [ ] ; [ "레드" ] ; [ "파랑" , "빨강" ] ; [ "금" , "파랑" , "빨강" ]; [ "녹색" , "금색" , "파란색" , "빨간색" ] ...
+
+(3.) 이 표기법 [ "물고기" , "개" , "고양이" ]은이 데이터 유형 "동물"을 숨기며이 크기 번호 매개 변수 "3"을 숨 깁니다.
+이 표기법 [ "녹색" , "금색" , "파란색" , "빨간색" ]은이 데이터 유형 "색"을 숨기며이 크기 번호 매개 변수 "4"을 숨 깁니다.
+숨겨진 / 암시 적 데이터 유형 및 숨겨진 / 암시 적 크기 번호 매개 변수는 자동으로 유추 될 수 있습니다.
+이것은 "다형성"과 "매개 변수화"에 대해 "암시 적 표기법"이라고합니다.
+
+(4.) 또한이 함수 (나머지 [ "물고기" , "개" , "고양이" ] = [ "개" , "고양이" ])는 크기 번호 "3"을 입력하고 크기 번호 "2"를 출력합니다.
+출력의 정확한 데이터 유형은 입력의 size-number 매개 변수에 따라 달라집니다. 그것은 많은 주어진 옵션들 사이에서 정밀화된다.
+이것은 "옵션 유형"또는 "종속 유형"또는 "논리적 사양"이라고합니다.
+
+Short ::
+
+(1.) "Coq" is computer program to read and write mathematics . 
+
+(2.) The infinite lists which contain items can be these : [ ] ; [ "cat" ] ; [ "dog" , "cat" ] ; [ "fish" , "dog" , "cat" ] ...
+Another example : [ ] ; [ "red" ] ; [ "blue" , "red" ] ; [ "gold" , "blue" , "red" ] ; [ "green" , "gold" , "blue" , "red" ] ...
+
+(3.) This notation [ "fish" , "dog" , "cat" ] hides this data-type "animals" and it also hides this size-number parameter "3" . 
+This notation [ "green" , "gold" , "blue" , "red" ] hides this data-type "colors" and it also hides this size-number parameter "4" .
+These hidden/implicit data-type and hidden/implicit size-number parameter can be automatically inferred .
+This is named "implicit notation" for "polymorphism" and "parametrization" .
+
+(4.) Moreover , this function ( rest [ "fish" , "dog" , "cat" ] = [ "dog" , "cat" ]  ) inputs the size-number "3" and it outputs the size-number "2" .
+The precise data-type of the output depends on the size-number parameter of the input ; it is precised among many given options .
+This is named "option type" or "dependent type" or "logical specification" .
+
+*)
+
+꾸러미 다형'매개변수'유도성'암시적인'표기법 .
+(** memo that in some instances such 로 [상단에서_listPoly] above , 
+    then the parameters of the inputs is the 같은 로 the inputs *)
+
+(** the parameters [무한'수들] is computational , 
+    its elements can be 일치해ed/decided along forms/con구조ors *)
+유도성 무한'수들 : 종류 :=
+  제로 : 무한'수들
+| 다음한 : 무한'수들 -> 무한'수들 .
+
+부분 부분_매개변수가있는 .
+
+  변수 입력'매개변수 : 무한'수들 -> 종류 .
+  변수 공식_제로 : 기능 (l : 입력'매개변수 제로), 종류 .
+  변수 공식_다음한 : 기능 (q : 무한'수들) (l : 입력'매개변수 (다음한 q)), 종류 .
+
+  (** the precise form of the output
+        ( precisely [공식_제로 l] or [공식_다음한 q l] ? ) 
+        dep끝s on the parameter of the input 
+        ( whether [p] is 제로 or [다음한 q] ? ) *)
+  유도성 옵션'다형'매개변수 : 기능 (p : 무한'수들) (l : 입력'매개변수 p), 종류 :=
+    매개변수_제로 : 기능 (l : 입력'매개변수 제로),
+      공식_제로 l -> 옵션'다형'매개변수 제로 l
+  | 매개변수_다음한 : 기능 (q : 무한'수들) (l : 입력'매개변수 (다음한 q)),
+      공식_다음한 q l -> 옵션'다형'매개변수 (다음한 q) l .
+
+  (** this is possible because the parameters [무한'수들] is computational , 
+        its elements can be 일치해ed/decided along forms/con구조ors *)
+  정의 구조화된'옵션'다형'매개변수 :
+    기능 (p : 무한'수들) (l : 입력'매개변수 p), 종류 .
+  증명 .
+    이동해'밖 p . 경우 p (** because [무한'수들] is computational *) .
+    - 정확하다 공식_제로.
+    - 정확하다 공식_다음한 .
+  정의된 .
+
+  (** this is the inversion lemma for [옵션'다형'매개변수] *)
+  정의 구조화된'옵션'다형'매개변수_에서_옵션'다형'매개변수 :
+    기능 (p : 무한'수들) (l : 입력'매개변수 p) (f : 옵션'다형'매개변수 p l),
+      구조화된'옵션'다형'매개변수 p l .
+  증명.
+    이동해'밖 p l f .
+    수정해라 (일치해 f 대
+              매개변수_제로 l f => f
+            | 매개변수_다음한 q l f => f
+            끝) .
+  정의된 .
+
+  (** this is the instance of the inversion lemma of [옵션'다형'매개변수] for the parameter [제로] *)
+  정의 공식_제로_에서_옵션'다형'매개변수__제로 :
+    기능 (l : 입력'매개변수 제로) (f : 옵션'다형'매개변수 제로 l), 공식_제로 l .
+  증명 .
+    이동해'밖 l . 정확하다 (구조화된'옵션'다형'매개변수_에서_옵션'다형'매개변수 제로 l) .
+  정의된 .
+
+  (** this is the instance of the inversion lemma of [옵션'다형'매개변수] for the parameter [다음한 _] *)
+  정의 공식_다음한_에서_옵션'다형'매개변수__다음한 :
+    기능 (q : 무한'수들) (l : 입력'매개변수 (다음한 q)) (f : 옵션'다형'매개변수 (다음한 q) l),
+      공식_다음한 q l 
+    := ( 능 q l => (구조화된'옵션'다형'매개변수_에서_옵션'다형'매개변수 (다음한 q) l) ) .
+  
+끝 부분_매개변수가있는 .
+
+부분 부분_다형_매개변수가있는 .
+
+  변수 데이터 : 종류 .
+
+  유도성 목록'다형'매개변수 : 무한'수들 -> 종류 := 
+    빈 : 목록'다형'매개변수 제로
+  | 합류한다'하나의 : 기능 (d : 데이터) (q : 무한'수들) (l : 목록'다형'매개변수 q), 목록'다형'매개변수 (다음한 q) .
+
+  부분 나머지에서_목록'다형'매개변수 .
+
+    이라 공식_제로 : 기능 (l : 목록'다형'매개변수 제로), 종류
+      := ( 능 (l : 목록'다형'매개변수 제로) => 목록'다형'매개변수 제로 ) .
+
+    이라 공식_다음한 : 기능 (q : 무한'수들) (l : 목록'다형'매개변수 (다음한 q)), 종류
+      := ( 능 (q : 무한'수들) ( _ : 목록'다형'매개변수 (다음한 q) ) => 목록'다형'매개변수 q ) .
+
+    (** the precise form of the output
+      ( precisely [공식_제로 l] or [공식_다음한 q l] ? ) 
+      dep끝s on the parameter of the input 
+      ( whether [p] is 제로 or [다음한 q] ? ) *)
+    정의 나머지에서_목록'다형'매개변수 : 기능 (p : 무한'수들) (l : 목록'다형'매개변수 p),
+        옵션'다형'매개변수 목록'다형'매개변수 공식_제로 공식_다음한 p l .
+    증명 .
+      이동해'밖 p l . 경우 l .
+      - 적용해라 (매개변수_제로 목록'다형'매개변수 공식_제로 공식_다음한) . 확장 공식_제로 .
+        정확하다 빈 .
+      - 이동해'밖 d q l' . 
+        적용해라 (매개변수_다음한 목록'다형'매개변수 공식_제로 공식_다음한) . 확장 공식_다음한 .
+        정확하다 l' .
+    정의된 .
+
+    정의 나머지에서_목록'다형'매개변수_제로 : 기능 (l : 목록'다형'매개변수 제로), 목록'다형'매개변수 제로 .
+    증명 .
+      이동해'밖 l .
+      적용해라(공식_제로_에서_옵션'다형'매개변수__제로 목록'다형'매개변수 공식_제로 공식_다음한 l).
+      정확하다 (나머지에서_목록'다형'매개변수 제로 l) .
+    정의된 .
+
+    정의 나머지에서_목록'다형'매개변수_다음한 :
+      기능 (q : 무한'수들) (l : 목록'다형'매개변수 (다음한 q)), 목록'다형'매개변수 q 
+      := ( 능 q l => (공식_다음한_에서_옵션'다형'매개변수__다음한 목록'다형'매개변수 공식_제로 공식_다음한 q l
+                                                               (나머지에서_목록'다형'매개변수 (다음한 q) l)) ) .
+
+  끝 나머지에서_목록'다형'매개변수 .
+
+  부분 상단에서_목록'다형'매개변수 .
+
+    인쇄해 unit .
+    이라 공식_제로 : 기능 (l : 목록'다형'매개변수 제로), 종류
+      := ( 능 ( _ : 목록'다형'매개변수 제로) => unit ) .
+
+    이라 공식_다음한 : 기능 (q : 무한'수들) (l : 목록'다형'매개변수 (다음한 q)), 종류
+      := ( 능 (q : 무한'수들) ( _ : 목록'다형'매개변수 (다음한 q) ) => 데이터 ) .
+
+    정의 상단에서_목록'다형'매개변수 : 기능 (p : 무한'수들) (l : 목록'다형'매개변수 p),
+      옵션'다형'매개변수 목록'다형'매개변수 공식_제로 공식_다음한 p l .
+    증명 .
+      이동해'밖 p l . 경우 l .
+      - 적용해라 (매개변수_제로 목록'다형'매개변수 공식_제로 공식_다음한) . 확장 공식_제로 .
+        정확하다 tt .
+      - 이동해'밖 dat q l' .
+        적용해라 (매개변수_다음한 목록'다형'매개변수 공식_제로 공식_다음한) . 확장 공식_다음한 .
+        정확하다 dat .
+    정의된 .
+
+    정의 상단에서_목록'다형'매개변수_다음한 :
+      기능 (q : 무한'수들) (l : 목록'다형'매개변수 (다음한 q)), 데이터 .
+    증명 .
+      이동해'밖 q l . 적용해라 (공식_다음한_에서_옵션'다형'매개변수__다음한 목록'다형'매개변수 공식_제로 공식_다음한 q l) .
+      정확하다 (상단에서_목록'다형'매개변수 (다음한 q) l) .
+    정의된 .
+
+    정의 상단에서_목록'다형'매개변수_제로 : 기능 (l : 목록'다형'매개변수 제로), unit
+      := ( 능 l => (공식_제로_에서_옵션'다형'매개변수__제로 목록'다형'매개변수 공식_제로 공식_다음한 l
+                                                       (상단에서_목록'다형'매개변수 제로 l)) ) .
+
+  끝 상단에서_목록'다형'매개변수 .
+
+  부분 바닥에서_목록'다형'매개변수 .
+
+    이라 공식_제로 : 기능 (l : 목록'다형'매개변수 제로), 종류
+      := ( 능 ( _ : 목록'다형'매개변수 제로) => unit ) .
+
+    이라 공식_다음한 : 기능 (q : 무한'수들) (l : 목록'다형'매개변수 (다음한 q)), 종류
+      := ( 능 (q : 무한'수들) ( _ : 목록'다형'매개변수 (다음한 q) ) => 데이터 ) .
+
+    고정점 바닥에서_목록'다형'매개변수 (p : 무한'수들) (l : 목록'다형'매개변수 p) {구조 l} :
+      옵션'다형'매개변수 목록'다형'매개변수 공식_제로 공식_다음한 p l .
+    증명 .
+      경우 l .
+      - 적용해라 (매개변수_제로 목록'다형'매개변수 공식_제로 공식_다음한) . 확장 공식_제로 .
+        정확하다 tt .
+      - 지우해라 p l . 이동해'밖 dat q l' .
+        경우 (바닥에서_목록'다형'매개변수 q l').
+        + 지우해라 q l' ; 이동해'밖 l' . 이동해'밖 바닥에서_목록'다형'매개변수_q_l' .
+          확장 공식_제로 에서 바닥에서_목록'다형'매개변수_q_l' . 지우해라 바닥에서_목록'다형'매개변수_q_l' .
+          적용해라 (매개변수_다음한 목록'다형'매개변수 공식_제로 공식_다음한) . 확장 공식_다음한 .
+          정확하다 dat .
+        + 지우해라 q l' ; 이동해'밖 r l' . 이동해'밖 바닥에서_목록'다형'매개변수_q_l' .
+          확장 공식_다음한 에서 바닥에서_목록'다형'매개변수_q_l' .
+          적용해라 (매개변수_다음한 목록'다형'매개변수 공식_제로 공식_다음한) . 확장 공식_다음한 .
+          정확하다 바닥에서_목록'다형'매개변수_q_l' .
+    정의된 .
+
+    정의 바닥에서_목록'다형'매개변수_다음한 :
+      기능 (q : 무한'수들) (l : 목록'다형'매개변수 (다음한 q)), 데이터 .
+    증명 .
+      이동해'밖 q l . 적용해라 (공식_다음한_에서_옵션'다형'매개변수__다음한 목록'다형'매개변수 공식_제로 공식_다음한 q l) .
+      정확하다 (바닥에서_목록'다형'매개변수 (다음한 q) l) .
+    정의된 .
+
+    정의 바닥에서_목록'다형'매개변수_제로 : 기능 (l : 목록'다형'매개변수 제로), unit
+      := ( 능 l => (공식_제로_에서_옵션'다형'매개변수__제로 목록'다형'매개변수 공식_제로 공식_다음한 l
+                                                       (바닥에서_목록'다형'매개변수 제로 l)) ) .
+
+  끝 바닥에서_목록'다형'매개변수 .
+
+끝 부분_다형_매개변수가있는 .
+
+대해 공식_제로 . 대해 나머지에서_목록'다형'매개변수_다음한 .
+
+유도성 이진 : 종류 :=
+  참된 : 이진
+| 그릇된 : 이진 .
+
+계산해라 (나머지에서_목록'다형'매개변수_다음한 이진 (다음한 (다음한 제로))
+                                 (합류한다'하나의 이진 그릇된 (다음한 (다음한 제로))
+                                          (합류한다'하나의 이진 그릇된 (다음한 제로)
+                                                   (합류한다'하나의 이진 참된 제로
+                                                            (빈 이진))))) .
+계산해라 (나머지에서_목록'다형'매개변수_제로 이진 (빈 이진)) .
+
+
+계산해라 (합류한다'하나의 이진 참된 제로 (빈 이진)) .
+계산해라 (합류한다'하나의 _ 참된 제로 (빈 _)) .
+계산해라 (합류한다'하나의 _ 참된 _ (빈 _)) .
+(**MEMO: parameters can also be inferred-implicit , in addition to polymorphism-objects , via [표기법] command *)
+(* Notation *) 표기법 "d :: l" := (합류한다'하나의 _ d _ l) .
+(* Notation *) 표기법 "!00!" := (빈 _) .
+계산해라 ( 참된 :: !00! ).
+
+
+계산해라 (나머지에서_목록'다형'매개변수_다음한 _ _ ( 그릇된 ::  그릇된 ::  참된 :: !00! ) ) .
+(* Notation *) 표기법 "'나머지'" := ( 나머지에서_목록'다형'매개변수_다음한 _ _ ) .
+계산해라 (나머지 ( 그릇된 ::  그릇된 ::  참된 :: !00! ) ) .
+(**MEMO: parameters can also be inferred-implicit , in addition to polymorphism-objects  , via [입력들] command *)
+(* Arguments  *) 입력들 나머지에서_목록'다형'매개변수_다음한 [데이터] [q] l .
+계산해라 (나머지에서_목록'다형'매개변수_다음한 ( 그릇된 ::  그릇된 ::  참된 :: !00! ) ) .
+
+계산해라 (상단에서_목록'다형'매개변수_다음한 _ _
+                                 ( 그릇된 ::  그릇된 ::  참된 :: !00! )) .
+계산해라 (상단에서_목록'다형'매개변수_제로 이진 ( !00! )  ) .
+
+계산해라 (바닥에서_목록'다형'매개변수_다음한 이진 (다음한 (다음한 제로))
+                                 ( 그릇된 ::  그릇된 ::  참된 :: !00! )) .
+계산해라 (바닥에서_목록'다형'매개변수_제로 이진 (빈 이진)) .
+
+끝 다형'매개변수'유도성'암시적인'표기법 .
+
+
+
+(** ** alt
+----------------------------------------------------------------------------- *)
+
+
+
+Module Type PolymorphismParametrizedInductiveImplicitNotations .
+(** memo that in some instances such as [top_of_listPoly] above , 
+    then the parameters of the inputs is the same as the inputs *)
+
+(** the parameters [infiniteNumbers] is computational , 
+    its elements can be matched/decided along forms/constructors *)
+Inductive infiniteNumbers : Type :=
+  Zero : infiniteNumbers
+| NextOne : infiniteNumbers -> infiniteNumbers .
+
+Section section_parametrized .
+
+  Variable inputParam : infiniteNumbers -> Type .
+  Variable formula_Zero : forall (l : inputParam Zero), Type .
+  Variable formula_NextOne : forall (q : infiniteNumbers) (l : inputParam (NextOne q)), Type .
+
+  (** the precise form of the output
+        ( precisely [formula_Zero l] or [formula_NextOne q l] ? ) 
+        depends on the parameter of the input 
+        ( whether [p] is Zero or [NextOne q] ? ) *)
+  Inductive optionsPolyParam : forall (p : infiniteNumbers) (l : inputParam p), Type :=
+    Param_Zero : forall (l : inputParam Zero),
+      formula_Zero l -> optionsPolyParam Zero l
+  | Param_NextOne : forall (q : infiniteNumbers) (l : inputParam (NextOne q)),
+      formula_NextOne q l -> optionsPolyParam (NextOne q) l .
+
+  (** this is possible because the parameters [infiniteNumbers] is computational , 
+        its elements can be matched/decided along forms/constructors *)
+  Definition structuredOptionsPolyParam :
+    forall (p : infiniteNumbers) (l : inputParam p), Type .
+  Proof .
+    intros p . case p (** because [infiniteNumbers] is computational *) .
+    - exact formula_Zero.
+    - exact formula_NextOne .
+  Defined .
+
+  (** this is the inversion lemma for [optionsPolyParam] *)
+  Definition structuredOptionsPolyParam_of_optionsPolyParam :
+    forall (p : infiniteNumbers) (l : inputParam p) (f : optionsPolyParam p l),
+      structuredOptionsPolyParam p l .
+  Proof.
+    intros p l f .
+    refine (match f with
+              Param_Zero l f => f
+            | Param_NextOne q l f => f
+            end) .
+  Defined .
+
+  (** this is the instance of the inversion lemma of [optionsPolyParam] for the parameter [Zero] *)
+  Definition formula_Zero_of_optionsPolyParam__Zero :
+    forall (l : inputParam Zero) (f : optionsPolyParam Zero l), formula_Zero l .
+  Proof .
+    intros l . exact (structuredOptionsPolyParam_of_optionsPolyParam Zero l) .
+  Defined .
+
+  (** this is the instance of the inversion lemma of [optionsPolyParam] for the parameter [NextOne _] *)
+  Definition formula_NextOne_of_optionsPolyParam__NextOne :
+    forall (q : infiniteNumbers) (l : inputParam (NextOne q)) (f : optionsPolyParam (NextOne q) l),
+      formula_NextOne q l 
+    := ( fun q l => (structuredOptionsPolyParam_of_optionsPolyParam (NextOne q) l) ) .
+  
+End section_parametrized .
+
+Section section_polymorphism_parametrized .
+
+  Variable data : Type .
+
+  Inductive listPolyParam : infiniteNumbers -> Type := 
+    Empty : listPolyParam Zero
+  | JoinOne : forall (d : data) (q : infiniteNumbers) (l : listPolyParam q), listPolyParam (NextOne q) .
+
+  Section rest_of_listPolyParam .
+
+    Let formula_Zero : forall (l : listPolyParam Zero), Type
+      := ( fun (l : listPolyParam Zero) => listPolyParam Zero ) .
+
+    Let formula_NextOne : forall (q : infiniteNumbers) (l : listPolyParam (NextOne q)), Type
+      := ( fun (q : infiniteNumbers) ( _ : listPolyParam (NextOne q) ) => listPolyParam q ) .
+
+    (** the precise form of the output
+      ( precisely [formula_Zero l] or [formula_NextOne q l] ? ) 
+      depends on the parameter of the input 
+      ( whether [p] is Zero or [NextOne q] ? ) *)
+    Definition rest_of_listPolyParam : forall (p : infiniteNumbers) (l : listPolyParam p),
+        optionsPolyParam listPolyParam formula_Zero formula_NextOne p l .
+    Proof .
+      intros p l . case l .
+      - apply (Param_Zero listPolyParam formula_Zero formula_NextOne) . unfold formula_Zero .
+        exact Empty .
+      - intros d q l' . 
+        apply (Param_NextOne listPolyParam formula_Zero formula_NextOne) . unfold formula_NextOne .
+        exact l' .
+    Defined .
+
+    Definition rest_of_listPolyParam_Zero : forall (l : listPolyParam Zero), listPolyParam Zero .
+    Proof .
+      intros l .
+      apply(formula_Zero_of_optionsPolyParam__Zero listPolyParam formula_Zero formula_NextOne l).
+      exact (rest_of_listPolyParam Zero l) .
+    Defined .
+
+    Definition rest_of_listPolyParam_NextOne :
+      forall (q : infiniteNumbers) (l : listPolyParam (NextOne q)), listPolyParam q 
+      := ( fun q l => (formula_NextOne_of_optionsPolyParam__NextOne listPolyParam formula_Zero formula_NextOne q l
+                                                               (rest_of_listPolyParam (NextOne q) l)) ) .
+
+  End rest_of_listPolyParam .
+
+  Section top_of_listPolyParam .
+
+    Print unit .
+    Let formula_Zero : forall (l : listPolyParam Zero), Type
+      := ( fun ( _ : listPolyParam Zero) => unit ) .
+
+    Let formula_NextOne : forall (q : infiniteNumbers) (l : listPolyParam (NextOne q)), Type
+      := ( fun (q : infiniteNumbers) ( _ : listPolyParam (NextOne q) ) => data ) .
+
+    Definition top_of_listPolyParam : forall (p : infiniteNumbers) (l : listPolyParam p),
+      optionsPolyParam listPolyParam formula_Zero formula_NextOne p l .
+    Proof .
+      intros p l . case l .
+      - apply (Param_Zero listPolyParam formula_Zero formula_NextOne) . unfold formula_Zero .
+        exact tt .
+      - intros dat q l' .
+        apply (Param_NextOne listPolyParam formula_Zero formula_NextOne) . unfold formula_NextOne .
+        exact dat .
+    Defined .
+
+    Definition top_of_listPolyParam_NextOne :
+      forall (q : infiniteNumbers) (l : listPolyParam (NextOne q)), data .
+    Proof .
+      intros q l . apply (formula_NextOne_of_optionsPolyParam__NextOne listPolyParam formula_Zero formula_NextOne q l) .
+      exact (top_of_listPolyParam (NextOne q) l) .
+    Defined .
+
+    Definition top_of_listPolyParam_Zero : forall (l : listPolyParam Zero), unit
+      := ( fun l => (formula_Zero_of_optionsPolyParam__Zero listPolyParam formula_Zero formula_NextOne l
+                                                       (top_of_listPolyParam Zero l)) ) .
+
+  End top_of_listPolyParam .
+
+  Section bottom_of_listPolyParam .
+
+    Let formula_Zero : forall (l : listPolyParam Zero), Type
+      := ( fun ( _ : listPolyParam Zero) => unit ) .
+
+    Let formula_NextOne : forall (q : infiniteNumbers) (l : listPolyParam (NextOne q)), Type
+      := ( fun (q : infiniteNumbers) ( _ : listPolyParam (NextOne q) ) => data ) .
+
+    Fixpoint bottom_of_listPolyParam (p : infiniteNumbers) (l : listPolyParam p) {struct l} :
+      optionsPolyParam listPolyParam formula_Zero formula_NextOne p l .
+    Proof .
+      case l .
+      - apply (Param_Zero listPolyParam formula_Zero formula_NextOne) . unfold formula_Zero .
+        exact tt .
+      - clear p l . intros dat q l' .
+        case (bottom_of_listPolyParam q l').
+        + clear q l' ; intros l' . intros bottom_of_listPolyParam_q_l' .
+          unfold formula_Zero in bottom_of_listPolyParam_q_l' . clear bottom_of_listPolyParam_q_l' .
+          apply (Param_NextOne listPolyParam formula_Zero formula_NextOne) . unfold formula_NextOne .
+          exact dat .
+        + clear q l' ; intros r l' . intros bottom_of_listPolyParam_q_l' .
+          unfold formula_NextOne in bottom_of_listPolyParam_q_l' .
+          apply (Param_NextOne listPolyParam formula_Zero formula_NextOne) . unfold formula_NextOne .
+          exact bottom_of_listPolyParam_q_l' .
+    Defined .
+
+    Definition bottom_of_listPolyParam_NextOne :
+      forall (q : infiniteNumbers) (l : listPolyParam (NextOne q)), data .
+    Proof .
+      intros q l . apply (formula_NextOne_of_optionsPolyParam__NextOne listPolyParam formula_Zero formula_NextOne q l) .
+      exact (bottom_of_listPolyParam (NextOne q) l) .
+    Defined .
+
+    Definition bottom_of_listPolyParam_Zero : forall (l : listPolyParam Zero), unit
+      := ( fun l => (formula_Zero_of_optionsPolyParam__Zero listPolyParam formula_Zero formula_NextOne l
+                                                       (bottom_of_listPolyParam Zero l)) ) .
+
+  End bottom_of_listPolyParam .
+
+End section_polymorphism_parametrized .
+
+About formula_Zero . About rest_of_listPolyParam_NextOne .
+
+Inductive binary : Type :=
+  true : binary
+| false : binary .
+
+Compute (rest_of_listPolyParam_NextOne binary (NextOne (NextOne Zero))
+                                 (JoinOne binary false (NextOne (NextOne Zero))
+                                          (JoinOne binary false (NextOne Zero)
+                                                   (JoinOne binary true Zero
+                                                            (Empty binary))))) .
+Compute (rest_of_listPolyParam_Zero binary (Empty binary)) .
+
+
+Compute (JoinOne binary true Zero (Empty binary)) .
+Compute (JoinOne _ true Zero (Empty _)) .
+Compute (JoinOne _ true _ (Empty _)) .
+(**MEMO: parameters can also be inferred-implicit , in addition to polymorphism-objects , via [Notation] command *)
+Notation "d :: l" := (JoinOne _ d _ l) .
+Notation "!00!" := (Empty _) .
+Compute ( true :: !00! ).
+
+
+Compute (rest_of_listPolyParam_NextOne _ _ ( false ::  false ::  true :: !00! ) ) .
+Notation "'rest'" := ( rest_of_listPolyParam_NextOne _ _ ) .
+Compute (rest ( false ::  false ::  true :: !00! ) ) .
+(**MEMO: parameters can also be inferred-implicit , in addition to polymorphism-objects  , via [Arguments] command *)
+Arguments rest_of_listPolyParam_NextOne [data] [q] l .
+Compute (rest_of_listPolyParam_NextOne ( false ::  false ::  true :: !00! ) ) .
+
+Compute (top_of_listPolyParam_NextOne _ _
+                                 ( false ::  false ::  true :: !00! )) .
+Compute (top_of_listPolyParam_Zero binary ( !00! )  ) .
+
+Compute (bottom_of_listPolyParam_NextOne binary (NextOne (NextOne Zero))
+                                 ( false ::  false ::  true :: !00! )) .
+Compute (bottom_of_listPolyParam_Zero binary (Empty binary)) .
+
+End PolymorphismParametrizedInductiveImplicitNotations .
+</textarea>
+  </div> <!-- /#document -->
+  </div> <!-- /#code-wrapper -->
+  </div> <!-- /#ide-wrapper -->
+
+  <script src="../ui-js/jscoq-loader.js" type="text/javascript"></script>
+  <script type="text/javascript">
+
+    var jscoq_ids  = ['workspace'];
+    var jscoq_opts = {
+        prelude:   true,
+        base_path: '../',
+        init_pkgs: ['init', 'qoc'],
+        all_pkgs:  ['init', 'qoc', 'coq-base', 'coq-collections', 'coq-arith', 'coq-reals', 'math-comp'],
+        implicit_libs: true,
+        editor: { mode: { 'company-coq': true }, keyMap: 'default' }
+    };
+
+    /* Global reference */
+    var coq;
+
+    loadJsCoq(jscoq_opts.base_path)
+        .then( () => coq = new CoqManager(jscoq_ids, jscoq_opts) );
+  </script>
+</body>
+</html>

@@ -1,0 +1,394 @@
+<!--
+  This sample contains two very simple introductory exercises of
+  interactive proofs in Coq, one with natural numbers and one with lists.
+  It can be used as a gentle landing page, which requires no knowledge
+  of math-comp.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="description" content="An Online IDE for the Coq Theorem Prover" />
+
+    <title>Use Coq in Your Browser: The Js Coq Theorem Prover Online IDE!</title>
+  </head>
+
+<body>
+  <div id="ide-wrapper" class="toggled">
+  <div id="code-wrapper">
+  <div id="document">
+    <p>
+짧은 :: 
+<br/>(1.) "Coq"는 수학 읽기와 쓰기를위한 컴퓨터 프로그램입니다 .
+<br/>(2.) "A"에서 "E"로가는 목표를 위합니다, 어떤 "S"를 검색/추측하는 것이 더 현명한/전술적 일 수 있습니다.  그리고 "A"에서 "S"로 이동 한 다음 "S"에서 "E"로 이동합니다.
+</p>
+    <p>
+Short ::
+<br/>(1.) "Coq" is computer program to read and write mathematics . 
+<br/>(2.) for the goal of going from "A" to "E" , it may be more sensible/tactical to search/guess some "S" such to go from "A" to "S" then to go from "S" to "E" .
+    </p>
+    <p>
+    Alt+↑/↓ – move through proof; Alt+→ or Alt+⏎ – go to cursor. <br/>
+    Alt+hover executed sentences to watch intermediate steps. <br/>
+    Hover identifiers in goals to view their types. Alt+hover to view definitions.<br/>
+    <i style="color: rgb(51, 51, 150)">Company-coq</i> addon is enabled: it will auto-complete names of tactics and lemmas 
+    from the standard library, and also show types of lemmas in the right pane.
+    </p>
+    <p>
+"Alt + ↑ / ↓": 증명을 전달하십시오. "Alt + →"또는 "Alt + ⏎": 커서로 이동하십시오.
+<br/> "Alt +"호버링은 문장을 실행하여 중간 단계를 관찰합니다.
+<br/> 대상에 식별자를 올려 해당 유형을 표시합니다. "Alt +"를 가리키면 정의를 볼 수 있습니다.
+<br/> "Company-coq"애드온을 활성화하십시오 : 표준 라이브러리의 정책 및 보조 정리 이름을 자동으로 완성하고 오른쪽 창에 부트 유형을 표시하십시오.
+    </p>
+    <textarea id="workspace">
+From Qoc Require Import Sutalgsuhag .
+Import ssreflect .
+
+(**MEMO: 
+
+  짧은 :: 
+
+(1.) "Coq"는 수학 읽기와 쓰기를위한 컴퓨터 프로그램입니다 .
+
+(2.) "A"에서 "E"로가는 목표를 위합니다, 어떤 "S"를 검색/추측하는 것이 더 현명한/전술적 일 수 있습니다.  그리고 "A"에서 "S"로 이동 한 다음 "S"에서 "E"로 이동합니다.
+  
+  Short ::
+
+(1.) "Coq" is computer program to read and write mathematics . 
+
+(2.) for the goal of going from "A" to "E" , it may be more sensible/tactical to search/guess some "S" such to go from "A" to "S" then to go from "S" to "E" .
+
+  It may be more-sensible to refine/start/open the top of some deduction/proof of some end/goal [A |- E] by sequencing this deduction into two more-sensible parts/halves [A |- S] and [A |- S -> E] , where oneself shall search/guess/devine the mediator [S] by using the contextual sense of the end/goal . 
+
+  In the most general text , [E] is the END/goal . And [S] is some SEARCHED/guessed/devined weaker SUB-end/goal which suffices ( expressed as [ S -> E ] ) for the end/goal [E] .
+
+  In the less general text , [W] is some searched/guessed/devined WEAKENER which defines this particular sub-end/goal [ S := (W -> E) ] ( the end UNDER [W] ) , which suffices ( [ (W -> E) -> E ] ) for the end/goal [E] . Alternatively , oneself may transpose this precedent result and view the sufficiency expression as [ W -> E ] and the sub-end/goal as [ S := ( (W -> E) -> E ) ] ( the RELATIVE [W] , which is some style of double negation of [W] above the end [E] not the bottom [False] )
+
+  Everythere , the identifier [p] is some outer-argument/parameter and [x] is some (varying) inner-argument . And the sense for the identifier [x] is not binary , possible senses are : [simultaneous] identifier , [parametric]/singly/pointwise identifier , [none] identifier .
+
+-----
+
++ simultaneous have s_ , s_x : x / S p x
+  1(instance): x |- S p x
+  2(generalized): x ; s_ : (forall x , S p x) ; s_x : S x |- E p x
+  * have s : S
+    1(instance): |- S
+    2(generalized): s : S |- E
+
++ simultaneous suffices s_ : x / S p x
+  1(generalized): x ; s_ : (forall x , S p x) |- E p x
+  2(instance): x |- S p x
+  * suffices s : S
+    1(generalized): s : S |- E
+    2(instance): |- S
+
++ parametric have_relatively w : x / W p x
+  1(instance): x |- (forall x , W p x -> E p x) -> E p x
+  2(generalized): x ; w : W p x |- E p x
+  * have_relatively w : W
+    1(instance): |- (W -> E) -> E
+    2(generalized): w : W |- E
+  * have_under m : W
+    1(instance): |- W -> E
+    2(generalized): m : (W -> E) |- E
+
++ parametric suffices_relatively w : x / W p x
+  1(generalized): x ; w : W p x |- E p x
+  2(instance): x |- (forall x , W p x -> E p x) -> E p x
+  * suffices_relatively w : W
+    1(generalized): w : W |- E
+    2(instance): |- (W -> E) -> E
+  * suffices_under m : W
+    1(generalized): m : (W -> E) |- E
+    2(instance): |- W -> E
+
+-----
+
++ simultaneous have s_ , s_x : x / S p x
+  := gen have s_ , s_x : x / S p x
+  * have s : S
+    := have s : S
+
++ simultaneous suffices s_ : x / S p x
+  := wlog suff s_ : x / S p x
+  * suffices s : S
+    := suff s : S
+
++ parametric have_relatively w : x / W p x
+  := wlog w : x / W a x
+  * have_relatively w : W
+  := ??
+  * have_under m : W
+    := have suff m : W
+
++ parametric suffices_relatively w : x / W p x
+  := ??
+  * suffices_relatively w : W
+    := suff have w : W
+  * suffices_under m : W
+    := ??
+
+*)
+
+Module Type Tactics .
+  
+Module Generalization .
+Parameter A : forall (p : bool) , Type .
+Parameter E : forall (p : bool) (x : bool) , Type .
+Parameter S : forall (p : bool) (x : bool) , Type .
+Parameter W : forall (p : bool) (x : bool) , Type .
+
+Section section1 .
+
+  Variable p : bool .
+
+  Lemma lemma1 : A p -> forall x : bool , E p x .
+  Proof.
+    intros a x .
+
+    simultaneous have s_ , s_x : x / S p x . Show 2 . Undo .
+    동시에 있는다 s_ , s_x : x / S p x . Show 2 . Undo .
+    (** 1(instance): x |- S p x
+       2(generalized): x ; s_ : (forall x , S p x) ; s_x : S x |- E p x *)
+    have s : S p x . Show 2. Undo.
+    있는다 s : S p x . Show 2. Undo.
+    (** 1(instance): |- S
+       2(generalized): s : S |- E *)
+  Abort .
+
+  Lemma lemma1 : A p ->  forall x : bool , E p x .
+  Proof.
+    intros a x .
+
+    simultaneous suffices s_ : x / S p x . Show 2 . Undo .
+    동시에 충분한다 s_ : x / S p x . Show 2 . Undo .
+    (** 1(generalized): x ; s_ : (forall x , S p x) |- E p x
+        2(instance): x |- S p x *)
+    suffices s : S p x . Show 2 . Undo .
+    충분한다 s : S p x . Show 2 . Undo .
+    (** 1(generalized): s : S |- E
+        2(instance): |- S *)
+  Abort .
+
+  Lemma lemma1 : A p -> forall x : bool , E p x .
+  Proof.
+    intros a x .
+
+    parametric have_relatively w : x / W p x . Show 2 . Undo .
+    매개변수와 있는다_상대적으로 w : x / W p x . Show 2 . Undo .
+    (** 1(instance): x |- (forall x , W p x -> E p x) -> E p x
+        2(generalized): x ; w : W p x |- E p x *)
+    have_relatively w : W p x . Show 2 . Undo .
+    있는다_상대적으로 w : W p x . Show 2 . Undo .
+    (** 1(instance): |- (W -> E) -> E
+       2(generalized): w : W |- E *)
+    have_under m : W p x . Show 2 . Undo .
+    있는다_아래에 m : W p x . Show 2 . Undo .
+    (** 1(instance): |- W -> E
+       2(generalized): m : (W -> E) |- E *)
+  Abort .
+
+  Lemma lemma1 : A p -> forall x : bool , E p x .
+  Proof.
+    intros a x .
+    
+    parametric suffices_relatively w : x / W p x . Show 2 . Undo .
+    매개변수와 충분한다_상대적으로 w : x / W p x . Show 2 . Undo .
+    (** 1(generalized): x ; w : W p x |- E p x
+        2(instance): x |- (forall x , W p x -> E p x) -> E p x *)
+    suffices_relatively w : W p x . Show 2 . Undo .
+    충분한다_상대적으로 w : W p x . Show 2 . Undo .
+    (** 1(generalized): w : W |- E
+        2(instance): |- (W -> E) -> E *)
+    suffices_under m : W p x . Show 2 . Undo .
+    충분한다_아래에 m : W p x . Show 2 . Undo .
+    (** 1(generalized): m : (W -> E) |- E
+        2(instance): |- W -> E *)
+  Abort.
+End section1.
+
+Section Generalization_example .
+
+Lemma quo_rem_unicity ( d : nat) :
+  forall ( q1 q2 r1 r2 : nat ) ,
+    q1*d + r1 = q2*d + r2 ->
+    r1 < d -> r2 < d ->
+    (pair q1 r1) = (pair q2 r2) .
+Proof .
+  intros q1 q2 r1 r2 .
+
+  wlog: q1 q2 r1 r2 / q1 <= q2 . Show 2 . Undo .
+  parametric have_relatively w : q1 q2 r1 r2 / q1 <= q2 . Show 2 . Undo .
+  매개변수와 있는다_상대적으로 w : q1 q2 r1 r2 / q1 <= q2 . Show 2 . Undo .
+  (** 1(instance): (forall q3 q4 r3 r4 : nat, q3 <= q4 -> 
+                       q3 * d + r3 = q4 * d + r4 -> r3 < d -> r4 < d -> (q3, r3) = (q4, r4)) 
+                  -> q1 * d + r1 = q2 * d + r2 -> r1 < d -> r2 < d -> (q1, r1) = (q2, r2) 
+      2(generalized): w : q1 <= q2 |- q1 * d + r1 = q2 * d + r2 -> r1 < d -> r2 < d -> (q1, r1) = (q2, r2) *)
+
+Abort .
+
+End Generalization_example .
+End Generalization .
+
+Definition tactics_move_apply_exact_elim_case
+  : forall n : nat , nat .
+Proof .
+  move => m . Undo .
+  이동하라 => m .
+
+  apply : m . Undo .
+  적용해라 : m . Undo .
+
+  exact : m . Undo .
+  정확하다 : m . Undo .
+
+  elim : m . Undo .
+  제거해 : m . Undo .
+
+  case : m . Undo .
+  경우 : m . Undo .
+  
+Abort.
+
+(**TODO: solve this *)
+Lemma tactics_abstract (n m : nat) : True.
+
+  have [:Sm] @plus_n_Sm : nat .
+  { apply: (plus n).
+    abstract: Sm.
+    { exact: (S m).
+    }
+  }
+
+  Restart .
+
+  있는다 [:Sm] @plus_n_Sm : nat .
+  { 적용해라: (plus n).
+    추상하라: Sm.
+    { 정확하다: (S m).
+    }
+  }
+
+Abort.
+
+Definition tactics_rewrite : forall n m : nat , n = m -> m = n .
+Proof .
+  intros n m H.
+  rewrite H . Undo .
+  다시쓰해 H . Undo .
+Abort.
+
+
+Lemma tactic_pose : True.
+  pose f x y := x + y . Undo .
+  놓으라 f x y := x + y. Undo .
+
+  pose fix f (x y : nat) {struct x} : nat :=
+    if x is S p then S (f p y) else 0 . 
+  Undo .
+  놓으라 고정 f (x y : nat) {struct x} : nat :=
+    if x is S p then S (f p y) else 0 .
+  Undo .
+Abort .
+
+Lemma tactic_set (x y z : nat) :  x + y = z.
+  set t := _ x.  Undo .
+  정하라 t := _ x . Undo .
+Abort .
+
+Lemma tactic_lock n m : (S n) + m = match (S n) with
+                               S p => m + (S p)
+                             | 0 => m + 0
+                             end.
+  rewrite {1}[S]lock .
+  rewrite -lock. Undo.
+  unlock .
+  move: (S n) . Restart .
+
+
+  다시쓰해 {1}[S]lock .
+  잠금해제라 .
+  이동하라: (S n). 
+Abort.
+
+Definition add :=
+( 고정 add (n m : nat) {구조 n} : nat := 일치해 n 대
+                                  | 0 => m
+                                  | S p => S (add p m)
+                                  끝 ) .
+
+Definition addn := 단순화하지_마라 add .
+
+Lemma notation_nosimpl : forall n m,
+    ( if (addn (S n) (S m))
+      is (S p ) then p
+      else 0 )
+    =  (addn (S m) n) .
+
+  intros n m .
+
+  simpl . fold addn . 
+  move: (S m).
+Abort.
+
+Lemma tactic_congr x y :
+  x + (y * (y + x - x)) = (x * 1) + (y + 0) * y.
+
+  congr plus . Undo .
+  접두사 plus . Undo .
+
+  congr ( _ + (_ * _)) . Undo .
+  접두사 ( _ + (_ * _)) . Undo .
+Abort .
+
+Inductive test : nat -> Prop :=
+| C1 : forall n , n = 1 -> test n
+| C2 : forall n , n = 2 -> test n
+| C3 : forall n , n = 3 -> test n
+| C4 : forall n , n = 4 -> test n 
+| C5 : forall n , n = 5 -> test n .
+
+Lemma tactic_last n (t : test n) : True.
+  case : t ;
+    last 2 [ move => k3
+           | move => k4 ] . Undo .
+
+  경우 : t ;
+    뒤에 2 [ 이동하라 => k3
+         |  이동하라  => k4 ] . Undo .
+
+  case : t ;
+     first last . Undo .
+  경우 : t ;
+    앞에 뒤에 .
+Abort.
+
+End Tactics .
+
+Print Tactics .
+    </textarea>
+  </div> <!-- /#document -->
+  </div> <!-- /#code-wrapper -->
+  </div> <!-- /#ide-wrapper -->
+
+  <script src="../ui-js/jscoq-loader.js" type="text/javascript"></script>
+  <script type="text/javascript">
+
+    var jscoq_ids  = ['workspace'];
+    var jscoq_opts = {
+        prelude:   true,
+        base_path: '../',
+        init_pkgs: ['init', 'qoc'],
+        all_pkgs:  ['init', 'qoc', 'coq-base', 'coq-collections', 'coq-arith', 'coq-reals', 'math-comp'],
+        implicit_libs: true,
+        editor: { mode: { 'company-coq': true }, keyMap: 'default' }
+    };
+
+    /* Global reference */
+    var coq;
+
+    loadJsCoq(jscoq_opts.base_path)
+        .then( () => coq = new CoqManager(jscoq_ids, jscoq_opts) );
+  </script>
+</body>
+</html>

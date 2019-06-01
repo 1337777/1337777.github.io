@@ -161,11 +161,11 @@ Section section1 .
     intros a x .
 
     simultaneous suffices s_ : x / S p x . Show 2 . Undo .
-    동시에 충분한다 s_ : x / S p x . Show 2 . Undo .
+    동시에 충분하다 s_ : x / S p x . Show 2 . Undo .
     (** 1(generalized): x ; s_ : (forall x , S p x) |- E p x
         2(instance): x |- S p x *)
     suffices s : S p x . Show 2 . Undo .
-    충분한다 s : S p x . Show 2 . Undo .
+    충분하다 s : S p x . Show 2 . Undo .
     (** 1(generalized): s : S |- E
         2(instance): |- S *)
   Abort .
@@ -193,15 +193,15 @@ Section section1 .
     intros a x .
     
     parametric suffices_relatively w : x / W p x . Show 2 . Undo .
-    매개변수와 충분한다_상대적으로 w : x / W p x . Show 2 . Undo .
+    매개변수와 충분하다_상대적으로 w : x / W p x . Show 2 . Undo .
     (** 1(generalized): x ; w : W p x |- E p x
         2(instance): x |- (forall x , W p x -> E p x) -> E p x *)
     suffices_relatively w : W p x . Show 2 . Undo .
-    충분한다_상대적으로 w : W p x . Show 2 . Undo .
+    충분하다_상대적으로 w : W p x . Show 2 . Undo .
     (** 1(generalized): w : W |- E
         2(instance): |- (W -> E) -> E *)
     suffices_under m : W p x . Show 2 . Undo .
-    충분한다_아래에 m : W p x . Show 2 . Undo .
+    충분하다_아래에 m : W p x . Show 2 . Undo .
     (** 1(generalized): m : (W -> E) |- E
         2(instance): |- W -> E *)
   Abort.

@@ -1,0 +1,145 @@
+<!--
+  This sample contains two very simple introductory exercises of
+  interactive proofs in Coq, one with natural numbers and one with lists.
+  It can be used as a gentle landing page, which requires no knowledge
+  of math-comp.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="description" content="An Online IDE for the Coq Theorem Prover" />
+
+    <title>Use Coq in Your Browser: The Js Coq Theorem Prover Online IDE!</title>
+  </head>
+
+<body>
+  <div id="ide-wrapper" class="toggled">
+  <div id="code-wrapper">
+  <div id="document">
+    <p>
+짧은 :: 
+<br/>(1.) "Coq"는 수학 읽기와 쓰기를위한 컴퓨터 프로그램입니다 .
+<br/>(2.) 많은 정의 "d"와 보조 표제 "l"을 매개 변수화하는 매개 변수 "p"는 모두 하나에 패키지화 될 수 있습니다.
+<br/>(3.) 그런 다음 나중에이 매개 변수 "p"가 인스턴스화되어 인스턴스화 된 정의 "Q.d"와 인스턴스화 된 보조 정리 "Q.l"을 생성 할 수 있습니다.
+<br/>(4.) 이 새로운 이름 "Q.d"와 "Q.l"은 접두사 이름 "Q"로 시작됩니다.
+</p>
+    <p>
+Short ::
+<br/>(1.) "Coq" is computer program to read and write mathematics . 
+<br/>(2.) A parameter "p" , which parametrizes many definitions "d" and lemmas "l" , may all be packaged into one .
+<br/>(3.) Later on, this parameter "p" can be instantiated to create the instantiated definition "Q.d" and the instantiated secondary theorem "Q.l".
+<br/>(4.) These new names "Q.d" and "Q.l" will be prefixed by any chosen prefix name "Q" .
+    </p>
+    <p>
+    Alt+↑/↓ – move through proof; Alt+→ or Alt+⏎ – go to cursor. <br/>
+    Alt+hover executed sentences to watch intermediate steps. <br/>
+    Hover identifiers in goals to view their types. Alt+hover to view definitions.<br/>
+    <i style="color: rgb(51, 51, 150)">Company-coq</i> addon is enabled: it will auto-complete names of tactics and lemmas 
+    from the standard library, and also show types of lemmas in the right pane.
+    </p>
+    <p>
+"Alt + ↑ / ↓": 증명을 전달하십시오. "Alt + →"또는 "Alt + ⏎": 커서로 이동하십시오.
+<br/> "Alt +"호버링은 문장을 실행하여 중간 단계를 관찰합니다.
+<br/> 대상에 식별자를 올려 해당 유형을 표시합니다. "Alt +"를 가리키면 정의를 볼 수 있습니다.
+<br/> "Company-coq"애드온을 활성화하십시오 : 표준 라이브러리의 정책 및 보조 정리 이름을 자동으로 완성하고 오른쪽 창에 부트 유형을 표시하십시오.
+    </p>
+    <textarea id="workspace">
+From Qoc Require Import Sutalgsuhag .
+
+(**MEMO: 
+
+  짧은 :: 
+(1.) "Coq"는 수학 읽기와 쓰기를위한 컴퓨터 프로그램입니다 .
+(2.) 많은 정의 "d"와 보조 표제 "l"을 매개 변수화하는 매개 변수 "p"는 모두 하나에 패키지화 될 수 있습니다.
+(3.) 그런 다음 나중에이 매개 변수 "p"가 인스턴스화되어 인스턴스화 된 정의 "Q.d"와 인스턴스화 된 보조 정리 "Q.l"을 생성 할 수 있습니다.
+(4.) 이 새로운 이름 "Q.d"와 "Q.l"은 접두사 이름 "Q"로 시작됩니다.
+
+  Short :: 
+(1.) "Coq" is computer program to read and write mathematics . 
+(2.) A parameter "p" , which parametrizes many definitions "d" and lemmas "l" , may all be packaged into one .
+(3.) Later on, this parameter "p" can be instantiated to create the instantiated definition "Q.d" and the instantiated secondary theorem "Q.l".
+(4.) These new names "Q.d" and "Q.l" will be prefixed by any chosen prefix name "Q" .
+
+  Outline :: 
+  * PART 1 : SIMPLE PARAMETRIZATION
+  * PART 2 : SIMPLE ENVIRONMENT
+  * PART 3 : COMPLEX ENVIRONMENTAL PARAMETRIZATION
+*)
+
+(** PART 1 : SIMPLE PARAMETRIZATION *)
+
+꾸러미 p_dl.
+  매개변수 p : 종류 .
+  정의 d := prod p p .
+  정의 l : p -> d .
+  증명.
+    이동해'밖 x.
+    정확하다 (pair x x).
+  정의된.
+끝 p_dl.
+
+꾸러미 접두어가붙은 매개변수 nat_dl : p_dl 와 정의 p := nat.
+인쇄해 nat_dl.l.
+계산해라 (nat_dl.l 3).
+꾸러미 접두어가붙은 매개변수 bool_dl : 이라 정의 p := bool 에서 p_dl .
+계산해라 (bool_dl.l false).
+꾸러미 접두어가붙은 별명 NN := nat_dl .
+인쇄해 NN.l.
+
+
+
+(** ** alt
+----------------------------------------------------------------------------- *)
+
+
+Reset p_dl .
+
+Modular p_dl.
+
+  Parameter p : Type .
+  
+  Definition d := prod p p .
+
+  Definition l : p -> d .
+  Proof.
+    intros x.
+    exact (pair x x).
+  Defined.
+
+End p_dl.
+
+Modular Prefixed Parameter nat_dl : (p_dl with Definition p := nat).
+Print nat_dl.l.
+Compute (nat_dl.l 3).
+Modular Prefixed Parameter bool_dl : (let Definition p := bool in p_dl).
+Compute (bool_dl.l false).
+Modular Prefixed Alias NN := nat_dl .
+Print NN.l.
+
+    </textarea>
+  </div> <!-- /#document -->
+  </div> <!-- /#code-wrapper -->
+  </div> <!-- /#ide-wrapper -->
+
+  <script src="../ui-js/jscoq-loader.js" type="text/javascript"></script>
+  <script type="text/javascript">
+
+    var jscoq_ids  = ['workspace'];
+    var jscoq_opts = {
+        prelude:   true,
+        base_path: '../',
+        init_pkgs: ['init', 'qoc'],
+        all_pkgs:  ['init', 'qoc', 'coq-base', 'coq-collections', 'coq-arith', 'coq-reals', 'math-comp'],
+        implicit_libs: true,
+        editor: { mode: { 'company-coq': true }, keyMap: 'default' }
+    };
+
+    /* Global reference */
+    var coq;
+
+    loadJsCoq(jscoq_opts.base_path)
+        .then( () => coq = new CoqManager(jscoq_ids, jscoq_opts) );
+  </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>anthroplogic.com</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Ubuntu" />
+<link rel="stylesheet" type="text/css" href="../../code/style.css"/>
+<style>
+#content {
+    width: 100%;
+    padding: 0px;
+    font-size: 16px;
+}
+</style>
+</head>
+<body>
+
+<div id="ide-wrapper" class="toggled">
+<div id="code-wrapper">
+<div id="document">
+<div id="preamble" class="status">
+<p></p>
+</div>
+<div id="content">
+
+<h1 class="title">FOR EXAMPLE ...
+<br> LIVE EVERY WEEK AT 22:22 KST </h1>
+    
+</br>
+<iframe src="https://free.timeanddate.com/countdown/i6q2r7ew/n235/cf12/cm0/cu4/ct0/cs0/cacf00/co0/cr0/ss0/cacf00/cpc000/pct/tcfff/fn3/fs300/szw320/szh135/iso2019-06-21T22:22:00" allowTransparency="true" frameborder="0" width="330px" height="120" style="display: block; margin: 0 auto;" ></iframe>
+
+<h3> In the next 37 days , I @OOO1337777 ( <a href="https://google.com/search?q=OOO1337777">https://google.com/search?q=OOO1337777</a> , <a href="https://baidu.com/s?wd=OOO1337777">https://baidu.com/s?wd=OOO1337777</a> )  will review the making-of the <a href="https://www.youtube.com/results?search_query=OOO1337777">MODOS</a> which is conjectured as the alpha-omega of modern computer mathematics . In short , the MODOS is : parametrized functional programming which is modified by functorial geometry .
+</h3>
+
+<h3> <a href="../../init.html">Note: here is an initial introduction to COQ computer mathematics</a></h3>
+
+<h2 class="title">LIVE 1 : CAN SOME LOGIC PROOF BE STOLEN ? | BAD HUMAN VS COMPUTER
+<br> FRIDAY 21 JUNE 2019 AT 22:22 KST </h1>
+
+  <p> Imagine that some person writes this logic proof of this logic formula : </p>
+  <p><em>Text editing : Alt+↑ , Alt+↓ , Alt+→ , Alt+⏎ , Alt+hover .</em></p>
+  <textarea id="workspace1">
+Lemma proof1 : forall A B : Prop , and A B -> or A B .
+Proof.
+  intros A B ab .
+  left .
+  destruct ab as [ a b ] .
+  exact a .
+Qed.
+</textarea>
+  <p> There are many possibilities/choices of logic proofs for this logic formula . Another proof may conclude by choosing <code>B</code> ( the right alternative ) : </p>
+  <textarea id="workspace2">
+Lemma proof2 : forall A B : Prop , and A B -> or A B .
+Proof.
+  intros A B ab .
+  right .
+  destruct ab as [ a b ] .
+  exact b .
+Qed.
+</textarea>
+<p> Questiopn : Does this multitude of possibilities/choices signify that the search of some logic proof for this logic formula is some creative activity ? Can the logic proof written by the first person be stolen (copy-pasted) by some other person ? </p>
+<p> Answer : most logic proofs can be searched automatically by the computer in less than 1 second . Therefore , there is no need to steal (copy-paste) another person's logic proof . Whatever theft would not occur in this form . </p>
+<p> Here is how to do the automatic logic proof search : </p>
+  <textarea id="workspace3">
+Lemma proof3 : forall A B : Prop , and A B -> or A B .
+Proof.
+  tauto .
+Qed.
+</textarea>
+
+  <p>What is the dictionary definition of "theft" ? <a href="https://www.thefreedictionary.com/theft">https://www.thefreedictionary.com/theft</a></p>
+  <p> ... TODO ... </p>
+
+  <p>What is the legislation definition of "theft" ? <a href="https://www.canlii.org/en/ca/laws/stat/rsc-1985-c-c-46/latest/rsc-1985-c-c-46.html#sec322subsec1">https://www.canlii.org/en/ca/laws/stat/rsc-1985-c-c-46/latest/rsc-1985-c-c-46.html#sec322subsec1</a> . Under PART IX — OFFENCES AGAINST RIGHTS OF PROPERTY [321 - 378] / THEFT [322 - 334]  </p>
+  <p> ... TODO ... </p>
+  
+</div></div>
+
+  </div> <!-- /#document -->
+  </div> <!-- /#code-wrapper -->
+  </div> <!-- /#ide-wrapper -->
+
+  <script src="../../ui-js/jscoq-loader.js" type="text/javascript"></script>
+  <script type="text/javascript">
+
+    var jscoq_ids  = ['workspace1', 'workspace2' , 'workspace3' ];
+    var jscoq_opts = {
+        prelude:   true,
+        base_path: '../../',
+        init_pkgs: ['init', 'qoc'],
+        all_pkgs:  ['init', 'qoc', 'coq-base', 'coq-collections', 'coq-arith', 'coq-reals', 'math-comp'],
+        implicit_libs: true,
+        editor: { mode: { 'company-coq': true }, keyMap: 'default' }
+    };
+
+    /* Global reference */
+    var coq;
+
+    loadJsCoq(jscoq_opts.base_path)
+        .then( () => coq = new CoqManager(jscoq_ids, jscoq_opts) );
+  </script>
+</body>
+</html>

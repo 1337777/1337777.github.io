@@ -49,7 +49,7 @@
 
 <p><b>Memo.</b> here are initial instant first-impressions : <a href="../../init.html">COQ computer english-mathematics</a> , <a href="../../">中文 鸡算计 computer chinese-mathematics</a> , <a href="../../수탉수학/">한국어 탉수학 computer korean-mathematics</a> . </p>
 
-<h2 class="title">LIVE 1 : CAN SOME LOGIC PROOF BE STOLEN ? | BAD HUMAN VS COMPUTER
+<h2 class="title" id="live1">LIVE 1 : CAN SOME LOGIC PROOF BE STOLEN ? | BAD HUMAN VS COMPUTER
 <br> FRIDAY 21 JUNE 2019 AT 22:22 KST </h1>
 
   <p> Imagine that some person writes this logic proof of this logic formula ( in short this formula says that : <i>if I have a banana and an apple in my fridge , then I can eat a banana or an apple tonight ; moreover I am saying this phrase for any two food items ... </i> ) : </p>
@@ -99,8 +99,263 @@ Qed.
   <p>And as expected , the main words here are <i> "fraudulently" </i> ( which says the same as <i> "unlawful" </i> , <i> "dishonest" </i> , <i> "to tell lies" </i> , <i> "to falsify" </i> ) , and  <i> "takes or converts" </i> .  </p>
   <p>Moreover the legislation , mentions <i> "without colour of right" </i> . This signify that although the suspect may believe to have <i> "colour of right" </i> ( =  <i> "expected morality" </i> , = <i> "expected justification" </i> ) , the reality is that the suspect is <i> "without colour of right" </i> ( = <b> "fool" </b> ) . For example , the suspect may believe the ambiguous/confused statement <i> "the nights repeat twice each day" </i> for indirect calculations , instead of choosing to see the direct reality . </p>
   <p> In short , "absence of truth/reality/actuality/be" or "bad logic" can be rephrased as : <b> forced-fool-and-theft/lie/falsification </b> </p>
-</div></div>
 
+<h2 class="title" id="live2">LIVE 2 : majority is meaningless without (fibred/multiplied/pullback) intersection with some explicit totality/domain ! | BAD HUMAN VS COMPUTER
+<br> FRIDAY 28 JUNE 2019 AT 22:22 KST </h1>
+
+  <p><b>Logic.</b> The ends is to compose/sequence two functions when the output of the first function is not included within the input of the subsequent functiion . The solution is : to intersec the input of the first function (so that its output is) within the input of the subsequent function .    
+  </p>
+
+  <p>First of all , when the ouput of the first function [f] is the same as the input of the subsequent function [g] , it is easy to compose the two functions simply by composing/sequencing their effect .
+ </p>
+  <p><em>Note : text edit this code by Alt+↑ , Alt+↓ , Alt+→ , Alt+⏎ , Alt+hover .</em></p>
+  <textarea id="workspace4">
+Section section_composition.
+
+(*
+     f           g
+A ------>   B  ----->   C
+
+a |----->  f a |----> g (f a)   
+
+*)  
+ 
+  Variables (A : Type) (B : Type) (f : A -> B ).
+  Variables (C : Type) (g : B -> C) .
+
+  Definition composition : A -> C
+    := fun a => g ( f a )  .
+
+End section_composition.
+</textarea>
+<p>How to express that the output of the first function is NOT the same as the input of the subsequent function ?</p>
+
+<p>Solution : by generalizing from the idea of function to the idea of function with reindexed/restricted/multiplied input : [ B_ <--b-- B --g--> C ] . Now the restriction function [b] should be <b>read backward</b> , and the effectful function [g] should be <b>read forward</b> . </p>
+  
+  <textarea id="workspace5">
+Section section_reindexed_function.
+(*
+     g
+ B ------> C
+ |
+ . b
+ |
+ v
+ B_
+
+ *)
+  
+  Variables (B_ : Type) (B : Type) (b : B -> B_) (C : Type) (g : B -> C) .
+
+(*
+Example :
+
+.  
+.   .
+.   .
+  _
+  |
+  | b
+  v
+ 
+. . .
+
+*)
+  </textarea>
+<p> Therefore any function can be read forward (the effectful orientation) or read backward (the reindexer/multiplier orientation). Here is the composition/sequencing of two functions when read backward : </p>
+
+<p style="text-align:center;"><img src="composition_graph.svg"></p>
+
+<p>  The question now is : how to compose/sequence two reindexed functions ( functions with reindexed/restricted/multiplied inputs ) such as (a <o> f) then (b <o> g) ? In other words : when the ouput of the first effectful function [f] may NOT be the same as the input of the subsequent effectful function [g] ? This is more complex than simply sequencing the effects , and shall be described in two steps . </p>
+
+  <textarea id="workspace6">
+  Variables (A_ A : Type) (a : A -> A_) (f : A -> B_ ).
+  
+(*
+                   g
+             B ------> C
+             |
+             . b
+             |
+             v
+  A  ------> B_
+  |    f
+  . a
+  |
+  v
+  A_
+
+ *)
+
+End section_reindexed_function.
+</textarea>
+<p>Here is the initial step. When the ouput of the first function is NOT the same as the input of the subsequent function , then the inputs of first function must be restricted/intersected such that the corresponding outputs of the first function fall within the input of the subsequent function .</p>
+
+<p>The first function is "transported" ( "pullback" ) against the input of the subsequent function ; the restricted inputs of this transported first function is named "intersection" .</p>
+
+<p>This transport process is the initial step and can be described on its own now , and the final step which is named transporting-composition will be described later .</p>
+
+  <textarea id="workspace7">
+Section section_intersection.
+
+(*
+              transported
+intersection  ---------->   Multiples
+ |                             |
+ .                             . multiplier
+ |                             |
+ v                             v
+ A -----------------------> Domain
+               f
+*)
+
+  Variables (Domain : Type) (Multiples : Type) (multiplier : Multiples -> Domain) .
+
+  Definition intersection (A : Type) (f : A -> Domain) : Type
+    := { ab : ( A * Multiples ) |
+         f ( fst ab ) = multiplier ( snd ab ) } . 
+
+  Definition transported (A : Type) (f : A -> Domain) : intersection A f -> Multiples
+    := fun ab_eq => snd (proj1_sig ab_eq) .
+
+  Definition multimultiplier (A : Type) (f : A -> Domain) : intersection A f -> A
+    := fun ab_eq => fst (proj1_sig ab_eq) .
+
+  Definition multiplicity_of_intersection (A : Type) (f : A -> Domain) : intersection A f -> Domain
+    := fun ab_eq => multiplier ( snd (proj1_sig ab_eq) ) .
+End section_intersection.
+</textarea>
+<p>Memo : <em>this transport has both restriction flavor and multiplication flavor</em> ; nevertheless restriction can be viewed as exclusion via "multiplication by zero" , therefore multiplication is more general than restriction . </p>
+<p>Example of multiplying the function [3] against the multiplier [2] .</p>
+
+<p style="text-align:center;"><img width="100%" src="multiplied_intersection.svg"></p>
+
+  <textarea id="workspace8">
+Section section_intersection_example .
+(*
+
+   transported
+...    |-->    . 
+...    |-->    . 
+               _
+               | multiplier
+               v
+ 
+...    |-->    .
+        f
+
+ *)
+  
+  Inductive two : Type := Two1 : two | Two2 : two .
+  Inductive three : Type := Three1 : three | Three2 : three | Three3 : three .
+  Inductive infinite : Type := Start : infinite | Next : infinite -> infinite .
+
+  Let Domain : Type := infinite.
+  Let Multiples : Type := two.
+  Let multiplier : Multiples -> Domain := fun m => (Next Start).
+  Let A : Type := three.
+  Let f : A -> Domain := fun a => (Next Start) .
+  Compute ( transported Domain Multiples multiplier A f : {ab : three * two | (Next Start) = (Next Start)} -> two ) .
+  Check fun ab_eq : {ab : three * two | (Next Start) = (Next Start)} =>
+          let (_, b) := (let (ab, _) := ab_eq
+                         in ab)
+          in b .
+End section_intersection_example.
+</textarea>
+<p>Here is the final step of composing two (general) reindexed functions . The transporting-composition makes use of the transport process to restrict/multiply the first effectful function [f] againt the input multiplier [b] of the subsequent function [g] ; then this transporting-composition simply composes their transported first effectful function [transp f] with the subsequent effectful function [g] to obtain [transp f o> g]. <p>
+<p>  ( Moreover , if the input of the first function was somehow already restricted/multiplied via [a] , then this old restriction/multiplication [a] shall be composed/sequenced after the new restriction/multiplication [mult b] from this transport process ) </p>
+
+  <textarea id="workspace9">
+Section section_transporting_composition.
+  Variables (A_ A : Type) (a : A -> A_) (B_ : Type) (f : A -> B_ ).
+  Variables (B : Type) (b : B -> B_) (C : Type) (g : B -> C) .
+  
+(*
+
+( a , f ) o> ( b , g )
+
+                  g
+             B ------> C
+             |
+             . b
+             |
+             v
+  A  ------> B_
+  |    f
+  . a
+  |
+  v
+  A_
+
+
+ :=  ( a <o mult b , transp f o> g)
+
+     transp f      g
+  AB --------> B ------> C
+   |  
+   . mult b
+   | 
+   v 
+   A 
+   | 
+   . a
+   |
+   v
+   A_
+
+*)
+
+  Definition transporting_composition : ( intersection B_ B b A f -> A_ ) * ( intersection B_ B b A f -> C )
+    := ( composition _ _ (multimultiplier B_ B b A f) _  a  , composition _ _ (transported B_ B b A f ) _  g  ) .
+  
+End section_transporting_composition.  
+</textarea>
+<p><b>The bottom line is : to compute/eliminate/normalize the transporting/pullback-composition is rephrasable/reducible as to compute/eliminate/normalize the (common) composition in the presence of transports/pullback ... </b></p>
+
+<p><b>Dictionary.</b> What is the dictionary definition of "majority" ? <a href="https://www.thefreedictionary.com/majority">https://www.thefreedictionary.com/majority</a> says :</p>
+<ul> <li> <i> The greater number or part; a number more than half <b>of the total</b>  </i> </li>
+  <li> <i> the greater number or part <b>of something</b>  </i> </li>
+  <li> <i> (elections) more than half <b>of the votes</b>  </i> </li>
+</ul>
+
+<p>The expression <b> "of ..." </b> refers to the <b>intersection</b> of the number with some explicitly totality/domain . The totality/domain is determined by such parameters as : space ( "where" ) , time ( "when" ) , end-goals ( "for what" ) .</p>
+
+<p>Imagine that two counters in the number are mentality-neighbors ( same "where" , environment ) , or are synchronizing/colluding/conniving ( same "when" ) , or are interdependent ( same "for what" ) , then effectively/sensibly these two counters should merge as one counter , although formally/grammatically they are two distinct indexes for touching the same sensible counter . In short : it is possible to form/write the weighted (multiplied/fibered) intersection , as contrasted from effective/sensible majority ( which cancels-out multiplicity/"tribalism" ) ...</p>
+
+<p><b>Legislation.</b> Each clause in some law/rule of the legislation may be viewed as determining more precisely some totality/domain of application . But is it possible to find therein or in practice such fools as "singleton-class" ?</p>
+
+<p>In short : <b>"singleton-class" = </b> fabricating/falsifying some law/rule/grading/class which or its complement contains only some effectively-singleton target-individual , such to maximize this individual or correspondingly to obstruct this individual , or when the class becomes (unspoken) intersection-of-more-classes in the effective totality/domain and such is worse .</p>
+
+<p>This last phrase says that the effective totality/domain may cause some hidden assumptions , such that the class becomes (unspoken) intersection-of-more-classes . The technical idea to express this situation is to say that : transporting some function against the identity function produces the same function . </p>
+
+<textarea id="workspace10">
+Section section_intersection_with_identity.
+(*
+         transp f == f
+F /\ W ---------------------> W
+   ^                          ^
+   |                          |
+   . id                       . id
+   |                          |
+   v                          v
+   F  ----------------------> W
+                 f
+*)  
+Lemma intersection_with_identity : forall F W : Prop , forall hidden : ( F -> W ) (* hidden assumption caused by the effective totality/domain *),
+      ( ( F /\ W ) <-> F ) (* therefore the class F becomes (unspoken) intersection-of-more-classes *) .
+Proof.
+  intros F W hidden. split.
+  - intros wf. destruct wf as [w f].
+    + exact w.
+  - intros f. split.
+    + exact f .
+    + exact (hidden f).
+Qed.
+
+End section_intersection_with_identity.
+  </textarea>
+
+</div></div>
   </div> <!-- /#document -->
   </div> <!-- /#code-wrapper -->
   </div> <!-- /#ide-wrapper -->
@@ -108,7 +363,8 @@ Qed.
   <script src="../../ui-js/jscoq-loader.js" type="text/javascript"></script>
   <script type="text/javascript">
 
-    var jscoq_ids  = ['workspace1', 'workspace2' , 'workspace3' ];
+    var jscoq_ids  = ['workspace1', 'workspace2' , 'workspace3' ,  'workspace4' ,  'workspace5',
+    'workspace6', 'workspace7' , 'workspace8' ,  'workspace9' ,  'workspace10'];
     var jscoq_opts = {
         prelude:   true,
         base_path: '../../',

@@ -39,7 +39,7 @@
 <h1 class="title">FOR EXAMPLE ...
 <br> LIVE EVERY WEEK AT 22:22 KST </h1>
     
-</br>
+<br>
 <iframe src="https://free.timeanddate.com/countdown/i6q2r7ew/n235/cf12/cm0/cu4/ct0/cs0/cacf00/co0/cr0/ss0/cacf90/cpc000/pct/tcfff/fn3/fs300/szw320/szh135/iso2019-07-05T22:22:00" allowTransparency="true" frameborder="0" width="330px" height="120" style="display: block; margin: 0 auto;" ></iframe>
 
 <h3 style="text-align: center"><a href="https://youtube.com/results?search_query=OOO1337777">https://youtube.com/results?search_query=OOO1337777</a></h3>
@@ -355,7 +355,270 @@ Qed.
 End section_intersection_with_identity.
   </textarea>
 
-<h2 class="title" id="live3">LIVE 3 : to be continued ... </h2>
+
+<h2 class="title" id="live3">LIVE 3 : "maybe you are thief ?" is formally valid | BAD HUMAN VS COMPUTER |
+  <br> FRIDAY 05 JULY 2019 AT 22:22 KST </h2>
+
+  <p><b>Logic.</b> The ends is to describe how the inputs and outputs of some function may be formatted , and to discover that there are 4 equivalent alternative formatting/descriptions of <b> "formatted-function" </b> . The solution is : to rearrange and pair/separate the inputs or outputs such to produce many formats .
+  </p>
+
+  <p>The general reading is that in the diagram below : [ff] is formatted-function which is parametrized-over the reindexed-function [ ( a <o> f ) ] via the parametrizators [ ( a' , b' ) ] . The types at the top ( [A'] and [B'] ) contain the totality of the data or substance or "database records" . The types at the bottom ( [A_] and [B] and [A] ) contain the "partial information" and are "fields" / "projections" / "components" ( via [a'] and [b'] ) from the totality of the data . More precisely , the type [A] reindexes/reparametrizes the type [A_] ...
+</p>
+
+    <p>There are 4 equivalent alternative formatting/descriptions of "formatted-function" . The distinction is : how much the 3 inputs ( of type [A'] or [A] or [A_] ) are paired/grouped together ? The first format [formatted_NOPARAM] pairs/group all the inputs , and the other formats separate/decouple at least one input which becomes the parametrizator . The last format [formatted_INTERNAL_REPARAM] separate/ungroup all the inputs , the format [formatted_EXTERNAL] parametrizes some external function , the format [formatted_INTERNAL] parametrizes some internal function .
+ </p>
+
+  <p><em>Note : text edit this code by Alt+↑ , Alt+↓ , Alt+→ , Alt+⏎ , Alt+hover .</em></p>
+  <textarea id="workspace11">
+Section section_formatted_function.
+
+(**
+
+   ff : formatted
+A'----------------> B'
+|                   |
+. a'                . b'
+|                   |
+.          f        v
+| A --------------> B
+. |
+| . a
+. |
+v v
+ A_
+
+ *)
+  
+  Variables (A_ : Type) (A : Type) (a : A -> A_) (B : Type) (f : A -> B) .
+  Variables (A' : Type) (a' : A' -> A_) (B' : Type) (b' : B' -> B) .
+
+  Definition formatted_NOPARAM := forall x_x'_ : { x_x' : A * A' | a ( fst x_x' ) = a' ( snd x_x' ) } ,
+      { y' : B' | f ( fst (proj1_sig x_x'_) ) = b' y' } .
+
+  Definition formatted_EXTERNAL := forall x : A ,
+      { x' : A' | a ( x ) = a' ( x' ) } -> { y' : B' | f ( x ) = b' y' } .
+  
+  Definition formatted_INTERNAL := forall x' : A' ,
+      forall x_ : { x : A | a ( x ) = a' ( x' ) } , { y' : B' | f ( proj1_sig x_ ) = b' y' } .
+
+  Definition formatted_INTERNAL_REPARAM := forall x0 : A_ ,
+      { x' : A' | x0 = a' ( x' ) } -> forall x_ : { x : A | a ( x ) = x0 } , { y' : B' | f ( proj1_sig x_ ) = b' y' } .
+  
+  Lemma formatted_EXTERNAL_of_formatted_NOPARAM : formatted_NOPARAM -> formatted_EXTERNAL .
+  Proof.
+    unfold formatted_NOPARAM , formatted_EXTERNAL . intros ff . intros x x'_ . unshelve eexists.
+    - refine (proj1_sig (ff _)).
+      exists ( x , proj1_sig x'_ ).
+      simpl. exact (proj2_sig x'_).
+    - set ( x_x'_ := exist _ _ _ ). exact (proj2_sig (ff x_x'_)).
+  Defined.
+
+  Lemma formatted_INTERNAL_of_formatted_EXTERNAL : formatted_EXTERNAL -> formatted_INTERNAL .
+  Proof.
+    unfold formatted_EXTERNAL , formatted_INTERNAL . intros ff . intros x' x_ . unshelve eexists.
+    - refine (proj1_sig (ff (proj1_sig x_) _)).
+      exists x' .
+      exact (proj2_sig x_).
+    - set ( x'_ := exist _ _ _ ). exact (proj2_sig (ff (proj1_sig x_) x'_)).
+  Defined.
+  
+
+  Lemma formatted_INTERNAL_REPARAM_of_formatted_INTERNAL : formatted_INTERNAL -> formatted_INTERNAL_REPARAM .
+  Proof.
+    unfold formatted_INTERNAL_REPARAM , formatted_INTERNAL . intros ff . intros x0 x'_ x_ . unshelve eexists.
+    - refine (proj1_sig (ff (proj1_sig x'_) _)).
+      exists (proj1_sig x_) .
+      rewrite (proj2_sig x_) . rewrite <- (proj2_sig x'_). reflexivity.
+    - set ( x__ := exist _ _ _ ). exact (proj2_sig (ff (proj1_sig x'_) x__)).
+  Defined.
+
+  Lemma formatted_NOPARAM_of_formatted_INTERNAL_REPARAM : formatted_INTERNAL_REPARAM -> formatted_NOPARAM .
+  Proof.
+    unfold formatted_INTERNAL_REPARAM , formatted_NOPARAM . intros ff . intros x_x'_ . unshelve eexists.
+    - refine (proj1_sig (ff (a (fst (proj1_sig x_x'_))) _ _)).
+      exists (snd (proj1_sig x_x'_)) . exact (proj2_sig x_x'_).
+      exists (fst (proj1_sig x_x'_)) . reflexivity.
+    - set ( x_ := exist _ _ _ ). set ( x'_ := exist _ _ _ ). 
+      exact (proj2_sig (ff (a (fst (proj1_sig x_x'_))) x'_ x_)).
+  Defined.
+
+  (**NOT NECESSARY
+  Lemma formatted_NOPARAM_of_formatted_INTERNAL : formatted_INTERNAL -> formatted_NOPARAM .
+  Proof.
+    unfold formatted_INTERNAL , formatted_NOPARAM . intros ff . intros x_x'_ . unshelve eexists.
+    - refine (proj1_sig (ff (snd (proj1_sig x_x'_)) _)).
+      exists (fst (proj1_sig x_x'_)) .
+      exact (proj2_sig x_x'_).
+    - set ( x_ := exist _ _ _ ). exact (proj2_sig (ff (snd (proj1_sig x_x'_)) x_)).
+  Defined.
+  
+  Lemma formatted_INTERNAL_REPARAM_of_formatted_NOPARAM : formatted_NOPARAM -> formatted_INTERNAL_REPARAM .
+  Proof.
+    unfold formatted_INTERNAL_REPARAM , formatted_NOPARAM . intros ff . intros x0 x'_ x_ . unshelve eexists.
+    - refine (proj1_sig (ff _)).
+      exists ((proj1_sig x_) , (proj1_sig x'_)) .
+      simpl. rewrite (proj2_sig x_) . rewrite <- (proj2_sig x'_). reflexivity.
+    - set ( x_x'_ := exist _ _ _ ). 
+      exact (proj2_sig (ff x_x'_)).
+  Defined.
+  **)
+</textarea>
+  <p>Below , internal function , whose internal input is of type [ { x : A | a ( x ) = x0 } ] ( or simply written [x0] ) , is similar as some tuple/pair/record whose sections/components may be accessed . Given some section , there are many equivalent alternatives for accessing this section : these accessors correspond to the many equivalent alternatives formats/descriptions for formatted-function . </p>
+
+  <textarea id="workspace12">
+  Definition internal_functions_at (x0 : A_ ) := forall x_ : { x : A | a ( x ) = x0 } , { y' : B' | f ( proj1_sig x_ ) = b' y' } .
+  Check eq_refl _ : formatted_INTERNAL = forall x' : A' , internal_functions_at ( a' ( x' ) )  .
+  Check eq_refl _ : formatted_INTERNAL_REPARAM = forall x0 : A_ ,
+        { x' : A' | x0 = a' ( x' ) } -> internal_functions_at x0 .
+
+  Section application_at_section.
+
+(**
+
+   ff : formatted
+A'----------------> B'
+|                   |
+. a'                . b'
+|                   |
+.          f        v
+| A --------------> B
+. |  ^
+| .  |
+. |a |
+| .  .
+. |  |
+| .  . section
+v v  |
+   A_
+
+ *)
+    
+    Variables (section : A_ -> A) (section_ : forall x0 : A_ , a ( section x0 ) = x0 ).
+
+    Definition application_at_section : forall (x0 : A_ ) , internal_functions_at x0 -> { y' : B' | f ( section x0 ) = b' y' }
+      := fun x0 ff => (ff ( exist _ (section x0) (section_ x0) )).
+   
+    Axiom formatted_INTERNAL_REPARAM_property :
+      forall ff : formatted_INTERNAL_REPARAM ,
+       forall x0 : A_ , forall x'_ : { x' : A' | x0 = a' ( x' ) } , forall x_ : { x : A | a ( x ) = x0 } ,
+             forall x00 : A_ , forall x'__ : { x' : A' | x00 = a' ( x' ) } , forall x__ : { x : A | a ( x ) = x00 } ,
+                   x0 = x00 -> proj1_sig x'_ = proj1_sig x'__ -> proj1_sig x_ = proj1_sig x__ ->
+                   proj1_sig (ff x0 x'_ x_) = proj1_sig (ff x00 x'__ x__) .
+
+    Lemma compose_with_application_at_section :
+      forall ff : formatted_INTERNAL_REPARAM, forall x0 : A_ ,
+      forall x'_ : { x' : A' | x0 = a' ( x' ) } ,
+        proj1_sig ( composition _ _ (ff x0) _ (application_at_section x0) x'_ )
+        = proj1_sig ( (formatted_EXTERNAL_of_formatted_NOPARAM (formatted_NOPARAM_of_formatted_INTERNAL_REPARAM
+                        ff )) (section x0) (exist (fun x' => a (section x0) = a' ( x' ))
+                                           (proj1_sig x'_) ltac:(rewrite (section_ x0); exact (proj2_sig x'_))) ).
+    Proof.
+      intros. simpl. unfold composition , application_at_section. simpl.
+      set (x_ := exist _ _ _).
+      set (x'__ := exist _ _ _). set (x__ := exist _ _ _).
+      eapply (formatted_INTERNAL_REPARAM_property ff x0 x'_ x_ (a (section x0)) x'__ x__).
+      - rewrite section_. reflexivity.
+      - reflexivity.
+      - reflexivity.
+    Defined.
+
+  End application_at_section.
+    
+End section_formatted_function.
+</textarea>
+
+<p>The ends is to compose/sequence two formatted-functions when the formatted-output of the first formatted-function is not formatted as (included within) the formatted-input of the subsequent formatted-functiion . The solution is : to intersec the formatting of the input of the first formatted-function ( so that its output is formatted ) as the formatting of the input of the subsequent formatted-function . </p>
+
+  <textarea id="workspace13">
+Section section_formatted_function_composition.
+
+(**
+                       
+            ff                    gg
+ A' ------------------> B' ---------------> C'
+ |                      |                   |
+ .                      .                   .
+ |                      |                   |
+ .                      . b'                . c'
+ |                      |                   |
+ .                      .                   v
+ | a'                   | B --------------> C
+ .                      . |        g
+ |                      | .  
+ .                      . | b
+ |                      | .
+ .                      . |
+ |                      v v
+ . A ------------------> B_
+ | |          f         
+ . .                 
+ | |                   
+ . . a
+ | |
+ . .
+ v v
+  A_
+
+ *)
+  
+  Variables (A_ : Type) (A : Type) (a : A -> A_) (B_ : Type) (f : A -> B_) .
+  Variables (A' : Type) (a' : A' -> A_) (B' : Type) (b' : B' -> B_) .
+  Variables (ff : formatted_EXTERNAL A_ A a B_ f A' a' B' b').
+  Variables (B : Type) (b : B -> B_) (C : Type) (g : B -> C) .
+  Variables (C' : Type) (c' : C' -> C) .
+  Variables (gg : formatted_EXTERNAL B_ B b C g B' b' C' c').
+
+  Lemma formatted_composition : formatted_EXTERNAL A_ (intersection B_ B b A f)
+                                          (composition _ A (multimultiplier B_ B b A f) A_ a)
+                                          C (composition _ _ (transported B_ B b A f) _ g)
+                                          A' a' C' c' .
+  Proof.
+    unfold formatted_EXTERNAL , intersection , composition , multimultiplier , transported in * . intros x_y_ x'_ . unshelve eexists.
+    - refine (proj1_sig (gg (snd (proj1_sig x_y_)) _ )). unshelve eexists.
+      + refine (proj1_sig (ff (fst (proj1_sig x_y_)) _ )).
+        exists (proj1_sig x'_) .
+        exact (proj2_sig x'_).
+      + rewrite <- (proj2_sig x_y_).
+        set ( x'__ := exist _ _ _ ).  exact (proj2_sig (ff (fst (proj1_sig x_y_)) x'__)).
+    - set ( ff_x'__ := exist _ _ _ ).  exact (proj2_sig (gg _ ff_x'__)).
+  Defined.
+
+End section_formatted_function_composition.
+</textarea>
+
+<p><b>Dictionary.</b> What is the dictionary definition of "format" / "form" ? <a href="https://www.thefreedictionary.com/format">https://www.thefreedictionary.com/format</a> , <a href="https://www.thefreedictionary.com/form">https://www.thefreedictionary.com/form</a> says : </p>
+<ul> <li> <i> form - the <b>spatial arrangement</b> of something as distinct from its <b>substance</b> ; </i> </li>
+  <li> <i> format - the <b>arrangement of data</b> for computer input or output, as the number of <b>fields</b> in a <b>database record</b> or the margins in a report ; </i> </li>
+  <li> <i> form - a category of things distinguished by some <b>common characteristic</b> or quality ; </i> </li>
+  <li> <i> format - the organization of information according to <b>preset specifications</b> (usually for computer processing) . </i> </li>
+</ul>
+
+<p>These key words "substance" , "data" , "database record" signify the "totality of the real data in memory" . But sometimes only some (preset) "partial information" ( "characteristic" , "specifications" , "field" / "projection" ) from this total data is "touched" / "indexing" ( for example for "spatial arrangement" ) .</p>
+
+<p>What is the contrary/complement of "format" / "formal" / "grammatical" ? It is : "sense" ( "substance" , "data" ) in any other "possible forms" , and therefore may mention "discretion for the possibility" or "risk for the possibility" .  On the contrary : "format" is similar as "reference form" , "copy-me grading" , "objective" , which refuses to be subjective-under-teaching (of possible forms) .</p>
+
+<p>Another manner in which "format" / "formal" is contrary to "sense" is : any declaration is formally valid when prefixed with "it is possible that ... " ( for example , "maybe you are thief" ) , but the inferred wanted sense is different from the lacking actual sense .</p>
+
+<p>In summary : forced-fool-and-theft/lie/falsification has :</p>
+<ul> <li> ( <b> "flip-flop" </b> ) , fool via : confused or by contradicting oneself , or by flip-flop « possibility » ( "discretion" , "risk" ) versus « copy-me grading » ( "format" , "CV" , "objective" , refuse to be subjective-under-teaching ) . </li>
+<li> ( <b> "play-monopoly" </b> ) , fool via : by defame/accuse ( without personal-knowledge ) in the form of possibility/question-excuse ( " ... ? " , " maybe ... " ) . </li>
+</ul>
+
+<p><b>Legislation.</b> What is the legislation definition of "format" ?  <a href="https://www.canlii.org/en/on/laws/regu/rro-1990-reg-194/latest/rro-1990-reg-194.html#sec37.12.1">https://www.canlii.org/en/on/laws/regu/rro-1990-reg-194/latest/rro-1990-reg-194.html#sec37.12.1</a> , at "Rules of Civil Procedure, RRO 1990, Reg 194 / HEARING WITHOUT ORAL ARGUMENT / Opposed Motions in Writing" , says : </p>
+<p> <i>37.12.1 (4) Where the issues of fact and law are not complex, the moving party may propose in the notice of motion that the motion be heard in writing without the attendance of the parties, in which case,</i>
+<ul> <li> <i> (a) the motion shall be made on at least <b>fourteen days notice</b>; </i> </li>
+  <li> <i> (b) the moving party shall serve with the notice of motion and immediately file, with proof of service in the court office where the motion is to be heard, <b>a motion record, a draft order and a factum</b> entitled factum for a motion in writing, setting out the moving party’s argument;  </i> </li>
+  <li> <i> (c) the motion may be heard <b>in writing without the attendance of the parties</b>, unless the court orders otherwise. </i> </li>
+</ul>
+</p>
+
+<p>Why would the <b> "oral format" </b> be contrasted from the <b> "written format" </b> ? The "partial information" which is touched is not same for these two formats ? </p>
+
+<p>Indeed , in the oral format , the "bad party" will more easily confuse/mix up facts and falsify hidden presuppositions and indirectly suggest diffamatory/accusation possibilities/questions ( "frame" ) ; while the "real party" will more difficultly describe precisely the totality of the true reality , without mentioning/validating diffamatory/accusation possibilities/questions . </p>
+
+<p>In contrast , the written format is always processed in advance ( "fourteen days notice" ) , has detailled description ( "a motion record, a draft order and a factum" ) which is not overwritten (masked/erased) by any confused-and-incomplete oral commentary ( "in writing without the attendance of the parties" ) .</p>
+
+<h2 class="title" id="live4">LIVE 4 : to be continued ... </h2>
 
 </div></div>
   </div> <!-- /#document -->
@@ -366,7 +629,8 @@ End section_intersection_with_identity.
   <script type="text/javascript">
 
     var jscoq_ids  = ['workspace1', 'workspace2' , 'workspace3' ,  'workspace4' ,  'workspace5',
-    'workspace6', 'workspace7' , 'workspace8' ,  'workspace9' ,  'workspace10'];
+    'workspace6', 'workspace7' , 'workspace8' ,  'workspace9' ,  'workspace10' ,
+    'workspace11', 'workspace12' , 'workspace13' ];
     var jscoq_opts = {
         prelude:   true,
         base_path: '../../',

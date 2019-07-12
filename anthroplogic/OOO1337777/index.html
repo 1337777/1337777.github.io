@@ -618,7 +618,218 @@ End section_formatted_function_composition.
 
 <p>In contrast , the written format is always processed in advance ( "fourteen days notice" ) , has detailled description ( "a motion record, a draft order and a factum" ) which is not overwritten (masked/erased) by any confused-and-incomplete oral commentary ( "in writing without the attendance of the parties" ) .</p>
 
-<h2 class="title" id="live4">LIVE 4 : to be continued ... </h2>
+<h2 class="title" id="live4">LIVE 4 : how are two people the same (interdependence) ? | BAD HUMAN VS COMPUTER |
+<br> FRIDAY 12 JULY 2019 AT 22:22 KST </h2>
+
+<p><b>Logic.</b></p>
+
+<p style="text-align:center"> <b> &nbsp&nbsp You &nbsp&nbsp read &nbsp&nbsp this korean word &nbsp&nbsp 안녕 &nbsp&nbsp . </b> </p>
+
+<p> The ends is to describe how there are <b>varying degrees of grammar</b> , or correspondingly how there are varying degrees of sense . At one extreme (concrete grammar / syntax) is the ink which is stored as some sequence of tokens on the paper . At the other extreme (sense) is the total reality which is stored as some memory dynamics in the brain , which is then written on or read from the paper . In the middle is the COQ computer ( automatized/implicit notations ) . </p>
+
+<p> <b>Some information may be lost or gained when varying the degree of grammar</b> . Primo , here is how information may be lost . Any grammar has multiple entry classes , for example : verb , noun , sentence ( , import-another-language ... ) . These grammar entries may be <b>mutually interdependent</b> , and this mutual interdepence may be lost when varying the degree from grammar to sense . In other words : the mutually recursive functions which read/parse the sequence/list of tokens on the paper are indeed very mutually dependent , but the corresponding inductive types in the COQ computer cease to be mutually dependent and have only-hierarchical dependence . ( <i>MEMO : one solution to recover the mutual dependence in the COQ computer is to describe the inductive types <b> "manually" </b> instead of automatically ... </i> ) </p>
+
+<p> Secondo , here is how information may be gained when varying the degree of grammar . Comnmonly , some text (sequence of tokens) is read from the paper then many post-processing of varying degree are done to determine how much sensible is this information . One example of such post-processing step is to decide/check/verify whether two grammatical items have indeed the same sense ( "unify" ) as wanted . Now <b>this sensible post-processing step may be integrated into the tokens-grammar itself</b> such to give some new intermediate grammar , but the reader algorithm for such intermediate grammar may become almost as complex as the reference sense . For example , if the reference sense is the Coq computer , then the reader for this intermediate grammar, which asserts/checks/verifies that some two grammatical items have the same sense , needs the (outer) COQ unification algorithm ( and such reader may therefore be programmed in LTAC , <i>or better : disregard any such intermediate grammar and directly touch the reference sense as the <b>COQ computer automatized/implicit notations</b> ... </i> ) . </p>
+
+<p><em>Note : text edit this code by Alt+↑ , Alt+↓ , Alt+→ , Alt+⏎ , Alt+hover .</em></p>
+<textarea id="workspace14">
+Module Type Sensible_Grammar .
+From Coq Require Import Lists.List Arith.Compare.
+Import ListNotations.
+ 
+(* some preliminary definitions *)
+Definition boolunit (n : nat) : Type := match n with
+                                        O => unit
+                                      | S m => bool
+                                      end .
+Definition truett (n : nat) : boolunit n := match n with
+                                            O => tt
+                                          | S m => true
+                                          end .
+
+(* the corresponding inductive types [ilist] and [bulist] in the COQ computer
+  cease to be mutually dependent and have only-hierarchical dependence *)
+(* indeed , [bulist] is absent from [ilist] *)
+Inductive ilist : nat -> Type :=
+  INil : ilist 0
+| ICons : forall (n : nat), ilist n -> boolunit n (* asserts/checks this [n] is same sense as [n] in [ilist n] *)
+                -> ilist (S n) .
+
+(* but , [ilist] is present in [bulist] *)
+Inductive bulist : forall n : nat, ilist n  -> boolunit n -> Type :=
+  Bulist : forall (n : nat) (l : ilist n), bulist n l (truett n) .
+
+Compute (existT ilist 1 (ICons 0 INil tt)) .
+Compute (existT ilist 2 (ICons 1 (ICons 0 INil tt) true)) .
+
+(* the mutually recursive functions which read/parse the sequence/list of tokens on the paper are indeed very mutually dependent . *)
+Inductive token : Type :=
+  Token_INil | Token_ICons | Token_Bulist .
+
+Fixpoint reader_INil (steps : nat) (xs : list token)
+: option ( (ilist 0) * list token) :=
+match steps with
+| 0 => None
+| S steps' =>
+  match xs with
+  | [] => None
+  | x :: rest =>
+    match x with
+    | Token_INil => Some ( INil , rest )
+    | Token_ICons => None
+    | Token_Bulist => None
+    end
+  end
+  end
+
+with (* mutual dependence *)
+reader_ICons (steps : nat) (xs : list token)
+: option ( { n & ilist (S n) } * list token) :=
+match steps with
+| 0 => None
+| S steps' =>
+  match xs with
+  | [] => None
+  | x :: rest =>
+    match x with
+    | Token_ICons =>
+      (* inner mutual dependence *)
+      match (reader_ilist steps' rest) with
+      | Some (existT _ n l , rest') =>
+        (* HERE: outer mutual dependence *)
+        match (reader_bulist steps' rest' ) with
+        | Some ( (existT _ n' (existT _ l' (existT _ b t))) , rest'' ) =>
+          (* Memo in the reference sense :
+             [ | ICons : forall n , ilist n -> boolunit n ... ] 
+             asserts/checks this [n] is same sense as [n] in [ilist n] *)
+          (* Luckily , the reader for this particular intermediate grammar 
+             does not need the (outer) COQ unification algorithm ... *)
+          (* HERE: (easy) integration of the would-be-tokens-only grammar 
+             with this post-processing step of the reference-sense *)
+          match Compare.Pcompare n n' with
+          | inleft (right pr) =>
+            Some (existT _ n (ICons n l ltac:(rewrite pr; exact b)) , rest'')
+          | _ => None
+          end
+        | None => None
+        end
+      | None => None
+      end
+    | Token_INil => None
+    | Token_Bulist => None
+    end
+  end
+end
+
+with (* mutual dependence *)
+reader_ilist (steps : nat) (xs : list token)
+: option ( { n & ilist n } * list token) :=
+match steps with
+| 0 => None
+| S steps' =>
+  match (reader_ICons steps' xs) with
+  | Some (existT _ n l , rest') => Some ( (existT _ (S n) l) , rest')
+  | None =>
+    match (reader_INil steps' xs) with
+    | Some (l , rest') => Some ( (existT _ 0 l) , rest')
+    | None => None
+    end
+  end
+end
+  
+with (* mutual dependence *)
+reader_Bulist (steps : nat) (xs : list token)
+: option ( { n & { l : ilist n & bulist n l (truett n) } } * list token) :=
+match steps with
+| 0 => None
+| S steps' =>
+  match xs with
+  | [] => None
+  | x :: rest =>
+    match x with
+    | Token_Bulist =>
+      (* HERE: outer mutual dependence *)
+      match (reader_ilist steps' rest ) with
+      | Some (existT _ n l , rest') =>
+        Some ((existT _ n (existT _ l (Bulist n l))) , rest')
+      | None => None
+      end
+    | Token_INil => None
+    | Token_ICons => None
+    end
+  end
+end
+
+with (* mutual dependence *)
+reader_bulist (steps : nat) (xs : list token)
+: option ( { n & { l : ilist n & { b : boolunit n & bulist n l b } } } * list token) :=
+match steps with
+| 0 => None
+| S steps' =>
+  match (reader_Bulist steps' xs) with
+  | Some ((existT _ n (existT _ l t)) , rest) =>
+    Some ( (existT _ n (existT _ l (existT _ (truett n) t))) , rest)
+  | None => None
+  end
+end .
+
+Compute ( reader_ilist 100 [Token_ICons ;
+                                        Token_INil ;
+                                        Token_Bulist ;
+                                        Token_INil ] ) .
+(* = Some (existT _ 1 (ICons 0 INil tt), []) *)
+Compute ( reader_ilist 100 [Token_ICons ;
+                                        Token_ICons ; Token_INil ; Token_Bulist ; Token_INil ;
+                                        Token_Bulist ;
+                                        Token_ICons ; Token_INil ; Token_Bulist ; Token_INil ] ).
+(* = Some (existT _ 2 (ICons 1 (ICons 0 INil tt) true), []) *)
+Compute ( reader_ilist 100 [Token_ICons ;
+                                        Token_ICons ; Token_INil ; Token_Bulist ; Token_INil ;
+                                        Token_Bulist ;
+                                        Token_INil ] ).
+(* = None *)
+
+End Sensible_Grammar.
+</textarea>
+
+<p><b>Dictionary.</b> What is the dictionary definition of "interdependence" ? <a href="https://www.thefreedictionary.com/interdependence">https://www.thefreedictionary.com/interdependence</a> says :</p>
+<ul> <li> <i> dependence between two or more people, groups, or things ; </i> </li>
+  <li> <i> interdependence - a <b>reciprocal</b> relation between interdependent entities (objects or individuals or groups) ; </i> </li>
+  <li> <i> reciprocality, reciprocity - a relation of mutual dependence or action or influence ; </i> </li>
+  <li> <i> A logical <b>or natural</b> association between two or more things ... </i> </li>
+</ul>
+
+<p>The key word <i>"or natural"</i> says that <i>this association may be some consequence which is not computational-logical ( "butterfly effect" , "chaos" ) or this association may be some consequence which is not known or this association may be some consequence of reckless running . </i> </p>
+
+<p><b>Legislation.</b> What is the legislation definition of "interdependence" ? <a href="https://www.canlii.org/en/ca/laws/stat/rsc-1985-c-c-46/145803/rsc-1985-c-c-46.html#sec467.1subsec1">https://www.canlii.org/en/ca/laws/stat/rsc-1985-c-c-46/145803/rsc-1985-c-c-46.html#sec467.1subsec1</a> , at "Criminal Code, RSC 1985, c C-46 / PART XIII — ATTEMPTS — CONSPIRACIES — ACCESSORIES / Definitions" , says :  </p>
+<p> <i>467.1 (1) The following definitions apply in this Act.
+    <br> <b>criminal organization</b> means a group, however organized, that</i>
+  <ul> <li> <i> (a) is composed of <b>three ( ??? )</b> or more persons in or outside Canada; and </i> </li>
+    <li> <i> (b) has as one of its main purposes or main activities the facilitation or commission of one or more serious offences that, if committed, would likely result in the direct <b>or indirect</b> receipt of a material benefit, including a financial benefit, by the group or by any of the persons who constitute the group.  </i> </li>
+    <li> <i> It does <b>not include a group of persons that forms randomly</b> for the immediate commission of a single offence. </i> </li>
+</ul>
+</p>
+
+<p>The key word <i> "or indirect" </i> is precisely synonymous with the keyword "organization" . The key words <i>"three"</i> and <i> "not include a group of persons that forms randomly" </i> say almost litterally the existence of these types of businesses :
+<ul> <li> <b>"private business"</b> of two persons ( "marital" / <b> "working girl" </b> ) ; </li>
+  <li> <b>"interdependence business"</b> of three or more persons , but which excludes the <b>"public business"</b> of many random persons . </li> </ul>
+And here "criminal" signifies theft from outside the business into the business .
+</p>
+
+<p> This idea suggests another idea that : <i> any public business/manifestation/revolution/subversion which seriously tries to be successful must be head-less ( at least appear random , without the "leader" ) </i> </p>
+
+<p>In summary : forced-fool-and-theft/lie/falsification has :</p>
+<ul> <li> conversion of own self gain/win/nonloss , </li>
+<li> for other somebody-else-or-the-public loss ( "detournement-interdependant de fonds publics" ) , </li>
+<li> as synchronizing/colluding/conniving , </li>
+<li> as being interdependent ( "tribalistic" ) / non-autonomous while misappropriating public funds via interdependent-detour ( "detournement-interdependant de fonds publics" , instead of minimum wage or random wage ) , </li>
+<li> as being payee/puppet/proxy/agent ( "pet" ) , </li>
+<li> as being payer/puppeteer/commander ( by payment , by suggesting/subleading , by predicting loss if no ) , </li>
+<li> as being judge/referee/arbitrator ( "psychic" , "interpretation" ) who author/edit/fabricate/guess excessively outside/beyond its jurisdiction = competence = [the personal-knowledge testimony of only the witness] , </li>
+<li> in some monetarist-or-interdependent/tribalistic and effectively-anonymous crowd/mob/gang/corporatism , </li>
+<li> such to prevent cumulation and inheritance of forced-fool-and-theft/lie/falsification ... </li> </ul>
+
+<h2 class="title" id="live5">LIVE 5 : to be continued ... </h2>
 
 </div></div>
   </div> <!-- /#document -->
@@ -630,7 +841,8 @@ End section_formatted_function_composition.
 
     var jscoq_ids  = ['workspace1', 'workspace2' , 'workspace3' ,  'workspace4' ,  'workspace5',
     'workspace6', 'workspace7' , 'workspace8' ,  'workspace9' ,  'workspace10' ,
-    'workspace11', 'workspace12' , 'workspace13' ];
+    'workspace11', 'workspace12' , 'workspace13' ,
+    'workspace14' ];
     var jscoq_opts = {
         prelude:   true,
         base_path: '../../',

@@ -1,0 +1,402 @@
+<!--
+  This sample contains two very simple introductory exercises of
+  interactive proofs in Coq, one with natural numbers and one with lists.
+  It can be used as a gentle landing page, which requires no knowledge
+  of math-comp.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="description" content="An Online IDE for the Coq Theorem Prover" />
+
+    <title>Use Coq in Your Browser: The Js Coq Theorem Prover Online IDE!</title>
+  </head>
+
+<body>
+  <div id="ide-wrapper" class="toggled">
+  <div id="code-wrapper">
+  <div id="document">
+    <p>
+짧은 (3 부) :: 
+<br/>(1.) "Coq"는 수학 읽기와 쓰기를위한 컴퓨터 프로그램입니다 .
+<br/>(2.) 많은 정의 "d"와 보조 표제 "l"을 매개 변수화하는 매개 변수 "p"는 모두 하나에 패키지화 될 수 있습니다.
+<br/>(3.) 그런 다음 나중에이 매개 변수 "p"가 인스턴스화되어 인스턴스화 된 정의 "Q.d"와 인스턴스화 된 보조 정리 "Q.l"을 생성 할 수 있습니다.
+<br/>(4.) 이 새로운 이름 "Q.d"와 "Q.l"은 접두사 이름 "Q"로 시작됩니다.
+</p>
+    <p>
+Short (PART 3) ::
+<br/>(1.) "Coq" is computer program to read and write mathematics . 
+<br/>(2.) A parameter "p" , which parametrizes many definitions "d" and lemmas "l" , may all be packaged into one .
+<br/>(3.) Later on, this parameter "p" can be instantiated to create the instantiated definition "Q.d" and the instantiated secondary theorem "Q.l".
+<br/>(4.) These new names "Q.d" and "Q.l" will be prefixed by any chosen prefix name "Q" .
+ </p>
+<p> Outline :: 
+<br/>  * PART 1 : SIMPLE PARAMETRIZATION
+<br/>  * PART 2 : SIMPLE ENVIRONMENT
+<br/>  * PART 3 : COMPLEX ENVIRONMENTAL PARAMETRIZATION
+    </p>
+    <p>
+    Alt+↑/↓ – move through proof; Alt+→ or Alt+⏎ – go to cursor. <br/>
+    Alt+hover executed sentences to watch intermediate steps. <br/>
+    Hover identifiers in goals to view their types. Alt+hover to view definitions.<br/>
+    <i style="color: rgb(51, 51, 150)">Company-coq</i> addon is enabled: it will auto-complete names of tactics and lemmas 
+    from the standard library, and also show types of lemmas in the right pane.
+    </p>
+    <p>
+"Alt + ↑ / ↓": 증명을 전달하십시오. "Alt + →"또는 "Alt + ⏎": 커서로 이동하십시오.
+<br/> "Alt +"호버링은 문장을 실행하여 중간 단계를 관찰합니다.
+<br/> 대상에 식별자를 올려 해당 유형을 표시합니다. "Alt +"를 가리키면 정의를 볼 수 있습니다.
+<br/> "Company-coq"애드온을 활성화하십시오 : 표준 라이브러리의 정책 및 보조 정리 이름을 자동으로 완성하고 오른쪽 창에 부트 유형을 표시하십시오.
+    </p>
+    <textarea id="workspace">
+From Qoc Require Import Sutalgsuhag .
+
+(**MEMO: 
+
+  짧은 :: 
+(1.) "Coq"는 수학 읽기와 쓰기를위한 컴퓨터 프로그램입니다 .
+(2.) 많은 정의 "d"와 보조 표제 "l"을 매개 변수화하는 매개 변수 "p"는 모두 하나에 패키지화 될 수 있습니다.
+(3.) 그런 다음 나중에이 매개 변수 "p"가 인스턴스화되어 인스턴스화 된 정의 "Q.d"와 인스턴스화 된 보조 정리 "Q.l"을 생성 할 수 있습니다.
+(4.) 이 새로운 이름 "Q.d"와 "Q.l"은 접두사 이름 "Q"로 시작됩니다.
+
+  Short :: 
+(1.) "Coq" is computer program to read and write mathematics . 
+(2.) A parameter "p" , which parametrizes many definitions "d" and lemmas "l" , may all be packaged into one .
+(3.) Later on, this parameter "p" can be instantiated to create the instantiated definition "Q.d" and the instantiated secondary theorem "Q.l".
+(4.) These new names "Q.d" and "Q.l" will be prefixed by any chosen prefix name "Q" .
+
+  Outline :: 
+  * PART 1 : SIMPLE PARAMETRIZATION
+  * PART 2 : SIMPLE ENVIRONMENT
+  * PART 3 : COMPLEX ENVIRONMENTAL PARAMETRIZATION
+*)
+
+(** PART 3 : COMPLEX ENVIRONMENTAL PARAMETRIZATION *)  
+
+
+(** Module without parameters . This is precisely for the prefix [M] below .*)
+꾸러미 MOD_T'nat_x'0_y'true.
+
+  정의 T := nat.
+
+  정의 x := 0.
+  
+  정의 y : bool.
+  증명.
+    정확하다 true.
+  정의된.
+
+끝 MOD_T'nat_x'0_y'true.
+
+꾸러미 접두어가붙은 매개변수 M : MOD_T'nat_x'0_y'true .
+
+(** Module with 2 inner-parameters and with some environment which is enabled . *)
+꾸러미 MOD_T_x.
+
+  매개변수 T : Set.
+
+  (** [수출해라] keyword says that this environment will be imported when this module is imported . *)
+  수출해라 설정해라 인쇄해 표기법.
+  표기법 _carrier :=  T.
+
+  (** [지역] keyword says this identifier will never be imported . 
+      [확장될] keyword says that this component of any prefixed-module input 
+              will be unfolded in the output module during any outer/functor instantiation/application *)
+  지역 매개변수 확장될 x : T.
+  
+끝 MOD_T_x.
+
+(** Module instantiated and prefixed by the name [B] . *)
+꾸러미 접두어가붙은 매개변수 B : (MOD_T_x 와 정의 T := bool).
+(** Another different instantiation . Module instantiated and prefixed by the name [N] . *)
+꾸러미 접두어가붙은 매개변수 N : (MOD_T_x 와 정의 T := nat) .
+인쇄해 N.T.
+인쇄해 N.x.
+
+(** No more instantiation of [M] is possible. Oneself can only alias (here rename) , then check the precision . *)
+꾸러미 접두어가붙은 별명 M' <: (MOD_T_x 와 정의 T := nat) := M .
+
+꾸러미 MOD_z (M'' : MOD_T'nat_x'0_y'true).
+   정의 z : nat := 1 + M''.x .
+끝 MOD_z.
+
+(** Another form of the command to (anonymously) present the module components and to prefix the module at the same time (and also to check the precision). *)
+꾸러미 접두어가붙은 별명 M_z <: (MOD_T_x 와 정의 T := nat).
+   포함해라 M.
+   Fail 정의 x :=  1 .
+
+   (** may be bad *)
+   정의 z : nat := 1 + M.x . 인쇄해 z.
+   Reset z.
+   포함해라 (MOD_z M). 인쇄해 z.
+   Reset z.
+   
+   정의 z : nat := 1 + x . 인쇄해 z.   
+   Reset z.
+   포함해라 MOD_z. 인쇄해 z.
+끝 M_z.
+인쇄해 M_z.T.
+인쇄해 M_z.x.
+
+(** Module with one outer-parameter [X]] . This module has also one inner-parameter [Y] , which will also be component of the result  *)
+꾸러미 MODPARAMS (X : MOD_T_x) <: MOD_T_x .
+
+  꾸러미 접두어가붙은 매개변수 Y : (MOD_T_x 와 정의 T := X.T) .
+
+  인쇄해 X.x.
+  인쇄해 Y.x.
+  Fail 인쇄해 X.y.
+  Fail 인쇄해 Y.y.
+
+  정의 T := (prod X.T Y.T)%type.
+  Reset T.
+
+  (** Notation _carrier is not yet imported *)
+  Fail 校验 _carrier. 
+  (** Disable the printing of notations for now *)
+  설정하지_말아라 인쇄해 표기법. 
+  수입해라 Y.
+  (** Y.T is imported *)
+  인쇄해 T.
+  (** Notation _carrier is imported *)
+  校验 _carrier. 
+  (** Export Set Printing Notation is imported *)
+  校验 T.  (** output:  _carrier : Set *)
+  (** [x] is 지역 and therefore not imported *)
+  Fail 인쇄해 x.
+
+  (** Same as above because the Notation is imported *)
+  정의 T := (prod X.T _carrier)%type. 
+  (** The imported [Y.T] is now masked *)
+  인쇄해 T . 
+  Reset T .
+  (** Same as above because the sharing constraint says that [ X.T = Y.T ( = _carrier )] *)
+  정의 T := (prod _carrier _carrier)%type. 
+
+  정의 x : T := (pair X.x Y.x) .
+
+끝 MODPARAMS.
+
+인쇄해 꾸러미 MODPARAMS.
+
+(** Fails because the sharing constraints are not satisfied *)
+Fail 꾸러미 접두어가붙은 매개변수 P : ((MODPARAMS N) 와 꾸러미 접두어가붙은 Y := B) .
+Fail 꾸러미 접두어가붙은 매개변수 P : ((MODPARAMS B) 와 꾸러미 접두어가붙은 Y := N) .
+
+(** In this section :  [X = M , Y = N] *)
+
+꾸러미 접두어가붙은 매개변수 R : ((MODPARAMS M) 와 꾸러미 접두어가붙은 Y := N) .
+인쇄해 꾸러미 접두어가붙은 R .
+인쇄해 R.x. (** M.x is unfolded in ( R.x = ( 0 (** M.x *) , R.Y.x) ) because the component x of MOD_T_x is inlined ;
+and certainly R.Y.x ( = N.x ) will not be unfolded because Y is some inner (not-outer) parameter of MODPARAMS *)
+계산해라 ( fst R.x + snd R.x ).
+
+꾸러미 접두어가붙은 매개변수 S : (** HERE !!! *) ! ( (MODPARAMS M) 와 꾸러미 접두어가붙은 Y := N ) .
+(** [M.x]] is not unfolded in [ R.x = (M.x , S.Y.x) ] because the inlining of the component [x] of [MOD_T_x] is disabled by the command [!] *)
+인쇄해 S.x. 
+계산해라 ( fst S.x + snd S.x ).
+
+(** In this section : [X = N , Y = M] *)
+
+꾸러미 접두어가붙은 매개변수 U : ((MODPARAMS N) 와 꾸러미 접두어가붙은 Y := M) .
+(** In [ U.x = (N.x , U.Y.x) ] , certainly  [N.x] is already not unfoldable *)
+인쇄해 U.x .
+계산해라 ( snd U.x + fst U.x ) .
+
+(** This section shows how the inner-parameter [Y] of the module [MODPARAMS] may be moved outside as some outer-parameter .
+ Also the permutation of the sequence of the outer-parameters is possible . *)
+꾸러미 MODPARAMS_Y_X (Y : MOD_T_x) (X : MOD_T_x 와 정의 T := Y.T)
+  := 이라 꾸러미 접두어가붙은 Y := Y 에서 (MODPARAMS X) .
+인쇄해 꾸러미 MODPARAMS_Y_X.
+꾸러미 접두어가붙은 매개변수 V_Y'M_X'N : (MODPARAMS_Y_X M N) .
+Reset V_Y'M_X'N . (** same : *)
+꾸러미 접두어가붙은 매개변수 V_Y_X (Y : MOD_T_x) (X : (MOD_T_x 와 정의 T := Y.T))
+  : (MODPARAMS_Y_X Y X) .
+꾸러미 접두어가붙은 별명 V_Y'M_X'N <: (MODPARAMS_Y_X M N) := (V_Y_X M N) .
+(** [V_Y'M_X'N.Y.x] is unfolded in [ V_Y'M_X'N.x = (N.x , 0 (* V_Y'M_X'N.Y.x *) ) ] , 
+  because the component [x] of [MOD_T_x] is inlined 
+    and the instantiation by [M] of the module [MODPARAMS_Y_X] or the prefixed-module [V_Y_X] to get the instance [V_Y'M_X'N] 
+      is via the (module or prefixed-module) outer/functor instantiation/application  *)
+인쇄해 V_Y'M_X'N.x . 
+계산해라 ( snd V_Y'M_X'N.x + fst V_Y'M_X'N.x ) .
+
+
+
+(** ** alt
+----------------------------------------------------------------------------- *)
+
+
+Reset MOD_T'nat_x'0_y'true.
+
+(** Module without parameters . This is precisely for the prefix [M] below .*)
+Modular MOD_T'nat_x'0_y'true.
+
+  Definition T := nat.
+
+  Definition x := 0.
+  
+  Definition y : bool.
+  Proof.
+    exact true.
+  Defined.
+
+End MOD_T'nat_x'0_y'true.
+
+Modular Prefixed Parameter M : MOD_T'nat_x'0_y'true .
+
+(** Module with 2 inner-parameters and with some environment which is enabled . *)
+Modular MOD_T_x.
+
+  Parameter T : Set.
+
+  (** [Export] keyword says that this environment will be imported when this module is imported . *)
+  Export Set Printing Notations.
+  Notation _carrier :=  T.
+
+  (** [Local] keyword says this identifier will never be imported . 
+      [Inline] keyword says that this component of any prefixed-module input 
+              will be unfolded in the output module during any outer/functor instantiation/application *)
+  Local Parameter Inline x : T.
+  
+End MOD_T_x.
+
+(** Module instantiated and prefixed by the name [B] . *)
+Modular Prefixed Parameter B : (MOD_T_x with Definition T := bool).
+(** Another different instantiation . Module instantiated and prefixed by the name [N] . *)
+Modular Prefixed Parameter N : (MOD_T_x with Definition T := nat) .
+Print N.T.
+Print N.x.
+
+(** No more instantiation of [M] is possible. Oneself can only alias (here rename) , then check the precision . *)
+Modular Prefixed Alias M' <: (MOD_T_x with Definition T := nat) := M .
+
+Modular MOD_z (M'' : MOD_T'nat_x'0_y'true).
+   Definition z : nat := 1 + M''.x .
+End MOD_z.
+
+(** Another form of the command to (anonymously) present the module components and to prefix the module at the same time (and also to check the precision). *)
+Modular Prefixed Alias M_z <: (MOD_T_x with Definition T := nat).
+   Include M.
+   Fail Definition x :=  1 .
+
+   (** may be bad *)
+   Definition z : nat := 1 + M.x . Print z.
+   Reset z.
+   Include (MOD_z M). Print z.
+   Reset z.
+   
+   Definition z : nat := 1 + x . Print z.   
+   Reset z.
+   Include MOD_z. Print z.
+End M_z.
+Print M_z.T.
+Print M_z.x.
+
+(** Module with one outer-parameter [X]] . This module has also one inner-parameter [Y] , which will also be component of the result  *)
+Modular MODPARAMS (X : MOD_T_x) <: MOD_T_x .
+
+  Modular Prefixed Parameter Y : (MOD_T_x with Definition T := X.T) .
+
+  Print X.x.
+  Print Y.x.
+  Fail Print X.y.
+  Fail Print Y.y.
+
+  Definition T := (prod X.T Y.T)%type.
+  Reset T.
+
+  (** Notation _carrier is not yet imported *)
+  Fail Check _carrier. 
+  (** Disable the printing of notations for now *)
+  Unset Printing Notations. 
+  Import Y.
+  (** Y.T is imported *)
+  Print T.
+  (** Notation _carrier is imported *)
+  Check _carrier. 
+  (** Export Set Printing Notation is imported *)
+  Check T.  (** output:  _carrier : Set *)
+  (** [x] is Local and therefore not imported *)
+  Fail Print x.
+
+  (** Same as above because the Notation is imported *)
+  Definition T := (prod X.T _carrier)%type. 
+  (** The imported [Y.T] is now masked *)
+  Print T . 
+  Reset T .
+  (** Same as above because the sharing constraint says that [ X.T = Y.T ( = _carrier )] *)
+  Definition T := (prod _carrier _carrier)%type. 
+
+  Definition x : T := (pair X.x Y.x) .
+
+End MODPARAMS.
+
+Print Modular MODPARAMS.
+
+(** Fails because the sharing constraints are not satisfied *)
+Fail Modular Prefixed Parameter P : ((MODPARAMS N) with Modular Prefixed Y := B) .
+Fail Modular Prefixed Parameter P : ((MODPARAMS B) with Modular Prefixed Y := N) .
+
+(** In this section :  [X = M , Y = N] *)
+
+Modular Prefixed Parameter R : ((MODPARAMS M) with Modular Prefixed Y := N) .
+Print Modular Prefixed R .
+Print R.x. (** M.x is unfolded in ( R.x = ( 0 (** M.x *) , R.Y.x) ) because the component x of MOD_T_x is inlined ;
+and certainly R.Y.x ( = N.x ) will not be unfolded because Y is some inner (not-outer) parameter of MODPARAMS *)
+Compute ( fst R.x + snd R.x ).
+
+Modular Prefixed Parameter S : (** HERE !!! *) ! ( (MODPARAMS M) with Modular Prefixed Y := N ) .
+(** [M.x]] is not unfolded in [ R.x = (M.x , S.Y.x) ] because the inlining of the component [x] of [MOD_T_x] is disabled by the command [!] *)
+Print S.x. 
+Compute ( fst S.x + snd S.x ).
+
+(** In this section : [X = N , Y = M] *)
+
+Modular Prefixed Parameter U : ((MODPARAMS N) with Modular Prefixed Y := M) .
+(** In [ U.x = (N.x , U.Y.x) ] , certainly  [N.x] is already not unfoldable *)
+Print U.x .
+Compute ( snd U.x + fst U.x ) .
+
+(** This section shows how the inner-parameter [Y] of the module [MODPARAMS] may be moved outside as some outer-parameter .
+ Also the permutation of the sequence of the outer-parameters is possible . *)
+Modular MODPARAMS_Y_X (Y : MOD_T_x) (X : MOD_T_x with Definition T := Y.T)
+  := let Modular Prefixed Y := Y in (MODPARAMS X) .
+Print Modular MODPARAMS_Y_X.
+Modular Prefixed Parameter V_Y'M_X'N : (MODPARAMS_Y_X M N) .
+Reset V_Y'M_X'N . (** same : *)
+Modular Prefixed Parameter V_Y_X (Y : MOD_T_x) (X : (MOD_T_x with Definition T := Y.T))
+  : (MODPARAMS_Y_X Y X) .
+Modular Prefixed Alias V_Y'M_X'N <: (MODPARAMS_Y_X M N) := (V_Y_X M N) .
+(** [V_Y'M_X'N.Y.x] is unfolded in [ V_Y'M_X'N.x = (N.x , 0 (* V_Y'M_X'N.Y.x *) ) ] , 
+  because the component [x] of [MOD_T_x] is inlined 
+    and the instantiation by [M] of the modular [MODPARAMS_Y_X] or the modular prefixed [V_Y_X] to get the instance [V_Y'M_X'N] 
+      is via the (modular or modular prefixed) outer/functor instantiation/application  *)
+Print V_Y'M_X'N.x . 
+Compute ( snd V_Y'M_X'N.x + fst V_Y'M_X'N.x ) .
+    </textarea>
+  </div> <!-- /#document -->
+  </div> <!-- /#code-wrapper -->
+  </div> <!-- /#ide-wrapper -->
+
+  <script src="../ui-js/jscoq-loader.js" type="text/javascript"></script>
+  <script type="text/javascript">
+
+    var jscoq_ids  = ['workspace'];
+    var jscoq_opts = {
+        prelude:   true,
+        base_path: '../',
+        init_pkgs: ['init', 'qoc'],
+        all_pkgs:  ['init', 'qoc', 'coq-base', 'coq-collections', 'coq-arith', 'coq-reals', 'math-comp'],
+        implicit_libs: true,
+        editor: { mode: { 'company-coq': true }, keyMap: 'default' }
+    };
+
+    /* Global reference */
+    var coq;
+
+    loadJsCoq(jscoq_opts.base_path)
+        .then( () => coq = new CoqManager(jscoq_ids, jscoq_opts) );
+  </script>
+</body>
+</html>

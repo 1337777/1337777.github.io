@@ -829,7 +829,142 @@ And here "criminal" signifies theft from outside the business into the business 
 <li> in some monetarist-or-interdependent/tribalistic and effectively-anonymous crowd/mob/gang/corporatism , </li>
 <li> such to prevent cumulation and inheritance of forced-fool-and-theft/lie/falsification ... </li> </ul>
 
-<h2 class="title" id="live5">LIVE 5 : to be continued ... </h2>
+<h2 class="title" id="live5">LIVE 5 : is it mispelled ! or it is calculated ? | BAD HUMAN VS COMPUTER |
+<br> FRIDAY 18 JULY 2019 AT 22:22 KST </h2>
+
+<p><b>Logic.</b> The ends is to describe how there are <b>varying degrees of grammatical-program with sensible-memory</b> and how to <b>calculate on purpose</b> accross these varying degrees . </p>
+
+<p>For the example of arithmetic ( numbers 0 , 1 , 2 ... and addition 2 + 3 ... ) , the ends is to calculate/compile/purpose from the more-sensible grammatical-program ( "expression" ) with less-grammatical sense-memory ( "value" ) , towards the less-sensible grammatical-program ( "command" ) with more-grammatical sense-memory ( "stack update" ) . This calculation/translation on purpose will simulate/mimick the implicit/outer transformations/representations of the less-grammatical sense-memory ( "value" ) ( <i> which occur on the outer host-machine stack but are hidden/implicit ... </i> ) . </p>
+
+<p>For the example of functional programming ( "lambda calculus" with abstraction/internal-functions and application/section : [ ( 2 + _ ) ( 3 ) ] ) , this calculation/translation on purpose will simulate/mimick the elimination of the implicit/outer compositions/conversions which occur in the sense-memory , more precisely : <b> this translation will transform from any beta-reducible/composed abstraction-application/section of some form-morphism , towards some accumulated delayed/pending substitution/reparametrization of this form-morphism by the section parametrizator-morphism ... and will integrate such with functorial geometry : this is the new technical idea of the MODOS </b> .</p>
+
+<p style="text-align:center"> <b>  ( ( abstraction fform ) &lt;o ( application_[sectionparam] ) ) &nbsp;&nbsp;  ~~&gt;_[sectionparam'] &nbsp;&nbsp; ( fform )  </b>
+</p>
+
+<p><em>Note : text edit this code by Alt+↑ , Alt+↓ , Alt+→ , Alt+⏎ , Alt+hover .</em></p>
+<textarea id="workspace15">
+From Coq Require Import Lists.List Arith.Compare.
+Import ListNotations.
+
+Module Calculate_on_purpose .
+  
+Inductive expressiveprogram : Set :=
+| Const : nat -> expressiveprogram
+| Plus : expressiveprogram -> expressiveprogram -> expressiveprogram.
+
+Fixpoint expressiveprogram_to_memory (e : expressiveprogram) : nat :=
+match e with
+| Const n => n
+| Plus e1 e2 => plus (expressiveprogram_to_memory e1 )
+                    (expressiveprogram_to_memory e2 )
+end.
+
+Eval simpl in expressiveprogram_to_memory
+                (Plus (Plus (Const 2) (Const 2)) (Const 7)).
+(*      = 11 : nat *)
+
+Inductive instruction : Set :=
+| iConst : nat -> instruction
+| iPlus : instruction.
+
+Definition program := list instruction.
+Definition stack := list nat.
+
+Definition instruction_to_memory (i : instruction) : stack -> option stack :=
+fun s : stack => 
+match i with
+| iConst n => Some (n :: s)
+| iPlus =>
+  match s with
+  | arg1 :: arg2 :: s' => Some (plus arg1 arg2 :: s')
+  | _ => None
+  end
+end.
+
+Fixpoint program_to_memory (p : program) : stack -> option stack :=
+fun s : stack =>
+match p with
+| nil => Some s
+| i :: p' =>
+  match instruction_to_memory i s with
+  | None => None
+  | Some s' => program_to_memory p' s'
+  end
+end.
+
+Fixpoint calculate_expressiveprogram_to_program (e : expressiveprogram) : program :=
+match e with
+| Const n => iConst n :: nil
+| Plus e1 e2 =>
+  calculate_expressiveprogram_to_program e2
+    ++ calculate_expressiveprogram_to_program e1 ++ iPlus :: nil
+end.
+
+Eval simpl in calculate_expressiveprogram_to_program
+                (Plus (Plus (Const 2) (Const 2)) (Const 7)).
+(*     = [iConst 7; iConst 2; iConst 2; iPlus; iPlus] : program  *)
+Eval simpl in fun tail => program_to_memory (calculate_expressiveprogram_to_program
+                                             (Plus (Plus (Const 2) (Const 2)) (Const 7))) tail.
+(*      = fun tail : stack => Some (11 :: tail) : stack -> option stack  *)
+(*MEMO: has same substance/content as : *)
+Eval simpl in expressiveprogram_to_memory (Plus (Plus (Const 2) (Const 2)) (Const 7)).
+(*      = 11 : nat  *)
+
+Lemma correct_calculate_expressiveprogram_to_program :
+  forall (e : expressiveprogram) (p : program) (s : stack),
+    program_to_memory (calculate_expressiveprogram_to_program e ++ p) s
+    = program_to_memory p (expressiveprogram_to_memory e :: s) .
+Admitted.
+
+End Calculate_on_purpose .
+</textarea>
+
+<p><b>Dictionary.</b> What is the dictionary definition of "calculate" / "purpose"  ? <a href="https://www.thefreedictionary.com/calculate">https://www.thefreedictionary.com/calculate</a> , <a href="https://www.thefreedictionary.com/purpose">https://www.thefreedictionary.com/purpose</a> says :</p>
+<ul> <li> <i> <b>calculate - to make suitable or fit for a purpose; adapt ; </b> </i> </li>
+  <li> <i> calculate - to intend; plan ; </i> </li>
+  <li> <i> purpose - an anticipated outcome that is intended or that guides your planned actions; </i> </li>
+  <li> <i> purpose - The object toward which one strives or for which something exists; an aim or goal ; </i> </li>
+  <li> <i> purpose - an intended or desired result; aim; goal ; </i> </li>
+  <li> <i> purpose - Determination; resolution ;  </i> </li>
+  <li> <i> purpose - reach a decision; resolve ;   </i> </li>
+  <li> <i> purpose - practical result or effect;  </i> </li>
+</ul>
+
+<p>These are the same as the phrase : <b>"calculate on purpose"</b> such to adapt/translate something from some (problematic) form towards another (solution) form . </p>
+
+<p><b>Legislation.</b> What is the legislation definition of "calculate on purpose" , "mispell" ? <a href="https://www.canlii.org/en/ca/laws/stat/rsc-1985-c-c-46/145803/rsc-1985-c-c-46.html#sec33.1">https://www.canlii.org/en/ca/laws/stat/rsc-1985-c-c-46/145803/rsc-1985-c-c-46.html#sec33.1</a> , at "Criminal Code, RSC 1985, c C-46 / PART I / SELF-INDUCED INTOXICATION [33.1]" , and <a href="https://www.canlii.org/en/ca/laws/stat/rsc-1985-c-c-46/145803/rsc-1985-c-c-46.html#sec16">https://www.canlii.org/en/ca/laws/stat/rsc-1985-c-c-46/145803/rsc-1985-c-c-46.html#sec16</a> , at "Criminal Code, RSC 1985, c C-46 / PART I" , says :  </p>
+
+<ul><li><i>Self-induced Intoxication
+<br>When defence not available
+<br>33.1 (1) It is not a defence to an offence referred to in subsection (3) that the accused, by reason of self-induced intoxication, <b>lacked the general intent or the voluntariness required to commit the offence, where the accused departed markedly from the standard of care as described in subsection (2).</b>
+<br>Criminal fault by reason of intoxication
+<br>(2) For the purposes of this section, <b>a person departs markedly from the standard of reasonable care generally recognized in Canadian society</b> and is thereby criminally at fault where the person, while in a state of self-induced intoxication that renders the person unaware of, or incapable of consciously controlling, their behaviour, voluntarily or involuntarily interferes or threatens to interfere with the bodily integrity of another person.</i></li>
+<li><i>Defence of mental disorder
+<br>16 (1) No person is criminally responsible for an act committed or an omission made while suffering from a <b>mental disorder that rendered the person incapable</b> of appreciating the nature and quality of the act or omission or <b>of knowing that it was wrong.</b></i></li></ul>
+
+<p>This says that there are <b>varying degrees starting from carefully doing right , until purposely doing wrong</b> . And there are many ways/causes to depart markedly from the standard of carefully doing right :
+<ul><li>self-induced alcoholic intoxication , and this infers <i>"criminally at fault"</i> ; </li>
+  <li>mental disorer , including the expectation to have colour of righteousness where such is absent ( in other words : not knowing that the act is wrong ) , and this infers "not criminally responsible" ; </li>
+  <li><b>bad-habits-and-mentality intoxication ( "contempt" ) as generally recognized in the society . </b> </li>
+</ul>
+</p>
+
+<p> Other ideas are related to the idea of "caculation on purpose" . What is the complement of calculable/predictable ? Answer : random/possible . Therefore the losses caused by forced-fool-and-theft/lie/falsification include both :
+<ul> <li> <b>calculable/predictable loss of</b> : health , or </li>
+<li> calculable/predictable loss of : predictable-time computational-logical engineering , or </li>
+<li> calculable/predictable loss of : tradeability , including loss of the public or public-students payers/purchasers/clients , or </li>
+<li> <b>random/possible loss of</b> : timing/momentum/kairos/opportunity/possibilities , or </li>
+<li> random/possible loss of : random-moment dia-para-computalogical discovery , including loss of review/input/feedback from the public or the public-students , or </li> </ul>
+ </p>
+
+<p>Simulation is some form of calculation . How to detect simulation/calculation of randomness/possibility ? Also how to detect simulation/calculation of harm ? Therefore forced-fool-and-theft/lie/falsification has :
+<ul> <li> ( <b> "mispell" </b> ) , lie via : simulating/mimicking/play confusion/random/[none-intent]/[none-motive]/[none-know] , while in reality caused by calculation on purpose or by bad-habits-and-mentality intoxication ( "contempt" )  </li>
+<li> ( <b> "play" , "inversion-accusatoire" </b> ) , fool via : simulating/mimicking/play harm/loss/victim while being the cause or beneficiary/satisfied ,</li></ul> </p>
+
+<p>How to distinguish simulation/play calculation from reality , consistently without flip-flop ? Therefore forced-fool-and-theft/lie/falsification has :
+<ul> <li>  ( <b> "play-monopoly" </b> ) , fool via : possibility of simulation/mimicking/play/joke-excuse from oneself while such is always reality/serious from another person , or by defame/accuse ( without personal-knowledge ) in the form of question-excuse ( " ... ? " ) , </li></ul></p>
+
+<h2 class="title" id="live6">LIVE 6 : to be continued ... </h2>
 
 </div></div>
   </div> <!-- /#document -->
@@ -842,7 +977,8 @@ And here "criminal" signifies theft from outside the business into the business 
     var jscoq_ids  = ['workspace1', 'workspace2' , 'workspace3' ,  'workspace4' ,  'workspace5',
     'workspace6', 'workspace7' , 'workspace8' ,  'workspace9' ,  'workspace10' ,
     'workspace11', 'workspace12' , 'workspace13' ,
-    'workspace14' ];
+    'workspace14',
+    'workspace15' ];
     var jscoq_opts = {
         prelude:   true,
         base_path: '../../',

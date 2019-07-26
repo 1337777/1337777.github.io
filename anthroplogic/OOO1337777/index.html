@@ -964,7 +964,136 @@ End Calculate_on_purpose .
 <p>How to distinguish simulation/play calculation from reality , consistently without flip-flop ? Therefore forced-fool-and-theft/lie/falsification has :
 <ul> <li>  ( <b> "play-monopoly" </b> ) , fool via : possibility of simulation/mimicking/play/joke-excuse from oneself while such is always reality/serious from another person , or by defame/accuse ( without personal-knowledge ) in the form of question-excuse ( " ... ? " ) , </li></ul></p>
 
-<h2 class="title" id="live6">LIVE 6 : to be continued ... </h2>
+<h2 class="title" id="live6">LIVE 6 : coward force vs honor | BAD HUMAN VS COMPUTER |
+<br> FRIDAY 26 JULY 2019 AT 22:22 KST </h2>
+
+<p><b>Logic.</b> The ends is to honor the possibility which was made at the begining of these 37 days of reviewing the making-of the MODOS . In short : I have shown the prototype of <b>how to only-grammatically touch the sensible updates</b> in functional programming which occur in the sense-memory . </p>
+
+<p>For instant first impression , the conversion/computation-relation constructor which says that the « forgetting » morphism of the substitution-object polyparameterization-polymorph-cancels the « remembering » morphism corresponding to any form-morphism , is written as : </p>
+
+<p style="text-align:center;"><img width="100%" src="remember_forget_polyparameterization_polymorphism.svg"></p>
+
+<p><em>Note : text edit this code by Alt+↑ , Alt+↓ , Alt+→ , Alt+⏎ , Alt+hover .</em></p>
+<textarea id="workspace16">
+(* | Remember_Forget :
+ forall (Yoneda00_Form_F : obGenerator -> Type)
+   (Yoneda01_Form_F : Yoneda01_data Yoneda00_Form_F)
+   (Yoneda00_Param_F : obGenerator -> Type)
+   (Yoneda01_Param_F : Yoneda01_data Yoneda00_Param_F)
+   (Yoneda10_FormParam_F : Yoneda10_data Yoneda01_Form_F Yoneda01_Param_F)
+   (F : @obCoMod Yoneda00_Form_F Yoneda01_Form_F Yoneda00_Param_F Yoneda01_Param_F Yoneda10_FormParam_F)
+   (Param_F : @obCoMod_Param Yoneda00_Param_F Yoneda01_Param_F)
+   (Yoneda00_Param_SubstF : obGenerator -> Type)
+   (Yoneda01_Param_SubstF : Yoneda01_data Yoneda00_Param_SubstF)
+   (Param_SubstF : @obCoMod_Param Yoneda00_Param_SubstF Yoneda01_Param_SubstF)
+   (Yoneda10_Param_subst : Yoneda10_data Yoneda01_Param_SubstF Yoneda01_Param_F)
+   (Yoneda00_Param_PiSubstF : obGenerator -> Type)
+   (Yoneda01_Param_PiSubstF : Yoneda01_data Yoneda00_Param_PiSubstF)
+   (Param_PiSubstF : @obCoMod_Param Yoneda00_Param_PiSubstF Yoneda01_Param_PiSubstF)
+   (Yoneda10_Param_proj : Yoneda10_data Yoneda01_Param_SubstF Yoneda01_Param_PiSubstF)
+   (param_projsubst : 'CoMod__( Param_PiSubstF ~> Param_F @_ Yoneda10_Param_proj <o> Param_SubstF ` Yoneda10_Param_subst ) ),
+
+ forall (Yoneda00_Param_SubstF' : obGenerator -> Type)
+   (Yoneda01_Param_SubstF' : Yoneda01_data Yoneda00_Param_SubstF')
+   (Param_SubstF' : @obCoMod_Param Yoneda00_Param_SubstF' Yoneda01_Param_SubstF')
+   (Yoneda10_Param_proj' : Yoneda10_data Yoneda01_Param_SubstF' Yoneda01_Param_PiSubstF)
+   (Yoneda10_Param_subst' : Yoneda10_data Yoneda01_Param_SubstF' Yoneda01_Param_F)
+   (Yoneda10_Param_reparam_forget : reparamMor Yoneda10_Param_proj Yoneda10_Param_subst
+                                               Yoneda10_Param_proj' Yoneda10_Param_subst')
+   (Heq_sectional_reparam_forget : forall G param param0, sval Yoneda10_Param_proj G param = sval Yoneda10_Param_proj G param0
+                            ->  sval (sval Yoneda10_Param_reparam_forget) G param
+                                = sval (sval Yoneda10_Param_reparam_forget) G param0)
+   (reparam_forget : 'CoMod_&(  Param_SubstF  ~>  Param_SubstF' @_ (sval Yoneda10_Param_reparam_forget)  &  Yoneda10_Param_proj  <o>  Yoneda10_Param_subst  &  Yoneda10_Param_proj'  <o>  Yoneda10_Param_subst'  ) ),
+
+ forall (L : obGenerator) (Yoneda00_Param_LF : obGenerator -> Type)
+   (Yoneda01_Param_LF : Yoneda01_data Yoneda00_Param_LF)
+   (Param_LF : @obCoMod_Param Yoneda00_Param_LF Yoneda01_Param_LF)
+   (Yoneda10_Param_proj_ll : Yoneda10_data Yoneda01_Param_LF (Yoneda01_Param_View (Parameter0 L)))
+   (Yoneda10_Param_subst_ll : Yoneda10_data Yoneda01_Param_LF Yoneda01_Param_F)
+   (Yoneda10_Form_ll : Yoneda10_Form_data (Yoneda10_FormParam_View L) Yoneda10_FormParam_F Yoneda10_Param_proj_ll Yoneda10_Param_subst_ll)
+   (ll : 'CoMod( View L ~> F @_ Yoneda10_Param_proj_ll <o> Param_LF ` Yoneda10_Param_subst_ll @^ Yoneda10_Form_ll )),
+
+ forall (**MEMO:?? when the generating parametrizator-functor is full then 
+      this polyelement is the same as one (decidable) single element [param : Yoneda01_Param_SubstF (Parameter0 L)] ??*)
+   (Yoneda10_Param_paramdomain (*TODO: why not morphism?*) : Yoneda10_data (Yoneda01_Param_View (Parameter0 L)) Yoneda01_Param_PiSubstF)
+   (paramdomain : 'CoMod__( (View_Param (Parameter0 L)) ~> Param_PiSubstF
+                     @_ (Yoneda10_UnitCoMod_Param _) <o> (View_Param (Parameter0 L)) ` Yoneda10_Param_paramdomain ) ),
+
+ forall (Yoneda10_Param_reparam_remember : reparamMor (Yoneda10_Param_Intersec_proj Yoneda10_Param_proj' Yoneda10_Param_paramdomain)
+                                                 (Yoneda10_Param_PolyCoMod (Yoneda10_Param_Intersec_subst Yoneda10_Param_proj' Yoneda10_Param_paramdomain) Yoneda10_Param_subst')
+                                                 Yoneda10_Param_proj_ll Yoneda10_Param_subst_ll )
+   (reparam_remember : 'CoMod_&( (Intersec Param_SubstF' Yoneda10_Param_proj' (View_Param (Parameter0 L)) Yoneda10_Param_paramdomain)
+     ~>  Param_LF @_ sval Yoneda10_Param_reparam_remember
+      &  (Yoneda10_Param_Intersec_proj Yoneda10_Param_proj' Yoneda10_Param_paramdomain)
+     <o> (Yoneda10_Param_PolyCoMod (Yoneda10_Param_Intersec_subst Yoneda10_Param_proj' Yoneda10_Param_paramdomain) Yoneda10_Param_subst')
+      &  Yoneda10_Param_proj_ll  <o>  Yoneda10_Param_subst_ll ) ),
+
+ forall (Yoneda00_Param_SubstF0 : obGenerator -> Type)
+   (Yoneda01_Param_SubstF0 : Yoneda01_data Yoneda00_Param_SubstF0)
+   (Param_SubstF0 : @obCoMod_Param Yoneda00_Param_SubstF0 Yoneda01_Param_SubstF0)
+   (Yoneda10_Param_subst0 : Yoneda10_data Yoneda01_Param_SubstF0 Yoneda01_Param_F)
+   (Yoneda10_Param_proj0 : Yoneda10_data Yoneda01_Param_SubstF0 Yoneda01_Param_PiSubstF)
+   (param_projsubst0 : 'CoMod__( Param_PiSubstF ~> Param_F @_ Yoneda10_Param_proj0 <o> Param_SubstF0 ` Yoneda10_Param_subst0 ) ),
+ forall (Yoneda10_Param_reparam_forget0 : reparamMor Yoneda10_Param_proj0 Yoneda10_Param_subst0
+                                               Yoneda10_Param_proj' Yoneda10_Param_subst')
+   (Heq_sectional_reparam_forget0 : forall G param param0, sval Yoneda10_Param_proj0 G param = sval Yoneda10_Param_proj0 G param0
+                            ->  sval (sval Yoneda10_Param_reparam_forget0) G param
+                                = sval (sval Yoneda10_Param_reparam_forget0) G param0)
+   (reparam_forget0 : 'CoMod_&(  Param_SubstF0  ~>  Param_SubstF' @_ (sval Yoneda10_Param_reparam_forget0)  &  Yoneda10_Param_proj0  <o>  Yoneda10_Param_subst0  &  Yoneda10_Param_proj'  <o>  Yoneda10_Param_subst'  ) ),
+
+ forall Yoneda00_Form_E Yoneda01_Form_E Yoneda00_Param_E Yoneda01_Param_E Yoneda10_FormParam_E
+   (E : @obCoMod Yoneda00_Form_E Yoneda01_Form_E Yoneda00_Param_E Yoneda01_Param_E Yoneda10_FormParam_E)
+   (Yoneda00_Param_FE : obGenerator -> Type)
+   (Yoneda01_Param_FE : Yoneda01_data Yoneda00_Param_FE)
+   (Param_FE : @obCoMod_Param Yoneda00_Param_FE Yoneda01_Param_FE)
+   (Yoneda10_Param_proj_ee : Yoneda10_data Yoneda01_Param_FE Yoneda01_Param_F)
+   Yoneda10_Param_subst_ee Yoneda10_Form_ee
+   (ee : 'CoMod( F ~> E @_ Yoneda10_Param_proj_ee <o>  Param_FE ` Yoneda10_Param_subst_ee @^ Yoneda10_Form_ee )),
+
+   ( ll o>CoMod ee )
+     [ PolyCoMod_ReParam  ( Intersec1  (UnitCoMod_ReParam _ _ _) reparam_forget ) (reparam_remember) ]<~~ ( <<  ll  _<|  reparam_remember  <o  reparam_forget  &Heq_sectional_reparam_forget  @_  param_projsubst  <o  paramdomain  >>
+     o>CoMod ( 'Forget  _<|  reparam_forget0  & Heq_sectional_reparam_forget0  @_  param_projsubst0  o>CoMod  ee ) )
+*)
+</textarea>
+
+<p><b>Dictionary.</b> In the context of (military) force , the bottom line of legal texts is : <b>coward force vs honor</b> . Therefore : What is the dictionary definition of "libel"  ? <a href="https://www.thefreedictionary.com/libel">https://www.thefreedictionary.com/libel</a> says :</p>
+<ul> <li> <i> libel - The legally indefensible publication or broadcast of words or images that are <b>degrading</b> to a person or injurious to his or her reputation. </i> </li>
+  <li> <i> libel - The written claims initiating a suit in an <b>admiralty court</b> ; </i> </li>
+  <li> <i> libel - (Law) ecclesiastical law to bring an action against (a person) in the <b>ecclesiastical courts</b> . </i> </li>
+</ul>
+
+<p>In short : in the context of (military) force , any "accusation" in court is synonymous for "degrading the honor" ( defamatory libel ) .  The particularity of <b>"defamatory libel"</b> ( and therefore , in practice , <b>defamatory question</b> ) is that : <b>"The truth of the matters charged in an alleged libel shall not be inquired into ..."</b> </p>
+
+<p><b>Legislation.</b> What is the legislation definition of "libel" ? <a href="https://www.canlii.org/en/ca/laws/stat/rsc-1985-c-c-46/145803/rsc-1985-c-c-46.html#sec298">https://www.canlii.org/en/ca/laws/stat/rsc-1985-c-c-46/145803/rsc-1985-c-c-46.html#sec298</a> , at "Criminal Code, RSC 1985, c C-46 / PART VIII — OFFENCES AGAINST THE PERSON AND REPUTATION [214 - 320.1] / DEFAMATORY LIBEL [297 - 316]" , says :  </p>
+
+<ul><li><i>298 (1) A defamatory libel is matter published, without lawful justification or excuse, that is likely to injure the reputation of any person by exposing him to hatred, contempt or ridicule, or that is designed to insult the person of or concerning whom it is published.</i></li>
+<li><i>Mode of expression
+<br>(2) A defamatory libel may be expressed directly or by insinuation or irony
+<br>(a) in words legibly marked on any substance; or
+<br>(b) by any object signifying a defamatory libel otherwise than by words.
+  </i></li>
+<li><i>Publishing
+<br>299 A person publishes a libel when he
+<br>(a) exhibits it in public;
+<br>(b) causes it to be read or seen; or
+<br>(c) shows or delivers it, or causes it to be shown or delivered, with intent that it should be read or seen by any person other than the person whom it defames.
+  </i></li>
+<li><i>Plea of justification necessary
+<br>612 (1) <b>The truth of the matters charged in an alleged libel shall not be inquired into</b> in the absence of a plea of justification under section 611 unless the accused is charged with publishing the libel knowing it to be false, in which case evidence of the truth may be given to negative the allegation that the accused knew that the libel was false.
+  </i></li></ul>
+
+<p>How to precisely formulate the contrary of "honor" ( "coward" ) ? And in the context of (military) force ? Therefore forced-fool-and-theft/lie/falsification has :</p>
+<ul> <li> interdependence via : [ being judge/referee/arbitrator ( "psychic" , "interpretation" ) who author/edit/fabricate/guess excessively outside/beyond its jurisdiction = competence = [the personal-knowledge testimony of only the witness] ] ; </li>
+  <li> ( "ink-and-paper" ) , lie via : costless lie ,  </li>
+  <li> lie via : [impostor/impersonator/usurper]-traitor , </li>
+  <li> ( "capital double-lies" ) , lie via : doing one-more new forced-fool-and-theft/lie/falsification such to hide some earlier forced-fool-and-theft/lie/falsification , </li>
+  <li> ( "whining" ) , fool via : disproportioned/demeasured comparison of harm/losses , </li>
+   <li> ( "status-quo" , "coward" , "privilege" , "grateful" , "entitled" , "resentment" , "social justice" ) : fool via : transforming commonly repeated forced-fool-and-theft/lie/falsification as the truth , or by transforming not-being-arrested/captured/caught as the truth , or by transforming [the absence of complex/undercover police investigation] as the truth , </li>
+   <li> ( "va-t-en-guerre" ) , fool via : commanding force but not want to oneself do force , </li>
+   <li> force via : commanding/suggesting/subleading some official-enforcer or some interdependent-enforcer , </li>
+</ul>
+
+<h2 class="title" id="live7">LIVE 7 : to be continued ... </h2>
 
 </div></div>
   </div> <!-- /#document -->
@@ -978,7 +1107,8 @@ End Calculate_on_purpose .
     'workspace6', 'workspace7' , 'workspace8' ,  'workspace9' ,  'workspace10' ,
     'workspace11', 'workspace12' , 'workspace13' ,
     'workspace14',
-    'workspace15' ];
+    'workspace15',
+    'workspace16' ];
     var jscoq_opts = {
         prelude:   true,
         base_path: '../../',

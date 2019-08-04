@@ -5,7 +5,6 @@
     {
       "pkg_id": [ "Qoc" ],
       "vo_files": [
-        [ "Index.vo", "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~" ],
         [ "Jisuanji.vo", "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~" ],
         [ "qoc_jisuanji_ends.vo", "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~" ],
         [
@@ -39,22 +38,16 @@
     {
       "pkg_id": [ "Qoc", "sutalgsuhag" ],
       "vo_files": [
-        [ "Index.vo", "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~" ],
         [
           "qoc_sutalgsuhag_logic_variables_proof.vo",
           "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~"
         ],
-        [ "qoc_sutalgsuhag_tactical.vo", "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~" ],
         [
           "qoc_sutalgsuhag_parameter_option.vo",
           "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~"
         ],
         [
           "qoc_sutalgsuhag_inductive.vo", "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~"
-        ],
-        [
-          "qoc_sutalgsuhag_environmental_parametrized_module.vo",
-          "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~"
         ],
         [
           "qoc_sutalgsuhag_environmental_parametrized_module_1.vo",
@@ -64,7 +57,6 @@
           "qoc_sutalgsuhag_polymorphism_notation.vo",
           "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~"
         ],
-        [ "qoc_sutalgsuhag_ends.vo", "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~" ],
         [ "Sutalgsuhag.vo", "ﾔ\u001d雇十u0000ｲ\u0004騾\t們~" ],
         [
           "qoc_sutalgsuhag_environmental_parametrized_module_2.vo",

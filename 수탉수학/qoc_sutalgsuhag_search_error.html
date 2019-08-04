@@ -1,0 +1,307 @@
+<!--
+  This sample contains two very simple introductory exercises of
+  interactive proofs in Coq, one with natural numbers and one with lists.
+  It can be used as a gentle landing page, which requires no knowledge
+  of math-comp.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="description" content="An Online IDE for the Coq Theorem Prover" />
+
+    <title>Use Coq in Your Browser: The Js Coq Theorem Prover Online IDE!</title>
+  </head>
+
+<body>
+  <div id="ide-wrapper" class="toggled">
+  <div id="code-wrapper">
+  <div id="document">
+    <p>
+짧은 :: 
+<br/>(1.) "Coq"는 수학 읽기와 쓰기를위한 컴퓨터 프로그램입니다 .
+<br/>(2.) 예제 : "A ; [> W & [+ T1 | T2 ] ]" . 
+<br/>(3.) 건축가 "A"는 주요 문제 "(1)"을 두 개의 "후속"하위 문제로 계획합니다 .
+<br/>(4.) 하위 문제 "(1> 1)"은 작업자 "W"에 대한 것이고 "병행"하위 문제 "(1> 2)"는 작업자 "T"에 대한 것입니다.
+<br/>(5.) 작업자 "W"는 그의 유일한 전술 "W"을 시도하며 이것은 그의 하위 문제 "(1> 1)"을 해결합니다.
+<br/>(6.) 한편 작업자 "T"는 첫 번째 전술적 인 "T1"을 시도하고 이것이 실패합니다 ; 그러나 그의 "대안"전술 "T2"는 그의 하위 문제 "(1> 2)"를 해결합니다.
+</p>
+
+<p>Short ::
+<br/>(1.) "Coq" is computer program to read and write mathematics . 
+<br/>(2.) Example : "A ; [> W & [+ T1 | T2 ] ]" .
+<br/>(3.) The architect "A" plans the main problem "(1)" into two "subsequent" sub-problems .
+<br/>(4.) The sub-problem "(1>1)" is for the worker "W" and the "parallel" sub-problem "(1>2)" is for the worker "T" . 
+<br/>(5.) The worker "W" tries his only tactic "W" , and this solves his sub-problem "(1>1)" . 
+<br/>(6.) Meanwhile the worker "T" tries his first tactic "T1" , and this fails ;  but his "alternative" tactic "T2" solves his sub-problem "(1>2)" .
+ </p>
+<p> Outline :: 
+<br/>  * PART 1 : SEARCH , ERRORS . 제 1 부 : 검색하라 , 오류 
+    </p>
+    <p>
+    Alt+↑/↓ – move through proof; Alt+→ or Alt+⏎ – go to cursor. <br/>
+    Alt+hover executed sentences to watch intermediate steps. <br/>
+    Hover identifiers in goals to view their types. Alt+hover to view definitions.<br/>
+    <i style="color: rgb(51, 51, 150)">Company-coq</i> addon is enabled: it will auto-complete names of tactics and lemmas 
+    from the standard library, and also show types of lemmas in the right pane.
+    </p>
+    <p>
+"Alt + ↑ / ↓": 증명을 전달하십시오. "Alt + →"또는 "Alt + ⏎": 커서로 이동하십시오.
+<br/> "Alt +"호버링은 문장을 실행하여 중간 단계를 관찰합니다.
+<br/> 대상에 식별자를 올려 해당 유형을 표시합니다. "Alt +"를 가리키면 정의를 볼 수 있습니다.
+<br/> "Company-coq"애드온을 활성화하십시오 : 표준 라이브러리의 정책 및 보조 정리 이름을 자동으로 완성하고 오른쪽 창에 부트 유형을 표시하십시오.
+    </p>
+    <textarea id="workspace">
+From Qoc Require Import Sutalgsuhag .
+(** 
+  짧은 :: 
+(1.) "Coq"는 수학 읽기와 쓰기를위한 컴퓨터 프로그램입니다 .
+(2.) 어떤 오류를 해결하기 위해, 자신은이 오류를 둘러싼 무엇인가를 찾아야합니다.
+(3.) 예제 :
+<나를> 안녕하세요 COQ 컴퓨터.
+내가 잘모하면,
+당신은 실패하고 당신은 그 잘못을 찾을 것입니다.
+<COQ> 오류 : 2 줄 및 5 줄입니다. 참조 "잘모"는 현재 환경에서 발견되지 않았습니다.
+<나를> (* 논평 : 나는 모든 알려진 단어들을 담고있는 도서관 / 사전에 간다 : https://translate.google.cn/#view=home&op=translate&sl=ko&tl=en&text=오류 . 그리고 나는 이와 유사한 의미를 "검색"합니다 : "오류". 이 검색은이 라이브러리에 관련 동사 "잘못"가 포함되어 있다고 말합니다. 이제 컴퓨터 프로그램을 수정합니다. *)
+<나를> 안녕하세요 COQ 컴퓨터.
+내가 잘못하면,
+당신은 실패하고 당신은 그 잘못을 찾을 것입니다.
+<COQ> "목표"가 정의됩니다.
+
+  Short :: 
+(1.) "Coq" is computer program to read and write mathematics . 
+(2.) To solve some error , oneself shall search for something around this error .
+(3.) EXAMPLE :
+<ME> Hello COQ computer ,
+If I erors then ,
+you will fail and you will locate the surrounding of the fault .
+<COQ> Error: At line 2 and column 5 ; The reference "erors" was not found in the current environment. 
+<ME> (*COMMENT: I go to the library/dictionary which contains all the known words : https://www.thefreedictionary.com/mistake . And I "search" this similar meaning : "mistake" . This search says that this library contains the related verb "err" . Now I correct my computer program . *)
+<ME> Hello COQ computer ,
+If I err then ,
+you will fail and you will locate the fault .
+<COQ> "Goal" is defined .
+
+Outline ::
+ * PART 1 : SEARCH , ERRORS . 제 3 부 : 검색하라 , 오류 
+
+*)
+
+
+(** * PART 1 : SEARCH , ERRORS . 제 1 부 : 검색하라 , 오류 *)
+
+인쇄해 Nat.add .
+(**INFO:
+Nat.add = 
+고정 add (n m : nat) {구조 n} : nat := 일치해 n 대
+                                   | 0 => m
+                                   | S p => S (add p m)
+                                   끝
+     : nat -> nat -> nat
+*)
+
+검색하라 Nat.add .
+(**INFO:
+f_equal2_plus: 기능 x1 y1 x2 y2 : nat, x1 = y1 -> x2 = y2 -> x1 + x2 = y1 + y2
+plus_O_n: 기능 n : nat, 0 + n = n
+plus_n_O: 기능 n : nat, n = n + 0
+plus_n_Sm: 기능 n m : nat, S (n + m) = n + S m
+...
+ *)
+검색하라 0 Nat.add .
+(**INFO:
+plus_O_n: 기능 n : nat, 0 + n = n
+plus_n_O: 기능 n : nat, n = n + 0
+*)
+검색하라 ( ?n + 0 ) .
+(**INFO:
+plus_n_O: 기능 n : nat, n = n + 0
+ *)
+검색하라'다시쓰해 ( ?n + 0 )  .
+(**INFO:
+plus_n_O: 기능 n : nat, n = n + 0
+*)
+검색하라 ( ?n = ?n + 0 ) .
+(**INFO:
+plus_n_O: 기능 n : nat, n = n + 0
+*)
+검색하라 ( ?n + 0 = ?n ) .
+(**INFO:
+                                 *)
+
+논증 내논증 : 기능 n : nat, 0 + n = n .
+(**INFO:
+1 하위 목표 (ID 3)
+  
+  ============================
+  기능 n : nat, 0 + n = n
+*)
+증명 .
+  이동해'밖 n .
+  같은 .
+  (**INFO:
+   더 이상 하위 목표들은 없습니다.
+   *)
+확인 .
+(**INFO:
+ 내논증 정의됩니다
+ *)
+
+(** 논증 내논증 : 기능 n : nat, n + false = n . *)
+실패했다 논증 내논증 : 기능 n : nat, n + false = n .
+(**INFO:
+명령이 실제로이 메시지와 함께 실패했습니다 :
+환경에서
+n : nat
+용어는 "false" 이 유형을 있어요 :  "bool" , 그러나이 유형은 예상됩니다 : "nat".
+*)
+
+(** 논증 내논증 : 기능 n : nat, n + 0 = n . *)
+실패했다 논증 내논증 : 기능 n : nat, n + 0 = n .
+(**INFO:
+명령이 실제로이 메시지와 함께 실패했습니다 :
+         내논증 이미 존재한다.
+*)
+
+논증 내다른논증 : 기능 n : nat, n + 0 = n .
+(**INFO:
+1 하위 목표 (ID 6)
+  
+  ============================
+  기능 n : nat, n + 0 = n
+*)
+증명 .
+  이동해'밖 n .
+  (** 같은 . *)
+  실패했다 같은 .
+  (**INFO:
+명령이 실제로이 메시지와 함께 실패했습니다 :
+환경에서
+n : nat
+이것을 통일합 할 수 없습니다 : "n" 대 "n + 0".
+   *)
+
+  검색하라 ( ?n + 0 ) .
+  (**INFO:
+     plus_n_O  기능 n : nat, n = n + 0 
+*)
+  다시쓰해 <- plus_n_O .
+  같은 .
+  (**INFO:
+     더 이상 하위 목표들은 없습니다.
+   *)
+확인.
+(**INFO:
+내다른논증 정의됩니다
+*)
+
+
+(** ** alt
+----------------------------------------------------------------------------- *)
+
+Reset 내논증.
+
+Print Nat.add .
+(**INFO:
+Nat.add = 
+固定 add (n m : nat) {构 n} : nat := 匹配 n 与
+                                  | 0 => m
+                                  | S p => S (add p m)
+                                  结束
+     : nat -> nat -> nat
+*)
+
+Search Nat.add .
+(**INFO:
+ f_equal2_plus  用 x1 y1 x2 y2 : nat, x1 = y1 -> x2 = y2 -> x1 + x2 = y1 + y2
+plus_n_O  用 n : nat, n = n + 0
+plus_O_n  用 n : nat, 0 + n = n
+plus_n_Sm  用 n m : nat, S (n + m) = n + S m
+...
+ *)
+Search 0 Nat.add .
+(**INFO:
+plus_O_n: 用 n : nat, 0 + n = n
+plus_n_O: 用 n : nat, n = n + 0
+*)
+Search ( ?n + 0 ) .
+(**INFO:
+ plus_n_O  用 n : nat, n = n + 0 *)
+SearchRewrite ( ?n + 0 )  .
+(**INFO:
+ plus_n_O  用 n : nat, n = n + 0 *)
+Search ( ?n = ?n + 0 ) .
+(**INFO:
+ plus_n_O  用 n : nat, n = n + 0 *)
+Search ( ?n + 0 = ?n ) .
+(**INFO:
+                                 *)
+
+Lemma mylemma : forall n : nat, 0 + n = n .
+(**INFO:
+1 子目的 (ID 3)
+  
+  ============================
+  用 n : nat, 0 + n = n
+*)
+Proof .
+  intros n .
+  reflexivity .
+  (**INFO:
+     No more subgoals. *)
+Qed .
+(**INFO:
+mylemma 是定义了
+*)
+
+(** Lemma mylemma : forall n : nat, n + false = n . *)
+Fail Lemma mylemma : forall n : nat, n + false = n .
+(** Error:
+In environment
+n : nat
+The term "false" has type "bool" while it is expected to have type "nat". *)
+
+(** Lemma mylemma : forall n : nat, n + 0 = n . *)
+Fail Lemma mylemma : forall n : nat, n + 0 = n .
+(** Error: mylemma already exists.  *)
+
+Lemma myotherlemma : forall n : nat, n + 0 = n .
+Proof .
+  intros n .
+  (** reflexivity . *)
+  Fail reflexivity .
+  (** Error: In environment
+      n : nat
+      Unable to unify "n" with "n + 0". *)
+
+  Search ( ?n + 0 ) .
+  (** plus_n_O  用 n : nat, n = n + 0 *)
+  rewrite <- plus_n_O .
+  reflexivity .
+Qed.
+    </textarea>
+  </div> <!-- /#document -->
+  </div> <!-- /#code-wrapper -->
+  </div> <!-- /#ide-wrapper -->
+
+  <script src="../ui-js/jscoq-loader.js" type="text/javascript"></script>
+  <script type="text/javascript">
+
+    var jscoq_ids  = ['workspace'];
+    var jscoq_opts = {
+        prelude:   true,
+        base_path: '../',
+        init_pkgs: ['init', 'qoc'],
+        all_pkgs:  ['init', 'qoc', 'coq-base', 'coq-collections', 'coq-arith', 'coq-reals', 'math-comp'],
+        implicit_libs: true,
+        editor: { mode: { 'company-coq': true }, keyMap: 'default' }
+    };
+
+    /* Global reference */
+    var coq;
+
+    loadJsCoq(jscoq_opts.base_path)
+        .then( () => coq = new CoqManager(jscoq_ids, jscoq_opts) );
+  </script>
+</body>
+</html>

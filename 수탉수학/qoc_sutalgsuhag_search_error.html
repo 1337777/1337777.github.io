@@ -20,22 +20,36 @@
     <p>
 짧은 :: 
 <br/>(1.) "Coq"는 수학 읽기와 쓰기를위한 컴퓨터 프로그램입니다 .
-<br/>(2.) 예제 : "A ; [> W & [+ T1 | T2 ] ]" . 
-<br/>(3.) 건축가 "A"는 주요 문제 "(1)"을 두 개의 "후속"하위 문제로 계획합니다 .
-<br/>(4.) 하위 문제 "(1> 1)"은 작업자 "W"에 대한 것이고 "병행"하위 문제 "(1> 2)"는 작업자 "T"에 대한 것입니다.
-<br/>(5.) 작업자 "W"는 그의 유일한 전술 "W"을 시도하며 이것은 그의 하위 문제 "(1> 1)"을 해결합니다.
-<br/>(6.) 한편 작업자 "T"는 첫 번째 전술적 인 "T1"을 시도하고 이것이 실패합니다 ; 그러나 그의 "대안"전술 "T2"는 그의 하위 문제 "(1> 2)"를 해결합니다.
+<br/>(2.) 어떤 오류를 해결하기 위해, 자신은이 오류를 둘러싼 무엇인가를 찾아야합니다.
+<br/>(3.) 예제 :
+<br/>&lt;나를&gt; 안녕하세요 COQ 컴퓨터.
+<br/>내가 잘모하면,
+<br/>당신은 실패하고 당신은 그 잘못을 찾을 것입니다.
+<br/>&lt;COQ&gt; 오류 : 2 줄 및 5 줄입니다. 참조 "잘모"는 현재 환경에서 발견되지 않았습니다.
+<br/>&lt;나를&gt; (* 논평 : 나는 모든 알려진 단어들을 담고있는 도서관 / 사전에 간다 : https://translate.google.cn/#view=home&op=translate&sl=ko&tl=en&text=오류 . 그리고 나는 이와 유사한 의미를 "검색"합니다 : "오류". 이 검색은이 라이브러리에 관련 동사 "잘못"가 포함되어 있다고 말합니다. 이제 컴퓨터 프로그램을 수정합니다. *)
+<br/>&lt;나를&gt; 안녕하세요 COQ 컴퓨터.
+<br/>내가 잘못하면,
+<br/>당신은 실패하고 당신은 그 잘못을 찾을 것입니다.
+<br/>&lt;COQ&gt; "목표"가 정의됩니다.
+
 </p>
 
 <p>Short ::
 <br/>(1.) "Coq" is computer program to read and write mathematics . 
-<br/>(2.) Example : "A ; [> W & [+ T1 | T2 ] ]" .
-<br/>(3.) The architect "A" plans the main problem "(1)" into two "subsequent" sub-problems .
-<br/>(4.) The sub-problem "(1>1)" is for the worker "W" and the "parallel" sub-problem "(1>2)" is for the worker "T" . 
-<br/>(5.) The worker "W" tries his only tactic "W" , and this solves his sub-problem "(1>1)" . 
-<br/>(6.) Meanwhile the worker "T" tries his first tactic "T1" , and this fails ;  but his "alternative" tactic "T2" solves his sub-problem "(1>2)" .
+<br/>(2.) To solve some error , oneself shall search for something around this error .
+<br/>(3.) EXAMPLE :
+<br/>&lt;ME&gt; Hello COQ computer ,
+<br/>If I erors then ,
+<br/>you will fail and you will locate the surrounding of the fault .
+<br/>&lt;COQ&gt; Error: At line 2 and column 5 ; The reference "erors" was not found in the current environment. 
+<br/>&lt;ME&gt; (*COMMENT: I go to the library/dictionary which contains all the known words : https://www.thefreedictionary.com/mistake . And I "search" this similar meaning : "mistake" . This search says that this library contains the related verb "err" . Now I correct my computer program . *)
+<br/>&lt;ME&gt; Hello COQ computer ,
+<br/>If I err then ,
+<br/>you will fail and you will locate the fault .
+<br/>&lt;COQ&gt; "Goal" is defined .
  </p>
-<p> Outline :: 
+
+    <p> Outline :: 
 <br/>  * PART 1 : SEARCH , ERRORS . 제 1 부 : 검색하라 , 오류 
     </p>
     <p>

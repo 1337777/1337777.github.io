@@ -51,16 +51,386 @@
 
   <p><b>Solution.</b>  <a href="https://mybinder.org/v2/gh/1337777/1337777.github.io/master">https://mybinder.org/v2/gh/1337777/1337777.github.io/master</a> </p>
 
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
 
-<!DOCTYPE html>
-<html>
-<head><meta charset="utf-8" />
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">top</span><span class="o">:=</span><span class="p">(</span><span class="nv">1</span><span class="o">,</span><span class="nv">2</span><span class="o">,</span><span class="nv">4</span><span class="o">,</span><span class="nv">3</span><span class="p">)(</span><span class="nv">5</span><span class="o">,</span><span class="nv">17</span><span class="o">,</span><span class="nv">13</span><span class="o">,</span><span class="nv">9</span><span class="p">)(</span><span class="nv">6</span><span class="o">,</span><span class="nv">18</span><span class="o">,</span><span class="nv">14</span><span class="o">,</span><span class="nv">10</span><span class="p">)</span><span class="o">;</span>
+</pre></div>
 
-<title>cube</title>
+    </div>
+</div>
+</div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<div class="output_wrapper">
+<div class="output">
 
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[1]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(1,2,4,3)(5,17,13,9)(6,18,14,10)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">left</span><span class="o">:=</span><span class="p">(</span><span class="nv">1</span><span class="o">,</span><span class="nv">9</span><span class="o">,</span><span class="nv">21</span><span class="o">,</span><span class="nv">20</span><span class="p">)(</span><span class="nv">5</span><span class="o">,</span><span class="nv">6</span><span class="o">,</span><span class="nv">8</span><span class="o">,</span><span class="nv">7</span><span class="p">)(</span><span class="nv">3</span><span class="o">,</span><span class="nv">11</span><span class="o">,</span><span class="nv">23</span><span class="o">,</span><span class="nv">18</span><span class="p">)</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[2]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(1,9,21,20)(3,11,23,18)(5,6,8,7)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">front</span><span class="o">:=</span><span class="p">(</span><span class="nv">3</span><span class="o">,</span><span class="nv">13</span><span class="o">,</span><span class="nv">22</span><span class="o">,</span><span class="nv">8</span><span class="p">)(</span><span class="nv">4</span><span class="o">,</span><span class="nv">15</span><span class="o">,</span><span class="nv">21</span><span class="o">,</span><span class="nv">6</span><span class="p">)(</span><span class="nv">9</span><span class="o">,</span><span class="nv">10</span><span class="o">,</span><span class="nv">12</span><span class="o">,</span><span class="nv">11</span><span class="p">)</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[3]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(3,13,22,8)(4,15,21,6)(9,10,12,11)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">cube</span><span class="o">:=</span><span class="nv">Group</span><span class="p">(</span><span class="nv">top</span><span class="o">,</span><span class="nv">left</span><span class="o">,</span><span class="nv">front</span><span class="p">)</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[4]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Group([ (1,2,4,3)(5,17,13,9)(6,18,14,10), (1,9,21,20)(3,11,23,18)(5,6,8,7), (3,13,22,8)(4,15,21,6)(9,10,12,11) ])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">Order</span><span class="p">(</span><span class="nv">cube</span><span class="p">)</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[5]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3674160</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">map</span><span class="o">:=</span><span class="nv">EpimorphismFromFreeGroup</span><span class="p">(</span><span class="nv">cube</span>:<span class="nv">names</span><span class="o">:=</span><span class="p">[</span><span class="s">&quot;TOP&quot;</span><span class="o">,</span><span class="s">&quot;LEFT&quot;</span><span class="o">,</span><span class="s">&quot;FRONT&quot;</span><span class="p">])</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[7]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;object&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">Display</span><span class="p">(</span><span class="nv">map</span><span class="p">)</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>GroupHomomorphismByImages( Group( [ TOP, LEFT, FRONT ] ), Group( 
+[ ( 1, 2, 4, 3)( 5,17,13, 9)( 6,18,14,10), 
+  ( 1, 9,21,20)( 3,11,23,18)( 5, 6, 8, 7), 
+  ( 3,13,22, 8)( 4,15,21, 6)( 9,10,12,11) ] ), [ TOP, LEFT, FRONT ], 
+[ ( 1, 2, 4, 3)( 5,17,13, 9)( 6,18,14,10), 
+  ( 1, 9,21,20)( 3,11,23,18)( 5, 6, 8, 7), 
+  ( 3,13,22, 8)( 4,15,21, 6)( 9,10,12,11) ] )
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">move</span><span class="o">:=</span><span class="p">(</span><span class="nv">1</span><span class="o">,</span><span class="nv">15</span><span class="o">,</span><span class="nv">20</span><span class="o">,</span><span class="nv">4</span><span class="o">,</span><span class="nv">6</span><span class="o">,</span><span class="nv">2</span><span class="o">,</span><span class="nv">21</span><span class="p">)(</span><span class="nv">3</span><span class="o">,</span><span class="nv">17</span><span class="o">,</span><span class="nv">8</span><span class="o">,</span><span class="nv">5</span><span class="o">,</span><span class="nv">22</span><span class="o">,</span><span class="nv">7</span><span class="o">,</span><span class="nv">13</span><span class="p">)(</span><span class="nv">9</span><span class="o">,</span><span class="nv">14</span><span class="o">,</span><span class="nv">11</span><span class="o">,</span><span class="nv">18</span><span class="o">,</span><span class="nv">12</span><span class="o">,</span><span class="nv">23</span><span class="o">,</span><span class="nv">10</span><span class="p">)</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[9]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(1,15,20,4,6,2,21)(3,17,8,5,22,7,13)(9,14,11,18,12,23,10)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">solution</span><span class="o">:=</span><span class="nv">Factorization</span><span class="p">(</span><span class="nv">cube</span><span class="o">,</span><span class="nv">move</span><span class="p">)</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[11]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;object&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">Display</span><span class="p">(</span><span class="nv">solution</span><span class="p">)</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>TOP*FRONT*LEFT*TOP*FRONT*TOP
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    </div>
+  </div>
+  
+  
+<h2 class="title" id="live2">LIVE 2/5 : to be continued ... </h2>
+
+
+</div>
+  </div> <!-- /#document -->
+  </div> <!-- /#code-wrapper -->
+  </div> <!-- /#ide-wrapper -->
+
+<!--  <script src="../../ui-js/jscoq-loader.js" type="text/javascript"></script> -->
+<!--  <script type="text/javascript">
+
+    var jscoq_ids  = ['workspace1' ];
+    var jscoq_opts = {
+        prelude:   true,
+        base_path: '../../',
+        init_pkgs: ['init', 'qoc'],
+        all_pkgs:  ['init', 'qoc', 'coq-base', 'coq-collections', 'coq-arith', 'coq-reals', 'math-comp'],
+        implicit_libs: true,
+        editor: { mode: { 'company-coq': true }, keyMap: 'default' }
+    };
+
+    /* Global reference */
+    var coq;
+
+    loadJsCoq(jscoq_opts.base_path)
+        .then( () => coq = new CoqManager(jscoq_ids, jscoq_opts) );
+  </script> -->
+</body>
 
 
 <style type="text/css">
@@ -13099,383 +13469,4 @@ div#notebook {
 }
 </style>
 
-  <div tabindex="-1" id="notebook" class="border-box-sizing">
-    <div class="container" id="notebook-container">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-gap"><pre><span></span><span class="nv">top</span><span class="o">:=</span><span class="p">(</span><span class="nv">1</span><span class="o">,</span><span class="nv">2</span><span class="o">,</span><span class="nv">4</span><span class="o">,</span><span class="nv">3</span><span class="p">)(</span><span class="nv">5</span><span class="o">,</span><span class="nv">17</span><span class="o">,</span><span class="nv">13</span><span class="o">,</span><span class="nv">9</span><span class="p">)(</span><span class="nv">6</span><span class="o">,</span><span class="nv">18</span><span class="o">,</span><span class="nv">14</span><span class="o">,</span><span class="nv">10</span><span class="p">)</span><span class="o">;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[1]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(1,2,4,3)(5,17,13,9)(6,18,14,10)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-gap"><pre><span></span><span class="nv">left</span><span class="o">:=</span><span class="p">(</span><span class="nv">1</span><span class="o">,</span><span class="nv">9</span><span class="o">,</span><span class="nv">21</span><span class="o">,</span><span class="nv">20</span><span class="p">)(</span><span class="nv">5</span><span class="o">,</span><span class="nv">6</span><span class="o">,</span><span class="nv">8</span><span class="o">,</span><span class="nv">7</span><span class="p">)(</span><span class="nv">3</span><span class="o">,</span><span class="nv">11</span><span class="o">,</span><span class="nv">23</span><span class="o">,</span><span class="nv">18</span><span class="p">)</span><span class="o">;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[2]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(1,9,21,20)(3,11,23,18)(5,6,8,7)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-gap"><pre><span></span><span class="nv">front</span><span class="o">:=</span><span class="p">(</span><span class="nv">3</span><span class="o">,</span><span class="nv">13</span><span class="o">,</span><span class="nv">22</span><span class="o">,</span><span class="nv">8</span><span class="p">)(</span><span class="nv">4</span><span class="o">,</span><span class="nv">15</span><span class="o">,</span><span class="nv">21</span><span class="o">,</span><span class="nv">6</span><span class="p">)(</span><span class="nv">9</span><span class="o">,</span><span class="nv">10</span><span class="o">,</span><span class="nv">12</span><span class="o">,</span><span class="nv">11</span><span class="p">)</span><span class="o">;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[3]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(3,13,22,8)(4,15,21,6)(9,10,12,11)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-gap"><pre><span></span><span class="nv">cube</span><span class="o">:=</span><span class="nv">Group</span><span class="p">(</span><span class="nv">top</span><span class="o">,</span><span class="nv">left</span><span class="o">,</span><span class="nv">front</span><span class="p">)</span><span class="o">;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[4]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Group([ (1,2,4,3)(5,17,13,9)(6,18,14,10), (1,9,21,20)(3,11,23,18)(5,6,8,7), (3,13,22,8)(4,15,21,6)(9,10,12,11) ])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-gap"><pre><span></span><span class="nv">Order</span><span class="p">(</span><span class="nv">cube</span><span class="p">)</span><span class="o">;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[5]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>3674160</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-gap"><pre><span></span><span class="nv">map</span><span class="o">:=</span><span class="nv">EpimorphismFromFreeGroup</span><span class="p">(</span><span class="nv">cube</span>:<span class="nv">names</span><span class="o">:=</span><span class="p">[</span><span class="s">&quot;TOP&quot;</span><span class="o">,</span><span class="s">&quot;LEFT&quot;</span><span class="o">,</span><span class="s">&quot;FRONT&quot;</span><span class="p">])</span><span class="o">;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[7]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;object&gt;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-gap"><pre><span></span><span class="nv">Display</span><span class="p">(</span><span class="nv">map</span><span class="p">)</span><span class="o">;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>GroupHomomorphismByImages( Group( [ TOP, LEFT, FRONT ] ), Group( 
-[ ( 1, 2, 4, 3)( 5,17,13, 9)( 6,18,14,10), 
-  ( 1, 9,21,20)( 3,11,23,18)( 5, 6, 8, 7), 
-  ( 3,13,22, 8)( 4,15,21, 6)( 9,10,12,11) ] ), [ TOP, LEFT, FRONT ], 
-[ ( 1, 2, 4, 3)( 5,17,13, 9)( 6,18,14,10), 
-  ( 1, 9,21,20)( 3,11,23,18)( 5, 6, 8, 7), 
-  ( 3,13,22, 8)( 4,15,21, 6)( 9,10,12,11) ] )
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-gap"><pre><span></span><span class="nv">move</span><span class="o">:=</span><span class="p">(</span><span class="nv">1</span><span class="o">,</span><span class="nv">15</span><span class="o">,</span><span class="nv">20</span><span class="o">,</span><span class="nv">4</span><span class="o">,</span><span class="nv">6</span><span class="o">,</span><span class="nv">2</span><span class="o">,</span><span class="nv">21</span><span class="p">)(</span><span class="nv">3</span><span class="o">,</span><span class="nv">17</span><span class="o">,</span><span class="nv">8</span><span class="o">,</span><span class="nv">5</span><span class="o">,</span><span class="nv">22</span><span class="o">,</span><span class="nv">7</span><span class="o">,</span><span class="nv">13</span><span class="p">)(</span><span class="nv">9</span><span class="o">,</span><span class="nv">14</span><span class="o">,</span><span class="nv">11</span><span class="o">,</span><span class="nv">18</span><span class="o">,</span><span class="nv">12</span><span class="o">,</span><span class="nv">23</span><span class="o">,</span><span class="nv">10</span><span class="p">)</span><span class="o">;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[9]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(1,15,20,4,6,2,21)(3,17,8,5,22,7,13)(9,14,11,18,12,23,10)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-gap"><pre><span></span><span class="nv">solution</span><span class="o">:=</span><span class="nv">Factorization</span><span class="p">(</span><span class="nv">cube</span><span class="o">,</span><span class="nv">move</span><span class="p">)</span><span class="o">;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[11]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;object&gt;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-gap"><pre><span></span><span class="nv">Display</span><span class="p">(</span><span class="nv">solution</span><span class="p">)</span><span class="o">;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>TOP*FRONT*LEFT*TOP*FRONT*TOP
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-gap"><pre><span></span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    </div>
-  </div>
-  
-  
-<h2 class="title" id="live2">LIVE 2/5 : to be continued ... </h2>
-
-</div>
-  </div> <!-- /#document -->
-  </div> <!-- /#code-wrapper -->
-  </div> <!-- /#ide-wrapper -->
-
-<!--  <script src="../../ui-js/jscoq-loader.js" type="text/javascript"></script> -->
-<!--  <script type="text/javascript">
-
-    var jscoq_ids  = ['workspace1' ];
-    var jscoq_opts = {
-        prelude:   true,
-        base_path: '../../',
-        init_pkgs: ['init', 'qoc'],
-        all_pkgs:  ['init', 'qoc', 'coq-base', 'coq-collections', 'coq-arith', 'coq-reals', 'math-comp'],
-        implicit_libs: true,
-        editor: { mode: { 'company-coq': true }, keyMap: 'default' }
-    };
-
-    /* Global reference */
-    var coq;
-
-    loadJsCoq(jscoq_opts.base_path)
-        .then( () => coq = new CoqManager(jscoq_ids, jscoq_opts) );
-  </script> -->
-</body>
 </html>

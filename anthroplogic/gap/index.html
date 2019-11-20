@@ -40,16 +40,16 @@
 <br> LIVE THIS WEEK AT 22:22 CST </h1>
     
 <br>
-<iframe src="https://free.timeanddate.com/countdown/i6q2r7ew/n237/cf12/cm0/cu4/ct0/cs0/cacf90/co0/cr0/ss0/cacf90/cpcf00/pct/tcfff/fn3/fs300/szw320/szh135/iso2019-11-15T22:22:00" allowTransparency="true" frameborder="0" width="330px" height="120" style="display: block; margin: 0 auto;" ></iframe>
+<iframe src="https://free.timeanddate.com/countdown/i6q2r7ew/n237/cf12/cm0/cu4/ct0/cs0/cacf90/co0/cr0/ss0/cacf90/cpcf00/pct/tcfff/fn3/fs300/szw320/szh135/iso2019-11-21T22:22:00" allowTransparency="true" frameborder="0" width="330px" height="120" style="display: block; margin: 0 auto;" ></iframe>
 
 <h3 style="text-align: center"><a href="https://search.bilibili.com/all?keyword=0001337777_备用">https://search.bilibili.com/all?keyword=0001337777_备用</a></h3>
 
 <h3> In the next 7 days , I with KWTKAT @OOO1337777 will review the making-of the MODOS and its related computer geometry by using the computer GAP . In short , the MODOS is : parametrized functional programming which is modified by functorial geometry , and is conjectured as the alpha-omega of contemporary computer mathematics . </h3>
 
-<h2 class="title" id="live1">LIVE 1/5 : how to solve the puzzle rubik cube geometry by GAP-computer | INVISIBLE GEOMETRY 101
+<h2 class="title" id="live1">LIVE 1/4 : how to solve the puzzle rubik cube geometry by GAP-computer | INVISIBLE GEOMETRY 101
 <br> FRIDAY 15 NOVEMBER 2019 AT 22:22 CST </h2>
 
-  <p><b>Solution.</b>  <a href="https://mybinder.org/v2/gh/1337777/1337777.github.io/master">https://mybinder.org/v2/gh/1337777/1337777.github.io/master</a> </p>
+  <p><b>Solution.</b>  <a href="https://mybinder.org/v2/gh/1337777/1337777.github.io/master">https://mybinder.org/v2/gh/1337777/1337777.github.io/master</a> </p> . This uses computations in some group of permutations .
 
  <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
@@ -466,7 +466,728 @@
     </div>
   </div>  
   
-<h2 class="title" id="live2">LIVE 2/5 : to be continued ... </h2>
+<h2 class="title" id="live2">LIVE 2/4 : how to detect and correct errors in DVD disc or WI-FI data by GAP/COQ-computer. | INVISIBLE GEOMETRY 101
+<br> WEDNESDAY 20 NOVEMBER 2019 AT 22:22 CST </h2>
+
+  <p><b>Solution.</b>  <a href="https://mybinder.org/v2/gh/1337777/1337777.github.io/master">https://mybinder.org/v2/gh/1337777/1337777.github.io/master</a> </p>
+
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="c1"># How to detect and correct errors in DVD disc or WI-FI data by GAP/COQ-computer.</span>
+<span class="c1"># </span>
+<span class="c1"># This uses computations in some finite group of units ( &quot;finite field&quot; ). Refer also to &quot;Reed Solomon Codes&quot; .</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[56]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">x</span><span class="o">:=</span><span class="nv">X</span><span class="p">(</span><span class="nv">GF</span><span class="p">(</span><span class="nv">8</span><span class="p">)</span><span class="o">,</span><span class="s">&quot;x&quot;</span><span class="p">)</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[56]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;object&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[57]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">a</span><span class="o">:=</span><span class="nv">Z</span><span class="p">(</span><span class="nv">8</span><span class="p">)</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[57]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Z(2^3)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[59]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">encoder_generator</span><span class="o">:=</span><span class="p">(</span><span class="nv">x</span><span class="o">-</span><span class="nv">a</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="nv">x</span><span class="o">-</span><span class="nv">a</span><span class="o">^</span><span class="nv">2</span><span class="p">)</span><span class="o">;;</span> <span class="nv">Display</span><span class="p">(</span><span class="nv">encoder_generator</span><span class="p">)</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>x^2+Z(2^3)^4*x+Z(2^3)^3
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[60]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">coef</span><span class="o">:=</span><span class="nv">CoefficientsOfUnivariatePolynomial</span><span class="p">(</span><span class="nv">encoder_generator</span><span class="p">)</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[60]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[ Z(2^3)^3, Z(2^3)^4, Z(2)^0 ]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[62]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">encoder</span> <span class="o">:=</span><span class="nv">NullMat</span><span class="p">(</span><span class="nv">5</span><span class="o">,</span><span class="nv">7</span><span class="o">,</span><span class="nv">GF</span><span class="p">(</span><span class="nv">8</span><span class="p">))</span><span class="o">;;</span> <span class="nv">Display</span><span class="p">(</span><span class="nv">encoder</span><span class="p">)</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre> . . . . . . .
+ . . . . . . .
+ . . . . . . .
+ . . . . . . .
+ . . . . . . .
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[64]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="k">for</span> <span class="nv">i</span> <span class="ow">in</span> <span class="p">[</span><span class="nv">1</span><span class="o">..</span><span class="nv">5</span><span class="p">]</span> <span class="k">do</span> <span class="nv">encoder</span><span class="p">[</span><span class="nv">i</span><span class="p">]{[</span><span class="nv">i</span><span class="o">..</span><span class="nv">i</span><span class="o">+</span><span class="nv">2</span><span class="p">]}</span><span class="o">:=</span><span class="nv">coef</span><span class="o">;</span><span class="k">od</span><span class="o">;</span> <span class="nv">Display</span><span class="p">(</span><span class="nv">encoder</span><span class="p">)</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>z = Z(8)
+ z^3 z^4   1   .   .   .   .
+   . z^3 z^4   1   .   .   .
+   .   . z^3 z^4   1   .   .
+   .   .   . z^3 z^4   1   .
+   .   .   .   . z^3 z^4   1
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[66]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">TriangulizeMat</span><span class="p">(</span><span class="nv">encoder</span><span class="p">)</span><span class="o">;</span> <span class="nv">Display</span><span class="p">(</span><span class="nv">encoder</span><span class="p">)</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>z = Z(8)
+   1   .   .   .   . z^3 z^4
+   .   1   .   .   .   1   1
+   .   .   1   .   . z^3 z^5
+   .   .   .   1   . z^1 z^5
+   .   .   .   .   1 z^1 z^4
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[68]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">syndromes_generators</span><span class="o">:=</span><span class="nv">NullspaceMat</span><span class="p">(</span><span class="nv">TransposedMat</span><span class="p">(</span><span class="nv">encoder</span><span class="p">))</span><span class="o">;;</span><span class="nv">Display</span><span class="p">(</span><span class="nv">syndromes_generators</span><span class="p">)</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>z = Z(8)
+ z^3   1 z^3 z^1 z^1   1   .
+ z^4   1 z^5 z^5 z^4   .   1
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[70]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">func1</span><span class="o">:=</span><span class="k">function</span> <span class="p">(</span><span class="nv">m</span><span class="p">)</span> <span class="k">if</span> <span class="nv">m</span> <span class="o">=</span> <span class="nv">0</span> <span class="k">then</span> <span class="k">return</span> <span class="nv">0</span><span class="o">*</span><span class="nv">a</span><span class="o">;</span> <span class="k">else</span> <span class="k">return</span> <span class="nv">a</span><span class="o">^</span><span class="p">(</span><span class="nv">m</span><span class="o">-</span><span class="nv">1</span><span class="p">)</span><span class="o">;</span> <span class="k">fi</span><span class="o">;</span> <span class="k">end</span> <span class="o">;;</span>
+
+<span class="nv">func2</span><span class="o">:=</span><span class="k">function</span> <span class="p">(</span><span class="nv">t</span><span class="p">)</span> <span class="k">if</span> <span class="nv">t</span> <span class="o">=</span> <span class="nv">0</span><span class="o">*</span><span class="nv">a</span> <span class="k">then</span> <span class="k">return</span> <span class="nv">0</span><span class="o">;</span> <span class="k">else</span> <span class="k">return</span> <span class="nv">First</span><span class="p">([</span><span class="nv">1</span><span class="o">..</span><span class="nv">7</span><span class="p">]</span><span class="o">,</span><span class="nv">j</span><span class="o">-&gt;</span><span class="nv">a</span><span class="o">^</span><span class="p">(</span><span class="nv">j</span><span class="o">-</span><span class="nv">1</span><span class="p">)</span> <span class="o">=</span> <span class="nv">t</span><span class="p">)</span><span class="o">;</span> <span class="k">fi</span><span class="o">;</span> <span class="k">end</span><span class="o">;;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[71]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">message</span> <span class="o">:=</span> <span class="p">[</span><span class="nv">4</span> <span class="o">,</span> <span class="nv">3</span><span class="o">,</span> <span class="nv">2</span> <span class="o">,</span> <span class="nv">0</span><span class="o">,</span> <span class="nv">6</span><span class="p">]</span><span class="o">;</span> <span class="c1">#choose 5 numbers from the alphabet 0 to 7</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[71]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[ 4, 3, 2, 0, 6 ]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[73]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">message</span> <span class="o">:=</span> <span class="nv">List</span><span class="p">(</span><span class="nv">message</span><span class="o">,</span> <span class="nv">func1</span><span class="p">)</span><span class="o">;</span>
+<span class="nv">encoded</span> <span class="o">:=</span> <span class="nv">message</span> <span class="o">*</span> <span class="nv">encoder</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[73]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[ Z(2^3)^3, Z(2^3)^2, Z(2^3), 0*Z(2), Z(2^3)^5 ]</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[73]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[ Z(2^3)^3, Z(2^3)^2, Z(2^3), 0*Z(2), Z(2^3)^5, Z(2^3), Z(2^3)^2 ]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[74]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">Display</span><span class="p">(</span><span class="nv">List</span><span class="p">(</span><span class="nv">encoded</span><span class="o">,</span> <span class="nv">func2</span><span class="p">))</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[ 4, 3, 2, 0, 6, 2, 3 ]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[76]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">hidden_position</span> <span class="o">:=</span> <span class="nv">7</span><span class="o">;</span>  <span class="c1">#choose position to change from 1 to 7</span>
+<span class="nv">hidden_change</span> <span class="o">:=</span> <span class="nv">0</span><span class="o">;</span>  <span class="c1">#choose change from 0 to 7</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[76]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>7</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[76]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[79]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">transmitted</span> <span class="o">:=</span><span class="nv">ShallowCopy</span><span class="p">(</span><span class="nv">encoded</span><span class="p">)</span><span class="o">;;</span> <span class="nv">transmitted</span><span class="p">[</span><span class="nv">hidden_position</span><span class="p">]</span><span class="o">:=</span><span class="nv">func1</span><span class="p">(</span><span class="nv">hidden_change</span><span class="p">)</span><span class="o">;;</span>
+<span class="nv">Display</span> <span class="p">(</span><span class="nv">List</span><span class="p">(</span><span class="nv">transmitted</span><span class="o">,</span> <span class="nv">func2</span><span class="p">))</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[ 4, 3, 2, 0, 6, 2, 0 ]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[80]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">syndromes</span> <span class="o">:=</span> <span class="nv">syndromes_generators</span> <span class="o">*</span> <span class="nv">transmitted</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[80]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[ 0*Z(2), Z(2^3)^2 ]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[81]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">error_position</span> <span class="o">:=</span> <span class="nv">Filtered</span><span class="p">([</span><span class="nv">1</span><span class="o">..</span><span class="nv">7</span><span class="p">]</span><span class="o">,</span> <span class="nv">j</span> <span class="o">-&gt;</span> <span class="nv">syndromes_generators</span><span class="p">[</span><span class="nv">1</span><span class="p">][</span><span class="nv">j</span><span class="p">]</span> <span class="o">*</span> <span class="nv">syndromes</span><span class="p">[</span><span class="nv">2</span><span class="p">]</span> <span class="o">=</span> 
+ <span class="nv">syndromes_generators</span><span class="p">[</span><span class="nv">2</span><span class="p">][</span><span class="nv">j</span><span class="p">]</span> <span class="o">*</span> <span class="nv">syndromes</span><span class="p">[</span><span class="nv">1</span><span class="p">]</span> <span class="p">)[</span><span class="nv">1</span><span class="p">]</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[81]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>7</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[83]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="nv">syndromes_generators</span><span class="p">[</span><span class="nv">1</span><span class="p">][</span><span class="nv">error_position</span><span class="p">]</span> <span class="o">=</span> <span class="nv">0</span><span class="o">*</span><span class="nv">Z</span><span class="p">(</span><span class="nv">2</span><span class="o">^</span><span class="nv">3</span><span class="p">)</span>
+<span class="k">then</span> <span class="nv">error</span> <span class="o">:=</span> <span class="p">(</span><span class="nv">syndromes_generators</span><span class="p">[</span><span class="nv">1</span><span class="p">][</span><span class="nv">error_position</span><span class="p">]</span><span class="o">^-</span><span class="nv">1</span><span class="p">)</span> <span class="o">*</span> <span class="nv">syndromes</span><span class="p">[</span><span class="nv">1</span><span class="p">]</span> <span class="o">;</span> 
+<span class="k">else</span> <span class="nv">error</span> <span class="o">:=</span> <span class="p">(</span><span class="nv">syndromes_generators</span><span class="p">[</span><span class="nv">2</span><span class="p">][</span><span class="nv">error_position</span><span class="p">]</span><span class="o">^-</span><span class="nv">1</span><span class="p">)</span> <span class="o">*</span> <span class="nv">syndromes</span><span class="p">[</span><span class="nv">2</span><span class="p">]</span> <span class="o">;</span> 
+<span class="k">fi</span> <span class="o">;</span> <span class="nv">Display</span><span class="p">(</span><span class="nv">error</span><span class="p">)</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Z(2^3)^2
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[86]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">decoded</span> <span class="o">:=</span> <span class="nv">ShallowCopy</span><span class="p">(</span><span class="nv">transmitted</span><span class="p">)</span><span class="o">;;</span> <span class="nv">decoded</span><span class="p">[</span><span class="nv">error_position</span><span class="p">]</span> <span class="o">:=</span> <span class="nv">transmitted</span><span class="p">[</span><span class="nv">error_position</span><span class="p">]</span> <span class="o">-</span> <span class="nv">error</span><span class="o">;;</span> <span class="nv">Display</span><span class="p">(</span><span class="nv">decoded</span><span class="p">)</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[ Z(2^3)^3, Z(2^3)^2, Z(2^3), 0*Z(2), Z(2^3)^5, Z(2^3), Z(2^3)^2 ]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[87]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">Display</span> <span class="p">(</span><span class="nv">List</span><span class="p">(</span><span class="nv">decoded</span><span class="o">,</span> <span class="nv">func2</span> <span class="p">))</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[ 4, 3, 2, 0, 6, 2, 3 ]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[88]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">Display</span><span class="p">(</span><span class="nv">decoded</span> <span class="o">=</span> <span class="nv">encoded</span><span class="p">)</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>true
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    </div>
+  </div>
+
+ <h2 class="title" id="live3">LIVE 3/4 : to be continued ... </h2>
 
 
 </div>

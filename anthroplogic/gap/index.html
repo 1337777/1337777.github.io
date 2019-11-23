@@ -1697,7 +1697,301 @@
     </div>
   </div>
   
- <h2 class="title" id="live4">LIVE 4/4 : to be continued ... </h2>
+<h2 class="title" id="live4">LIVE 4/4 : how to prove geometry by changing coordinates generators | INVISIBLE GEOMETRY |
+<br> SATURDAY 23 NOVEMBER 2019 AT 22:22 CST </h2>
+
+  <p><b>Solution.</b>  <a href="https://mybinder.org/v2/gh/1337777/1337777.github.io/master">https://mybinder.org/v2/gh/1337777/1337777.github.io/master</a> </p>
+
+ <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="c1"># how to prove geometry by changing coordinates generators | INVISIBLE GEOMETRY</span>
+<span class="c1"># this computation uses &quot;Hilbert&#39;s Nullstellensatz&quot; and &quot;Gr¨obner basis&quot;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="c1"># problem : given the points A = (−1, 0) and B = (1, 0) and set C = (x, y) , </span>
+<span class="c1"># assume that C is on the circle with diameter AB (whose origin is (0, 0) and radius is 1)</span>
+<span class="c1"># then prove that the triangle ACB form some right angle at C which is that  AC ⊥ BC</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">x</span><span class="o">:=</span><span class="nv">X</span><span class="p">(</span><span class="nv">Rationals</span><span class="o">,</span><span class="s">&quot;x&quot;</span><span class="p">)</span><span class="o">;;</span>
+<span class="nv">y</span><span class="o">:=</span><span class="nv">X</span><span class="p">(</span><span class="nv">Rationals</span><span class="o">,</span><span class="s">&quot;y&quot;</span><span class="p">)</span><span class="o">;;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="c1"># C is on the circle (whose origin is (0, 0) and radius is 1)</span>
+<span class="c1"># is specified by the polynomia</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">assumption</span> <span class="o">:=</span> <span class="nv">x</span><span class="o">^</span><span class="nv">2</span> <span class="o">+</span> <span class="nv">y</span><span class="o">^</span><span class="nv">2</span> <span class="o">-</span> <span class="nv">1</span><span class="o">;;</span> <span class="nv">Display</span><span class="p">(</span><span class="nv">assumption</span><span class="p">)</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>x^2+y^2-1
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="c1"># right angle at C means that AC ⊥ BC</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">conclusion</span> <span class="o">:=</span> <span class="p">(</span><span class="nv">x</span> <span class="o">-</span><span class="p">(</span><span class="o">-</span><span class="nv">1</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="nv">1</span> <span class="o">-</span> <span class="nv">x</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="nv">y</span> <span class="o">-</span> <span class="nv">0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="nv">0</span> <span class="o">-</span> <span class="nv">y</span><span class="p">)</span><span class="o">;;</span> <span class="nv">Display</span><span class="p">(</span><span class="nv">conclusion</span><span class="p">)</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>-x^2-y^2+1
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">basis</span> <span class="o">:=</span> <span class="nv">ReducedGroebnerBasis</span><span class="p">([</span> <span class="nv">assumption</span> <span class="p">]</span><span class="o">,</span> <span class="nv">MonomialLexOrdering</span><span class="p">()</span> <span class="p">)</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[7]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[ x^2+y^2-1 ]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="c1"># question 1 : is (conclusion ^ m)  in basis for some number m ?</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">t_new</span> <span class="o">:=</span> <span class="nv">X</span><span class="p">(</span><span class="nv">Rationals</span><span class="o">,</span><span class="s">&quot;t_new&quot;</span><span class="p">)</span><span class="o">;;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">change_basis</span> <span class="o">:=</span> <span class="nv">ReducedGroebnerBasis</span><span class="p">([</span> <span class="nv">assumption</span> <span class="o">,</span> <span class="nv">1</span> <span class="o">-</span> <span class="nv">t_new</span> <span class="o">*</span> <span class="nv">conclusion</span> <span class="p">]</span><span class="o">,</span>
+                <span class="nv">MonomialLexOrdering</span><span class="p">()</span> <span class="p">)</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[9]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[ 1 ]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="c1"># question 2 : is conclusion in basis ?</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span><span class="nv">rem</span> <span class="o">:=</span> <span class="nv">PolynomialReducedRemainder</span><span class="p">(</span> <span class="nv">conclusion</span><span class="o">,</span> <span class="nv">basis</span><span class="o">,</span>
+        <span class="nv">MonomialLexOrdering</span><span class="p">())</span><span class="o">;;</span> <span class="nv">Display</span><span class="p">(</span><span class="nv">rem</span><span class="p">)</span><span class="o">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-gap"><pre><span></span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    </div>
+  </div>  
+  
+  <h2 class="title" id="live5">LIVE 5/4 : to be continued ... </h2>
 
 
 </div>

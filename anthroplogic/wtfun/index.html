@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142610023-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-142610023-1');
+</script>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>anthroplogic.com</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Ubuntu" />
+<link rel="stylesheet" type="text/css" href="../../code/style.css"/>
+<style>
+#content {
+    width: 100%;
+    padding: 0px;
+    font-size: 16px;
+}
+
+h2 , h1 {
+  color: #4e2e80;
+}
+
+</style>
+</head>
+<body>
+
+<div id="ide-wrapper" class="toggled">
+<div id="code-wrapper">
+<div id="document">
+<div id="preamble" class="status">
+<p></p>
+</div>
+<div id="content">
+
+<h1 class="title">FOR EXAMPLE ...
+<br> LIVE EVERY FRIDAY @ 22:22 GMT+1 </h1>
+    
+<br>
+<iframe src="https://free.timeanddate.com/countdown/i6q2r7ew/n170/cf12/cm0/cu4/ct0/cs0/cacf90/co0/cr0/ss0/cacf90/cpc666/pct/tcfff/fn3/fs300/szw256/szh108/iso2020-03-10T10:00:00" allowTransparency="true" frameborder="0" width="330px" height="120" style="display: block; margin: 0 auto;" ></iframe>
+
+<h3 style="text-align: center"><a href="https://youtube.com/results?search_query=%23anthroplogic">https://youtube.com/results?search_query=#anthroplogic</a></h3>
+
+<p> In the next 37 days , BLCKT @OOO1337777 will review the jargon of mathematicians , in particular the correspondence between the jargon in geometry and the jargon in logic . The host BLCKT guesses the mysterious meaning of those words ... </p>
+
+<h2 class="title" id="live1">LIVE 1/6 : WTF(UN) IS «FIBER BUNDLE» OR «DEPENDENT TYPE» ? | JARGON OF MATHEMATICIANS
+<br> FRIDAY 7 FEBRUARY 2020 @ 22:22 GMT+1 </h2>
+
+  <p> In short : the jargon "fiber bundle" / "fibration" in geometry corresponds to the jargon "dependent type" in logic . </p>
+  <p> For instant first impression , these are some links : </p>
+  <ul> <li> <a href="https://ncatlab.org/nlab/show/fiber+bundle">https://ncatlab.org/nlab/show/fiber+bundle</a> </li>
+    <li> <a href="https://ncatlab.org/nlab/show/Grothendieck+fibration">https://ncatlab.org/nlab/show/Grothendieck+fibration</a> </li>
+    <li> <a href="https://ncatlab.org/nlab/show/dependent+type+theory">https://ncatlab.org/nlab/show/dependent+type+theory</a> </li>
+  </ul>
+
+  <p>For instant first impression , this is some example code : </p>
+  <p><em>Note : text edit this code by Alt+↑ , Alt+↓ , Alt+→ , Alt+⏎ , Alt+hover .</em></p>
+  <textarea id="workspace1">
+Module Mod1.
+
+(* the type of list-of-numbers which depends on some prescribed size/length *)
+Inductive ilist : nat -> Type :=
+inil : ilist 0
+| icons : nat -> forall sizevar : nat , ilist sizevar -> ilist (S sizevar) .
+
+Check ilist.
+
+End Mod1.
+</textarea>
+  
+<h2 class="title" id="live2">LIVE 2/6 : WTF(UN) IS «PULLBACK» OR «SUBSTITUTION FOR VARIABLES» ? | JARGON OF MATHEMATICIANS
+<br> FRIDAY 14 FEBRUARY 2020 @ 22:22 GMT+1 </h2>
+
+  <p> In short : the jargon "pullback" / "fibered product" in geometry corresponds to the jargon "substitution for variables" in logic . </p>
+  <p> For instant first impression , these are some links : </p>
+  <ul> <li> <a href="https://ncatlab.org/nlab/show/pullback">https://ncatlab.org/nlab/show/pullback</a> </li>
+    <li> <a href="https://ncatlab.org/nlab/show/substitution">https://ncatlab.org/nlab/show/substitution</a> </li>
+    <li> <a href="http://math.andrej.com/2012/09/28/substitution-is-pullback/">http://math.andrej.com/2012/09/28/substitution-is-pullback/</a> </li>
+  </ul>
+
+  <p>For instant first impression , this is some example code : </p>
+  <p><em>Note : text edit this code by Alt+↑ , Alt+↓ , Alt+→ , Alt+⏎ , Alt+hover .</em></p>
+  <textarea id="workspace2">
+Module Mod2.
+    
+    (*  Surprise : grammatically , substitution for variables is not expressed as pullback ! In fact any dependent type is also given by some classifying morphism into some universe (type of types) , here into "Type" . Therefore substitution corresponds to composition of this classifying morphism with the given morphism which presents this substitution .  *)
+
+Inductive ilist : nat -> Type :=
+inil : ilist 0
+| icons : nat -> forall sizevar : nat , ilist sizevar -> ilist (S sizevar) .
+
+Definition even_numbers : nat -> nat :=
+fun n => (2 * n) .
+
+Definition ilist_of_even_size : nat -> Type :=
+fun n => ilist (even_numbers n) .
+
+Check ilist_of_even_size .
+
+End Mod2.
+</textarea>
+
+<h2 class="title" id="live3">LIVE 3/6 : to be continued ... </h2>
+
+</div></div>
+  </div> <!-- /#document -->
+  </div> <!-- /#code-wrapper -->
+  </div> <!-- /#ide-wrapper -->
+
+  <script src="../../ui-js/jscoq-loader.js" type="text/javascript"></script>
+  <script type="text/javascript">
+
+    var jscoq_ids  = ['workspace1', 'workspace2' ];
+    var jscoq_opts = {
+        prelude:   true,
+        base_path: '../../',
+        init_pkgs: ['init', 'qoc'],
+        all_pkgs:  ['init', 'qoc', 'coq-base', 'coq-collections', 'coq-arith', 'coq-reals', 'math-comp'],
+        implicit_libs: true,
+        editor: { mode: { 'company-coq': true }, keyMap: 'default' }
+    };
+
+    /* Global reference */
+    var coq;
+
+    loadJsCoq(jscoq_opts.base_path)
+        .then( () => coq = new CoqManager(jscoq_ids, jscoq_opts) );
+  </script>
+</body>
+</html>

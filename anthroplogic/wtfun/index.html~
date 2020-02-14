@@ -1,0 +1,1210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142610023-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-142610023-1');
+</script>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>anthroplogic.com</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Ubuntu" />
+<link rel="stylesheet" type="text/css" href="../../code/style.css"/>
+<style>
+#content {
+    width: 100%;
+    padding: 0px;
+    font-size: 16px;
+}
+</style>
+</head>
+<body>
+
+<div id="ide-wrapper" class="toggled">
+<div id="code-wrapper">
+<div id="document">
+<div id="preamble" class="status">
+<p></p>
+</div>
+<div id="content">
+
+<h1 class="title">FOR EXAMPLE ...
+<br> LIVE EVERY WEEK AT 22:22 KST </h1>
+    
+<br>
+<iframe src="https://free.timeanddate.com/countdown/i6q2r7ew/n237/cf12/cm0/cu4/ct0/cs0/cac090/co0/cr0/ss0/cacf90/cpcf00/pct/tcfff/fn3/fs300/szw320/szh135/iso2019-10-04T22:22:00" allowTransparency="true" frameborder="0" width="330px" height="120" style="display: block; margin: 0 auto;" ></iframe>
+
+<h3 style="text-align: center"><a href="https://youtube.com/results?search_query=OOO1337777">https://youtube.com/results?search_query=OOO1337777</a></h3>
+
+<h3> In the next 37 days , I @OOO1337777 ( <a href="https://google.com/search?q=OOO1337777">https://google.com/search?q=OOO1337777</a> , <a href="https://baidu.com/s?wd=OOO1337777">https://baidu.com/s?wd=OOO1337777</a> ) will review the making-of the MODOS ( <a href="https://youtube.com/results?search_query=OOO1337777">https://youtube.com/results?search_query=OOO1337777</a> ) which is conjectured as the alpha-omega of modern computer mathematics . In short , the <a href="https://youtube.com/results?search_query=OOO1337777">MODOS</a> is : parametrized functional programming which is modified by functorial geometry .
+</h3>
+
+<p><b>Memo.</b> here are initial instant first-impressions : <a href="../../init.html">COQ computer english-mathematics</a> , <a href="../../">中文 鸡算计 computer chinese-mathematics</a> , <a href="../../수탉수학/">한국어 탉수학 computer korean-mathematics</a> . </p>
+
+<h2 class="title" id="live1">LIVE 1/6 : can you steal some logic proof ? | BAD HUMAN VS COMPUTER |
+<br> FRIDAY 21 JUNE 2019 AT 22:22 KST </h2>
+
+  <p> Imagine that some person writes this logic proof of this logic formula ( in short this formula says that : <i>if I have a banana and an apple in my fridge , then I can eat a banana or an apple tonight ; moreover I am saying this phrase for any two food items ... </i> ) : </p>
+  <p><em>Note : text edit this code by Alt+↑ , Alt+↓ , Alt+→ , Alt+⏎ , Alt+hover .</em></p>
+  <textarea id="workspace1">
+Lemma proof1 : forall A B : Prop , and A B -> or A B .
+Proof.
+  intros A B ab .
+  left .
+  destruct ab as [ a b ] .
+  exact a .
+Qed.
+</textarea>
+  <p> There are many possibilities/choices of logic proofs for this logic formula . Another proof may conclude by choosing <code>B</code> ( the right alternative ) : </p>
+  <textarea id="workspace2">
+Lemma proof2 : forall A B : Prop , and A B -> or A B .
+Proof.
+  intros A B ab .
+  right .
+  destruct ab as [ a b ] .
+  exact b .
+Qed.
+</textarea>
+<p> <b>Question</b> : Does this multitude of possibilities/choices signify that the search of some logic proof for this logic formula is some creative activity ? Can the logic proof written by the first person <b>be stolen</b> (copy-pasted) by some other person ? </p>
+<p> Answer : most logic proofs can be searched automatically by the computer in less than 1 second . Therefore , there is no need to steal (copy-paste) another person's logic proof . Whatever theft would not occur in this manner . </p>
+<p> Here is how to do the <b>automatic logic proof search</b> : </p>
+  <textarea id="workspace3">
+Lemma proof3 : forall A B : Prop , and A B -> or A B .
+Proof.
+  tauto .
+Qed.
+</textarea>
+
+  <p><b>Dictionary.</b> What is the dictionary definition of "theft" ? <a href="https://www.thefreedictionary.com/theft">https://www.thefreedictionary.com/theft</a> says :</p>
+  <ul> <li> <i> The <b>unlawful taking</b> of the property of another </i> </li>
+    <li> <i> the <b>dishonest taking</b> of property belonging to another person with the intention of depriving the owner permanently of its possession </i> </li>
+    <li> <i> the act of <b>taking</b> something from someone <b>unlawfully</b>; </i> </li>
+  </ul>
+  <p>The main words here are <i> "unlawful taking" </i> , <i> "dishonest taking" </i> . Therefore the words <i> "unlawful" </i> , <i> "dishonest" </i> says the same as <i> "to tell lies" </i> , <i> "to falsify" </i> ; and the words <i> "taking" </i> signify something as <i> "taking by force" </i> ( <i>"sudden/active force"</i> ) . But this <i> "force" </i> element need not be <i>"sudden/active force"</i> , such as to take someone's purse . This <i> "force" </i> element may be more  <i>"slow/passive force"</i> , such as to print money and therefore <i> "to convert the proportion" </i> of possession. The legislation definition will address this contrast .  </p>
+
+  <p><b>Legislation.</b> What is the legislation definition of "theft" ? <a href="https://www.canlii.org/en/ca/laws/stat/rsc-1985-c-c-46/latest/rsc-1985-c-c-46.html#sec322subsec1">https://www.canlii.org/en/ca/laws/stat/rsc-1985-c-c-46/latest/rsc-1985-c-c-46.html#sec322subsec1</a> , at "Criminal Code, RSC 1985, c C-46 / PART IX — OFFENCES AGAINST RIGHTS OF PROPERTY [321 - 378] / THEFT [322 - 334]" , says :  </p>
+  <p> <i>322 (1) Every one commits theft who <b>fraudulently</b> and <b>without colour of right</b> <b>takes, or</b> fraudulently and without colour of right <b>converts</b> to his use or to the use of another person, anything, whether animate or inanimate, with intent</i>
+<ul> <li><i> (a) to deprive, temporarily or absolutely, the owner of it, or a person who has a special property or interest in it, of the thing or of his property or interest in it;</i></li>
+<li><i> (b) to pledge it or deposit it as security;</i></li>
+<li><i> (c) to part with it under a condition with respect to its return that the person who parts with it may be unable to perform; or</i></li>
+<li><i> (d) to deal with it in such a manner that it cannot be restored in the condition in which it was at the time it was taken or converted.</i></li> </ul> </p>
+  <p>And as expected , the main words here are <i> "fraudulently" </i> ( which says the same as <i> "unlawful" </i> , <i> "dishonest" </i> , <i> "to tell lies" </i> , <i> "to falsify" </i> ) , and  <i> "takes or converts" </i> .  </p>
+  <p>Moreover the legislation , mentions <i> "without colour of right" </i> . This signify that although the suspect may believe to have <i> "colour of right" </i> ( =  <i> "expected morality" </i> , = <i> "expected justification" </i> ) , the reality is that the suspect is <i> "without colour of right" </i> ( = <b> "fool" </b> ) . For example , the suspect may believe the ambiguous/confused statement <i> "the nights repeat twice each day" </i> for indirect calculations , instead of choosing to see the direct reality . </p>
+  <p> In short , "absence of truth/reality/actuality/be" or "bad logic" can be rephrased as : <b> forced-fool-and-theft/lie/falsification </b> </p>
+
+<h2 class="title" id="live2">LIVE 2/6 : majority is meaningless without (fibred/multiplied/pullback) intersection with some explicit totality/domain ! | BAD HUMAN VS COMPUTER |
+<br> FRIDAY 28 JUNE 2019 AT 22:22 KST </h2>
+
+  <p><b>Logic.</b> The ends is to compose/sequence two functions when the output of the first function is not included within the input of the subsequent functiion . The solution is : to intersec the input of the first function (so that its output is) within the input of the subsequent function .    
+  </p>
+
+  <p>First of all , when the ouput of the first function [f] is the same as the input of the subsequent function [g] , it is easy to compose the two functions simply by composing/sequencing their effect .
+ </p>
+  <p><em>Note : text edit this code by Alt+↑ , Alt+↓ , Alt+→ , Alt+⏎ , Alt+hover .</em></p>
+  <textarea id="workspace4">
+Section section_composition.
+
+(*
+     f           g
+A ------>   B  ----->   C
+
+a |----->  f a |----> g (f a)   
+
+*)  
+ 
+  Variables (A : Type) (B : Type) (f : A -> B ).
+  Variables (C : Type) (g : B -> C) .
+
+  Definition composition : A -> C
+    := fun a => g ( f a )  .
+
+End section_composition.
+</textarea>
+<p>How to express that the output of the first function is NOT the same as the input of the subsequent function ?</p>
+
+<p>Solution : by generalizing from the idea of function to the idea of function with reindexed/restricted/multiplied input : [ B_ <--b-- B --g--> C ] . Now the restriction function [b] should be <b>read backward</b> , and the effectful function [g] should be <b>read forward</b> . </p>
+  
+  <textarea id="workspace5">
+Section section_reindexed_function.
+(*
+     g
+ B ------> C
+ |
+ . b
+ |
+ v
+ B_
+
+ *)
+  
+  Variables (B_ : Type) (B : Type) (b : B -> B_) (C : Type) (g : B -> C) .
+
+(*
+Example :
+
+.  
+.   .
+.   .
+  _
+  |
+  | b
+  v
+ 
+. . .
+
+*)
+  </textarea>
+<p> Therefore any function can be read forward (the effectful orientation) or read backward (the reindexer/multiplier orientation). Here is the composition/sequencing of two functions when read backward : </p>
+
+<p style="text-align:center;"><img src="function_read_backward.svg"></p>
+
+<p>  The question now is : how to compose/sequence two reindexed functions ( functions with reindexed/restricted/multiplied inputs ) such as (a <o> f) then (b <o> g) ? In other words : when the ouput of the first effectful function [f] may NOT be the same as the input of the subsequent effectful function [g] ? This is more complex than simply sequencing the effects , and shall be described in two steps . </p>
+
+  <textarea id="workspace6">
+  Variables (A_ A : Type) (a : A -> A_) (f : A -> B_ ).
+  
+(*
+                   g
+             B ------> C
+             |
+             . b
+             |
+             v
+  A  ------> B_
+  |    f
+  . a
+  |
+  v
+  A_
+
+ *)
+
+End section_reindexed_function.
+</textarea>
+<p>Here is the initial step. When the ouput of the first function is NOT the same as the input of the subsequent function , then the inputs of first function must be restricted/intersected such that the corresponding outputs of the first function fall within the input of the subsequent function .</p>
+
+<p>The first function is "transported" ( "pullback" ) against the input of the subsequent function ; the restricted inputs of this transported first function is named "intersection" .</p>
+
+<p>This transport process is the initial step and can be described on its own now , and the final step which is named transporting-composition will be described later .</p>
+
+  <textarea id="workspace7">
+Section section_intersection.
+
+(*
+              transported
+intersection  ---------->   Multiples
+ |                             |
+ .                             . multiplier
+ |                             |
+ v                             v
+ A -----------------------> Domain
+               f
+*)
+
+  Variables (Domain : Type) (Multiples : Type) (multiplier : Multiples -> Domain) .
+
+  Definition intersection (A : Type) (f : A -> Domain) : Type
+    := { ab : ( A * Multiples ) |
+         f ( fst ab ) = multiplier ( snd ab ) } . 
+
+  Definition transported (A : Type) (f : A -> Domain) : intersection A f -> Multiples
+    := fun ab_eq => snd (proj1_sig ab_eq) .
+
+  Definition multimultiplier (A : Type) (f : A -> Domain) : intersection A f -> A
+    := fun ab_eq => fst (proj1_sig ab_eq) .
+
+  Definition multiplicity_of_intersection (A : Type) (f : A -> Domain) : intersection A f -> Domain
+    := fun ab_eq => multiplier ( snd (proj1_sig ab_eq) ) .
+End section_intersection.
+</textarea>
+<p>Memo : <em>this transport has both restriction flavor and multiplication flavor</em> ; nevertheless restriction can be viewed as exclusion via "multiplication by zero" , therefore multiplication is more general than restriction . </p>
+<p>Example of multiplying the function [3] against the multiplier [2] .</p>
+
+<p style="text-align:center;"><img width="100%" src="multiplied_intersection.svg"></p>
+
+  <textarea id="workspace8">
+Section section_intersection_example .
+(*
+
+   transported
+...    |-->    . 
+...    |-->    . 
+               _
+               | multiplier
+               v
+ 
+...    |-->    .
+        f
+
+ *)
+  
+  Inductive two : Type := Two1 : two | Two2 : two .
+  Inductive three : Type := Three1 : three | Three2 : three | Three3 : three .
+  Inductive infinite : Type := Start : infinite | Next : infinite -> infinite .
+
+  Let Domain : Type := infinite.
+  Let Multiples : Type := two.
+  Let multiplier : Multiples -> Domain := fun m => (Next Start).
+  Let A : Type := three.
+  Let f : A -> Domain := fun a => (Next Start) .
+  Compute ( transported Domain Multiples multiplier A f : {ab : three * two | (Next Start) = (Next Start)} -> two ) .
+  Check fun ab_eq : {ab : three * two | (Next Start) = (Next Start)} =>
+          let (_, b) := (let (ab, _) := ab_eq
+                         in ab)
+          in b .
+End section_intersection_example.
+</textarea>
+<p>Here is the final step of composing two (general) reindexed functions . The transporting-composition makes use of the transport process to restrict/multiply the first effectful function [f] againt the input multiplier [b] of the subsequent function [g] ; then this transporting-composition simply composes their transported first effectful function [transp f] with the subsequent effectful function [g] to obtain [transp f o> g]. <p>
+<p>  ( Moreover , if the input of the first function was somehow already restricted/multiplied via [a] , then this old restriction/multiplication [a] shall be composed/sequenced after the new restriction/multiplication [mult b] from this transport process ) </p>
+
+  <textarea id="workspace9">
+Section section_transporting_composition.
+  Variables (A_ A : Type) (a : A -> A_) (B_ : Type) (f : A -> B_ ).
+  Variables (B : Type) (b : B -> B_) (C : Type) (g : B -> C) .
+  
+(*
+
+( a , f ) o> ( b , g )
+
+                  g
+             B ------> C
+             |
+             . b
+             |
+             v
+  A  ------> B_
+  |    f
+  . a
+  |
+  v
+  A_
+
+
+ :=  ( a <o mult b , transp f o> g)
+
+     transp f      g
+  AB --------> B ------> C
+   |  
+   . mult b
+   | 
+   v 
+   A 
+   | 
+   . a
+   |
+   v
+   A_
+
+*)
+
+  Definition transporting_composition : ( intersection B_ B b A f -> A_ ) * ( intersection B_ B b A f -> C )
+    := ( composition _ _ (multimultiplier B_ B b A f) _  a  , composition _ _ (transported B_ B b A f ) _  g  ) .
+  
+End section_transporting_composition.  
+</textarea>
+<p><b>The bottom line is : to compute/eliminate/normalize the transporting/pullback-composition is rephrasable/reducible as to compute/eliminate/normalize the (common) composition in the presence of transports/pullback ... </b></p>
+
+<p><b>Dictionary.</b> What is the dictionary definition of "majority" ? <a href="https://www.thefreedictionary.com/majority">https://www.thefreedictionary.com/majority</a> says :</p>
+<ul> <li> <i> The greater number or part; a number more than half <b>of the total</b>  </i> </li>
+  <li> <i> the greater number or part <b>of something</b>  </i> </li>
+  <li> <i> (elections) more than half <b>of the votes</b>  </i> </li>
+</ul>
+
+<p>The expression <b> "of ..." </b> refers to the <b>intersection</b> of the number with some explicitly totality/domain . The totality/domain is determined by such parameters as : space ( "where" ) , time ( "when" ) , end-goals ( "for what" ) .</p>
+
+<p>Imagine that two counters in the number are mentality-neighbors ( same "where" , environment ) , or are synchronizing/colluding/conniving ( same "when" ) , or are interdependent ( same "for what" ) , then effectively/sensibly these two counters should merge as one counter , although formally/grammatically they are two distinct indexes for touching the same sensible counter . In short : it is possible to form/write the weighted (multiplied/fibered) intersection , as contrasted from effective/sensible majority ( which cancels-out multiplicity/"tribalism" ) ...</p>
+
+<p><b>Legislation.</b> Each clause in some law/rule of the legislation may be viewed as determining more precisely some totality/domain of application . But is it possible to find therein or in practice such fools as "singleton-class" ?</p>
+
+<p>In short : <b>"singleton-class" = </b> fabricating/falsifying some law/rule/grading/class which or its complement contains only some effectively-singleton target-individual , such to maximize this individual or correspondingly to obstruct this individual , or when the class becomes (unspoken) intersection-of-more-classes in the effective totality/domain and such is worse .</p>
+
+<p>This last phrase says that the effective totality/domain may cause some hidden assumptions , such that the class becomes (unspoken) intersection-of-more-classes . The technical idea to express this situation is to say that : transporting some function against the identity function produces the same function . </p>
+
+<textarea id="workspace10">
+Section section_intersection_with_identity.
+(*
+         transp f == f
+F /\ W ---------------------> W
+   ^                          ^
+   |                          |
+   . id                       . id
+   |                          |
+   v                          v
+   F  ----------------------> W
+                 f
+*)  
+Lemma intersection_with_identity : forall F W : Prop , forall hidden : ( F -> W ) (* hidden assumption caused by the effective totality/domain *),
+      ( ( F /\ W ) <-> F ) (* therefore the class F becomes (unspoken) intersection-of-more-classes *) .
+Proof.
+  intros F W hidden. split.
+  - intros wf. destruct wf as [w f].
+    + exact w.
+  - intros f. split.
+    + exact f .
+    + exact (hidden f).
+Qed.
+
+End section_intersection_with_identity.
+  </textarea>
+
+
+<h2 class="title" id="live3">LIVE 3/6 : "maybe you are thief ?" is formatted but for what sense ... | BAD HUMAN VS COMPUTER |
+  <br> FRIDAY 05 JULY 2019 AT 22:22 KST </h2>
+
+  <p><b>Logic.</b> The ends is to describe how the inputs and outputs of some function may be formatted , and to discover that there are 4 equivalent alternative formatting/descriptions of <b> "formatted-function" </b> . The solution is : to rearrange and pair/separate the inputs or outputs such to produce many formats .
+  </p>
+
+  <p>The general reading is that in the diagram below : [ff] is formatted-function which is parametrized-over the reindexed-function [ ( a <o> f ) ] via the parametrizators [ ( a' , b' ) ] . The types at the top ( [A'] and [B'] ) contain the totality of the data or substance or "database records" . The types at the bottom ( [A_] and [B] and [A] ) contain the "partial information" and are "fields" / "projections" / "components" ( via [a'] and [b'] ) from the totality of the data . More precisely , the type [A] reindexes/reparametrizes the type [A_] ...
+</p>
+
+    <p>There are 4 equivalent alternative formatting/descriptions of "formatted-function" . The distinction is : how much the 3 inputs ( of type [A'] or [A] or [A_] ) are paired/grouped together ? The first format [formatted_NOPARAM] pairs/group all the inputs , and the other formats separate/decouple at least one input which becomes the parametrizator . The last format [formatted_INTERNAL_REPARAM] separate/ungroup all the inputs , the format [formatted_EXTERNAL] parametrizes some external function , the format [formatted_INTERNAL] parametrizes some internal function .
+ </p>
+
+  <p><em>Note : text edit this code by Alt+↑ , Alt+↓ , Alt+→ , Alt+⏎ , Alt+hover .</em></p>
+  <textarea id="workspace11">
+Section section_formatted_function.
+
+(**
+
+   ff : formatted
+A'----------------> B'
+|                   |
+. a'                . b'
+|                   |
+.          f        v
+| A --------------> B
+. |
+| . a
+. |
+v v
+ A_
+
+ *)
+  
+  Variables (A_ : Type) (A : Type) (a : A -> A_) (B : Type) (f : A -> B) .
+  Variables (A' : Type) (a' : A' -> A_) (B' : Type) (b' : B' -> B) .
+
+  Definition formatted_NOPARAM := forall x_x'_ : { x_x' : A * A' | a ( fst x_x' ) = a' ( snd x_x' ) } ,
+      { y' : B' | f ( fst (proj1_sig x_x'_) ) = b' y' } .
+
+  Definition formatted_EXTERNAL := forall x : A ,
+      { x' : A' | a ( x ) = a' ( x' ) } -> { y' : B' | f ( x ) = b' y' } .
+  
+  Definition formatted_INTERNAL := forall x' : A' ,
+      forall x_ : { x : A | a ( x ) = a' ( x' ) } , { y' : B' | f ( proj1_sig x_ ) = b' y' } .
+
+  Definition formatted_INTERNAL_REPARAM := forall x0 : A_ ,
+      { x' : A' | x0 = a' ( x' ) } -> forall x_ : { x : A | a ( x ) = x0 } , { y' : B' | f ( proj1_sig x_ ) = b' y' } .
+  
+  Lemma formatted_EXTERNAL_of_formatted_NOPARAM : formatted_NOPARAM -> formatted_EXTERNAL .
+  Proof.
+    unfold formatted_NOPARAM , formatted_EXTERNAL . intros ff . intros x x'_ . unshelve eexists.
+    - refine (proj1_sig (ff _)).
+      exists ( x , proj1_sig x'_ ).
+      simpl. exact (proj2_sig x'_).
+    - set ( x_x'_ := exist _ _ _ ). exact (proj2_sig (ff x_x'_)).
+  Defined.
+
+  Lemma formatted_INTERNAL_of_formatted_EXTERNAL : formatted_EXTERNAL -> formatted_INTERNAL .
+  Proof.
+    unfold formatted_EXTERNAL , formatted_INTERNAL . intros ff . intros x' x_ . unshelve eexists.
+    - refine (proj1_sig (ff (proj1_sig x_) _)).
+      exists x' .
+      exact (proj2_sig x_).
+    - set ( x'_ := exist _ _ _ ). exact (proj2_sig (ff (proj1_sig x_) x'_)).
+  Defined.
+  
+
+  Lemma formatted_INTERNAL_REPARAM_of_formatted_INTERNAL : formatted_INTERNAL -> formatted_INTERNAL_REPARAM .
+  Proof.
+    unfold formatted_INTERNAL_REPARAM , formatted_INTERNAL . intros ff . intros x0 x'_ x_ . unshelve eexists.
+    - refine (proj1_sig (ff (proj1_sig x'_) _)).
+      exists (proj1_sig x_) .
+      rewrite (proj2_sig x_) . rewrite <- (proj2_sig x'_). reflexivity.
+    - set ( x__ := exist _ _ _ ). exact (proj2_sig (ff (proj1_sig x'_) x__)).
+  Defined.
+
+  Lemma formatted_NOPARAM_of_formatted_INTERNAL_REPARAM : formatted_INTERNAL_REPARAM -> formatted_NOPARAM .
+  Proof.
+    unfold formatted_INTERNAL_REPARAM , formatted_NOPARAM . intros ff . intros x_x'_ . unshelve eexists.
+    - refine (proj1_sig (ff (a (fst (proj1_sig x_x'_))) _ _)).
+      exists (snd (proj1_sig x_x'_)) . exact (proj2_sig x_x'_).
+      exists (fst (proj1_sig x_x'_)) . reflexivity.
+    - set ( x_ := exist _ _ _ ). set ( x'_ := exist _ _ _ ). 
+      exact (proj2_sig (ff (a (fst (proj1_sig x_x'_))) x'_ x_)).
+  Defined.
+
+  (**NOT NECESSARY
+  Lemma formatted_NOPARAM_of_formatted_INTERNAL : formatted_INTERNAL -> formatted_NOPARAM .
+  Proof.
+    unfold formatted_INTERNAL , formatted_NOPARAM . intros ff . intros x_x'_ . unshelve eexists.
+    - refine (proj1_sig (ff (snd (proj1_sig x_x'_)) _)).
+      exists (fst (proj1_sig x_x'_)) .
+      exact (proj2_sig x_x'_).
+    - set ( x_ := exist _ _ _ ). exact (proj2_sig (ff (snd (proj1_sig x_x'_)) x_)).
+  Defined.
+  
+  Lemma formatted_INTERNAL_REPARAM_of_formatted_NOPARAM : formatted_NOPARAM -> formatted_INTERNAL_REPARAM .
+  Proof.
+    unfold formatted_INTERNAL_REPARAM , formatted_NOPARAM . intros ff . intros x0 x'_ x_ . unshelve eexists.
+    - refine (proj1_sig (ff _)).
+      exists ((proj1_sig x_) , (proj1_sig x'_)) .
+      simpl. rewrite (proj2_sig x_) . rewrite <- (proj2_sig x'_). reflexivity.
+    - set ( x_x'_ := exist _ _ _ ). 
+      exact (proj2_sig (ff x_x'_)).
+  Defined.
+  **)
+</textarea>
+  <p>Below , internal function , whose internal input is of type [ { x : A | a ( x ) = x0 } ] ( or simply written [x0] ) , is similar as some tuple/pair/record whose sections/components may be accessed . Given some section , there are many equivalent alternatives for accessing this section : these accessors correspond to the many equivalent alternatives formats/descriptions for formatted-function . </p>
+
+  <textarea id="workspace12">
+  Definition internal_functions_at (x0 : A_ ) := forall x_ : { x : A | a ( x ) = x0 } , { y' : B' | f ( proj1_sig x_ ) = b' y' } .
+  Check eq_refl _ : formatted_INTERNAL = forall x' : A' , internal_functions_at ( a' ( x' ) )  .
+  Check eq_refl _ : formatted_INTERNAL_REPARAM = forall x0 : A_ ,
+        { x' : A' | x0 = a' ( x' ) } -> internal_functions_at x0 .
+
+  Section application_at_section.
+
+(**
+
+   ff : formatted
+A'----------------> B'
+|                   |
+. a'                . b'
+|                   |
+.          f        v
+| A --------------> B
+. |  ^
+| .  |
+. |a |
+| .  .
+. |  |
+| .  . section
+v v  |
+   A_
+
+ *)
+    
+    Variables (section : A_ -> A) (section_ : forall x0 : A_ , a ( section x0 ) = x0 ).
+
+    Definition application_at_section : forall (x0 : A_ ) , internal_functions_at x0 -> { y' : B' | f ( section x0 ) = b' y' }
+      := fun x0 ff => (ff ( exist _ (section x0) (section_ x0) )).
+   
+    Axiom formatted_INTERNAL_REPARAM_property :
+      forall ff : formatted_INTERNAL_REPARAM ,
+       forall x0 : A_ , forall x'_ : { x' : A' | x0 = a' ( x' ) } , forall x_ : { x : A | a ( x ) = x0 } ,
+             forall x00 : A_ , forall x'__ : { x' : A' | x00 = a' ( x' ) } , forall x__ : { x : A | a ( x ) = x00 } ,
+                   x0 = x00 -> proj1_sig x'_ = proj1_sig x'__ -> proj1_sig x_ = proj1_sig x__ ->
+                   proj1_sig (ff x0 x'_ x_) = proj1_sig (ff x00 x'__ x__) .
+
+    Lemma compose_with_application_at_section :
+      forall ff : formatted_INTERNAL_REPARAM, forall x0 : A_ ,
+      forall x'_ : { x' : A' | x0 = a' ( x' ) } ,
+        proj1_sig ( composition _ _ (ff x0) _ (application_at_section x0) x'_ )
+        = proj1_sig ( (formatted_EXTERNAL_of_formatted_NOPARAM (formatted_NOPARAM_of_formatted_INTERNAL_REPARAM
+                        ff )) (section x0) (exist (fun x' => a (section x0) = a' ( x' ))
+                                           (proj1_sig x'_) ltac:(rewrite (section_ x0); exact (proj2_sig x'_))) ).
+    Proof.
+      intros. simpl. unfold composition , application_at_section. simpl.
+      set (x_ := exist _ _ _).
+      set (x'__ := exist _ _ _). set (x__ := exist _ _ _).
+      eapply (formatted_INTERNAL_REPARAM_property ff x0 x'_ x_ (a (section x0)) x'__ x__).
+      - rewrite section_. reflexivity.
+      - reflexivity.
+      - reflexivity.
+    Defined.
+
+  End application_at_section.
+    
+End section_formatted_function.
+</textarea>
+
+<p>The ends is to compose/sequence two formatted-functions when the formatted-output of the first formatted-function is not formatted as (included within) the formatted-input of the subsequent formatted-functiion . The solution is : to intersec the formatting of the input of the first formatted-function ( so that its output is formatted ) as the formatting of the input of the subsequent formatted-function . </p>
+
+  <textarea id="workspace13">
+Section section_formatted_function_composition.
+
+(**
+                       
+            ff                    gg
+ A' ------------------> B' ---------------> C'
+ |                      |                   |
+ .                      .                   .
+ |                      |                   |
+ .                      . b'                . c'
+ |                      |                   |
+ .                      .                   v
+ | a'                   | B --------------> C
+ .                      . |        g
+ |                      | .  
+ .                      . | b
+ |                      | .
+ .                      . |
+ |                      v v
+ . A ------------------> B_
+ | |          f         
+ . .                 
+ | |                   
+ . . a
+ | |
+ . .
+ v v
+  A_
+
+ *)
+  
+  Variables (A_ : Type) (A : Type) (a : A -> A_) (B_ : Type) (f : A -> B_) .
+  Variables (A' : Type) (a' : A' -> A_) (B' : Type) (b' : B' -> B_) .
+  Variables (ff : formatted_EXTERNAL A_ A a B_ f A' a' B' b').
+  Variables (B : Type) (b : B -> B_) (C : Type) (g : B -> C) .
+  Variables (C' : Type) (c' : C' -> C) .
+  Variables (gg : formatted_EXTERNAL B_ B b C g B' b' C' c').
+
+  Lemma formatted_composition : formatted_EXTERNAL A_ (intersection B_ B b A f)
+                                          (composition _ A (multimultiplier B_ B b A f) A_ a)
+                                          C (composition _ _ (transported B_ B b A f) _ g)
+                                          A' a' C' c' .
+  Proof.
+    unfold formatted_EXTERNAL , intersection , composition , multimultiplier , transported in * . intros x_y_ x'_ . unshelve eexists.
+    - refine (proj1_sig (gg (snd (proj1_sig x_y_)) _ )). unshelve eexists.
+      + refine (proj1_sig (ff (fst (proj1_sig x_y_)) _ )).
+        exists (proj1_sig x'_) .
+        exact (proj2_sig x'_).
+      + rewrite <- (proj2_sig x_y_).
+        set ( x'__ := exist _ _ _ ).  exact (proj2_sig (ff (fst (proj1_sig x_y_)) x'__)).
+    - set ( ff_x'__ := exist _ _ _ ).  exact (proj2_sig (gg _ ff_x'__)).
+  Defined.
+
+End section_formatted_function_composition.
+</textarea>
+
+<p><b>Dictionary.</b> What is the dictionary definition of "format" / "form" ? <a href="https://www.thefreedictionary.com/format">https://www.thefreedictionary.com/format</a> , <a href="https://www.thefreedictionary.com/form">https://www.thefreedictionary.com/form</a> says : </p>
+<ul> <li> <i> form - the <b>spatial arrangement</b> of something as distinct from its <b>substance</b> ; </i> </li>
+  <li> <i> format - the <b>arrangement of data</b> for computer input or output, as the number of <b>fields</b> in a <b>database record</b> or the margins in a report ; </i> </li>
+  <li> <i> form - a category of things distinguished by some <b>common characteristic</b> or quality ; </i> </li>
+  <li> <i> format - the organization of information according to <b>preset specifications</b> (usually for computer processing) . </i> </li>
+</ul>
+
+<p>These key words "substance" , "data" , "database record" signify the "totality of the real data in memory" . But sometimes only some (preset) "partial information" ( "characteristic" , "specifications" , "field" / "projection" ) from this total data is "touched" / "indexing" ( for example for "spatial arrangement" ) .</p>
+
+<p>What is the contrary/complement of "format" / "formal" / "grammatical" ? It is : "sense" ( "substance" , "data" ) in any other "possible forms" , and therefore may mention "discretion for the possibility" or "risk for the possibility" .  On the contrary : "format" is similar as "reference form" , "copy-me grading" , "objective" , which refuses to be subjective-under-teaching (of possible forms) .</p>
+
+<p>Another manner in which "format" / "formal" is contrary to "sense" is : any declaration is formally valid when prefixed with "it is possible that ... " ( for example , "maybe you are thief" ) , but the inferred wanted sense is different from the lacking actual sense .</p>
+
+<p>In summary : forced-fool-and-theft/lie/falsification has :</p>
+<ul> <li> ( <b> "flip-flop" </b> ) , fool via : confused or by contradicting oneself , or by flip-flop « possibility » ( "discretion" , "risk" ) versus « copy-me grading » ( "format" , "CV" , "objective" , refuse to be subjective-under-teaching ) . </li>
+<li> ( <b> "play-monopoly" </b> ) , fool via : by defame/accuse ( without personal-knowledge ) in the form of possibility/question-excuse ( " ... ? " , " maybe ... " ) . </li>
+</ul>
+
+<p><b>Legislation.</b> What is the legislation definition of "format" ?  <a href="https://www.canlii.org/en/on/laws/regu/rro-1990-reg-194/latest/rro-1990-reg-194.html#sec37.12.1">https://www.canlii.org/en/on/laws/regu/rro-1990-reg-194/latest/rro-1990-reg-194.html#sec37.12.1</a> , at "Rules of Civil Procedure, RRO 1990, Reg 194 / HEARING WITHOUT ORAL ARGUMENT / Opposed Motions in Writing" , says : </p>
+<p> <i>37.12.1 (4) Where the issues of fact and law are not complex, the moving party may propose in the notice of motion that the motion be heard in writing without the attendance of the parties, in which case,</i>
+<ul> <li> <i> (a) the motion shall be made on at least <b>fourteen days notice</b>; </i> </li>
+  <li> <i> (b) the moving party shall serve with the notice of motion and immediately file, with proof of service in the court office where the motion is to be heard, <b>a motion record, a draft order and a factum</b> entitled factum for a motion in writing, setting out the moving party’s argument;  </i> </li>
+  <li> <i> (c) the motion may be heard <b>in writing without the attendance of the parties</b>, unless the court orders otherwise. </i> </li>
+</ul>
+</p>
+
+<p>Why would the <b> "oral format" </b> be contrasted from the <b> "written format" </b> ? The "partial information" which is touched is not same for these two formats ? </p>
+
+<p>Indeed , in the oral format , the "bad party" will more easily confuse/mix up facts and falsify hidden presuppositions and indirectly suggest diffamatory/accusation possibilities/questions ( "frame" ) ; while the "real party" will more difficultly describe precisely the totality of the true reality , without mentioning/validating diffamatory/accusation possibilities/questions . </p>
+
+<p>In contrast , the written format is always processed in advance ( "fourteen days notice" ) , has detailled description ( "a motion record, a draft order and a factum" ) which is not overwritten (masked/erased) by any confused-and-incomplete oral commentary ( "in writing without the attendance of the parties" ) .</p>
+
+<h2 class="title" id="live4">LIVE 4/6 : how are two people the same (interdependence) ? | BAD HUMAN VS COMPUTER |
+<br> FRIDAY 12 JULY 2019 AT 22:22 KST </h2>
+
+<p><b>Logic.</b></p>
+
+<p style="text-align:center"> <b> &nbsp&nbsp You &nbsp&nbsp read &nbsp&nbsp this korean word &nbsp&nbsp 안녕 &nbsp&nbsp . </b> </p>
+
+<p> The ends is to describe how there are <b>varying degrees of grammar</b> , or correspondingly how there are varying degrees of sense . At one extreme (concrete grammar / syntax) is the ink which is stored as some sequence of tokens on the paper . At the other extreme (sense) is the total reality which is stored as some memory dynamics in the brain , which is then written on or read from the paper . In the middle is the COQ computer ( automatized/implicit notations ) . </p>
+
+<p> <b>Some information may be lost or gained when varying the degree of grammar</b> . Primo , here is how information may be lost . Any grammar has multiple entry classes , for example : verb , noun , sentence ( , import-another-language ... ) . These grammar entries may be <b>mutually interdependent</b> , and this mutual interdepence may be lost when varying the degree from grammar to sense . In other words : the mutually recursive functions which read/parse the sequence/list of tokens on the paper are indeed very mutually dependent , but the corresponding inductive types in the COQ computer cease to be mutually dependent and have only-hierarchical dependence . ( <i>MEMO : one solution to recover the mutual dependence in the COQ computer is to describe the inductive types <b> "manually" </b> instead of automatically ... </i> ) </p>
+
+<p> Secondo , here is how information may be gained when varying the degree of grammar . Comnmonly , some text (sequence of tokens) is read from the paper then many post-processing of varying degree are done to determine how much sensible is this information . One example of such post-processing step is to decide/check/verify whether two grammatical items have indeed the same sense ( "unify" ) as wanted . Now <b>this sensible post-processing step may be integrated into the tokens-grammar itself</b> such to give some new intermediate grammar , but the reader algorithm for such intermediate grammar may become almost as complex as the reference sense . For example , if the reference sense is the Coq computer , then the reader for this intermediate grammar, which asserts/checks/verifies that some two grammatical items have the same sense , needs the (outer) COQ unification algorithm ( and such reader may therefore be programmed in LTAC , <i>or better : disregard any such intermediate grammar and directly touch the reference sense as the <b>COQ computer automatized/implicit notations</b> ... </i> ) . </p>
+
+<p><em>Note : text edit this code by Alt+↑ , Alt+↓ , Alt+→ , Alt+⏎ , Alt+hover .</em></p>
+<textarea id="workspace14">
+Module Type Sensible_Grammar .
+From Coq Require Import Lists.List Arith.Compare.
+Import ListNotations.
+ 
+(* some preliminary definitions *)
+Definition boolunit (n : nat) : Type := match n with
+                                        O => unit
+                                      | S m => bool
+                                      end .
+Definition truett (n : nat) : boolunit n := match n with
+                                            O => tt
+                                          | S m => true
+                                          end .
+
+(* the corresponding inductive types [ilist] and [bulist] in the COQ computer
+  cease to be mutually dependent and have only-hierarchical dependence *)
+(* indeed , [bulist] is absent from [ilist] *)
+Inductive ilist : nat -> Type :=
+  INil : ilist 0
+| ICons : forall (n : nat), ilist n -> boolunit n (* asserts/checks this [n] is same sense as [n] in [ilist n] *)
+                -> ilist (S n) .
+
+(* but , [ilist] is present in [bulist] *)
+Inductive bulist : forall n : nat, ilist n  -> boolunit n -> Type :=
+  Bulist : forall (n : nat) (l : ilist n), bulist n l (truett n) .
+
+Compute (existT ilist 1 (ICons 0 INil tt)) .
+Compute (existT ilist 2 (ICons 1 (ICons 0 INil tt) true)) .
+
+(* the mutually recursive functions which read/parse the sequence/list of tokens on the paper are indeed very mutually dependent . *)
+Inductive token : Type :=
+  Token_INil | Token_ICons | Token_Bulist .
+
+Fixpoint reader_INil (steps : nat) (xs : list token)
+: option ( (ilist 0) * list token) :=
+match steps with
+| 0 => None
+| S steps' =>
+  match xs with
+  | [] => None
+  | x :: rest =>
+    match x with
+    | Token_INil => Some ( INil , rest )
+    | Token_ICons => None
+    | Token_Bulist => None
+    end
+  end
+  end
+
+with (* mutual dependence *)
+reader_ICons (steps : nat) (xs : list token)
+: option ( { n & ilist (S n) } * list token) :=
+match steps with
+| 0 => None
+| S steps' =>
+  match xs with
+  | [] => None
+  | x :: rest =>
+    match x with
+    | Token_ICons =>
+      (* inner mutual dependence *)
+      match (reader_ilist steps' rest) with
+      | Some (existT _ n l , rest') =>
+        (* HERE: outer mutual dependence *)
+        match (reader_bulist steps' rest' ) with
+        | Some ( (existT _ n' (existT _ l' (existT _ b t))) , rest'' ) =>
+          (* Memo in the reference sense :
+             [ | ICons : forall n , ilist n -> boolunit n ... ] 
+             asserts/checks this [n] is same sense as [n] in [ilist n] *)
+          (* Luckily , the reader for this particular intermediate grammar 
+             does not need the (outer) COQ unification algorithm ... *)
+          (* HERE: (easy) integration of the would-be-tokens-only grammar 
+             with this post-processing step of the reference-sense *)
+          match Compare.Pcompare n n' with
+          | inleft (right pr) =>
+            Some (existT _ n (ICons n l ltac:(rewrite pr; exact b)) , rest'')
+          | _ => None
+          end
+        | None => None
+        end
+      | None => None
+      end
+    | Token_INil => None
+    | Token_Bulist => None
+    end
+  end
+end
+
+with (* mutual dependence *)
+reader_ilist (steps : nat) (xs : list token)
+: option ( { n & ilist n } * list token) :=
+match steps with
+| 0 => None
+| S steps' =>
+  match (reader_ICons steps' xs) with
+  | Some (existT _ n l , rest') => Some ( (existT _ (S n) l) , rest')
+  | None =>
+    match (reader_INil steps' xs) with
+    | Some (l , rest') => Some ( (existT _ 0 l) , rest')
+    | None => None
+    end
+  end
+end
+  
+with (* mutual dependence *)
+reader_Bulist (steps : nat) (xs : list token)
+: option ( { n & { l : ilist n & bulist n l (truett n) } } * list token) :=
+match steps with
+| 0 => None
+| S steps' =>
+  match xs with
+  | [] => None
+  | x :: rest =>
+    match x with
+    | Token_Bulist =>
+      (* HERE: outer mutual dependence *)
+      match (reader_ilist steps' rest ) with
+      | Some (existT _ n l , rest') =>
+        Some ((existT _ n (existT _ l (Bulist n l))) , rest')
+      | None => None
+      end
+    | Token_INil => None
+    | Token_ICons => None
+    end
+  end
+end
+
+with (* mutual dependence *)
+reader_bulist (steps : nat) (xs : list token)
+: option ( { n & { l : ilist n & { b : boolunit n & bulist n l b } } } * list token) :=
+match steps with
+| 0 => None
+| S steps' =>
+  match (reader_Bulist steps' xs) with
+  | Some ((existT _ n (existT _ l t)) , rest) =>
+    Some ( (existT _ n (existT _ l (existT _ (truett n) t))) , rest)
+  | None => None
+  end
+end .
+
+Compute ( reader_ilist 100 [Token_ICons ;
+                                        Token_INil ;
+                                        Token_Bulist ;
+                                        Token_INil ] ) .
+(* = Some (existT _ 1 (ICons 0 INil tt), []) *)
+Compute ( reader_ilist 100 [Token_ICons ;
+                                        Token_ICons ; Token_INil ; Token_Bulist ; Token_INil ;
+                                        Token_Bulist ;
+                                        Token_ICons ; Token_INil ; Token_Bulist ; Token_INil ] ).
+(* = Some (existT _ 2 (ICons 1 (ICons 0 INil tt) true), []) *)
+Compute ( reader_ilist 100 [Token_ICons ;
+                                        Token_ICons ; Token_INil ; Token_Bulist ; Token_INil ;
+                                        Token_Bulist ;
+                                        Token_INil ] ).
+(* = None *)
+
+End Sensible_Grammar.
+</textarea>
+
+<p><b>Dictionary.</b> What is the dictionary definition of "interdependence" ? <a href="https://www.thefreedictionary.com/interdependence">https://www.thefreedictionary.com/interdependence</a> says :</p>
+<ul> <li> <i> dependence between two or more people, groups, or things ; </i> </li>
+  <li> <i> interdependence - a <b>reciprocal</b> relation between interdependent entities (objects or individuals or groups) ; </i> </li>
+  <li> <i> reciprocality, reciprocity - a relation of mutual dependence or action or influence ; </i> </li>
+  <li> <i> A logical <b>or natural</b> association between two or more things ... </i> </li>
+</ul>
+
+<p>The key word <i>"or natural"</i> says that <i>this association may be some consequence which is not computational-logical ( "butterfly effect" , "chaos" ) or this association may be some consequence which is not known or this association may be some consequence of reckless running . </i> </p>
+
+<p><b>Legislation.</b> What is the legislation definition of "interdependence" ? <a href="https://www.canlii.org/en/ca/laws/stat/rsc-1985-c-c-46/145803/rsc-1985-c-c-46.html#sec467.1subsec1">https://www.canlii.org/en/ca/laws/stat/rsc-1985-c-c-46/145803/rsc-1985-c-c-46.html#sec467.1subsec1</a> , at "Criminal Code, RSC 1985, c C-46 / PART XIII — ATTEMPTS — CONSPIRACIES — ACCESSORIES / Definitions" , says :  </p>
+<p> <i>467.1 (1) The following definitions apply in this Act.
+    <br> <b>criminal organization</b> means a group, however organized, that</i>
+  <ul> <li> <i> (a) is composed of <b>three ( ??? )</b> or more persons in or outside Canada; and </i> </li>
+    <li> <i> (b) has as one of its main purposes or main activities the facilitation or commission of one or more serious offences that, if committed, would likely result in the direct <b>or indirect</b> receipt of a material benefit, including a financial benefit, by the group or by any of the persons who constitute the group.  </i> </li>
+    <li> <i> It does <b>not include a group of persons that forms randomly</b> for the immediate commission of a single offence. </i> </li>
+</ul>
+</p>
+
+<p>The key word <i> "or indirect" </i> is precisely synonymous with the keyword "organization" . The key words <i>"three"</i> and <i> "not include a group of persons that forms randomly" </i> say almost litterally the existence of these types of businesses :
+<ul> <li> <b>"private business"</b> of two persons ( "marital" / <b> "working girl" </b> ) ; </li>
+  <li> <b>"interdependence business"</b> of three or more persons , but which excludes the <b>"public business"</b> of many random persons . </li> </ul>
+And here "criminal" signifies theft from outside the business into the business .
+</p>
+
+<p> This idea suggests another idea that : <i> any public business/manifestation/revolution/subversion which seriously tries to be successful must be head-less ( at least appear random , without the "leader" ) </i> </p>
+
+<p>In summary : forced-fool-and-theft/lie/falsification has :</p>
+<ul> <li> conversion of own self gain/win/nonloss , </li>
+<li> for other somebody-else-or-the-public loss ( "detournement-interdependant de fonds publics" ) , </li>
+<li> as synchronizing/colluding/conniving , </li>
+<li> as being interdependent ( "tribalistic" ) / non-autonomous while misappropriating public funds via interdependent-detour ( "detournement-interdependant de fonds publics" , instead of minimum wage or random wage ) , </li>
+<li> as being payee/puppet/proxy/agent ( "pet" ) , </li>
+<li> as being payer/puppeteer/commander ( by payment , by suggesting/subleading , by predicting loss if no ) , </li>
+<li> as being judge/referee/arbitrator ( "psychic" , "interpretation" ) who author/edit/fabricate/guess excessively outside/beyond its jurisdiction = competence = [the personal-knowledge testimony of only the witness] , </li>
+<li> in some monetarist-or-interdependent/tribalistic and effectively-anonymous crowd/mob/gang/corporatism , </li>
+<li> such to prevent cumulation and inheritance of forced-fool-and-theft/lie/falsification ... </li> </ul>
+
+<h2 class="title" id="live5">LIVE 5/6 : is it mispelled ! or it is calculated ? | BAD HUMAN VS COMPUTER |
+<br> FRIDAY 19 JULY 2019 AT 22:22 KST </h2>
+
+<p><b>Logic.</b> The ends is to describe how there are <b>varying degrees of grammatical-program with sensible-memory</b> and how to <b>calculate on purpose</b> accross these varying degrees . </p>
+
+<p>For the example of arithmetic ( numbers 0 , 1 , 2 ... and addition 2 + 3 ... ) , the ends is to calculate/compile/purpose from the more-sensible grammatical-program ( "expression" ) with less-grammatical sense-memory ( "value" ) , towards the less-sensible grammatical-program ( "command" ) with more-grammatical sense-memory ( "stack update" ) . This calculation/translation on purpose will simulate/mimick the implicit/outer transformations/representations of the less-grammatical sense-memory ( "value" ) ( <i> which occur on the outer host-machine stack but are hidden/implicit ... </i> ) . </p>
+
+<p>For the example of functional programming ( "lambda calculus" with abstraction/internal-functions and application/section : [ ( 2 + _ ) ( 3 ) ] ) , this calculation/translation on purpose will simulate/mimick the elimination of the implicit/outer compositions/conversions which occur in the sense-memory , more precisely : <b> this translation will transform from any beta-reducible/composed abstraction-application/section of some form-morphism , towards some accumulated delayed/pending substitution/reparametrization of this form-morphism by the section parametrizator-morphism ... and will integrate such with functorial geometry : this is the new technical idea of the MODOS </b> .</p>
+
+<p style="text-align:center"> <b>  ( ( abstraction fform ) &lt;o ( application_[sectionparam] ) ) &nbsp;&nbsp;  ~~&gt;_[sectionparam'] &nbsp;&nbsp; ( fform )  </b>
+</p>
+
+<p><em>Note : text edit this code by Alt+↑ , Alt+↓ , Alt+→ , Alt+⏎ , Alt+hover .</em></p>
+<textarea id="workspace15">
+From Coq Require Import Lists.List Arith.Compare.
+Import ListNotations.
+
+Module Calculate_on_purpose .
+  
+Inductive expressiveprogram : Set :=
+| Const : nat -> expressiveprogram
+| Plus : expressiveprogram -> expressiveprogram -> expressiveprogram.
+
+Fixpoint expressiveprogram_to_memory (e : expressiveprogram) : nat :=
+match e with
+| Const n => n
+| Plus e1 e2 => plus (expressiveprogram_to_memory e1 )
+                    (expressiveprogram_to_memory e2 )
+end.
+
+Eval simpl in expressiveprogram_to_memory
+                (Plus (Plus (Const 2) (Const 2)) (Const 7)).
+(*      = 11 : nat *)
+
+Inductive instruction : Set :=
+| iConst : nat -> instruction
+| iPlus : instruction.
+
+Definition program := list instruction.
+Definition stack := list nat.
+
+Definition instruction_to_memory (i : instruction) : stack -> option stack :=
+fun s : stack => 
+match i with
+| iConst n => Some (n :: s)
+| iPlus =>
+  match s with
+  | arg1 :: arg2 :: s' => Some (plus arg1 arg2 :: s')
+  | _ => None
+  end
+end.
+
+Fixpoint program_to_memory (p : program) : stack -> option stack :=
+fun s : stack =>
+match p with
+| nil => Some s
+| i :: p' =>
+  match instruction_to_memory i s with
+  | None => None
+  | Some s' => program_to_memory p' s'
+  end
+end.
+
+Fixpoint calculate_expressiveprogram_to_program (e : expressiveprogram) : program :=
+match e with
+| Const n => iConst n :: nil
+| Plus e1 e2 =>
+  calculate_expressiveprogram_to_program e2
+    ++ calculate_expressiveprogram_to_program e1 ++ iPlus :: nil
+end.
+
+Eval simpl in calculate_expressiveprogram_to_program
+                (Plus (Plus (Const 2) (Const 2)) (Const 7)).
+(*     = [iConst 7; iConst 2; iConst 2; iPlus; iPlus] : program  *)
+Eval simpl in fun tail => program_to_memory (calculate_expressiveprogram_to_program
+                                             (Plus (Plus (Const 2) (Const 2)) (Const 7))) tail.
+(*      = fun tail : stack => Some (11 :: tail) : stack -> option stack  *)
+(*MEMO: has same substance/content as : *)
+Eval simpl in expressiveprogram_to_memory (Plus (Plus (Const 2) (Const 2)) (Const 7)).
+(*      = 11 : nat  *)
+
+Lemma correct_calculate_expressiveprogram_to_program :
+  forall (e : expressiveprogram) (p : program) (s : stack),
+    program_to_memory (calculate_expressiveprogram_to_program e ++ p) s
+    = program_to_memory p (expressiveprogram_to_memory e :: s) .
+Admitted.
+
+End Calculate_on_purpose .
+</textarea>
+
+<p><b>Dictionary.</b> What is the dictionary definition of "calculate" / "purpose"  ? <a href="https://www.thefreedictionary.com/calculate">https://www.thefreedictionary.com/calculate</a> , <a href="https://www.thefreedictionary.com/purpose">https://www.thefreedictionary.com/purpose</a> says :</p>
+<ul> <li> <i> <b>calculate - to make suitable or fit for a purpose; adapt ; </b> </i> </li>
+  <li> <i> calculate - to intend; plan ; </i> </li>
+  <li> <i> purpose - an anticipated outcome that is intended or that guides your planned actions; </i> </li>
+  <li> <i> purpose - The object toward which one strives or for which something exists; an aim or goal ; </i> </li>
+  <li> <i> purpose - an intended or desired result; aim; goal ; </i> </li>
+  <li> <i> purpose - Determination; resolution ;  </i> </li>
+  <li> <i> purpose - reach a decision; resolve ;   </i> </li>
+  <li> <i> purpose - practical result or effect;  </i> </li>
+</ul>
+
+<p>These are the same as the phrase : <b>"calculate on purpose"</b> such to adapt/translate something from some (problematic) form towards another (solution) form . </p>
+
+<p><b>Legislation.</b> What is the legislation definition of "calculate on purpose" , "mispell" ? <a href="https://www.canlii.org/en/ca/laws/stat/rsc-1985-c-c-46/145803/rsc-1985-c-c-46.html#sec33.1">https://www.canlii.org/en/ca/laws/stat/rsc-1985-c-c-46/145803/rsc-1985-c-c-46.html#sec33.1</a> , at "Criminal Code, RSC 1985, c C-46 / PART I / SELF-INDUCED INTOXICATION [33.1]" , and <a href="https://www.canlii.org/en/ca/laws/stat/rsc-1985-c-c-46/145803/rsc-1985-c-c-46.html#sec16">https://www.canlii.org/en/ca/laws/stat/rsc-1985-c-c-46/145803/rsc-1985-c-c-46.html#sec16</a> , at "Criminal Code, RSC 1985, c C-46 / PART I" , says :  </p>
+
+<ul><li><i>Self-induced Intoxication
+<br>When defence not available
+<br>33.1 (1) It is not a defence to an offence referred to in subsection (3) that the accused, by reason of self-induced intoxication, <b>lacked the general intent or the voluntariness required to commit the offence, where the accused departed markedly from the standard of care as described in subsection (2).</b>
+<br>Criminal fault by reason of intoxication
+<br>(2) For the purposes of this section, <b>a person departs markedly from the standard of reasonable care generally recognized in Canadian society</b> and is thereby criminally at fault where the person, while in a state of self-induced intoxication that renders the person unaware of, or incapable of consciously controlling, their behaviour, voluntarily or involuntarily interferes or threatens to interfere with the bodily integrity of another person.</i></li>
+<li><i>Defence of mental disorder
+<br>16 (1) No person is criminally responsible for an act committed or an omission made while suffering from a <b>mental disorder that rendered the person incapable</b> of appreciating the nature and quality of the act or omission or <b>of knowing that it was wrong.</b></i></li></ul>
+
+<p>This says that there are <b>varying degrees starting from carefully doing right , until purposely doing wrong</b> . And there are many ways/causes to depart markedly from the standard of carefully doing right :
+<ul><li>self-induced alcoholic intoxication , and this infers <i>"criminally at fault"</i> ; </li>
+  <li>mental disorer , including the expectation to have colour of righteousness where such is absent ( in other words : not knowing that the act is wrong ) , and this infers "not criminally responsible" ; </li>
+  <li><b>bad-habits-and-mentality intoxication ( "contempt" ) as generally recognized in the society . </b> </li>
+</ul>
+</p>
+
+<p> Other ideas are related to the idea of "caculation on purpose" . What is the complement of calculable/predictable ? Answer : random/possible . Therefore the losses caused by forced-fool-and-theft/lie/falsification include both :
+<ul> <li> <b>calculable/predictable loss of</b> : health , or </li>
+<li> calculable/predictable loss of : predictable-time computational-logical engineering , or </li>
+<li> calculable/predictable loss of : tradeability , including loss of the public or public-students payers/purchasers/clients , or </li>
+<li> <b>random/possible loss of</b> : timing/momentum/kairos/opportunity/possibilities , or </li>
+<li> random/possible loss of : random-moment dia-para-computalogical discovery , including loss of review/input/feedback from the public or the public-students , or </li> </ul>
+ </p>
+
+<p>Simulation is some form of calculation . How to detect simulation/calculation of randomness/possibility ? Also how to detect simulation/calculation of harm ? Therefore forced-fool-and-theft/lie/falsification has :
+<ul> <li> ( <b> "mispell" </b> ) , lie via : simulating/mimicking/play confusion/random/[none-intent]/[none-motive]/[none-know] , while in reality caused by calculation on purpose or by bad-habits-and-mentality intoxication ( "contempt" )  </li>
+<li> ( <b> "play" , "inversion-accusatoire" </b> ) , fool via : simulating/mimicking/play harm/loss/victim while being the cause or beneficiary/satisfied ,</li></ul> </p>
+
+<p>How to distinguish simulation/play calculation from reality , consistently without flip-flop ? Therefore forced-fool-and-theft/lie/falsification has :
+<ul> <li>  ( <b> "play-monopoly" </b> ) , fool via : possibility of simulation/mimicking/play/joke-excuse from oneself while such is always reality/serious from another person , or by defame/accuse ( without personal-knowledge ) in the form of question-excuse ( " ... ? " ) , </li></ul></p>
+
+<h2 class="title" id="live6">LIVE 6/6 : coward force vs honor | BAD HUMAN VS COMPUTER |
+<br> FRIDAY 26 JULY 2019 AT 22:22 KST </h2>
+
+<p><b>Logic.</b> The ends is to honor the possibility which was made at the begining of these 37 days of reviewing the making-of the MODOS . In short : I have shown the prototype of <b>how to only-grammatically touch the sensible updates</b> in functional programming which occur in the sense-memory and which is modified by functorial geometry . </p>
+
+<p>For instant first impression , the conversion/computation-relation constructor which says that the « forgetting » morphism of the substitution-object polyparameterization-polymorph-cancels the « remembering » morphism corresponding to any form-morphism , is written as : </p>
+
+<p style="text-align:center;"><img width="100%" src="remember_forget_polyparameterization_polymorphism.svg"></p>
+
+<p><em>Note : text edit this code by Alt+↑ , Alt+↓ , Alt+→ , Alt+⏎ , Alt+hover .</em></p>
+<textarea id="workspace16">
+(* | Remember_Forget :
+ forall (Yoneda00_Form_F : obGenerator -> Type)
+   (Yoneda01_Form_F : Yoneda01_data Yoneda00_Form_F)
+   (Yoneda00_Param_F : obGenerator -> Type)
+   (Yoneda01_Param_F : Yoneda01_data Yoneda00_Param_F)
+   (Yoneda10_FormParam_F : Yoneda10_data Yoneda01_Form_F Yoneda01_Param_F)
+   (F : @obCoMod Yoneda00_Form_F Yoneda01_Form_F Yoneda00_Param_F Yoneda01_Param_F Yoneda10_FormParam_F)
+   (Param_F : @obCoMod_Param Yoneda00_Param_F Yoneda01_Param_F)
+   (Yoneda00_Param_SubstF : obGenerator -> Type)
+   (Yoneda01_Param_SubstF : Yoneda01_data Yoneda00_Param_SubstF)
+   (Param_SubstF : @obCoMod_Param Yoneda00_Param_SubstF Yoneda01_Param_SubstF)
+   (Yoneda10_Param_subst : Yoneda10_data Yoneda01_Param_SubstF Yoneda01_Param_F)
+   (Yoneda00_Param_PiSubstF : obGenerator -> Type)
+   (Yoneda01_Param_PiSubstF : Yoneda01_data Yoneda00_Param_PiSubstF)
+   (Param_PiSubstF : @obCoMod_Param Yoneda00_Param_PiSubstF Yoneda01_Param_PiSubstF)
+   (Yoneda10_Param_proj : Yoneda10_data Yoneda01_Param_SubstF Yoneda01_Param_PiSubstF)
+   (param_projsubst : 'CoMod__( Param_PiSubstF ~> Param_F @_ Yoneda10_Param_proj <o> Param_SubstF ` Yoneda10_Param_subst ) ),
+
+ forall (Yoneda00_Param_SubstF' : obGenerator -> Type)
+   (Yoneda01_Param_SubstF' : Yoneda01_data Yoneda00_Param_SubstF')
+   (Param_SubstF' : @obCoMod_Param Yoneda00_Param_SubstF' Yoneda01_Param_SubstF')
+   (Yoneda10_Param_proj' : Yoneda10_data Yoneda01_Param_SubstF' Yoneda01_Param_PiSubstF)
+   (Yoneda10_Param_subst' : Yoneda10_data Yoneda01_Param_SubstF' Yoneda01_Param_F)
+   (Yoneda10_Param_reparam_forget : reparamMor Yoneda10_Param_proj Yoneda10_Param_subst
+                                               Yoneda10_Param_proj' Yoneda10_Param_subst')
+   (Heq_sectional_reparam_forget : forall G param param0, sval Yoneda10_Param_proj G param = sval Yoneda10_Param_proj G param0
+                            ->  sval (sval Yoneda10_Param_reparam_forget) G param
+                                = sval (sval Yoneda10_Param_reparam_forget) G param0)
+   (reparam_forget : 'CoMod_&(  Param_SubstF  ~>  Param_SubstF' @_ (sval Yoneda10_Param_reparam_forget)  &  Yoneda10_Param_proj  <o>  Yoneda10_Param_subst  &  Yoneda10_Param_proj'  <o>  Yoneda10_Param_subst'  ) ),
+
+ forall (L : obGenerator) (Yoneda00_Param_LF : obGenerator -> Type)
+   (Yoneda01_Param_LF : Yoneda01_data Yoneda00_Param_LF)
+   (Param_LF : @obCoMod_Param Yoneda00_Param_LF Yoneda01_Param_LF)
+   (Yoneda10_Param_proj_ll : Yoneda10_data Yoneda01_Param_LF (Yoneda01_Param_View (Parameter0 L)))
+   (Yoneda10_Param_subst_ll : Yoneda10_data Yoneda01_Param_LF Yoneda01_Param_F)
+   (Yoneda10_Form_ll : Yoneda10_Form_data (Yoneda10_FormParam_View L) Yoneda10_FormParam_F Yoneda10_Param_proj_ll Yoneda10_Param_subst_ll)
+   (ll : 'CoMod( View L ~> F @_ Yoneda10_Param_proj_ll <o> Param_LF ` Yoneda10_Param_subst_ll @^ Yoneda10_Form_ll )),
+
+ forall (**MEMO:?? when the generating parametrizator-functor is full then 
+      this polyelement is the same as one (decidable) single element [param : Yoneda01_Param_SubstF (Parameter0 L)] ??*)
+   (Yoneda10_Param_paramdomain (*TODO: why not morphism?*) : Yoneda10_data (Yoneda01_Param_View (Parameter0 L)) Yoneda01_Param_PiSubstF)
+   (paramdomain : 'CoMod__( (View_Param (Parameter0 L)) ~> Param_PiSubstF
+                     @_ (Yoneda10_UnitCoMod_Param _) <o> (View_Param (Parameter0 L)) ` Yoneda10_Param_paramdomain ) ),
+
+ forall (Yoneda10_Param_reparam_remember : reparamMor (Yoneda10_Param_Intersec_proj Yoneda10_Param_proj' Yoneda10_Param_paramdomain)
+                                                 (Yoneda10_Param_PolyCoMod (Yoneda10_Param_Intersec_subst Yoneda10_Param_proj' Yoneda10_Param_paramdomain) Yoneda10_Param_subst')
+                                                 Yoneda10_Param_proj_ll Yoneda10_Param_subst_ll )
+   (reparam_remember : 'CoMod_&( (Intersec Param_SubstF' Yoneda10_Param_proj' (View_Param (Parameter0 L)) Yoneda10_Param_paramdomain)
+     ~>  Param_LF @_ sval Yoneda10_Param_reparam_remember
+      &  (Yoneda10_Param_Intersec_proj Yoneda10_Param_proj' Yoneda10_Param_paramdomain)
+     <o> (Yoneda10_Param_PolyCoMod (Yoneda10_Param_Intersec_subst Yoneda10_Param_proj' Yoneda10_Param_paramdomain) Yoneda10_Param_subst')
+      &  Yoneda10_Param_proj_ll  <o>  Yoneda10_Param_subst_ll ) ),
+
+ forall (Yoneda00_Param_SubstF0 : obGenerator -> Type)
+   (Yoneda01_Param_SubstF0 : Yoneda01_data Yoneda00_Param_SubstF0)
+   (Param_SubstF0 : @obCoMod_Param Yoneda00_Param_SubstF0 Yoneda01_Param_SubstF0)
+   (Yoneda10_Param_subst0 : Yoneda10_data Yoneda01_Param_SubstF0 Yoneda01_Param_F)
+   (Yoneda10_Param_proj0 : Yoneda10_data Yoneda01_Param_SubstF0 Yoneda01_Param_PiSubstF)
+   (param_projsubst0 : 'CoMod__( Param_PiSubstF ~> Param_F @_ Yoneda10_Param_proj0 <o> Param_SubstF0 ` Yoneda10_Param_subst0 ) ),
+ forall (Yoneda10_Param_reparam_forget0 : reparamMor Yoneda10_Param_proj0 Yoneda10_Param_subst0
+                                               Yoneda10_Param_proj' Yoneda10_Param_subst')
+   (Heq_sectional_reparam_forget0 : forall G param param0, sval Yoneda10_Param_proj0 G param = sval Yoneda10_Param_proj0 G param0
+                            ->  sval (sval Yoneda10_Param_reparam_forget0) G param
+                                = sval (sval Yoneda10_Param_reparam_forget0) G param0)
+   (reparam_forget0 : 'CoMod_&(  Param_SubstF0  ~>  Param_SubstF' @_ (sval Yoneda10_Param_reparam_forget0)  &  Yoneda10_Param_proj0  <o>  Yoneda10_Param_subst0  &  Yoneda10_Param_proj'  <o>  Yoneda10_Param_subst'  ) ),
+
+ forall Yoneda00_Form_E Yoneda01_Form_E Yoneda00_Param_E Yoneda01_Param_E Yoneda10_FormParam_E
+   (E : @obCoMod Yoneda00_Form_E Yoneda01_Form_E Yoneda00_Param_E Yoneda01_Param_E Yoneda10_FormParam_E)
+   (Yoneda00_Param_FE : obGenerator -> Type)
+   (Yoneda01_Param_FE : Yoneda01_data Yoneda00_Param_FE)
+   (Param_FE : @obCoMod_Param Yoneda00_Param_FE Yoneda01_Param_FE)
+   (Yoneda10_Param_proj_ee : Yoneda10_data Yoneda01_Param_FE Yoneda01_Param_F)
+   Yoneda10_Param_subst_ee Yoneda10_Form_ee
+   (ee : 'CoMod( F ~> E @_ Yoneda10_Param_proj_ee <o>  Param_FE ` Yoneda10_Param_subst_ee @^ Yoneda10_Form_ee )),
+
+   ( ll o>CoMod ee )
+     [ PolyCoMod_ReParam  ( Intersec1  (UnitCoMod_ReParam _ _ _) reparam_forget ) (reparam_remember) ]<~~ ( <<  ll  _<|  reparam_remember  <o  reparam_forget  &Heq_sectional_reparam_forget  @_  param_projsubst  <o  paramdomain  >>
+     o>CoMod ( 'Forget  _<|  reparam_forget0  & Heq_sectional_reparam_forget0  @_  param_projsubst0  o>CoMod  ee ) )
+*)
+</textarea>
+
+<p><b>Dictionary.</b> In the context of (military) force , the bottom line of legal texts is : <b>coward force vs honor</b> . Therefore : What is the dictionary definition of "libel"  ? <a href="https://www.thefreedictionary.com/libel">https://www.thefreedictionary.com/libel</a> says :</p>
+<ul> <li> <i> libel - The legally indefensible publication or broadcast of words or images that are <b>degrading</b> to a person or injurious to his or her reputation. </i> </li>
+  <li> <i> libel - The written claims initiating a suit in an <b>admiralty court</b> ; </i> </li>
+  <li> <i> libel - (Law) ecclesiastical law to bring an action against (a person) in the <b>ecclesiastical courts</b> . </i> </li>
+</ul>
+
+<p>In short : in the context of (military) force , any "accusation" in court is synonymous for "degrading the honor" ( defamatory libel ) .  The particularity of <b>"defamatory libel"</b> ( and therefore , in practice , <b>defamatory question</b> ) is that : <b>"The truth of the matters charged in an alleged libel shall not be inquired into ..."</b> </p>
+
+<p><b>Legislation.</b> What is the legislation definition of "libel" ? <a href="https://www.canlii.org/en/ca/laws/stat/rsc-1985-c-c-46/145803/rsc-1985-c-c-46.html#sec298">https://www.canlii.org/en/ca/laws/stat/rsc-1985-c-c-46/145803/rsc-1985-c-c-46.html#sec298</a> , at "Criminal Code, RSC 1985, c C-46 / PART VIII — OFFENCES AGAINST THE PERSON AND REPUTATION [214 - 320.1] / DEFAMATORY LIBEL [297 - 316]" , says :  </p>
+
+<ul><li><i>298 (1) A defamatory libel is matter published, without lawful justification or excuse, that is likely to injure the reputation of any person by exposing him to hatred, contempt or ridicule, or that is designed to insult the person of or concerning whom it is published.</i></li>
+<li><i>Mode of expression
+<br>(2) A defamatory libel may be expressed directly or by insinuation or irony
+<br>(a) in words legibly marked on any substance; or
+<br>(b) by any object signifying a defamatory libel otherwise than by words.
+  </i></li>
+<li><i>Publishing
+<br>299 A person publishes a libel when he
+<br>(a) exhibits it in public;
+<br>(b) causes it to be read or seen; or
+<br>(c) shows or delivers it, or causes it to be shown or delivered, with intent that it should be read or seen by any person other than the person whom it defames.
+  </i></li>
+<li><i>Plea of justification necessary
+<br>612 (1) <b>The truth of the matters charged in an alleged libel shall not be inquired into</b> in the absence of a plea of justification under section 611 unless the accused is charged with publishing the libel knowing it to be false, in which case evidence of the truth may be given to negative the allegation that the accused knew that the libel was false.
+  </i></li></ul>
+
+<p>How to precisely formulate the contrary of "honor" ( "coward" ) ? And in the context of (military) force ? Therefore forced-fool-and-theft/lie/falsification has :</p>
+<ul> <li> interdependence via : [ being judge/referee/arbitrator ( "psychic" , "interpretation" ) who author/edit/fabricate/guess excessively outside/beyond its jurisdiction = competence = [the personal-knowledge testimony of only the witness] ] ; </li>
+  <li> ( "ink-and-paper" ) , lie via : costless lie ,  </li>
+  <li> lie via : [impostor/impersonator/usurper]-traitor , </li>
+  <li> ( "capital double-lies" ) , lie via : doing one-more new forced-fool-and-theft/lie/falsification such to hide some earlier forced-fool-and-theft/lie/falsification , </li>
+  <li> ( "whining" ) , fool via : disproportioned/demeasured comparison of harm/losses , </li>
+   <li> ( "status-quo" , "coward" , "privilege" , "grateful" , "entitled" , "resentment" , "social justice" ) : fool via : transforming commonly repeated forced-fool-and-theft/lie/falsification as the truth , or by transforming not-being-arrested/captured/caught as the truth , or by transforming [the absence of complex/undercover police investigation] as the truth , </li>
+   <li> ( "va-t-en-guerre" ) , fool via : commanding force but not want to oneself do force , </li>
+   <li> force via : commanding/suggesting/subleading some official-enforcer or some interdependent-enforcer , </li>
+</ul>
+
+<h2 class="title" id="live7">LIVE 7/6 : noisea vs technique | BAD HUMAN VS COMPUTER |
+<br> FRIDAY 02 AUGUST 2019 AT 22:22 KST </h2>
+
+<p><b>Technique.</b> The ends is to review the past 37 days of the making-of the MODOS . I show <b>how the new technical idea about computation with function morphisms depends on some old technical idea about the structural coherence of associativity arrows , therefore forming some full circle of ideas</b> . </p>
+
+<p>For instant first impression , the conversion/computation-relation constructor which says that the « forgetting » morphism of the substitution-object polyparameterization-polymorph-cancels the « remembering » morphism corresponding to any form-morphism , where [reparam_remember] is some structural coherence associativity arrow , is written as : </p>
+
+<p style="text-align:center;"><img width="100%" src="remember_forget_polyparameterization_polymorphism_review.svg"></p>
+
+<p>For instant first impression , the structural coherence of the associativity arrows is written as : </p>
+  
+<p style="text-align:center;"><img width="100%" src="maclaneSolution.svg"></p>
+  
+<p><b>Noisea.</b></p> <ul>
+<li>1 . forced-fool-and-theft/lie/falsification ( "absence of truth/reality/actuality/be" , "noisea" , "吵恶" , "f-f-a-t" ) is
+</li><li>2 . [
+</li><li>2.1 . doing or
+</li><li>2.2 . attempting/[ fabricating the possibility/timing/opportunity ] to do ]
+</li><li>3 . conversion or taking of
+</li><li>4 . own self ( by transfer , or by proportion = print own money = burn else money ) gain/win/nonloss
+</li><li>4.1 . ( as synchronizing/colluding/conniving/
+</li><li>4.2 . [ being interdependent ( "tribalistic" ) / non-autonomous while misappropriating public funds via interdependent-detour ( "detournement-interdependant de fonds publics" , instead of minimum wage or random wage ) ] /
+</li><li>4.3 . [ being monetarist ( "cash-money-only" as added-value/product/ends ) ] /
+</li><li>4.4 . [ being payee/puppet/proxy/agent ( "pet" ) ] /
+</li><li>4.5 . [ being payer/puppeteer/commander ( by payment , by suggesting/subleading , by predicting loss if no ) ] /
+</li><li>4.6 . [ being judge/referee/arbitrator ( "psychic" , "interpretation" ) who author/edit/fabricate/guess excessively outside/beyond its jurisdiction = competence = [the personal-knowledge testimony of only the witness] ] 
+</li><li>4.7 . at retro-time ( "retrocommission" ) or at now-time or at future-time ( "a-credit" , "loan" )
+</li><li>4.8 . in some monetarist-or-interdependent/tribalistic and effectively-anonymous crowd/mob/gang/corporatism ,
+</li><li>4.9 . such to prevent cumulation and inheritance of forced-fool-and-theft/lie/falsification )
+</li><li>5 . for other somebody-else-or-the-public loss ( "detournement-interdependant de fonds publics" ) (
+</li><li>5.1 . loss of : predictable-time computational-logical engineering , or
+</li><li>5.2 . loss of : random-moment dia-para-computalogical discovery , including loss of review/input/feedback from the public or the public-students , or
+</li><li>5.3 . loss of : timing/momentum/kairos/opportunity/possibilities , or
+</li><li>5.4 . loss of : tradeability , including loss of the public or public-students payers/purchasers/clients , or
+</li><li>5.5 . loss of : health , or
+</li><li>5.6 . purely malicious ( "jealousy" ) )
+</li><li>6 . by medium of
+</li><li>7 . lie ,
+</li><li>7.1 . lie hidden because of oneself own fool ( "lies are not really lies because there will be trial/appeal" ) ,
+</li><li>7.2 . lie via : hidden lie , such to prevent/frustrate the own review by the public ,
+</li><li>7.3 . lie via : falsification ,
+</li><li>7.4 . ( "mispell" ) , lie via : simulating/mimicking/play confusion/random/[none-intent]/[none-motive]/[none-know] ,
+</li><li>7.5 . lie via : absence as negation ( omission , erase , do not determine/decide ) ,
+</li><li>7.6 . ( "ink-and-paper" ) , lie via : costless lie ,
+</li><li>7.7 . lie via : [impostor/impersonator/usurper]-traitor ,
+</li><li>7.8 . ( "capital double-lies" ) , lie via : doing one-more new forced-fool-and-theft/lie/falsification such to hide some earlier forced-fool-and-theft/lie/falsification ,
+</li><li>8 . and-simultaneously
+</li><li>9 . fool ,
+</li><li>9.1 . fool hidden because of oneself own lie ,
+</li><li>9.2 . fool via : hidden fool , such to prevent/frustrate the own review by the public ,
+</li><li>9.3 . fool via : noiseaous or noisy ,
+</li><li>9.4 . ( "flip-flop" ) , fool via : confused or by contradicting oneself , or by flip-flop « possibility » ( "discretion" , "risk" ) versus « copy-me grading » ( "format" , "CV" , "objective" , refuse to be subjective-under-teaching ) ,
+</li><li>9.5 . fool via : distracted ,
+</li><li>9.6 . fool via : reckless running , by not knowing the consequences , or by assuming that the consequences must be computational-logical ( "butterfly effect" , "chaos" ) ,
+</li><li>9.7 . ( "mythomane" ) , fool via : incomplete chronology,
+</li><li>9.8 . ( "whining" ) , fool via : disproportioned/demeasured comparison of harm/losses ,
+</li><li>9.9 . ( "play" , "inversion-accusatoire" ) , fool via : simulating/mimicking/play harm/loss/victim while being the cause or beneficiary/satisfied ,
+</li><li>9.10. ( "pet-cause" ) , fool via : [imposting/impersonating/usurping]-[betraying/commerce] the real-harm/loss of somebody-else , while being the cause or beneficiary , or while being « effect-is-the-same-and-sense-is-worse » ( "not-all-but-each" , "pompier-pyromane" ) than the cause , or while publicly effecting/validating somebody-else hidden defamatory-question ,
+</li><li>9.11 . ( "you-know" ) , fool via : transposing oneself own fool/psychopathy/fantasy/[nerves movements] onto another person ,
+</li><li>9.12 . ( "status-quo" , "coward" , "privilege" , "grateful" , "entitled" , "resentment" , "social justice" ) : fool via : transforming commonly repeated forced-fool-and-theft/lie/falsification as the truth , or by transforming not-being-arrested/captured/caught as the truth , or by transforming [the absence of complex/undercover police investigation] as the truth ,
+</li><li>9.13 . ( "singleton-class" ) , fool via : fabricating/falsifying some law/rule/grading/class which or its complement contains only some effectively-singleton target-individual , such to maximize this individual or correspondingly to obstruct this individual , or when only the intersection-of-identities is effective and such is worse ,
+</li><li>9.14 . ( "fool-monopoly" , "hypocrite" ) , fool via : supporting fool from oneself while demanding/wanting reason from another person ,
+</li><li>9.15 . ( "maximization-monopoly" ) , fool via : one-way-only maximization ( "supporting" / "encouraging" / "endorsing" / "extraprocedural" sense ) while "arrogant"-sense for the other-way-around ,
+</li><li>9.16 . ( "accusation-monopoly" ) , fool via : one-way-only harm/victim ( "intimidation" / "harassment" / "threatening" / "obstruction" ) while only-recognizing direct-physical-injury/wound for the other-way-around ,
+</li><li>9.17 .  ( "play-monopoly" ) , fool via : possibility of simulation/mimicking/play/joke-excuse from oneself while such is always reality/serious from another person , or by defame/accuse ( without personal-knowledge ) in the form of question-excuse ( " ... ? " ) ,
+</li><li>9.18 . ( "faux-courage" ) , fool via : contra anyone/autonomous except own payer/interdependence ,
+</li><li>9.19 . ( "va-t-en-guerre" ) , fool via : commanding force but not want to oneself do force ,
+</li><li>10. and-simultaneously
+</li><li>11 . force ,
+</li><li>11.1 . force while fool-and-theft/lie/falsification ,
+</li><li>11.2 . force via : commanding/suggesting/subleading some official-enforcer or some interdependent-enforcer ,
+</li><li>11.3 . ( "assault" ) , force via : sudden force ,
+</li><li>11.4 . force via : slow force .
+</li></ul>  
+
+<h2 class="title" id="live8">LIVE 8/6 : drama is about grammar | BAD HUMAN VS COMPUTER |
+<br> FRIDAY 04 OCTOBER 2019 AT 22:22 CST </h2>
+
+  <p>The goal is to play on the grammar without changing the sense : drama is about grammar ! In other words , the ends is to program the functorial analogue of "each collection is made of its elements" : <i> "each functor is the sum/colimit of its elements" </i> . And how to upgrade this programming from the absence of parametrization , upto the presence of codomain-parametrization , and upto the presence of domain-and-codomain-parametrization . And how to modify this programming from the absence of coverage/topology/continuity to the presence of coverage/topology/continuity . Here is the skeleton of those techniques ... </p>
+
+<p style="text-align:center;"><img  width="100%" src="viewingsumfunctor_viewedfunctor_parametrization_modos.svg"></p>
+  
+<h2 class="title" id="live9">LIVE 9/6 : to be continued ... </h2>
+
+</div></div>
+  </div> <!-- /#document -->
+  </div> <!-- /#code-wrapper -->
+  </div> <!-- /#ide-wrapper -->
+
+  <script src="../../ui-js/jscoq-loader.js" type="text/javascript"></script>
+  <script type="text/javascript">
+
+    var jscoq_ids  = ['workspace1', 'workspace2' , 'workspace3' ,  'workspace4' ,  'workspace5',
+    'workspace6', 'workspace7' , 'workspace8' ,  'workspace9' ,  'workspace10' ,
+    'workspace11', 'workspace12' , 'workspace13' ,
+    'workspace14',
+    'workspace15',
+    'workspace16' ];
+    var jscoq_opts = {
+        prelude:   true,
+        base_path: '../../',
+        init_pkgs: ['init', 'qoc'],
+        all_pkgs:  ['init', 'qoc', 'coq-base', 'coq-collections', 'coq-arith', 'coq-reals', 'math-comp'],
+        implicit_libs: true,
+        editor: { mode: { 'company-coq': true }, keyMap: 'default' }
+    };
+
+    /* Global reference */
+    var coq;
+
+    loadJsCoq(jscoq_opts.base_path)
+        .then( () => coq = new CoqManager(jscoq_ids, jscoq_opts) );
+  </script>
+</body>
+</html>

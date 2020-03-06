@@ -234,7 +234,7 @@ now [a] is a parameter of the inductive definition
 rather than an index/argument *)
 
 Inductive identitytype_for_ (A : Type) (a : A) : A -> Type :=
-reflexivity_unit_for_ : (identitytype_for_ A a)  x.
+reflexivity_unit_for_ : (identitytype_for_ A a) a.
 
 (** THIS DISTINCTION BETWEEN
 OUTER ( PARAMETER ) VSINNER ( INDEX/ARGUMENT ),

@@ -61,7 +61,9 @@ h2 , h1 {
 
   <p> In short : the jargon "fiber bundle" / "fibration" in geometry corresponds to the jargon "dependent type" in logic . </p>
   <p> For instant first impression , these are some links : </p>
-  <ul> <li> <a href="https://ncatlab.org/nlab/show/fiber+bundle">https://ncatlab.org/nlab/show/fiber+bundle</a> </li>
+  <ul>
+    <li> <a href="https://ncatlab.org/nlab/show/relation+between+type+theory+and+category+theory">https://ncatlab.org/nlab/show/relation+between+type+theory+and+category+theory</a> </li>
+    <li> <a href="https://ncatlab.org/nlab/show/fiber+bundle">https://ncatlab.org/nlab/show/fiber+bundle</a> </li>
     <li> <a href="https://ncatlab.org/nlab/show/Grothendieck+fibration">https://ncatlab.org/nlab/show/Grothendieck+fibration</a> </li>
     <li> <a href="https://ncatlab.org/nlab/show/dependent+type+theory">https://ncatlab.org/nlab/show/dependent+type+theory</a> </li>
   </ul>
@@ -86,7 +88,9 @@ End Mod1.
 
   <p> In short : the jargon "pullback" / "fibered product" in geometry corresponds to the jargon "substitution for variables" in logic . </p>
   <p> For instant first impression , these are some links : </p>
-  <ul> <li> <a href="https://ncatlab.org/nlab/show/pullback">https://ncatlab.org/nlab/show/pullback</a> </li>
+  <ul>
+    <li> <a href="https://ncatlab.org/nlab/show/relation+between+type+theory+and+category+theory">https://ncatlab.org/nlab/show/relation+between+type+theory+and+category+theory</a> </li>
+    <li> <a href="https://ncatlab.org/nlab/show/pullback">https://ncatlab.org/nlab/show/pullback</a> </li>
     <li> <a href="https://ncatlab.org/nlab/show/substitution">https://ncatlab.org/nlab/show/substitution</a> </li>
     <li> <a href="http://math.andrej.com/2012/09/28/substitution-is-pullback/">http://math.andrej.com/2012/09/28/substitution-is-pullback/</a> </li>
   </ul>
@@ -119,9 +123,10 @@ End Mod2.
   <p> In short : the jargon "colimit" / "coproduct" in geometry corresponds to the jargon "higher inductive family" in logic . But in contrast to "colimit" ,  "inductive" allows for self-reference/recursion (via presentation as initial algebra of endofunctor) , and "family" allows for parametrization (via working in the slice over some object) , and "higher" allows to describe more than the "coproduct" "colimits" by moreover touching the arrows/identifications in the base diagram of the "colimit" ( <strong>via identification-as-path , but alternatives should be possible ... </strong> ) .  </p>
   <p> For instant first impression , these are some links : </p>
   <ul>
+    <li> <a href="https://ncatlab.org/nlab/show/relation+between+type+theory+and+category+theory">https://ncatlab.org/nlab/show/relation+between+type+theory+and+category+theory</a> </li>
     <li> <a href="https://ncatlab.org/nlab/show/limits+and+colimits+by+example">https://ncatlab.org/nlab/show/limits+and+colimits+by+example</a> </li>
-        <li> <a href="https://ncatlab.org/nlab/show/inductive+type">https://ncatlab.org/nlab/show/inductive+type</a> </li>
-	<li> <a href="https://ncatlab.org/nlab/show/higher+inductive+type">https://ncatlab.org/nlab/show/higher+inductive+type</a> </li>
+    <li> <a href="https://ncatlab.org/nlab/show/inductive+type">https://ncatlab.org/nlab/show/inductive+type</a> </li>
+    <li> <a href="https://ncatlab.org/nlab/show/higher+inductive+type">https://ncatlab.org/nlab/show/higher+inductive+type</a> </li>
   </ul>
 
   <p>For instant first impression , this is some example code : </p>
@@ -144,6 +149,7 @@ End Mod3.
   <p> In short : the jargon "subobject classifier" / "object classifier" in geometry corresponds to the jargon "type of propositions" / "type of types" / "universe" in logic . The "object classifier" is the <strong>internal-representation</strong> (mirror reflection) of the class of ( ALL /!\ ) morphisms (dependent types) ... </p>
   <p> For instant first impression , these are some links : </p>
   <ul>
+    <li> <a href="https://ncatlab.org/nlab/show/relation+between+type+theory+and+category+theory">https://ncatlab.org/nlab/show/relation+between+type+theory+and+category+theory</a> </li>
     <li> <a href="https://ncatlab.org/nlab/show/%28sub%29object+classifier+in+an+%28infinity%2C1%29-topos">https://ncatlab.org/nlab/show/%28sub%29object+classifier+in+an+%28infinity%2C1%29-topos</a> </li>
     <li> <a href="https://ncatlab.org/nlab/show/partial+map+classifier">https://ncatlab.org/nlab/show/partial+map+classifier</a> </li>
     <li> <a href="https://ncatlab.org/nlab/show/subobject+classifier">https://ncatlab.org/nlab/show/subobject+classifier</a> </li>
@@ -194,7 +200,51 @@ Check ( Prop -> 3 = 3 ) : Prop . (** success : impredicativity *)
 End Mod4.
 </textarea>
 
-  <h2 class="title" id="live5">LIVE 5/6 : to be continued ... </h2>
+  <h2 class="title" id="live6">LIVE 6/6 : WTF(UN) IS «PATH SPACE» OR «TRANSPORT ALONG EQUALITY» ? | JARGON OF MATHEMATICIANS
+    <br> FRIDAY 6 MARCH 2020 @ 22:22 GMT+1 </h2>
+
+    <p> In short : the jargon "path space object" in geometry corresponds to the jargon "identity type" / "propositional equality" / "transport along equality" in logic .</p>
+    <p> In some instances , the "diagonal object" instead of the "path space object" can be used to give sense to the "identity type" , but in the general geometry , the "path space object" is the more precise (internal) sense which also describes the (external) higher equalities beyong the lower diagonal (definitional) equalities ... </p>
+    <p>The "transport along equality" is the logic that if two things are equal then anything defined-at ( or said-about ) one of them can be transported ( or translated ) along this equality into something defined-at ( or said-about  ) the other one . <strong>This  "transport along equality" logic property corresponds to the geometry property that the morphisms-for-dependent-types are "fibrations" ... SO WE HAVE MOTIVATED FULL CIRCLE ! </strong>  </p>
+    
+  <p> For instant first impression , these are some links : </p>
+  <ul>
+    <li> <a href="https://ncatlab.org/nlab/show/relation+between+type+theory+and+category+theory">https://ncatlab.org/nlab/show/relation+between+type+theory+and+category+theory</a> </li>
+    <li> <a href="https://ncatlab.org/nlab/show/path+space+object">https://ncatlab.org/nlab/show/path+space+object</a> </li>
+    <li> <a href="https://ncatlab.org/nlab/show/identity+type">https://ncatlab.org/nlab/show/identity+type</a> </li>
+    <li> <a href="https://ncatlab.org/nlab/show/monodromy">https://ncatlab.org/nlab/show/monodromy</a> </li>
+    <li> <a href="https://ncatlab.org/nlab/show/representable+functor">https://ncatlab.org/nlab/show/representable+functor</a> </li>
+  </ul>
+
+  <p>For instant first impression , this is some example code : </p>
+  <p><em>Note : text edit this code by Alt+↑ , Alt+↓ , Alt+→ , Alt+⏎ , Alt+hover .</em></p>
+  <textarea id="workspace6">
+Module Mod6.
+(** The identity type is defined via the genetal inductive-types
+mechanism : so that the introduction rule and the
+elimination-and-computation rules
+are all produced mechanically/ automatically .*)
+
+Inductive identitytype (A : Type) : A -> A -> Type :=
+reflexivity_unit : forall x : A , (identitytype A) x x.
+
+(** But the "transport along equality" sense is best viewed if
+this alternative presentation of the identity type is chosen :
+now [a] is a parameter of the inductive definition
+rather than an index/argument *)
+
+Inductive identitytype_for_ (A : Type) (a : A) : A -> Type :=
+reflexivity_unit_for_ : (identitytype_for_ A a)  x.
+
+(** THIS DISTINCTION BETWEEN
+OUTER ( PARAMETER ) VSINNER ( INDEX/ARGUMENT ),
+ALMOST SUMS UP ALL OF CATEGORIES/TYPES/PROGRAMMING TECHNIQUES
+(INTERNAL-REPRESENTATION OF SOMETHING EXTERNAL) *)
+
+End Mod6.
+</textarea>
+  
+  <h2 class="title" id="live7">LIVE 7/6 : to be continued ... </h2>
 
 </div></div>
   </div> <!-- /#document -->
@@ -204,7 +254,7 @@ End Mod4.
   <script src="../../ui-js/jscoq-loader.js" type="text/javascript"></script>
   <script type="text/javascript">
 
-    var jscoq_ids  = ['workspace1', 'workspace2' , 'workspace3' , 'workspace4' ];
+    var jscoq_ids  = ['workspace1', 'workspace2' , 'workspace3' , 'workspace4'  , 'workspace6' ];
     var jscoq_opts = {
         prelude:   true,
         base_path: '../../',

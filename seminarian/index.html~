@@ -1,0 +1,60 @@
+<html> <head> 
+<title></title> 
+</head> 
+<body> 
+<h1>Learner pay to fulfill exams-and-seminars</h1>  
+<hr> 
+<address></address> 
+<!-- hhmts start --> 
+<!-- Load Stripe.js on your website. -->
+<script src="https://js.stripe.com/v3"></script>
+
+<!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
+<form>
+<label for="email-input">Email : </label> 
+<input id="email-input" name="email-input"></input>
+<button
+  style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
+  id="checkout-button-sku_HCpE0qJs56lxBs"
+  role="link"
+>
+  Checkout
+</button>
+</form>
+
+<div id="error-message"></div>
+<script>
+(function() {
+  var stripe = Stripe('pk_live_PPVONTzEEQYaDjMxODngtTRG00MdRXCerP');
+
+  var checkoutButton = document.getElementById('checkout-button-sku_HCpE0qJs56lxBs');
+  checkoutButton.addEventListener('click', function () {
+    // When the customer clicks on the button, redirect
+    // them to Checkout.
+    var emailInput = document.getElementById('email-input);
+    stripe.redirectToCheckout({
+      items: [{sku: 'sku_HCpE0qJs56lxBs', quantity: 1}],
+
+      // Do not rely on the redirect to the successUrl for fulfilling
+      // purchases, customers may not always reach the success_url after
+      // a successful payment.
+      // Instead use one of the strategies described in
+      // https://stripe.com/docs/payments/checkout/fulfillment
+      successUrl: 'https://teams.microsoft.com/l/channel/19%3aba89976ecaa34c1ab386a5d7089777e6%40thread.tacv2/General?groupId=4594d827-8bcc-48a4-9431-284aab8d8662&tenantId=92c6c2d0-5fb7-4778-af38-bb58423944dd',
+      cancelUrl: 'https://anthroplogic.com',
+      customerEmail: emailInput
+    })
+    .then(function (result) {
+      if (result.error) {
+        // If `redirectToCheckout` fails due to a browser or network
+        // error, display the localized error message to your customer.
+        var displayError = document.getElementById('error-message');
+        displayError.textContent = result.error.message;
+      }
+    });
+  });
+})();
+</script>
+<!-- hhmts end --> 
+</body> 
+</html>

@@ -41,7 +41,7 @@
       // https://stripe.com/docs/payments/checkout/fulfillment
       successUrl: 'https://teams.microsoft.com/l/channel/19%3aba89976ecaa34c1ab386a5d7089777e6%40thread.tacv2/General?groupId=4594d827-8bcc-48a4-9431-284aab8d8662&tenantId=92c6c2d0-5fb7-4778-af38-bb58423944dd',
       cancelUrl: 'https://anthroplogic.com',
-      customerEmail: emailInput
+      customerEmail: emailInput.value
     })
     .then(function (result) {
       if (result.error) {

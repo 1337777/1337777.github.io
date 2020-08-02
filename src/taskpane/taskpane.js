@@ -6,8 +6,10 @@
 
 /* global console, document, Excel, Office */
 
-var jscoq_ids = ['workspace'];
+var jscoq_ids = [];
 var jscoq_opts = {
+  show: true,
+  line_numbers: 'continue',
   prelude: true,
   base_path: '../',
   init_pkgs: ['init', 'qoc'],
@@ -19,18 +21,13 @@ var jscoq_opts = {
 /* Global reference */
 var coq;
 
-var txtResult = "";
-
 Office.onReady(info => {
   if (info.host === Office.HostType.Excel) {
-    //    document.getElementById("sideload-msg").style.display = "none";
-    //    document.getElementById("app-body").style.display = "flex";
-    //    document.getElementById("run").onclick = run;        
 
     Excel.run(async context => {
       var sheet = context.workbook.worksheets.getActiveWorksheet();
-      var searchRange = sheet.getRange("A1:A1");
-      var foundRange = null;
+      var workspaces = document.querySelector("#document");
+      var workspace;
 
       const foundRanges = sheet.findAllOrNullObject("(**WSCOQ*)", {
         completeMatch: false,
@@ -48,11 +45,12 @@ Office.onReady(info => {
         await context.sync();
         foundRanges.areas.items.forEach(
           (valR, iR, aR) => {
-            /*valR.load("values");
-            await context.sync(); */
-            console.log("888888888888888888888888888", valR.values);
-            txtResult += valR.values.map((x) => x.join(' ')).join("\n") + "\n";
+            workspace = document.createElement("TEXTAREA");
+            workspace.setAttribute("id", "workspace" + iR);
             //txtResult += valR.values[0][0] + "\n";
+            workspace.innerText = valR.values.map((x) => x.join(' ')).join("\n");
+            workspaces.appendChild(workspace);
+            jscoq_ids.push("workspace" + iR);
           }
         )
       } else {
@@ -63,9 +61,16 @@ Office.onReady(info => {
         .then(
           () => {
             coq = new CoqManager(jscoq_ids, jscoq_opts);
-            coq.provider.snippets[0].editor.setValue(
-              txtResult +
-              "\n(*END*)");
+
+            var readFromButton = document.createElement("BUTTON");
+            readFromButton.innerText = "READ";
+            document.querySelector("#buttons").appendChild(readFromButton);
+            readFromButton.onclick = readFrom;
+
+            var writeBackButton = document.createElement("BUTTON");
+            writeBackButton.innerText = "WRITE";
+            document.querySelector("#buttons").appendChild(writeBackButton);
+            writeBackButton.onclick = writeBack;
           }
         );
 
@@ -76,3 +81,84 @@ Office.onReady(info => {
     });
   }
 });
+
+function readFrom() {
+  Excel.run(async function (context) {
+
+    var sheet = context.workbook.worksheets.getActiveWorksheet();
+
+    const foundRanges = sheet.findAllOrNullObject("(**WSCOQ*)", {
+      completeMatch: false,
+      matchCase: false
+    });
+    foundRanges.load(["areas"]);
+    await context.sync();
+
+    if (!foundRanges.isNullObject) {
+      foundRanges.areas.items.forEach(
+        (valR, iR, aR) => {
+          valR.load("values");
+        }
+      )
+      await context.sync();
+      foundRanges.areas.items.forEach(
+        (valR, iR, aR) => {
+          if (coq.provider.snippets[iR]) {
+            coq.provider.snippets[iR].editor.setValue(
+              valR.values.map((x) => x.join(' ')).join("\n"));
+          }
+        }
+      )
+    } else {
+      console.log("No Coq code with reserved keyword (**WSCOQ*)");
+    };
+
+    return context.sync();
+  })
+    .catch(function (error) {
+      console.log("Error: " + error);
+      if (error instanceof OfficeExtension.Error) {
+        console.log("Debug info: " + JSON.stringify(error.debugInfo));
+      }
+    });
+}
+
+function writeBack() {
+  Excel.run(async function (context) {
+
+    var sheet = context.workbook.worksheets.getActiveWorksheet();
+
+    const foundRanges = sheet.findAllOrNullObject("(**WSCOQ*)", {
+      completeMatch: false,
+      matchCase: false
+    });
+    foundRanges.load(["areas"]);
+    await context.sync();
+
+    if (!foundRanges.isNullObject) {
+      foundRanges.areas.items.forEach(
+        (valR, iR, aR) => {
+          valR.load("values");
+        }
+      )
+      await context.sync();
+      foundRanges.areas.items.forEach(
+        (valR, iR, aR) => {
+          if (coq.provider.snippets[iR]) {
+            valR.values = [[coq.provider.snippets[iR].editor.getValue()]];
+          }
+        }
+      )
+    } else {
+      console.log("No Coq code with reserved keyword (**WSCOQ*)");
+    };
+
+    return context.sync();
+  })
+    .catch(function (error) {
+      console.log("Error: " + error);
+      if (error instanceof OfficeExtension.Error) {
+        console.log("Debug info: " + JSON.stringify(error.debugInfo));
+      }
+    });
+}

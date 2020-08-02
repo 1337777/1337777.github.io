@@ -31,12 +31,6 @@
 
     <div id="code-wrapper">
         <div id="document">
-            <textarea id="workspace">
-From Qoc Require Import Jisuanji .
-归纳的 infiniteNumbers :=
-Zero : infiniteNumbers
-| NextOne : infiniteNumbers -> infiniteNumbers .
-            </textarea>
         </div> <!-- /#document -->
     </div> <!-- /#code-wrapper -->
 
@@ -52,6 +46,10 @@ Zero : infiniteNumbers
             height: 100%;
         }
 
+        #toolbar > div.exits.right {
+            display: none;
+        }
+        
         #code-wrapper {
             height: 50vh;
         }
@@ -60,6 +58,13 @@ Zero : infiniteNumbers
             width: 100%;
             padding: 0px;
         }
+
+        .CodeMirror {
+            height: auto;
+            margin-bottom: 4px;
+        }
+
+
     </style>
 </body>
 

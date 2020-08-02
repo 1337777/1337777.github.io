@@ -21,6 +21,8 @@ var jscoq_opts = {
 /* Global reference */
 var coq;
 
+var excoq_keyword = "(?excoq?)*";
+
 Office.onReady(info => {
   if (info.host === Office.HostType.Excel) {
 
@@ -29,8 +31,8 @@ Office.onReady(info => {
       var workspaces = document.querySelector("#document");
       var workspace;
 
-      const foundRanges = sheet.findAllOrNullObject("(**WSCOQ*)", {
-        completeMatch: false,
+      const foundRanges = sheet.findAllOrNullObject(excoq_keyword, {
+        completeMatch: true,
         matchCase: false
       });
       foundRanges.load(["areas"]);
@@ -54,7 +56,7 @@ Office.onReady(info => {
           }
         )
       } else {
-        console.log("No Coq code with reserved keyword (**WSCOQ*)");
+        console.log("No Excel Coq code with reserved keyword");
       };
 
       loadJsCoq(jscoq_opts.base_path)
@@ -87,8 +89,8 @@ function readFrom() {
 
     var sheet = context.workbook.worksheets.getActiveWorksheet();
 
-    const foundRanges = sheet.findAllOrNullObject("(**WSCOQ*)", {
-      completeMatch: false,
+    const foundRanges = sheet.findAllOrNullObject(excoq_keyword, {
+      completeMatch: true,
       matchCase: false
     });
     foundRanges.load(["areas"]);
@@ -110,7 +112,7 @@ function readFrom() {
         }
       )
     } else {
-      console.log("No Coq code with reserved keyword (**WSCOQ*)");
+      console.log("No Excel Coq code with reserved keyword");
     };
 
     return context.sync();
@@ -128,8 +130,8 @@ function writeBack() {
 
     var sheet = context.workbook.worksheets.getActiveWorksheet();
 
-    const foundRanges = sheet.findAllOrNullObject("(**WSCOQ*)", {
-      completeMatch: false,
+    const foundRanges = sheet.findAllOrNullObject(excoq_keyword, {
+      completeMatch: true,
       matchCase: false
     });
     foundRanges.load(["areas"]);
@@ -150,7 +152,7 @@ function writeBack() {
         }
       )
     } else {
-      console.log("No Coq code with reserved keyword (**WSCOQ*)");
+      console.log("No Excel Coq code with reserved keyword");
     };
 
     return context.sync();

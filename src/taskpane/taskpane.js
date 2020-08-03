@@ -41,16 +41,8 @@ Office.onReady(info => {
       if (!foundRanges.isNullObject) {
         foundRanges.areas.items.forEach(
           (valR, iR, aR) => {
-            valR.load("values");
-          }
-        )
-        await context.sync();
-        foundRanges.areas.items.forEach(
-          (valR, iR, aR) => {
             workspace = document.createElement("TEXTAREA");
             workspace.setAttribute("id", "workspace" + iR);
-            //txtResult += valR.values[0][0] + "\n";
-            workspace.innerText = valR.values.map((x) => x.join(' ')).join("\n");
             workspaces.appendChild(workspace);
             jscoq_ids.push("workspace" + iR);
           }
@@ -63,6 +55,8 @@ Office.onReady(info => {
         .then(
           () => {
             coq = new CoqManager(jscoq_ids, jscoq_opts);
+
+            readFrom();
 
             var readFromButton = document.createElement("BUTTON");
             readFromButton.innerText = "READ";
@@ -108,6 +102,8 @@ function readFrom() {
           if (coq.provider.snippets[iR]) {
             coq.provider.snippets[iR].editor.setValue(
               valR.values.map((x) => x.join(' ')).join("\n"));
+            // valR.values[0][0]
+
           }
         }
       )
@@ -138,12 +134,6 @@ function writeBack() {
     await context.sync();
 
     if (!foundRanges.isNullObject) {
-      foundRanges.areas.items.forEach(
-        (valR, iR, aR) => {
-          valR.load("values");
-        }
-      )
-      await context.sync();
       foundRanges.areas.items.forEach(
         (valR, iR, aR) => {
           if (coq.provider.snippets[iR]) {

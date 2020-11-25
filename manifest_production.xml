@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
-  <Id>822f7264-478e-4a08-8db7-c6f29d4e37e3</Id>
+  <Id>822f7264-478e-4a08-8db7-c6f29d4e37e2</Id>
   <Version>1.0.0.0</Version>
   <ProviderName>AnthropLOGIC.com WorkSchool 365</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
@@ -18,7 +18,7 @@
   <DefaultSettings>
     <SourceLocation DefaultValue="https://1337777.github.io/dist/taskpane.html"/>
   </DefaultSettings>
-  <Permissions>ReadWriteDocument</Permissions>
+  <Permissions>ReadDocument</Permissions>
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
     <Hosts>
       <Host xsi:type="Workbook">
@@ -73,7 +73,7 @@
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Coq365 : interactively run Coq proofs inside Excel on the web browser."/>
-        <bt:String id="CommandsGroup.Label" DefaultValue="Coq365 Commands"/>
+        <bt:String id="CommandsGroup.Label" DefaultValue="Coq365"/>
         <bt:String id="TaskpaneButton.Label" DefaultValue="Coq365"/>
       </bt:ShortStrings>
       <bt:LongStrings>

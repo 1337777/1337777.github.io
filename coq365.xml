@@ -73,7 +73,7 @@
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Coq365 : interactively run Coq proofs inside Excel on the web browser."/>
-        <bt:String id="CommandsGroup.Label" DefaultValue="Coq365 Commands"/>
+        <bt:String id="CommandsGroup.Label" DefaultValue="Coq365"/>
         <bt:String id="TaskpaneButton.Label" DefaultValue="Coq365"/>
       </bt:ShortStrings>
       <bt:LongStrings>

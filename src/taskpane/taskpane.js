@@ -6,6 +6,7 @@
 
 /* global console, document, Excel, Office */
 
+var jscoq_src = "../../ui-js/jscoq-loader.js";
 var jscoq_ids = [];
 var jscoq_opts = {
   show: true,
@@ -21,7 +22,8 @@ var jscoq_opts = {
 /* Global reference */
 var coq;
 
-var excoq_keyword = "(?excoq?)*";
+var excoq_keyword = "(?coq365?)*";
+var coq365script_keyword = "/?coq365?/*";
 
 Office.onReady(info => {
   if (info.host === Office.HostType.Excel) {
@@ -48,27 +50,61 @@ Office.onReady(info => {
           }
         )
       } else {
-        console.log("No Excel Coq code with reserved keyword");
+        console.log("No Coq365 code with reserved keyword: coq365");
       };
 
-      loadJsCoq(jscoq_opts.base_path)
-        .then(
-          () => {
-            coq = new CoqManager(jscoq_ids, jscoq_opts);
+      const foundRangesScript = sheet.findAllOrNullObject(coq365script_keyword, {
+        completeMatch: true,
+        matchCase: false
+      });
+      foundRangesScript.load(["areas"]);
+      await context.sync();
 
-            readFrom();
-
-            var readFromButton = document.createElement("BUTTON");
-            readFromButton.innerText = "READ";
-            document.querySelector("#buttons").appendChild(readFromButton);
-            readFromButton.onclick = readFrom;
-
-            var writeBackButton = document.createElement("BUTTON");
-            writeBackButton.innerText = "WRITE";
-            document.querySelector("#buttons").appendChild(writeBackButton);
-            writeBackButton.onclick = writeBack;
+      if (!foundRangesScript.isNullObject) {
+        foundRangesScript.areas.items.forEach(
+          (valR, iR, aR) => {
+            valR.load("values");
           }
-        );
+        )
+        await context.sync();
+        foundRangesScript.areas.items.forEach(
+          (valR, iR, aR) => {
+            var evalresult = eval(
+                valR.values.map((x) => x.join(' ')).join("\n"));
+              // valR.values[0][0]
+              console.log("Eval Coq365 javascript, result: " + evalresult);
+            }
+        )
+      } else {
+        console.log("No Coq365 javascript with reserved keyword: coq365");
+      };
+
+      var scriptFile = document.createElement("script");
+      document.body.append(scriptFile);
+      scriptFile.type = "text/javascript";
+      scriptFile.src = jscoq_src;
+      console.log("SET scriptFile.src");
+      scriptFile.onload = function() {
+        console.log("START RUN scriptFile.onload");
+        loadJsCoq(jscoq_opts.base_path)
+          .then(
+            () => {
+              coq = new CoqManager(jscoq_ids, jscoq_opts);
+
+              readFrom();
+
+              var readFromButton = document.createElement("BUTTON");
+              readFromButton.innerText = "READ";
+              document.querySelector("#buttons").appendChild(readFromButton);
+              readFromButton.onclick = readFrom;
+
+              var writeBackButton = document.createElement("BUTTON");
+              writeBackButton.innerText = "WRITE";
+              document.querySelector("#buttons").appendChild(writeBackButton);
+              writeBackButton.onclick = writeBack;
+            }
+          )
+        };
 
       return context.sync()
         .then(function () {
@@ -108,7 +144,7 @@ function readFrom() {
         }
       )
     } else {
-      console.log("No Excel Coq code with reserved keyword");
+      console.log("No Coq365 code with reserved keyword: coq365");
     };
 
     return context.sync();
@@ -142,7 +178,7 @@ function writeBack() {
         }
       )
     } else {
-      console.log("No Excel Coq code with reserved keyword");
+      console.log("No Coq365 code with reserved keyword: coq365");
     };
 
     return context.sync();

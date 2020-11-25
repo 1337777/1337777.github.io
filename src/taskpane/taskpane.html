@@ -20,7 +20,7 @@
     <!-- Template styles -->
     <link href="taskpane.css" rel="stylesheet" type="text/css" />
 
-    <script src="../../ui-js/jscoq-loader.js" type="text/javascript"></script>
+   <!-- <script src="../../ui-js/jscoq-loader.js" type="text/javascript"></script> -->
 </head>
 
 <body class="ms-font-m ms-welcome ms-Fabric">
@@ -34,7 +34,7 @@
         </div> <!-- /#document -->
     </div> <!-- /#code-wrapper -->
 
-    <style>
+  <!--  <style>
         #ide-wrapper {
             padding-right: 0%;
             height: 50vh;
@@ -65,6 +65,47 @@
         }
 
 
+    </style>  -->
+    <style>
+
+        #ide-wrapper {
+            padding-right: 0%;
+            height: 50vh;
+        }
+
+        #panel-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+         .flex-container {
+            position: relative;
+            height: calc(50vh - 35px);
+        }
+
+        
+        #toolbar > div.exits , #toolbar > div.exits.right {
+            display: none;
+        }
+        
+        #code-wrapper {
+            height: 50vh;
+            padding-right: 0%;
+            margin-left: -10px;
+        }
+
+        #document {
+            width: 100%;
+            padding: 0px;
+        }
+
+        .CodeMirror {
+            height: auto;
+            width: 100%;
+            margin-bottom: 4px;
+        }
+        
     </style>
 </body>
 

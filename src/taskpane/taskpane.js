@@ -85,6 +85,7 @@ const g = getGlobal();
 
 // the add-in command functions need to be available in global scope
 
+var excoq_keyword = "(?coq365?)*";
 const coq365script_regexp = RegExp('[(][*]/[*]coq365[*]/([^]*?)[*][)]', 'ig');
 
 /** Default helper for invoking an action and handling errors. */
@@ -131,6 +132,7 @@ coqObserver['feedMessage'] = async (span_id, lvl, loc, msg) => {
 
 };
 
+var llog;
 //document.body.innerHTML = "<p>KOKOK" + Office.HostType.Word + "OKOK</p>";
 Office.onReady(info => {
 
@@ -231,7 +233,10 @@ Office.onReady(info => {
 
               }
 
-
+              // var readFromButton = document.createElement("BUTTON");
+              // readFromButton.innerText = "READ";
+              // document.querySelector("#buttons").appendChild(readFromButton);
+              // readFromButton.onclick = (() => tryCatch(readSelected));
 
               let buttons = document.querySelector("#buttons");
 
@@ -267,6 +272,11 @@ Office.onReady(info => {
 
       await context.sync();
 
+
+
+      console.log("xxxxxxxxxxxxxxxxccccccssswsvvvvv");
+
+      console.log("Finished Word.Run here");
     });
   }
 
@@ -480,6 +490,18 @@ async function readSelected() {
 
 async function writeSelected() {
   writeBack(false);
+  // Word.run(async function (context) {
+
+  // var foundRanges = context.document.getSelection().parentContentControlOrNullObject;
+  // foundRanges.load(['title']);
+  // await context.sync();
+
+  // await write (context, foundRanges);
+
+
+  // foundRanges.insertText(coq.provider.snippets.find(s => s.title == foundRanges.title.split("/")[0].trim()).editor.getValue(), Word.InsertLocation.replace);
+  // await context.sync();
+  // });
 }
 
 async function readCC(siR, cid) {
@@ -510,6 +532,12 @@ async function readFrom() {
     foundRanges.load(['length', 'items', 'text', 'title']);
     await context.sync();
 
+    //vht = foundRanges.items[0].getTextRanges(["\u000B"]);
+    //vht.load('text');
+    //vo = valR.split(["\u000B"]);
+    //await context.sync();
+    // console.log(foundRanges.items[0].getTextRanges(["\u000B"]));
+    //console.log(vo.items);
     foundRanges.items.forEach(
       async (valR, iR, aR) => {
         if (coq.provider.snippets[iR]) {
@@ -519,6 +547,68 @@ async function readFrom() {
           var ctitle = valR.title.split('/')[0].trim();
           window.setTimeout(async () => {
             await readCC(coq.provider.snippets[iR], cid);
+
+            // coq.provider.snippets[iR].editor.on('update', async function (cm) {
+            //   var stm;
+            //   if (coq.doc && coq.doc.sentences) {
+            //     stm = coq.doc.sentences.last()
+            //   } else if (coq.sentences) {
+            //     stm = coq.sentences.last()
+            //   }
+            //   if (stm && stm.sp.title == ctitle) {
+            //     console.log("coq.doc.goals[stm.coq_sid]");
+            //     console.log(coq.doc.sentences.last().coq_sid);
+            //     let si = coq.doc.sentences.last().coq_sid ;
+            //     let gl = coq.doc.goals;
+            //     console.log(gl.filter((l, ii, ar) => l != null).pop()) ;
+            //     console.log("coq.pprint.pp2Text(stm.feedback[0].msg)");
+            //     if (stm.feedback[0]) {
+            //       console.log( coq.pprint.pp2Text(stm.feedback[0].msg)) ;
+            //     }
+            //     Word.run(async function (context) {
+            //       var v = context.document.contentControls.getById(cid).getRange('Content').split(["\u000B", "\n", "\r", ""]);
+            //       v.load(['length', 'items', 'text']);
+            //       await context.sync();
+            //       console.log(v.items);
+            //       var rgstart;
+            //       /*var dld = context.document.contentControls.getById(cid);
+            //       dld.load(['length', 'items', 'text']);
+            //       await context.sync();
+            //       console.log('____________________________________');
+            //       console.log(dld);
+            //       console.log(dld.text);
+            //       var ar = ["\n"];
+            //       ar.push(dld.text);
+            //       var dlds = dld.split(ar, true);
+            //       dlds.load(['length', 'items', 'text']);
+            //       await context.sync();
+            //       console.log(dlds);
+
+            //       dlds.items[stm.start.line].select();
+            //       await context.sync(); */
+
+            //       if (stm.text.split("\n")[0] == "") {
+            //         rgstart = v.items[stm.start.line + 1].search(stm.text.split("\n")[1]);
+            //       }
+            //       else {
+            //         rgstart = v.items[stm.start.line].search(stm.text.split("\n")[0]);
+            //       }
+            //       rgstart.load(['length']);
+            //       await context.sync();
+            //       var rgend = v.items[stm.end.line].search(stm.text.split("\n").last());
+            //       rgend.load(['length']);
+            //       await context.sync();
+
+            //       var rg = rgstart.items[0];
+            //       v.items.slice(stm.start.line + 1, stm.end.line).forEach(function (r) { rg = rg.expandTo(r); });
+            //       rg = rg.expandTo(rgend.items[0]);
+            //       rg.select();
+            //       await context.sync();
+            //     })
+            //   }
+            // });
+
+
             console.log('-----------------settimeout', iR);
             //context.sync();
           }, 50 * iR);
@@ -530,6 +620,110 @@ async function readFrom() {
   })
 }
 
+/* coq.provider.snippets[iR].editor.on('update', async function (cm) 
+{   Word.run(async function (context) {
+
+  
+  console.log(cm.getWrapperElement().getElementsByClassName('CodeMirror-code')[0]); 
+var foundRanges_ = context.document.contentControls.getByTag('ws365_code_coq');
+foundRanges_.load(['length', 'items']);
+await context.sync();
+console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
+docEl.innerHTML = cm.getWrapperElement().getElementsByClassName('CodeMirror-code')[0].outerHTML;
+    document.body.getElementsByClassName('ws365_canvas')[0].appendChild(docEl);
+    computedStyleToInlineStyle(docEl, { recursive: true, properties: ["color", "font-style", "font-weight", "display", "overflow-x", "padding", "background"] });
+    console.log('YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY');
+    foundRanges_.items[iR].insertHtml(docEl.outerHTML.replace(/\n/g, "<br>\n"), "Replace");
+    docEl.innerHTML = '';
+    document.body.getElementsByClassName('ws365_canvas')[0].removeChild(docEl);
+    await context.sync();
+    console.log('ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ');
+
+})
+} ); */
+/* coq.provider.snippets[iR].editor.on('renderLine', async function (cm, line, element ) 
+  {
+    var rangs;
+     console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');       
+  console.log(line);
+  console.log(element);
+  //valR.insertText(coq.provider.snippets[iR].editor.getValue().replace(/\n/g, "\r\n") , Word.InsertLocation.replace);
+  await context.sync();
+  rangs = valR.search(line.text);
+  await context.sync();
+
+  rangs.load(["length"]);
+  await context.sync();
+  console.log('ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ');
+  rangs.items[0].set({font : { highlightColor : "red" }})
+  rangs.items[0].select();
+   await context.sync();
+} ); */
+/* coq.provider.snippets[iR].editor.on('renderLine', function (cm, line, element) {
+   try {
+     console.log(line);
+     console.log(line.markedSpans[line.markedSpans.length - 1].marker.stm.text, 'xxxxxx', line.markedSpans[line.markedSpans.length - 1].marker.stm.end.line);
+     var stm = line.markedSpans[line.markedSpans.length - 1].marker.stm;
+     if (line.markedSpans[line.markedSpans.length - 1].marker.stm == undefined) {
+ 
+     } else {
+       console.log(line);
+       console.log('ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ-----');
+       console.log(line.markedSpans[line.markedSpans.length - 1].marker.stm);
+       var ww = v.items[line.markedSpans[line.markedSpans.length - 1].marker.stm.end.line].search(line.markedSpans[line.markedSpans.length - 1].marker.stm.text.trim());
+       ww.load('length');
+       console.log('OOOOOOOOOOOOOOOOOOOOOOOOOOOO-----');
+ 
+       return context.sync().then(() => {
+         console.log(ww);
+         ww.items.forEach(rg => { rg.select(); });
+         console.log('YYYYYYYYYYYYYYYYYYYYYY');
+ 
+         return context.sync();
+       })
+     }
+   }
+   catch { }
+ 
+ }); */
+/* coq.provider.snippets[iR].editor.on('focus', async function (cm, evt ) 
+{
+  valR.select();
+ await context.sync();
+} ); */
+
+/* coq.provider.snippets[iR].editor.on('update', async function (cm) {
+   console.log('xxxxxxxxxxxxxxxxxxxxxyxx');            
+   //var stm = cm.doc.getAllMarks().filter(m => m.className == "coq-eval-ok" || m.className == "coq-eval-pending" || m.className == "coq-eval-failed" ).pop().stm;
+   var stm = coq.doc.sentences.last();
+   console.log(stm);
+   var rg = v.items[stm.start.line+1];
+   v.items.slice(stm.start.line+1, stm.end.line+1).forEach( function (r) {rg = rg.expandTo(r);         });
+   rg.load('text');
+   await context.sync();
+   
+   console.log('replaaaaaaaaaac')
+   console.log(stm.text.replace(/\n/g, ""));
+   var fg = rg.search(stm.text.replace(/\n/g, ""), {ignoreSpace : true, ignorePunct: true });
+   fg.load(['length', 'text']);
+   await context.sync();
+   console.log('rgggggggggggg',rg);
+ 
+   console.log('stmtext',stm.text);
+   console.log('fggggggggggggggggggggggggggggg',fg);
+   fg.items[0].select();
+   await context.sync();
+ 
+   try {
+   var ww = v.items[stm.end.line].search(stm.text.trim().split("\n").last(), {ignoreSpace : true});
+   ww.load('length');
+   await context.sync();
+   ww.items[0].select();
+   await context.sync();
+   }
+   catch {}
+ 
+ }); */
 
 async function writeBack(writeAll) {
   Word.run(async function (context) {

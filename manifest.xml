@@ -17,7 +17,6 @@
     <AppDomain>https://1337777.github.io</AppDomain>
     <AppDomain>https://pages.gitlab.io</AppDomain>
     <AppDomain>https://login.microsoftonline.com</AppDomain>
-    <AppDomain>https://anthroplogic.sharepoint.com</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Document"/>

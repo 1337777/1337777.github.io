@@ -1,27 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
-  <Id>822f7264-478e-4a08-8db7-c6f29d4e37e1</Id>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
+  <Id>822f7264-478e-4a08-8db7-c6f29d4e30e9</Id>
   <Version>1.0.0.0</Version>
   <ProviderName>AnthropLOGIC.com WorkSchool 365</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Coq365"/>
-  <Description DefaultValue="A template to get started."/>
+  <DisplayName DefaultValue="WorkSchool 365"/>
+  <Description DefaultValue="WorkSchool 365 add-in"/>
   <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-80.png"/>
-  <SupportUrl DefaultValue="https://1337777.github.io"/>
+  <SupportUrl DefaultValue="https://anthroplogic.com"/>
   <AppDomains>
-    <AppDomain>1337777.github.io</AppDomain>
+    <AppDomain>https://localhost:3000</AppDomain>
+    <AppDomain>https://1337777.github.io</AppDomain>
+    <AppDomain>https://pages.gitlab.io</AppDomain>
+    <AppDomain>https://login.microsoftonline.com</AppDomain>
+    <AppDomain>https://anthroplogic.sharepoint.com</AppDomain>
   </AppDomains>
   <Hosts>
-    <Host Name="Workbook"/>
+    <Host Name="Document"/>
   </Hosts>
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://localhost:3000/taskpane.html"/>
+    <SourceLocation DefaultValue="https://localhost:3000/workschool365.html"/>
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
     <Hosts>
-      <Host xsi:type="Workbook">
+      <Host xsi:type="Document">
         <DesktopFormFactor>
           <GetStarted>
             <Title resid="GetStarted.Title"/>
@@ -29,8 +36,10 @@
             <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
           </GetStarted>
           <FunctionFile resid="Commands.Url"/>
+
           <ExtensionPoint xsi:type="PrimaryCommandSurface">
-            <OfficeTab id="TabHome">
+            <CustomTab id="WorkSchoo365Tab">
+             <Label resid="WorkSchoo365Tab.Label"/>
               <Group id="CommandsGroup">
                 <Label resid="CommandsGroup.Label"/>
                 <Icon>
@@ -38,6 +47,24 @@
                   <bt:Image size="32" resid="Icon.32x32"/>
                   <bt:Image size="80" resid="Icon.80x80"/>
                 </Icon>
+
+                <Control xsi:type="Button" id="TaskpaneButton0">
+                  <Label resid="TaskpaneButton.Label0"/>
+                  <Supertip>
+                    <Title resid="TaskpaneButton.Label0"/>
+                    <Description resid="TaskpaneButton.Tooltip0"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>ButtonId0</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url0"/>
+                  </Action>
+                </Control>
+
                 <Control xsi:type="Button" id="TaskpaneButton">
                   <Label resid="TaskpaneButton.Label"/>
                   <Supertip>
@@ -54,12 +81,15 @@
                     <SourceLocation resid="Taskpane.Url"/>
                   </Action>
                 </Control>
+
               </Group>
-            </OfficeTab>
+            </CustomTab>
           </ExtensionPoint>
+          
         </DesktopFormFactor>
       </Host>
     </Hosts>
+
     <Resources>
       <bt:Images>
         <bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/icon-16.png"/>
@@ -69,17 +99,31 @@
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
         <bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/commands.html"/>
+        <bt:Url id="Taskpane.Url0" DefaultValue="https://localhost:3000/workschool365.html"/>
         <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="GetStarted.Title" DefaultValue="Get started with your sample add-in!"/>
-        <bt:String id="CommandsGroup.Label" DefaultValue="Coq365 Commands"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Show Coq365"/>
+        <bt:String id="GetStarted.Title" DefaultValue="WorkSchool365 documents for Quiz + Coq proofs"/>
+        <bt:String id="WorkSchoo365Tab.Label" DefaultValue="WorkSchool365"/>
+        <bt:String id="CommandsGroup.Label" DefaultValue="WorkSchool365"/>
+        <bt:String id="TaskpaneButton.Label0" DefaultValue="WorkSchool365"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Coq365"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the HOME tab and click the 'Show Coq365' button to get started."/>
+        <bt:String id="GetStarted.Description" DefaultValue="Your WorkSchool365 add-in loaded successfully. Go to the WorkSchool365 tab to get started."/>
+        <bt:String id="TaskpaneButton.Tooltip0" DefaultValue="Click to Show WorkSchool365 Taskpane"/>
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Show Coq365 Taskpane"/>
       </bt:LongStrings>
     </Resources>
+    
+-    <WebApplicationInfo>
+      <Id>72debd24-da37-426b-906d-86063ee910b8</Id>
+      <Resource>api://localhost:3000/72debd24-da37-426b-906d-86063ee910b8</Resource>
+-      <Scopes>
+        <Scope>User.Read</Scope>
+        <Scope>profile</Scope>
+      </Scopes>
+    </WebApplicationInfo>
+
   </VersionOverrides>
 </OfficeApp>

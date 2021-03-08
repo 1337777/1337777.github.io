@@ -17,6 +17,9 @@
         "node_modules",
         "dist",
         "lib",
-        "lib-amd"
+        "lib-amd",
+        "jscoq-builds-v88",
+        "coq-js",
+        "ui-js"
     ]
 }

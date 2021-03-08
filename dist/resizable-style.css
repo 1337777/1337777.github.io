@@ -1,0 +1,27 @@
+* {
+  padding: 0;
+  margin: 0;
+  top: auto;
+  left: auto;
+}
+
+.contentWindow{
+  position: absolute;
+  background-color: #B4E0DE;
+}
+
+.resizer{
+  position: absolute;
+  z-index: 100;
+  background-color: #4E6160;
+}
+
+.verticalResizer{
+  cursor: ns-resize;
+  
+}
+
+.horizontalResizer{
+  cursor: ew-resize;
+  height: 10px;
+}

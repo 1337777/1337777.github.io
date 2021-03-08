@@ -11,6 +11,8 @@ module.exports = async (env, options) => {
     devtool: "source-map",
     entry: {
       polyfill: "@babel/polyfill",
+      resizable: "./src/taskpane/resizable.js",
+      workschool365: "./src/taskpane/workschool365.js",
       taskpane: "./src/taskpane/taskpane.js",
       commands: "./src/commands/commands.js"
     },
@@ -43,15 +45,29 @@ module.exports = async (env, options) => {
     plugins: [
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
+        filename: "workschool365.html",
+        template: "./src/taskpane/workschool365.html",
+        chunks: ["polyfill", "workschool365"]
+      }),
+      new HtmlWebpackPlugin({
         filename: "taskpane.html",
         template: "./src/taskpane/taskpane.html",
-        chunks: ["polyfill", "taskpane"]
+        chunks: ["polyfill", "resizable",  "taskpane"   ]
       }),
       new CopyWebpackPlugin([
         {
           to: "taskpane.css",
           from: "./src/taskpane/taskpane.css"
+        },
+        {
+          to: "workschool365.css",
+          from: "./src/taskpane/workschool365.css"
+        },
+        {
+          to: "resizable-style.css",
+          from: "./src/taskpane/resizable-style.css"
         }
+
       ]),
       new HtmlWebpackPlugin({
         filename: "commands.html",

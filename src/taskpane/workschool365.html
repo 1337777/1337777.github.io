@@ -1,0 +1,125 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
+<!-- This file shows how to design a first-run page that provides a welcome screen to the user about the features of the add-in. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contoso Task Pane Add-in</title>
+
+    <!-- Office JavaScript API -->
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+
+    <!-- For more information on Office UI Fabric, visit https://developer.microsoft.com/fabric. -->
+    <link rel="stylesheet"
+        href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css" />
+
+    <!-- Template styles -->
+    <link href="workschool365.css" rel="stylesheet" type="text/css" />
+
+   <!-- <script src="../../ui-js/jscoq-loader.js" type="text/javascript"></script> -->
+   
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/coq.min.js"></script>
+<script src="https://unpkg.com/computed-style-to-inline-style"></script>
+</head>
+
+<body class="ms-font-m ms-welcome ms-Fabric">
+
+    
+<section class="samples ms-font-m">
+	<h3>Reviewer Commands</h3>
+			<p>
+				<button id="process-tags" class="ms-Button">
+      <span class="ms-Button-label">Reviewer: Process (Selected) &LeftAngleBracket;ws365&RightAngleBracket; Tags</span>
+  </button>
+  <p>
+    <button id="reformat-code" class="ms-Button">
+<span class="ms-Button-label">Reviewer: Reformat (Selected) Code Ranges</span>
+</button>
+<p>
+    <button id="clear-output" class="ms-Button">
+<span class="ms-Button-label">Reviewer: Clear (Selected) Code Output Ranges</span>
+</button>
+<p>
+    <button id="clear-quiz" class="ms-Button">
+<span class="ms-Button-label">Reviewer: Clear (Selected) Quiz Ranges</span>
+</button>
+<h3>Learner Commands</h3>
+	<p>
+		<button id="anon-user" class="ms-Button">
+      <span class="ms-Button-label">Anonymous Learner: Grade Quiz without Transcripts</span>
+  </button>
+
+		<p>
+			<button id="signed-in-user" class="ms-Button">
+      <span class="ms-Button-label">Signed-in Learner: Grade Quiz with Transcripts</span>
+  </button>
+
+  <h3>Sub Add-in</h3>
+
+  <p>
+	<button id="coq-taskpane" class="ms-Button">
+      <span class="ms-Button-label">Read Code into the Coq365 Taskpane</span>
+  </button>
+
+</section>
+
+<section class="samples ms-font-m">
+	<h3>Documentation</h3>
+    <div id="documentation">
+        <span style="overflow-wrap: anywhere; width: 100%; font-family: consolas; background-color: lightyellow; color: black; font-weight: bold;">
+        &lt;ws365&gt;&lt;code&gt;&lt;id&gt;C1&lt;/id&gt;&lt;lang&gt;coq&lt;/lang&gt; &lt;format/&gt;&lt;/code&gt;&lt;/ws365&gt;
+        </span>
+        <p>To insert empty coq range with the title C1. Then manually add code content into the range and reprocess this tag for formatting.</p>
+        <span style="overflow-wrap: anywhere; width: 100%; font-family: consolas; background-color: lightyellow; color: black; font-weight: bold;">
+            &lt;ws365&gt;&lt;code&gt;&lt;id&gt;C2&lt;/id&gt;&lt;lang&gt;coq&lt;/lang&gt; &lt;content&gt;Check 37:nat.&lt;/content&gt; &lt;format/&gt;&lt;clean/&gt;&lt;/code&gt;&lt;/ws365&gt;
+        </span>
+        <p>To insert formatted coq range with the title C2 with code content, then erase this ws365 tag.</p>
+        <span style="overflow-wrap: anywhere; width: 100%; font-family: consolas; background-color: lightyellow; color: black; font-weight: bold;">
+        &lt;ws365&gt;&lt;code&gt;&lt;id&gt;C3&lt;/id&gt;&lt;lang&gt;text&lt;/lang&gt;
+        &lt;url&gt;https://gist.githubusercontent.com/cheeaun/3720871/raw/fa8a7deb8ea648bb6dee6f99d7d7e183724d7d01/putonglasses.txt&lt;/url&gt; &lt;regex&gt;\n(.*)&lt;/regex&gt; &lt;format/&gt;&lt;clean/&gt;&lt;/code&gt;&lt;/ws365&gt;
+        </span>
+        <p>
+            To insert formatted text (or coq) code with the title C3 with content from the internet url, with (optional) contextual matches against the (optional first capture group of the) regex regular expression.
+        </p>
+        <span style="overflow-wrap: anywhere; width: 100%; font-family: consolas; background-color: lightyellow; color: black; font-weight: bold;">
+        &lt;ws365&gt;&lt;quiz&gt;&lt;id&gt;Q1&lt;/id&gt;&lt;/quiz&gt;&lt;/ws365&gt;
+        </span>
+        <p>
+        To insert quiz with the title Q1 and with default weight 10.
+        </p>
+        <span style="overflow-wrap: anywhere; width: 100%; font-family: consolas; background-color: lightyellow; color: black; font-weight: bold;">
+        &lt;ws365&gt;&lt;quiz&gt;&lt;id&gt;Q2&lt;/id&gt;&lt;weight&gt;50&lt;/weight&gt;&lt;/quiz&gt;&lt;/ws365&gt;
+        </span>
+        <p>
+        To insert quiz with the title Q2 and with the weight 50 (or the weight 0 for ungraded survey instead of quiz).
+        </p>
+        <span style="overflow-wrap: anywhere; width: 100%; font-family: consolas; background-color: lightyellow; color: black; font-weight: bold;">
+        &lt;ws365&gt;&lt;solutions&gt;
+        &lt;solution&gt;&lt;id&gt;Q1&lt;/id&gt;&lt;content&gt;C&lt;/content&gt;&lt;/solution&gt;
+        &lt;solution&gt;&lt;id&gt;Q2&lt;/id&gt;&lt;content&gt;B&lt;/content&gt;&lt;/solution&gt;
+        &lt;/solutions&gt;&lt;/ws365&gt;
+        </span>
+        <p>
+        To insert solutions to enable the grading of the quiz without transcripts by anonymous users... /!\
+        </p>
+        <p>
+            Notes: &lt;format/&gt; and &lt;clean/&gt; can be added to most tags.
+            </p>
+    </div>
+</section>
+
+<!-- <p> COQ TASKPANE <a href="https://localhost:3000/taskpane.html?et=">COQ TASKPANE</a> </p>
+ -->
+
+<div class='ws365_canvas' style='display: none'></div>
+
+</body>
+
+</html>

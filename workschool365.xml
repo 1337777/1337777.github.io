@@ -11,7 +11,7 @@
   <Description DefaultValue="Quiz + Coq Code Documents for WorkSchool 365"/>
   <IconUrl DefaultValue="https://1337777.github.io/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://1337777.github.io/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://anthroplogic.com"/>
+  <SupportUrl DefaultValue="https://contact.anthroplogic.com"/>
   <AppDomains>
     <AppDomain>https://1337777.github.io</AppDomain>
     <AppDomain>https://pages.gitlab.io</AppDomain>
@@ -108,7 +108,7 @@
         <bt:String id="TaskpaneButton.Label" DefaultValue="Coq 365"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Your WorkSchool365 add-in loaded successfully. Go to the WorkSchool 365 tab to get started."/>
+        <bt:String id="GetStarted.Description" DefaultValue="Your WorkSchool 365 add-in loaded successfully. Go to the WorkSchool 365 tab to get started."/>
         <bt:String id="TaskpaneButton.Tooltip0" DefaultValue="Click to Show WorkSchool 365 Taskpane"/>
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Show Coq 365 Taskpane"/>
       </bt:LongStrings>

@@ -7,16 +7,15 @@
   <Version>1.0.0.0</Version>
   <ProviderName>AnthropLOGIC.com WorkSchool 365</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="WorkSchool 365"/>
-  <Description DefaultValue="WorkSchool 365 add-in"/>
+  <DisplayName DefaultValue="Quiz + Coq Code Documents for WorkSchool 365"/>
+  <Description DefaultValue="Quiz + Coq Code Documents for WorkSchool 365"/>
   <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-80.png"/>
-  <SupportUrl DefaultValue="https://anthroplogic.com"/>
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
+  <SupportUrl DefaultValue="https://contact.anthroplogic.com"/>
   <AppDomains>
-    <AppDomain>https://localhost:3000</AppDomain>
     <AppDomain>https://1337777.github.io</AppDomain>
     <AppDomain>https://pages.gitlab.io</AppDomain>
-    <AppDomain>https://login.microsoftonline.com</AppDomain>
+    <AppDomain>https://anthroplogic.sharepoint.com</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Document"/>
@@ -38,7 +37,6 @@
 
           <ExtensionPoint xsi:type="PrimaryCommandSurface">
             <CustomTab id="WorkSchoo365Tab">
-             <Label resid="WorkSchoo365Tab.Label"/>
               <Group id="CommandsGroup">
                 <Label resid="CommandsGroup.Label"/>
                 <Icon>
@@ -82,9 +80,10 @@
                 </Control>
 
               </Group>
+              <Label resid="WorkSchoo365Tab.Label"/>
             </CustomTab>
           </ExtensionPoint>
-          
+
         </DesktopFormFactor>
       </Host>
     </Hosts>
@@ -102,27 +101,18 @@
         <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="GetStarted.Title" DefaultValue="WorkSchool365 documents for Quiz + Coq proofs"/>
-        <bt:String id="WorkSchoo365Tab.Label" DefaultValue="WorkSchool365"/>
-        <bt:String id="CommandsGroup.Label" DefaultValue="WorkSchool365"/>
-        <bt:String id="TaskpaneButton.Label0" DefaultValue="WorkSchool365"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Coq365"/>
+        <bt:String id="GetStarted.Title" DefaultValue="Quiz + Coq Code Documents for WorkSchool 365"/>
+        <bt:String id="WorkSchoo365Tab.Label" DefaultValue="WorkSchool 365"/>
+        <bt:String id="CommandsGroup.Label" DefaultValue="WorkSchool 365"/>
+        <bt:String id="TaskpaneButton.Label0" DefaultValue="WorkSchool 365"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Coq 365"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Your WorkSchool365 add-in loaded successfully. Go to the WorkSchool365 tab to get started."/>
-        <bt:String id="TaskpaneButton.Tooltip0" DefaultValue="Click to Show WorkSchool365 Taskpane"/>
-        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Show Coq365 Taskpane"/>
+        <bt:String id="GetStarted.Description" DefaultValue="Your WorkSchool 365 add-in loaded successfully. Go to the WorkSchool 365 tab to get started."/>
+        <bt:String id="TaskpaneButton.Tooltip0" DefaultValue="Click to Show WorkSchool 365 Taskpane"/>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Show Coq 365 Taskpane"/>
       </bt:LongStrings>
     </Resources>
     
--    <WebApplicationInfo>
-      <Id>72debd24-da37-426b-906d-86063ee910b8</Id>
-      <Resource>api://localhost:3000/72debd24-da37-426b-906d-86063ee910b8</Resource>
--      <Scopes>
-        <Scope>User.Read</Scope>
-        <Scope>profile</Scope>
-      </Scopes>
-    </WebApplicationInfo>
-
   </VersionOverrides>
 </OfficeApp>

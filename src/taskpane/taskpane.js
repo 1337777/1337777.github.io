@@ -29,18 +29,19 @@ self.Resizable.activeContentWindows[0].changeSize(window.innerWidth, window.inne
 self.Resizable.activeContentWindows[0].childrenResize();
 
 
-var jscoq_src = "/ui-js/jscoq-loader.js";
+var jscoq_src = "../../ui-js/jscoq-loader.js";
 var jscoq_ids = [];
 var jscoq_opts = {
   show: true,
   line_numbers: 'continue',
   prelude: true,
-  base_path: '',
+  base_path: '../',
   init_pkgs: ['init', 'qoc'],
   all_pkgs: ['init', 'qoc', 'coq-base', 'coq-collections', 'coq-arith', 'coq-reals', 'math-comp'],
   implicit_libs: true,
   editor: { mode: { 'company-coq': true }, keyMap: 'default' }
 };
+
 /*
 jscoq_src  = "/jscoq-builds-v88/ui-js/jscoq-loader.js";
 jscoq_opts = {
@@ -54,12 +55,12 @@ jscoq_opts = {
   editor: { mode: { 'company-coq': true }, keyMap: 'default' }
 };
 
-jscoq_src = "/ui-js/jscoq-loader.js";
+jscoq_src = "../../ui-js/jscoq-loader.js";
 jscoq_opts = {
   show: true,
   line_numbers: 'continue',
   prelude: true,
-  base_path: '',
+  base_path: '../',
   init_pkgs: ['init', 'qoc'],
   all_pkgs: ['init', 'qoc', 'coq-base', 'coq-collections', 'coq-arith', 'coq-reals', 'math-comp'],
   implicit_libs: true,
@@ -85,13 +86,11 @@ const g = getGlobal();
 
 // the add-in command functions need to be available in global scope
 
-var excoq_keyword = "(?coq365?)*";
 const coq365script_regexp = RegExp('[(][*]/[*]coq365[*]/([^]*?)[*][)]', 'ig');
 
 /** Default helper for invoking an action and handling errors. */
 async function tryCatch(callback) {
   try {
-    console.log('Now executing some WorkSchool 365 function...');
     await callback();
   } catch (error) {
     // Note: In a production add-in, you'd want to notify the user through your add-in's UI.
@@ -105,7 +104,6 @@ window.transcriptSeparator = '             ▽'; //'▽▽▽▽▽▽▽▽▽�
 var coqObserver = {};
 
 coqObserver['coqGoalInfo'] = async (span_id, cont) => {
-  console.log('_______________MYGOALINFO______________________');
   if (transcriptButtonChecked && cont) {
     setTimeout(async () => {
       await transcriptStatement(span_id, true, goals2DOM(cont)[0].outerHTML);
@@ -117,22 +115,18 @@ coqObserver['coqGoalInfo'] = async (span_id, cont) => {
 };
 
 coqObserver['coqCancelled'] = async (span_ids, ...cont) => {
-  console.log('_______________MYCOQCANCELLED______________________');
   selectStatement(coq.doc.sentences.filter(s => !span_ids.includes(s.coq_sid)).last().coq_sid);
 };
 
 coqObserver['feedMessage'] = async (span_id, lvl, loc, msg) => {
-  console.log('______________MYFEEDMESSAGE______________________');
   if (transcriptButtonChecked) {
     await transcriptStatement(span_id, false, coq.pprint.pp2Text(msg))
   };
   selectStatement(span_id);
 
-  //  console.log( coq.pprint.pp2Text(stm.feedback[0].msg)) ;
 
 };
 
-var llog;
 //document.body.innerHTML = "<p>KOKOK" + Office.HostType.Word + "OKOK</p>";
 Office.onReady(info => {
 
@@ -143,10 +137,10 @@ Office.onReady(info => {
       var workspace;
       var foundRanges = context.document.contentControls.getByTag('ws365_code_coq');
 
-      foundRanges.load(['id', 'title', 'paragraphs/text']);
+      foundRanges.load(['id', 'title', 'length', 'paragraphs/text']);
       await context.sync();
 
-      console.log(foundRanges.items);
+      if (foundRanges.items.length != 0) {
       foundRanges.items.forEach(
         (valR, iR, aR) => {
           try {
@@ -157,9 +151,7 @@ Office.onReady(info => {
             } */
             valR.paragraphs.items.map(i => i.text).join('\n').match(coq365script_regexp).forEach(
               function (match) {
-                console.log("Eval Coq365 javascript", match.substring(2, match.length - 2));
                 var evalresult = eval(match.substring(2, match.length - 2));
-                console.log("Result Eval Coq365 javascript", evalresult);
               })
           } catch (err) { console.error(err); }
           workspace = document.createElement("TEXTAREA");
@@ -170,14 +162,13 @@ Office.onReady(info => {
           jscoq_ids.push("workspace_" + valR.id);
         }
       );
+      }
 
       var scriptFile = document.createElement("script");
       //document.body.append(scriptFile);
       scriptFile.type = "text/javascript";
       scriptFile.src = jscoq_src;
-      console.log("SET scriptFile.src");
       scriptFile.onload = /* setTimeout */(function () {
-        console.log("START RUN scriptFile.onload");
         loadJsCoq(jscoq_opts.base_path)
           .then(
             () => {
@@ -193,7 +184,6 @@ Office.onReady(info => {
                 var coqlayoutlog = coq.layout.log.bind(coq.layout);
                 coq.layout.log = (async (text, level) => {
                   try {
-                    console.log('coq.layout.log_____________________________', level, text, coq.sentences.length, coq.sentences);
                     var stm = coq.sentences.last().coq_sid;
                     if (level == "info" || level == "error" || level == "warn" /* || !( /^feedback for [[]sid:/i.test(text)) */) {
                       if (transcriptButtonChecked) {
@@ -211,7 +201,6 @@ Office.onReady(info => {
                 var coqlayoutupdate_goals = coq.layout.update_goals.bind(coq.layout);
                 coq.layout.update_goals = (async (str) => {
                   try {
-                    console.log('coq.layout.update_goals_____________________________', str, coq.sentences.length, coq.sentences);
                     if (str != "") {
                       if (transcriptButtonChecked) {
                         setTimeout(async () => {
@@ -233,10 +222,7 @@ Office.onReady(info => {
 
               }
 
-              // var readFromButton = document.createElement("BUTTON");
-              // readFromButton.innerText = "READ";
-              // document.querySelector("#buttons").appendChild(readFromButton);
-              // readFromButton.onclick = (() => tryCatch(readSelected));
+
 
               let buttons = document.querySelector("#buttons");
 
@@ -272,11 +258,6 @@ Office.onReady(info => {
 
       await context.sync();
 
-
-
-      console.log("xxxxxxxxxxxxxxxxccccccssswsvvvvv");
-
-      console.log("Finished Word.Run here");
     });
   }
 
@@ -297,7 +278,6 @@ function selectStatement(span_id) {
     var v = context.document.contentControls.getById(stm.sp.ccid).getRange('Content').split(["\u000B", "\n", "\r", ""]);
     v.load(['length', 'items', 'text']);
     await context.sync();
-    console.log(v.items);
     var rgstart;
 
     if (stm.text.split("\n")[0] == "") {
@@ -424,7 +404,6 @@ async function formatCC(context, pccc, codelang) {
     var valRtext = pccc.split(["\n"], false, false); //.getTextRanges(["\n", "\u000B"], false) //.split(["\n"], false, false); // getTextRanges([], false);          
     valRtext.load(['items', 'text']);
     await context.sync();
-    console.log(valRtext);
     // coq.provider.snippets[iR].editor.setValue(valRtext.items.map(i => i.text).join('').replace(/\u000B/g, '\n').normalize('NFKD'));
     let op = valRtext.items.map(i => i.text).join('');
 
@@ -432,7 +411,6 @@ async function formatCC(context, pccc, codelang) {
     document.body.getElementsByClassName('ws365_canvas')[0].appendChild(docEl);
     //docEl.style = "font-family: consolas; color: yellow";
     computedStyleToInlineStyle(docEl, { recursive: true, properties: ["color", "font-style", "font-weight"] });
-    console.log(docEl.innerHTML);
     //pccc.insertHtml('<pre>' + docEl.innerHTML.replace(/\u000B/g, '\n').replace(/\n\n/g, '\n<p> </p>').replace( /<[/]p>\n/g , '</p><p> </p>').replace(/\n/g, '<p/>').replace(/  /g, '  ') + '</pre>', "Replace");
     pccc.insertHtml('<pre>' + docEl.innerHTML.replace(/\u000B/g, '<br/>').replace(/\n/g, '\r\n') + '\r\n</pre>', "Replace");
     //pccc.insertHtml('<pre>' + docEl.innerHTML/* .replace(/\u000B/g, '\n') */.replace(/\n\n/g, '\n<br/>').replace( /<br[/]>\n/g , '<br/><br/>').replace(/\n/g, '<p/>').replace(/  /g, '  ') + '</pre>', "Replace");
@@ -452,7 +430,6 @@ async function formatCC(context, pccc, codelang) {
     //docEl.style = "font-family: consolas; color: yellow";
     computedStyleToInlineStyle(docEl, { recursive: true, properties: ["color", "font-style", "font-weight"] });
     var jk = docEl.innerHTML.split(/\r\n|\n|\r|\u000B/g);
-    console.log(jk);
     pccc.clear();
 
     for (let j = 0; j < jk.length; j++) {
@@ -490,18 +467,6 @@ async function readSelected() {
 
 async function writeSelected() {
   writeBack(false);
-  // Word.run(async function (context) {
-
-  // var foundRanges = context.document.getSelection().parentContentControlOrNullObject;
-  // foundRanges.load(['title']);
-  // await context.sync();
-
-  // await write (context, foundRanges);
-
-
-  // foundRanges.insertText(coq.provider.snippets.find(s => s.title == foundRanges.title.split("/")[0].trim()).editor.getValue(), Word.InsertLocation.replace);
-  // await context.sync();
-  // });
 }
 
 async function readCC(siR, cid) {
@@ -532,12 +497,6 @@ async function readFrom() {
     foundRanges.load(['length', 'items', 'text', 'title']);
     await context.sync();
 
-    //vht = foundRanges.items[0].getTextRanges(["\u000B"]);
-    //vht.load('text');
-    //vo = valR.split(["\u000B"]);
-    //await context.sync();
-    // console.log(foundRanges.items[0].getTextRanges(["\u000B"]));
-    //console.log(vo.items);
     foundRanges.items.forEach(
       async (valR, iR, aR) => {
         if (coq.provider.snippets[iR]) {
@@ -547,69 +506,6 @@ async function readFrom() {
           var ctitle = valR.title.split('/')[0].trim();
           window.setTimeout(async () => {
             await readCC(coq.provider.snippets[iR], cid);
-
-            // coq.provider.snippets[iR].editor.on('update', async function (cm) {
-            //   var stm;
-            //   if (coq.doc && coq.doc.sentences) {
-            //     stm = coq.doc.sentences.last()
-            //   } else if (coq.sentences) {
-            //     stm = coq.sentences.last()
-            //   }
-            //   if (stm && stm.sp.title == ctitle) {
-            //     console.log("coq.doc.goals[stm.coq_sid]");
-            //     console.log(coq.doc.sentences.last().coq_sid);
-            //     let si = coq.doc.sentences.last().coq_sid ;
-            //     let gl = coq.doc.goals;
-            //     console.log(gl.filter((l, ii, ar) => l != null).pop()) ;
-            //     console.log("coq.pprint.pp2Text(stm.feedback[0].msg)");
-            //     if (stm.feedback[0]) {
-            //       console.log( coq.pprint.pp2Text(stm.feedback[0].msg)) ;
-            //     }
-            //     Word.run(async function (context) {
-            //       var v = context.document.contentControls.getById(cid).getRange('Content').split(["\u000B", "\n", "\r", ""]);
-            //       v.load(['length', 'items', 'text']);
-            //       await context.sync();
-            //       console.log(v.items);
-            //       var rgstart;
-            //       /*var dld = context.document.contentControls.getById(cid);
-            //       dld.load(['length', 'items', 'text']);
-            //       await context.sync();
-            //       console.log('____________________________________');
-            //       console.log(dld);
-            //       console.log(dld.text);
-            //       var ar = ["\n"];
-            //       ar.push(dld.text);
-            //       var dlds = dld.split(ar, true);
-            //       dlds.load(['length', 'items', 'text']);
-            //       await context.sync();
-            //       console.log(dlds);
-
-            //       dlds.items[stm.start.line].select();
-            //       await context.sync(); */
-
-            //       if (stm.text.split("\n")[0] == "") {
-            //         rgstart = v.items[stm.start.line + 1].search(stm.text.split("\n")[1]);
-            //       }
-            //       else {
-            //         rgstart = v.items[stm.start.line].search(stm.text.split("\n")[0]);
-            //       }
-            //       rgstart.load(['length']);
-            //       await context.sync();
-            //       var rgend = v.items[stm.end.line].search(stm.text.split("\n").last());
-            //       rgend.load(['length']);
-            //       await context.sync();
-
-            //       var rg = rgstart.items[0];
-            //       v.items.slice(stm.start.line + 1, stm.end.line).forEach(function (r) { rg = rg.expandTo(r); });
-            //       rg = rg.expandTo(rgend.items[0]);
-            //       rg.select();
-            //       await context.sync();
-            //     })
-            //   }
-            // });
-
-
-            console.log('-----------------settimeout', iR);
             //context.sync();
           }, 50 * iR);
         }
@@ -620,110 +516,6 @@ async function readFrom() {
   })
 }
 
-/* coq.provider.snippets[iR].editor.on('update', async function (cm) 
-{   Word.run(async function (context) {
-
-  
-  console.log(cm.getWrapperElement().getElementsByClassName('CodeMirror-code')[0]); 
-var foundRanges_ = context.document.contentControls.getByTag('ws365_code_coq');
-foundRanges_.load(['length', 'items']);
-await context.sync();
-console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
-docEl.innerHTML = cm.getWrapperElement().getElementsByClassName('CodeMirror-code')[0].outerHTML;
-    document.body.getElementsByClassName('ws365_canvas')[0].appendChild(docEl);
-    computedStyleToInlineStyle(docEl, { recursive: true, properties: ["color", "font-style", "font-weight", "display", "overflow-x", "padding", "background"] });
-    console.log('YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY');
-    foundRanges_.items[iR].insertHtml(docEl.outerHTML.replace(/\n/g, "<br>\n"), "Replace");
-    docEl.innerHTML = '';
-    document.body.getElementsByClassName('ws365_canvas')[0].removeChild(docEl);
-    await context.sync();
-    console.log('ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ');
-
-})
-} ); */
-/* coq.provider.snippets[iR].editor.on('renderLine', async function (cm, line, element ) 
-  {
-    var rangs;
-     console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');       
-  console.log(line);
-  console.log(element);
-  //valR.insertText(coq.provider.snippets[iR].editor.getValue().replace(/\n/g, "\r\n") , Word.InsertLocation.replace);
-  await context.sync();
-  rangs = valR.search(line.text);
-  await context.sync();
-
-  rangs.load(["length"]);
-  await context.sync();
-  console.log('ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ');
-  rangs.items[0].set({font : { highlightColor : "red" }})
-  rangs.items[0].select();
-   await context.sync();
-} ); */
-/* coq.provider.snippets[iR].editor.on('renderLine', function (cm, line, element) {
-   try {
-     console.log(line);
-     console.log(line.markedSpans[line.markedSpans.length - 1].marker.stm.text, 'xxxxxx', line.markedSpans[line.markedSpans.length - 1].marker.stm.end.line);
-     var stm = line.markedSpans[line.markedSpans.length - 1].marker.stm;
-     if (line.markedSpans[line.markedSpans.length - 1].marker.stm == undefined) {
- 
-     } else {
-       console.log(line);
-       console.log('ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ-----');
-       console.log(line.markedSpans[line.markedSpans.length - 1].marker.stm);
-       var ww = v.items[line.markedSpans[line.markedSpans.length - 1].marker.stm.end.line].search(line.markedSpans[line.markedSpans.length - 1].marker.stm.text.trim());
-       ww.load('length');
-       console.log('OOOOOOOOOOOOOOOOOOOOOOOOOOOO-----');
- 
-       return context.sync().then(() => {
-         console.log(ww);
-         ww.items.forEach(rg => { rg.select(); });
-         console.log('YYYYYYYYYYYYYYYYYYYYYY');
- 
-         return context.sync();
-       })
-     }
-   }
-   catch { }
- 
- }); */
-/* coq.provider.snippets[iR].editor.on('focus', async function (cm, evt ) 
-{
-  valR.select();
- await context.sync();
-} ); */
-
-/* coq.provider.snippets[iR].editor.on('update', async function (cm) {
-   console.log('xxxxxxxxxxxxxxxxxxxxxyxx');            
-   //var stm = cm.doc.getAllMarks().filter(m => m.className == "coq-eval-ok" || m.className == "coq-eval-pending" || m.className == "coq-eval-failed" ).pop().stm;
-   var stm = coq.doc.sentences.last();
-   console.log(stm);
-   var rg = v.items[stm.start.line+1];
-   v.items.slice(stm.start.line+1, stm.end.line+1).forEach( function (r) {rg = rg.expandTo(r);         });
-   rg.load('text');
-   await context.sync();
-   
-   console.log('replaaaaaaaaaac')
-   console.log(stm.text.replace(/\n/g, ""));
-   var fg = rg.search(stm.text.replace(/\n/g, ""), {ignoreSpace : true, ignorePunct: true });
-   fg.load(['length', 'text']);
-   await context.sync();
-   console.log('rgggggggggggg',rg);
- 
-   console.log('stmtext',stm.text);
-   console.log('fggggggggggggggggggggggggggggg',fg);
-   fg.items[0].select();
-   await context.sync();
- 
-   try {
-   var ww = v.items[stm.end.line].search(stm.text.trim().split("\n").last(), {ignoreSpace : true});
-   ww.load('length');
-   await context.sync();
-   ww.items[0].select();
-   await context.sync();
-   }
-   catch {}
- 
- }); */
 
 async function writeBack(writeAll) {
   Word.run(async function (context) {
@@ -758,13 +550,10 @@ async function write(context, valR) {
     //valR.insertHtml('<pre><p>'+ docEl.innerHTML.replaceAll(/\n/g, '</p><p>') + '</p></pre>', "Replace");
 
     if (Office.context.platform == Office.PlatformType.PC) {
-      console.log(docEl.innerHTML);
-
       valR.insertHtml('<pre>' + docEl.innerHTML.replace(/\u000B/g, '<br/>').replace(/\n/g, '\r\n') + '\r\n</pre>', "Replace");
       valR.styleBuiltIn = "NoSpacing";
     }
     else {
-      console.log(docEl.innerHTML);
       var jk = docEl.innerHTML.split(/\r\n|\n|\r|\u000B/g);
       valR.clear();
       for (let j = 0; j < jk.length; j++) {

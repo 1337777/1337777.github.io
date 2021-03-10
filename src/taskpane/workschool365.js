@@ -8,13 +8,46 @@
 
 
 
-document.getElementById('process-tags').onclick = (() => tryCatch(processWSTags));
+document.getElementById('process-tags').onclick = (() => tryCatch(processTags));
 document.getElementById('reformat-code').onclick = (() => tryCatch(reFormatSelected));
 document.getElementById('clear-output').onclick = (() => tryCatch(() => clearTags('ws365_code_output')));
 document.getElementById('clear-quiz').onclick = (() => tryCatch(() => clearTags('ws365_quiz')));
 document.getElementById('coq-taskpane').onclick = (() => { self.location = "./taskpane.html?et="; });
 document.getElementById("anon-user").onclick = (() => tryCatch(anonGrade));
 document.getElementById("signed-in-user").onclick = (() => tryCatch(signedGrade));
+document.querySelectorAll(".doc-tags").forEach(function (el) {
+  el.addEventListener('click', (() => tryCatch(() => docTags(el))))
+});
+
+Office.onReady(info => {
+
+  if (info.host === Office.HostType.Word) {
+
+    Word.run(async context => {
+
+
+    });
+  }
+
+});
+
+/** Default helper for invoking an action and handling errors. */
+async function tryCatch(callback) {
+  try {
+    await callback();
+  } catch (error) {
+    // Note: In a production add-in, you'd want to notify the user through your add-in's UI.
+    console.error(error);
+  }
+}
+
+async function docTags(el) {
+  Word.run(async context => {
+    var par = context.document.getSelection().insertParagraph(el.textContent.replace(/\s+/g, ' ').replace('/> </', '><').trim(), "After");
+    par.select();
+    await context.sync();
+  })
+}
 
 function keyRot(text, key, reverse) {
   var bound = 0x10000;
@@ -34,6 +67,11 @@ async function signedGrade() {
   else {
     self.location = "https://anthroplogic.com";
   }
+}
+
+function tokenizeSolution(str) {
+
+  return str.replace(/[`~!@#$%^&*()-=+[{\]}\\|;:'"‘’“”,.<>/?]/g, ' ').replace(/[\n\s]+/g, ' ').trim().toLowerCase();
 }
 
 async function anonGrade() {
@@ -57,7 +95,7 @@ async function anonGrade() {
         try {
           var valueID = xmlDoc.evaluate('id', value, null, XPathResult.ANY_TYPE, null).iterateNext().childNodes[0].nodeValue.trim();
 
-          var valueContent = xmlDoc.evaluate('content', value, null, XPathResult.ANY_TYPE, null).iterateNext().childNodes[0].nodeValue.trim();
+          var valueContent = xmlDoc.evaluate('content', value, null, XPathResult.ANY_TYPE, null).iterateNext().childNodes[0].nodeValue;
           var questionCC = foundRanges.items.filter(it =>
             it.title.split('/')[0].split(';')[0].trim() == valueID);
 
@@ -65,9 +103,11 @@ async function anonGrade() {
             okko = false;
             cc = solutionCC.items[0].insertParagraph(okko ? "OK" : "KO", Word.InsertLocation.after).insertContentControl();
           } else {
-            okko = (questionCC[0].text.trim() == valueContent);
+            okko = (tokenizeSolution(questionCC[0].text) == tokenizeSolution(valueContent));
             cc = questionCC[0].insertParagraph(okko ? "OK" : "KO", Word.InsertLocation.after).insertContentControl();
           }
+          cc.cannotEdit = true;
+          cc.cannotDelete = true;
           cc.appearance = Word.ContentControlAppearance.tags;
           cc.color = okko ? "green" : "red";
           cc.font.highlightColor = okko ? "green" : "red";
@@ -81,17 +121,7 @@ async function anonGrade() {
   });
 }
 
-Office.onReady(info => {
 
-  if (info.host === Office.HostType.Word) {
-
-    Word.run(async context => {
-
-
-    });
-  }
-
-});
 
 async function formatCC(context, pccc, codelang) {
   let docEl = document.createElement("PRE");
@@ -203,7 +233,7 @@ async function clearTags(tagName /* 'ws365_code_output' or 'ws365_quiz' */) {
   });
 }
 
-async function processWSTags() {
+async function processTags() {
   await Word.run(async function (context) {
 
     var searchResults;
@@ -219,16 +249,14 @@ async function processWSTags() {
     searchResults.load(['text']);
     await context.sync();
     var pp = new DOMParser();
-    var xmlDoc, xmlDocResultsEl;
-    var codelang, ccweight, cctitle;
-    var fetchResponse, fetchBody = "", fetchBodys;
-    var cc, pccc;
-
-    var docEl = document.createElement("PRE");
-
+   
     for (var i = 0; i < searchResults.items.length; i++) {
 
       try {
+        let xmlDoc, xmlDocResultsEl;
+        let codelang, ccweight, cctitle;
+        let fetchResponse, fetchBodys;
+        let cc, pccc;
         let patt = new RegExp('^[^]*$', 'g');
         xmlDoc = pp.parseFromString(searchResults.items[i].text, "text/xml");
 
@@ -351,16 +379,14 @@ async function processWSTags() {
             }
 
             await context.sync();
-            pccc = context.document.contentControls.getByTitle(cctitle);
-            pccc.load('length');
-            await context.sync();
+          } else {
+            cc = pccc.items[0];
           }
 
           if (xmlDocResultsEl.getElementsByTagName("format").length != 0) {
-
-            await formatCC(context, pccc.items[0], codelang);
-
-
+            console.log("AAAAAAAAAAAAAAAAAAAAAAAAAA");
+            await formatCC(context, cc, codelang);
+            console.log("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
           }
 
           if (xmlDocResultsEl.getElementsByTagName("clean").length != 0) {
@@ -377,12 +403,3 @@ async function processWSTags() {
   });
 }
 
-/** Default helper for invoking an action and handling errors. */
-async function tryCatch(callback) {
-  try {
-    await callback();
-  } catch (error) {
-    // Note: In a production add-in, you'd want to notify the user through your add-in's UI.
-    console.error(error);
-  }
-}

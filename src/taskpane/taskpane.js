@@ -145,14 +145,15 @@ Office.onReady(info => {
         (valR, iR, aR) => {
           try {
             /* for (const match of valR.paragraphs.items.map(i => i.text).join('\n').matchAll(coq365script_regexp)) {
-              console.log("Eval Coq365 javascript", match[1]);
               var evalresult = eval(match[1]);
-              console.log("Result Eval Coq365 javascript", evalresult);
             } */
-            valR.paragraphs.items.map(i => i.text).join('\n').match(coq365script_regexp).forEach(
+            let matches = valR.paragraphs.items.map(i => i.text).join('\n').match(coq365script_regexp);
+            if (matches.length > 0) {
+              matches.forEach(
               function (match) {
                 var evalresult = eval(match.substring(2, match.length - 2));
-              })
+              });
+            }
           } catch (err) { console.error(err); }
           workspace = document.createElement("TEXTAREA");
           //workspace.setAttribute("id", "workspace_" + valR.title.split('/')[0].trim());

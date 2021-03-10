@@ -7,14 +7,13 @@
   <Version>1.0.0.0</Version>
   <ProviderName>AnthropLOGIC.com WorkSchool 365</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Quiz + Coq Code Documents for WorkSchool 365"/>
-  <Description DefaultValue="Quiz + Coq Code Documents for WorkSchool 365"/>
+  <DisplayName DefaultValue="WorkSchool 365 LMS Coq Quiz in Word Docs"/>
+  <Description DefaultValue="Create automatically-graded quizzes and interactive source code (Coq) in Word documents"/>
   <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://contact.anthroplogic.com"/>
   <AppDomains>
     <AppDomain>https://1337777.github.io</AppDomain>
-    <AppDomain>https://pages.gitlab.io</AppDomain>
     <AppDomain>https://anthroplogic.sharepoint.com</AppDomain>
   </AppDomains>
   <Hosts>

@@ -73,7 +73,7 @@ function keyRot(text, key, reverse) {
 };
 
 async function signedGrade() {
-  if (/[/][/].*[.]sharepoint[.]com.*/i.test(Office.context.document.url)) {
+  if (/^https:[/][/][^/]*sharepoint[.]com.*/i.test(Office.context.document.url)) {
     self.location = Office.context.document.url.replace(/(.*)[/][^/]*$/i, '$1');
   }
   else {

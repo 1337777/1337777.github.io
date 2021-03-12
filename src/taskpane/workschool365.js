@@ -7,18 +7,6 @@
 /* global console, document, Excel, Office */
 
 
-
-document.getElementById('process-tags').onclick = (() => tryCatch(processTags));
-document.getElementById('reformat-code').onclick = (() => tryCatch(reFormatSelected));
-document.getElementById('clear-output').onclick = (() => tryCatch(() => clearTags('ws365_code_output')));
-document.getElementById('clear-quiz').onclick = (() => tryCatch(() => clearTags('ws365_quiz')));
-document.getElementById('coq-taskpane').onclick = (() => { self.location = "./taskpane.html?et="; });
-document.getElementById("anon-user").onclick = (() => tryCatch(anonGrade));
-document.getElementById("signed-in-user").onclick = (() => tryCatch(signedGrade));
-document.querySelectorAll(".doc-tags").forEach(function (el) {
-  el.addEventListener('click', (() => tryCatch(() => docTags(el))))
-});
-
 Office.onReady(info => {
 
   if (info.host === Office.HostType.Word) {
@@ -29,6 +17,30 @@ Office.onReady(info => {
     });
   }
 
+});
+
+
+if (document.documentMode) {
+  console.error('Unsupported Browser!');
+  var el = document.createElement("div");
+  el.innerHTML = (`<h1 style="color: orange">Unsupported Browser!</h1>
+   <h3>This add-in does not support the Internet Explorer web browser, 
+  consider upgrading your host to Microsoft Edge 
+  ( <a target="_blank" href="https://developer.microsoft.com/en-us/microsoft-edge/">https://developer.microsoft.com/en-us/microsoft-edge/</a> ) 
+  or to Microsoft Word with the latest Microsoft Edge WebView 2 
+  ( <a target="_blank" href="https://developer.microsoft.com/en-us/microsoft-edge/webview2/">https://developer.microsoft.com/en-us/microsoft-edge/webview2/</a> ) </h3>`);
+  document.body.insertBefore(el, document.body.firstChild);
+}
+
+document.getElementById('process-tags').onclick = (() => tryCatch(processTags));
+document.getElementById('reformat-code').onclick = (() => tryCatch(reFormatSelected));
+document.getElementById('clear-output').onclick = (() => tryCatch(() => clearTags('ws365_code_output')));
+document.getElementById('clear-quiz').onclick = (() => tryCatch(() => clearTags('ws365_quiz')));
+document.getElementById('coq-taskpane').onclick = (() => { self.location = "./taskpane.html?et="; });
+document.getElementById("anon-user").onclick = (() => tryCatch(anonGrade));
+document.getElementById("signed-in-user").onclick = (() => tryCatch(signedGrade));
+document.querySelectorAll(".doc-tags").forEach(function (el) {
+  el.addEventListener('click', (() => tryCatch(() => docTags(el))))
 });
 
 /** Default helper for invoking an action and handling errors. */
@@ -43,7 +55,7 @@ async function tryCatch(callback) {
 
 async function docTags(el) {
   Word.run(async context => {
-    var par = context.document.getSelection().insertParagraph(el.textContent.replace(/\s+/g, ' ').replace('/> </', '><').trim(), "After");
+    var par = context.document.getSelection().insertParagraph(el.textContent.replace(/\s+/g, ' ').replace(/> </g, '><').trim(), "After");
     par.select();
     await context.sync();
   })
@@ -71,7 +83,9 @@ async function signedGrade() {
 
 function tokenizeSolution(str) {
 
-  return str.replace(/[`~!@#$%^&*()-=+[{\]}\\|;:'"‘’“”,.<>/?]/g, ' ').replace(/[\n\s]+/g, ' ').trim().toLowerCase();
+  //  return str.replace(/[`~!@#$%^&*()=+[{\]}\\|;:'"‘’“”,.<>/?-]/g, ' ').replace(/[\n\s]+/g, ' ').trim().toLowerCase();
+  return str.replace(/[^\w]/g, ' ').replace(/[\n\s]+/g, ' ').trim().toLowerCase();
+
 }
 
 async function anonGrade() {
@@ -84,39 +98,40 @@ async function anonGrade() {
     solutionCC.load(['length', 'items', 'text', 'title']);
     await context.sync();
 
-    var cc, okko;
-    var pp = new DOMParser();
-    var xmlDoc = pp.parseFromString(keyRot(solutionCC.items[0].title, solutionCC.items[0].id.toString(), true), "text/xml");
+    if (solutionCC.items.length != 0) {
+      var cc, okko;
+      var pp = new DOMParser();
+      var xmlDoc = pp.parseFromString(keyRot(solutionCC.items[0].title, solutionCC.items[0].id.toString(), true), "text/xml");
 
-    var xmlDocResultsEl = xmlDoc.evaluate('/solutions[1]', xmlDoc, null, XPathResult.ANY_TYPE, null).iterateNext();
-    if (xmlDocResultsEl != null) {
+      var xmlDocResultsEl = xmlDoc.evaluate('/solutions[1]', xmlDoc, null, XPathResult.ANY_TYPE, null).iterateNext();
+      if (xmlDocResultsEl != null) {
+        xmlDocResultsEl.childNodes.forEach((value, key, parent) => {
+          try {
+            var valueID = xmlDoc.evaluate('id', value, null, XPathResult.ANY_TYPE, null).iterateNext().childNodes[0].nodeValue.trim();
 
-      xmlDocResultsEl.childNodes.forEach((value, key, parent) => {
-        try {
-          var valueID = xmlDoc.evaluate('id', value, null, XPathResult.ANY_TYPE, null).iterateNext().childNodes[0].nodeValue.trim();
+            var valueContent = xmlDoc.evaluate('content', value, null, XPathResult.ANY_TYPE, null).iterateNext().childNodes[0].nodeValue;
+            var questionCC = foundRanges.items.filter(it =>
+              it.title.split('/')[0].split(';')[0].trim() == valueID);
 
-          var valueContent = xmlDoc.evaluate('content', value, null, XPathResult.ANY_TYPE, null).iterateNext().childNodes[0].nodeValue;
-          var questionCC = foundRanges.items.filter(it =>
-            it.title.split('/')[0].split(';')[0].trim() == valueID);
-
-          if (questionCC.length == 0) {
-            okko = false;
-            cc = solutionCC.items[0].insertParagraph(okko ? "OK" : "KO", Word.InsertLocation.after).insertContentControl();
-          } else {
-            okko = (tokenizeSolution(questionCC[0].text) == tokenizeSolution(valueContent));
-            cc = questionCC[0].insertParagraph(okko ? "OK" : "KO", Word.InsertLocation.after).insertContentControl();
-          }
-          cc.cannotEdit = true;
-          cc.cannotDelete = true;
-          cc.appearance = Word.ContentControlAppearance.tags;
-          cc.color = okko ? "green" : "red";
-          cc.font.highlightColor = okko ? "green" : "red";
-          cc.font.color = "white";
-          cc.tag = "ws365_grade";
-          cc.title = " " + valueID + " / grade ";
-        } catch (err) { console.error(err) };
-      });
-      await context.sync();
+            if (questionCC.length == 0) {
+              okko = false;
+              cc = solutionCC.items[0].insertParagraph(okko ? "OK" : "KO", Word.InsertLocation.after).insertContentControl();
+            } else {
+              okko = (tokenizeSolution(questionCC[0].text) == tokenizeSolution(valueContent));
+              cc = questionCC[0].insertParagraph(okko ? "OK" : "KO", Word.InsertLocation.after).insertContentControl();
+            }
+            cc.cannotEdit = true;
+            cc.cannotDelete = true;
+            cc.appearance = Word.ContentControlAppearance.tags;
+            cc.color = okko ? "green" : "red";
+            cc.font.highlightColor = okko ? "green" : "red";
+            cc.font.color = "white";
+            cc.tag = "ws365_grade";
+            cc.title = " " + valueID + " / grade ";
+          } catch (err) { console.error(err) };
+        });
+        await context.sync();
+      }
     }
   });
 }
@@ -126,7 +141,7 @@ async function anonGrade() {
 async function formatCC(context, pccc, codelang) {
   let docEl = document.createElement("PRE");
 
-  if (Office.context.platform == Office.PlatformType.PC) {
+  if (Office.context.platform != Office.PlatformType.OfficeOnline) {
     /* pccc.load('text');
     await context.sync(); */
     var valRtext = pccc.split(["\n"], false, false); //.getTextRanges(["\n", "\u000B"], false) //.split(["\n"], false, false); // getTextRanges([], false);          
@@ -235,23 +250,21 @@ async function clearTags(tagName /* 'ws365_code_output' or 'ws365_quiz' */) {
 
 async function processTags() {
   await Word.run(async function (context) {
-
     var searchResults;
     let documentgetSelection = context.document.getSelection();
     documentgetSelection.load(['isEmpty']);
     await context.sync();
 
     if (documentgetSelection.isEmpty) {
-      searchResults = context.document.body.search('[<]ws365[>]*[<]/ws365[>]', { matchWildcards: true });
+      searchResults = context.document.body.search('[<]ws365[>]*[<]/ws365[>]', { matchWildcards: true, matchCase: false });
     } else {
-      searchResults = documentgetSelection.search('[<]ws365[>]*[<]/ws365[>]', { matchWildcards: true });
+      searchResults = documentgetSelection.search('[<]ws365[>]*[<]/ws365[>]', { matchWildcards: true, matchCase: false });
     }
     searchResults.load(['text']);
     await context.sync();
     var pp = new DOMParser();
-   
-    for (var i = 0; i < searchResults.items.length; i++) {
 
+    for (var i = 0; i < searchResults.items.length; i++) {
       try {
         let xmlDoc, xmlDocResultsEl;
         let codelang, ccweight, cctitle;
@@ -260,6 +273,7 @@ async function processTags() {
         let patt = new RegExp('^[^]*$', 'g');
         xmlDoc = pp.parseFromString(searchResults.items[i].text, "text/xml");
 
+        // /!\ IE 11
         xmlDocResultsEl = xmlDoc.evaluate('/ws365/content[child::title and child::tag][1]', xmlDoc, null, XPathResult.ANY_TYPE, null).iterateNext();
         if (xmlDocResultsEl != null) {
           cctitle = xmlDocResultsEl.getElementsByTagName("title")[0].childNodes[0].nodeValue;
@@ -279,6 +293,7 @@ async function processTags() {
             searchResults.items[i].delete();
             searchResults.items[i].paragraphs.getLast().delete();
           }
+          await context.sync();
         }
 
         xmlDocResultsEl = xmlDoc.evaluate('/ws365/quiz[child::id][1]', xmlDoc, null, XPathResult.ANY_TYPE, null).iterateNext();
@@ -306,11 +321,11 @@ async function processTags() {
             searchResults.items[i].delete();
             searchResults.items[i].paragraphs.getLast().delete();
           }
+          await context.sync();
         }
 
         xmlDocResultsEl = xmlDoc.evaluate('/ws365/solutions[1]', xmlDoc, null, XPathResult.ANY_TYPE, null).iterateNext();
         if (xmlDocResultsEl != null) {
-
           pccc = context.document.contentControls.getByTag('ws365_solutions');
           pccc.load(['length', 'title']);
           await context.sync();
@@ -334,6 +349,7 @@ async function processTags() {
             searchResults.items[i].delete();
             searchResults.items[i].paragraphs.getLast().delete();
           }
+          await context.sync();
         }
 
         xmlDocResultsEl = xmlDoc.evaluate('/ws365/code[child::id and child::lang][1]', xmlDoc, null, XPathResult.ANY_TYPE, null).iterateNext();
@@ -377,24 +393,24 @@ async function processTags() {
                 cc.insertText((xmlDocResultsEl.getElementsByTagName("content")[0].childNodes[0].nodeValue), Word.InsertLocation.end);
               }
             }
-
-            await context.sync();
           } else {
             cc = pccc.items[0];
           }
+          await context.sync();
 
           if (xmlDocResultsEl.getElementsByTagName("format").length != 0) {
-            console.log("AAAAAAAAAAAAAAAAAAAAAAAAAA");
             await formatCC(context, cc, codelang);
-            console.log("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
           }
 
           if (xmlDocResultsEl.getElementsByTagName("clean").length != 0) {
             searchResults.items[i].delete();
             searchResults.items[i].paragraphs.getLast().delete();
           }
+          await context.sync();
         }
+
       } catch (error) {
+        console.error(error);
         console.error('ERROR TO PROCESS: ', searchResults.items[i].text);
       }
       await context.sync();
@@ -402,4 +418,3 @@ async function processTags() {
     return context.sync();
   });
 }
-

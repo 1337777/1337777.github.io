@@ -6,6 +6,17 @@
 
 /* global console, document, Excel, Office */
 
+if (document.documentMode) {
+  console.error('Unsupported Browser!');
+  var el = document.createElement("div");
+  el.innerHTML = (`<h1 style="color: orange">Unsupported Browser!</h1>
+   <h3>This add-in does not support the Internet Explorer web browser, 
+  consider upgrading your host to Microsoft Edge 
+  ( <a target="_blank" href="https://developer.microsoft.com/en-us/microsoft-edge/">https://developer.microsoft.com/en-us/microsoft-edge/</a> ) 
+  or to Microsoft Word with the latest Microsoft Edge WebView 2 
+  ( <a target="_blank" href="https://developer.microsoft.com/en-us/microsoft-edge/webview2/">https://developer.microsoft.com/en-us/microsoft-edge/webview2/</a> ) </h3>`);
+  document.body.insertBefore(el, document.body.firstChild);
+}
 
 //import * as Resizable from './resizable.js';
 
@@ -399,7 +410,7 @@ function goal2DOM(goal) {
 async function formatCC(context, pccc, codelang) {
   let docEl = document.createElement("PRE");
 
-  if (Office.context.platform == Office.PlatformType.PC) {
+  if (Office.context.platform != Office.PlatformType.OfficeOnline) {
     /* pccc.load('text');
     await context.sync(); */
     var valRtext = pccc.split(["\n"], false, false); //.getTextRanges(["\n", "\u000B"], false) //.split(["\n"], false, false); // getTextRanges([], false);          
@@ -473,7 +484,7 @@ async function writeSelected() {
 async function readCC(siR, cid) {
   Word.run(async function (context) {
     var valR = context.document.contentControls.getById(cid);
-    if (Office.context.platform == Office.PlatformType.PC) {
+    if (Office.context.platform != Office.PlatformType.OfficeOnline) {
       var valRtext = valR.split([]); // getTextRanges([], false);          
       valRtext.load(['items', 'text']);
       /* valR.load([ 'text']); */
@@ -550,7 +561,7 @@ async function write(context, valR) {
     //console.log('-----------------replace', docEl.outerHTML.replaceAll(/\n(.*?)\n/g, '<p>$1</p>').replaceAll(/  /g, '&nbsp&nbsp'));
     //valR.insertHtml('<pre><p>'+ docEl.innerHTML.replaceAll(/\n/g, '</p><p>') + '</p></pre>', "Replace");
 
-    if (Office.context.platform == Office.PlatformType.PC) {
+    if (Office.context.platform != Office.PlatformType.OfficeOnline) {
       valR.insertHtml('<pre>' + docEl.innerHTML.replace(/\u000B/g, '<br/>').replace(/\n/g, '\r\n') + '\r\n</pre>', "Replace");
       valR.styleBuiltIn = "NoSpacing";
     }

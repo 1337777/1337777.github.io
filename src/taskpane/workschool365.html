@@ -8,7 +8,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Contoso Task Pane Add-in</title>
+    <title>WorkSchool 365 CRM &amp; LMS for Quiz &amp; Coq</title>
 
     <!-- Office JavaScript API -->
     <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
@@ -34,8 +34,9 @@
 
     <section class="samples ms-font-m">
         Create automatically-graded quizzes and interactive source code (Coq) in Word documents via xml-commands. <a
-            href="https://www.youtube.com/watch?v=dos-VWYKSgU">Video tutorial</a>. Optional: <span
-            style="background-color: lightyellow;"><a href="https://anthroplogic.com">Sign-in/up.</a></span>
+            target="_blank" href="https://www.youtube.com/watch?v=dos-VWYKSgU">Video tutorial</a>. Optional: <span
+            style="background-color: lightyellow;"><a target="_blank"
+                href="https://anthroplogic.com">Sign-in/up.</a></span>
 
         <h3>Reviewer Commands</h3>
         <p>
@@ -80,7 +81,7 @@
 
             <span class="doc-tags"
                 style="cursor:pointer; overflow-wrap: anywhere; width: 100%; font-family: consolas; background-color: lightyellow; color: black; font-weight: bold;">
-                &lt;ws365&gt;&lt;quiz&gt;&lt;id&gt;Q1&lt;/id&gt;&lt;weight&gt;30&lt;/weight&gt;&lt;clean/&gt;&lt;/quiz&gt;&lt;/ws365&gt;
+&lt;ws365&gt;&lt;quiz&gt;&lt;id&gt;Q1&lt;/id&gt;&lt;weight&gt;30&lt;/weight&gt;&lt;clean/&gt;&lt;/quiz&gt;&lt;/ws365&gt;
             </span>
             <p>
                 To insert quiz with the title Q1 and with the weight 30 (or the weight 0 for ungraded survey instead of
@@ -90,10 +91,10 @@
 
             <span class="doc-tags"
                 style="cursor:pointer; overflow-wrap: anywhere; width: 100%; font-family: consolas; background-color: lightyellow; color: black; font-weight: bold;">
-                &lt;ws365&gt;&lt;solutions&gt;
-                &lt;solution&gt;&lt;id&gt;Q1&lt;/id&gt;&lt;content&gt;C&lt;/content&gt;&lt;/solution&gt;
-                &lt;solution&gt;&lt;id&gt;Q2&lt;/id&gt;&lt;content&gt;B&lt;/content&gt;&lt;/solution&gt;
-                &lt;clean/&gt;&lt;/solutions&gt;&lt;/ws365&gt;
+&lt;ws365&gt;&lt;solutions&gt;
+&lt;solution&gt;&lt;id&gt;Q1&lt;/id&gt;&lt;content&gt;C&lt;/content&gt;&lt;/solution&gt;
+&lt;solution&gt;&lt;id&gt;Q2&lt;/id&gt;&lt;content&gt;B&lt;/content&gt;&lt;/solution&gt;
+&lt;clean/&gt;&lt;/solutions&gt;&lt;/ws365&gt;
             </span>
             <p>
                 To insert solutions to enable the grading of the quiz without transcripts by anonymous users. /!\ These
@@ -102,34 +103,33 @@
 
             <span class="doc-tags"
                 style="cursor:pointer; overflow-wrap: anywhere; width: 100%; font-family: consolas; background-color: lightyellow; color: black; font-weight: bold;">
-                &lt;ws365&gt;&lt;code&gt;&lt;id&gt;C1&lt;/id&gt;&lt;lang&gt;coq&lt;/lang&gt; &lt;content&gt;Check
-                37:nat. Goal 0=0. reflexivity. Qed.&lt;/content&gt;
-                &lt;format/&gt;&lt;clean/&gt;&lt;/code&gt;&lt;/ws365&gt;
+&lt;ws365&gt;&lt;code&gt;&lt;id&gt;C1&lt;/id&gt;&lt;lang&gt;coq&lt;/lang&gt;
+&lt;content&gt;Check 37:nat. Goal 0=0. reflexivity. Qed.&lt;/content&gt;
+&lt;format/&gt;&lt;clean/&gt;&lt;/code&gt;&lt;/ws365&gt;
             </span>
             <p>To insert formatted (optional &lt;format/&gt;) coq (&lt;lang&gt;coq&lt;/lang&gt;) range with the title C1
                 with code content, then erase (optional &lt;clean/&gt;) this &lt;ws365&gt; tag. If the &lt;content&gt;
-                element is omitted, then later the user manually add the code content into the range and reformat this tag.
+                element is omitted, then later the user manually add the code content into the range and reformat this
+                tag.
             </p>
 
             <span class="doc-tags"
                 style="cursor:pointer; overflow-wrap: anywhere; width: 100%; font-family: consolas; background-color: lightyellow; color: black; font-weight: bold;">
-                &lt;ws365&gt;&lt;code&gt;&lt;id&gt;C2&lt;/id&gt;&lt;lang&gt;text&lt;/lang&gt;
-                &lt;url&gt;https://gist.githubusercontent.com/cheeaun/3720871/raw/fa8a7deb8ea648bb6dee6f99d7d7e183724d7d01/putonglasses.txt&lt;/url&gt;
-                &lt;regex&gt;\n(.*)&lt;/regex&gt; &lt;format/&gt;&lt;clean/&gt;&lt;/code&gt;&lt;/ws365&gt;
+&lt;ws365&gt;&lt;code&gt;&lt;id&gt;C2&lt;/id&gt;&lt;lang&gt;text&lt;/lang&gt;
+&lt;url&gt;https://gist.githubusercontent.com/cheeaun/3720871/raw/fa8a7deb8ea648bb6dee6f99d7d7e183724d7d01/putonglasses.txt&lt;/url&gt;
+&lt;regex&gt;\n(.*)&lt;/regex&gt;&lt;format/&gt;&lt;clean/&gt;&lt;/code&gt;&lt;/ws365&gt;
             </span>
             <p>
                 To insert formatted text (&lt;lang&gt;text&lt;/lang&gt;) code with the title C2 with content from the
                 internet url (&lt;url&gt;), with (optional) contextual matches against the (optional first capture group
-                of the) regex regular expression (&lt;regex&gt;). Try some other &lt;lang&gt;javascript&lt;/lang&gt; (<a
+                of the) regex regular expression (&lt;regex&gt;). Try some &lt;lang&gt;javascript&lt;/lang&gt; (<a
+                    target="_blank"
                     href="https://github.com/highlightjs/highlight.js/blob/master/SUPPORTED_LANGUAGES.md">List of
-                    languages</a>)
+                    languages</a>).
             </p>
 
         </div>
     </section>
-
-    <!-- <p> COQ TASKPANE <a href="https://localhost:3000/taskpane.html?et=">COQ TASKPANE</a> </p>
- -->
 
     <div class='ws365_canvas' style='display: none'></div>
 

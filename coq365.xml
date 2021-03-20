@@ -7,8 +7,8 @@
   <Version>1.0.0.0</Version>
   <ProviderName>AnthropLOGIC.com WorkSchool 365</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="WorkSchool 365 CRM &amp; LMS for Quiz &amp; Coq"/>
-  <Description DefaultValue="Create automatically-graded quizzes and interactive source code (Coq) in Word documents"/>
+  <DisplayName DefaultValue="WorkSchool 365 CRM &amp; LMS for Coq + Quiz &amp; Review"/>
+  <Description DefaultValue="Create automatically-graded quizzes, reviews and interactive source code (Coq) in Word documents"/>
   <IconUrl DefaultValue="https://1337777.github.io/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://1337777.github.io/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://contact.anthroplogic.com"/>
@@ -101,7 +101,7 @@
         <bt:Url id="Taskpane.Url" DefaultValue="https://1337777.github.io/dist/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="GetStarted.Title" DefaultValue="WorkSchool 365 CRM &amp; LMS for Quiz &amp; Coq"/>
+        <bt:String id="GetStarted.Title" DefaultValue="WorkSchool 365 CRM &amp; LMS for Coq + Quiz &amp; Review"/>
         <bt:String id="WorkSchoo365Tab.Label" DefaultValue="WorkSchool 365"/>
         <bt:String id="CommandsGroup.Label" DefaultValue="WorkSchool 365"/>
         <bt:String id="TaskpaneButton.Label0" DefaultValue="WorkSchool 365"/>

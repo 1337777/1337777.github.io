@@ -260,7 +260,7 @@ Office.onReady(info => {
               transcriptButton.setAttribute("id", "transcriptButton");
               buttons.appendChild(transcriptButton);
               transcriptButton.onclick = (() => { transcriptButtonChecked = document.querySelector("#transcriptButton").checked; });
-              buttons.append("TRANSCRIPT");
+              buttons.append("SCRIPT");
 
 
             }

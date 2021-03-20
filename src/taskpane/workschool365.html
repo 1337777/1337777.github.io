@@ -34,8 +34,8 @@
 
     <section class="samples ms-font-m">
         Create automatically-graded quizzes and interactive source code (Coq) in Word documents via xml-commands. <a
-            target="_blank" href="https://www.youtube.com/watch?v=dos-VWYKSgU">Video tutorial</a>. Optional: <span
-            style="background-color: lightyellow;"><a target="_blank"
+            target="_blank" href="https://www.youtube.com/watch?v=dos-VWYKSgU">Video tutorial</a>.<span
+            style="display:none; background-color: lightyellow;">Optional: <a target="_blank"
                 href="https://anthroplogic.com">Sign-in/up.</a></span>
 
         <h3>Reviewer Commands</h3>
@@ -61,10 +61,10 @@
                 <span class="ms-Button-label">Anonymous: Grade Quiz without Transcripts</span>
             </button>
 
-        <p>
+        <div style="display: none"><p>
             <button id="signed-in-user" class="ms-Button">
                 <span class="ms-Button-label">Signed-in: Grade Quiz with Transcripts</span>
-            </button>
+            </button> </p></div>
 
         <h3>Add-in Submodules</h3>
 
@@ -126,6 +126,17 @@
                     target="_blank"
                     href="https://github.com/highlightjs/highlight.js/blob/master/SUPPORTED_LANGUAGES.md">List of
                     languages</a>).
+            </p>
+
+            <span class="doc-tags"
+                style="cursor:pointer; overflow-wrap: anywhere; width: 100%; font-family: consolas; background-color: lightyellow; color: black; font-weight: bold;">
+&lt;ws365&gt;&lt;ereview&gt;&lt;title&gt;mytitle&lt;/title&gt;&lt;short&gt;myshort&lt;/short&gt;
+&lt;reviewers&gt;&lt;url&gt;github.com/coq/coq&lt;/url&gt;&lt;label&gt;kind: fix&lt;/label&gt;&lt;/reviewers&gt;
+&lt;clean/&gt;&lt;/ereview&gt;&lt;/ws365&gt;
+            </span>
+            <p>
+                To insert ereview title and short headers, and to insert reviewers content from the merged (pull) requests of the github repository url.
+                If &lt;url&gt; is absent, then the reviewers receipts/content will be pulled from the WorkSchool 365 EventReview calendar/archive.
             </p>
 
         </div>

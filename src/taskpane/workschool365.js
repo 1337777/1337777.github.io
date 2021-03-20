@@ -409,6 +409,66 @@ async function processTags() {
           await context.sync();
         }
 
+        xmlDocResultsEl = xmlDoc.evaluate('/ws365/ereview[1]', xmlDoc, null, XPathResult.ANY_TYPE, null).iterateNext();
+        if (xmlDocResultsEl != null) {
+          pccc = context.document.contentControls.getByTag('ws365_ereview_reviewers');
+          pccc.load(['length', 'title']);
+          await context.sync();
+
+          if (pccc.items.length == 0) {
+            if (xmlDocResultsEl.getElementsByTagName("title").length != 0) {
+              let cctemplate_title_ = cctemplate_title;
+              if (xmlDocResultsEl.getElementsByTagName("title")[0].hasChildNodes()) {
+                cctemplate_title_ = cctemplate_title.replace('<w:t>Click or tap here to enter text.</w:t>', '<w:t>' + xmlDocResultsEl.getElementsByTagName("title")[0].childNodes[0].nodeValue + '</w:t>');
+              }
+              searchResults.items[i].insertParagraph('', Word.InsertLocation.before).insertOoxml(cctemplate_title_, "End");
+              await context.sync();
+            }
+
+            if (xmlDocResultsEl.getElementsByTagName("short").length != 0) {
+              let cctemplate_short_ = cctemplate_short;
+              if (xmlDocResultsEl.getElementsByTagName("short")[0].hasChildNodes()) {
+                cctemplate_short_ = cctemplate_short.replace('<w:t>Click or tap here to enter text.</w:t>', '<w:t>' + xmlDocResultsEl.getElementsByTagName("short")[0].childNodes[0].nodeValue + '</w:t>');
+              }
+              searchResults.items[i].insertParagraph('', Word.InsertLocation.before).insertOoxml(cctemplate_short_, "End");
+              await context.sync();
+            }
+
+            if (xmlDocResultsEl.getElementsByTagName("reviewers").length != 0) {
+              let cctemplate_reviewers_ = cctemplate_reviewers;
+              if (xmlDocResultsEl.getElementsByTagName("url").length != 0) {
+                let label = '';
+                if (xmlDocResultsEl.getElementsByTagName("label").length != 0) {
+                  label = xmlDocResultsEl.getElementsByTagName("label")[0].textContent.trim();
+                }
+               
+                let found = (xmlDocResultsEl.getElementsByTagName("url")[0].childNodes[0].nodeValue.trim()).match(/(https:[/][/])?[^/]*github.com[/]([^/]+)[/]([^/]+)/i);
+                fetchResponse = await fetch(`https://api.github.com/repos/${found[2]}/${found[3]}/pulls?state=closed`);
+                fetchBodys = await fetchResponse.text();
+                cctemplate_reviewers_ = cctemplate_reviewers.replace(`" reviewers / ereview "`, `" github.com/${found[2]}/${found[3]} / ereview "`)
+                  .replace(/<w:sdtContent>[^]*<[/]w:sdtContent>/i,
+                    '<w:sdtContent>' +
+                    JSON.parse(fetchBodys)
+                      .filter(o => o.merged_at && (label ? o.labels.map(l => l.name.toLowerCase()).includes(label.toLowerCase()) : true))
+                      .map(o => `<w:p><w:r><w:rPr><w:b/><w:bCs/></w:rPr><w:t>` + o.user.login.replace(/&/g, '&#38;').replace(/</g, '&#60;').replace(/>/g, '&#62;') + `  @  ` + o.html_url.replace(/&/g, '&#38;').replace(/</g, '&#60;').replace(/>/g, '&#62;') + `</w:t></w:r></w:p>` +
+                        `<w:p><w:r><w:t>` + o.title.replace(/&/g, '&#38;').replace(/</g, '&#60;').replace(/>/g, '&#62;') + `</w:t></w:r></w:p>` +
+                        `<w:p><w:r><w:t>` + o.body.replace(/&/g, '&#38;').replace(/</g, '&#60;').replace(/>/g, '&#62;') + `</w:t></w:r></w:p>` +
+                        `<w:p><w:r><w:t></w:t></w:r></w:p>`)
+                      .join('') +
+                    '</w:sdtContent>');
+              }
+              searchResults.items[i].insertParagraph('', Word.InsertLocation.before).insertOoxml(cctemplate_reviewers_, "End");
+              await context.sync();
+            }
+          }
+
+          if (xmlDocResultsEl.getElementsByTagName("clean").length != 0) {
+            searchResults.items[i].delete();
+            searchResults.items[i].paragraphs.getLast().delete();
+          }
+          await context.sync();
+        }
+
       } catch (error) {
         console.error(error);
         console.error('ERROR TO PROCESS: ', searchResults.items[i].text);
@@ -418,3 +478,323 @@ async function processTags() {
     return context.sync();
   });
 }
+
+const cctemplate_title =
+  `<pkg:package xmlns:pkg='http://schemas.microsoft.com/office/2006/xmlPackage'>
+<pkg:part pkg:name='/_rels/.rels' pkg:contentType='application/vnd.openxmlformats-package.relationships+xml' pkg:padding='512'>
+    <pkg:xmlData>
+        <Relationships xmlns='http://schemas.openxmlformats.org/package/2006/relationships'>
+            <Relationship Id='rId1' Type='http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument' Target='word/document.xml'/>
+        </Relationships>
+    </pkg:xmlData>
+</pkg:part>
+<pkg:part pkg:name='/word/document.xml' pkg:contentType='application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml'>
+    <pkg:xmlData>
+        <w:document xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas"
+xmlns:cx="http://schemas.microsoft.com/office/drawing/2014/chartex"
+xmlns:cx1="http://schemas.microsoft.com/office/drawing/2015/9/8/chartex"
+xmlns:cx2="http://schemas.microsoft.com/office/drawing/2015/10/21/chartex"
+xmlns:cx3="http://schemas.microsoft.com/office/drawing/2016/5/9/chartex"
+xmlns:cx4="http://schemas.microsoft.com/office/drawing/2016/5/10/chartex"
+xmlns:cx5="http://schemas.microsoft.com/office/drawing/2016/5/11/chartex"
+xmlns:cx6="http://schemas.microsoft.com/office/drawing/2016/5/12/chartex"
+xmlns:cx7="http://schemas.microsoft.com/office/drawing/2016/5/13/chartex"
+xmlns:cx8="http://schemas.microsoft.com/office/drawing/2016/5/14/chartex"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:aink="http://schemas.microsoft.com/office/drawing/2016/ink"
+xmlns:am3d="http://schemas.microsoft.com/office/drawing/2017/model3d"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"
+xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing"
+xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"
+xmlns:w10="urn:schemas-microsoft-com:office:word"
+xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml"
+xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml"
+xmlns:w16cex="http://schemas.microsoft.com/office/word/2018/wordml/cex"
+xmlns:w16cid="http://schemas.microsoft.com/office/word/2016/wordml/cid"
+xmlns:w16="http://schemas.microsoft.com/office/word/2018/wordml"
+xmlns:w16se="http://schemas.microsoft.com/office/word/2015/wordml/symex"
+xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup"
+xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk"
+xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml"
+xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape" mc:Ignorable="w14 w15 w16se w16cid w16 w16cex wp14">
+<w:body>
+<w:sdt>
+<w:sdtPr>
+    <w:rPr>
+        <w:rStyle w:val="TitleChar"/>
+    </w:rPr>
+    <w:alias w:val=" title / ereview "/>
+    <w:tag w:val="ws365_ereview_title"/>
+    <w:id w:val="-1786179243"/>
+    <w:lock w:val="sdtLocked"/>
+    <w:placeholder>
+        <w:docPart w:val="C18670A167294F038A07CB72887BF386"/>
+    </w:placeholder>
+    <w:showingPlcHdr/>
+    <w15:color w:val="008000"/>
+    <w15:appearance w15:val="tags"/>
+    <w:text/>
+</w:sdtPr>
+<w:sdtEndPr>
+    <w:rPr>
+        <w:rStyle w:val="TitleChar"/>
+    </w:rPr>
+</w:sdtEndPr>
+<w:sdtContent>
+    <w:p w14:paraId="3705D272" w14:textId="4C39D160" w:rsidR="009A7AC0" w:rsidRDefault="00CC2804">
+        <w:r w:rsidRPr="00CC2804">
+            <w:rPr>
+                <w:rStyle w:val="TitleChar"/>
+            </w:rPr>
+            <w:t>Click or tap here to enter text.</w:t>
+        </w:r>
+    </w:p>
+</w:sdtContent>
+</w:sdt>
+</w:body>
+</w:document>
+    </pkg:xmlData>
+</pkg:part>
+</pkg:package>`
+
+const cctemplate_short =
+  `<pkg:package xmlns:pkg='http://schemas.microsoft.com/office/2006/xmlPackage'>
+<pkg:part pkg:name='/_rels/.rels' pkg:contentType='application/vnd.openxmlformats-package.relationships+xml' pkg:padding='512'>
+    <pkg:xmlData>
+        <Relationships xmlns='http://schemas.openxmlformats.org/package/2006/relationships'>
+            <Relationship Id='rId1' Type='http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument' Target='word/document.xml'/>
+        </Relationships>
+    </pkg:xmlData>
+</pkg:part>
+<pkg:part pkg:name='/word/document.xml' pkg:contentType='application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml'>
+    <pkg:xmlData>
+        <w:document xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas"
+xmlns:cx="http://schemas.microsoft.com/office/drawing/2014/chartex"
+xmlns:cx1="http://schemas.microsoft.com/office/drawing/2015/9/8/chartex"
+xmlns:cx2="http://schemas.microsoft.com/office/drawing/2015/10/21/chartex"
+xmlns:cx3="http://schemas.microsoft.com/office/drawing/2016/5/9/chartex"
+xmlns:cx4="http://schemas.microsoft.com/office/drawing/2016/5/10/chartex"
+xmlns:cx5="http://schemas.microsoft.com/office/drawing/2016/5/11/chartex"
+xmlns:cx6="http://schemas.microsoft.com/office/drawing/2016/5/12/chartex"
+xmlns:cx7="http://schemas.microsoft.com/office/drawing/2016/5/13/chartex"
+xmlns:cx8="http://schemas.microsoft.com/office/drawing/2016/5/14/chartex"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:aink="http://schemas.microsoft.com/office/drawing/2016/ink"
+xmlns:am3d="http://schemas.microsoft.com/office/drawing/2017/model3d"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"
+xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing"
+xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"
+xmlns:w10="urn:schemas-microsoft-com:office:word"
+xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml"
+xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml"
+xmlns:w16cex="http://schemas.microsoft.com/office/word/2018/wordml/cex"
+xmlns:w16cid="http://schemas.microsoft.com/office/word/2016/wordml/cid"
+xmlns:w16="http://schemas.microsoft.com/office/word/2018/wordml"
+xmlns:w16se="http://schemas.microsoft.com/office/word/2015/wordml/symex"
+xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup"
+xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk"
+xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml"
+xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape" mc:Ignorable="w14 w15 w16se w16cid w16 w16cex wp14">
+<w:body>
+<w:sdt>
+<w:sdtPr>
+    <w:alias w:val=" short / ereview "/>
+    <w:tag w:val="ws365_ereview_short"/>
+    <w:id w:val="2116171124"/>
+    <w:lock w:val="sdtLocked"/>
+    <w:placeholder>
+        <w:docPart w:val="9427B7AC5A924BBEBF828D613A096981"/>
+    </w:placeholder>
+    <w:showingPlcHdr/>
+    <w15:color w:val="008000"/>
+    <w15:appearance w15:val="tags"/>
+    <w:text w:multiLine="1"/>
+</w:sdtPr>
+<w:sdtEndPr/>
+<w:sdtContent>
+    <w:p w14:paraId="2AFC5604" w14:textId="671ED5D6" w:rsidR="009A7AC0" w:rsidRDefault="00CC2804" w:rsidP="0077216D">
+        <w:r w:rsidRPr="00CC2804">
+            <w:t>Click or tap here to enter text.</w:t>
+        </w:r>
+    </w:p>
+</w:sdtContent>
+</w:sdt>
+</w:body>
+</w:document>
+    </pkg:xmlData>
+</pkg:part>
+</pkg:package>`
+
+const cctemplate_reviewers =
+  `<pkg:package xmlns:pkg='http://schemas.microsoft.com/office/2006/xmlPackage'>
+<pkg:part pkg:name='/_rels/.rels' pkg:contentType='application/vnd.openxmlformats-package.relationships+xml' pkg:padding='512'>
+    <pkg:xmlData>
+        <Relationships xmlns='http://schemas.openxmlformats.org/package/2006/relationships'>
+            <Relationship Id='rId1' Type='http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument' Target='word/document.xml'/>
+        </Relationships>
+    </pkg:xmlData>
+</pkg:part>
+<pkg:part pkg:name='/word/document.xml' pkg:contentType='application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml'>
+    <pkg:xmlData>
+        <w:document xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas"
+xmlns:cx="http://schemas.microsoft.com/office/drawing/2014/chartex"
+xmlns:cx1="http://schemas.microsoft.com/office/drawing/2015/9/8/chartex"
+xmlns:cx2="http://schemas.microsoft.com/office/drawing/2015/10/21/chartex"
+xmlns:cx3="http://schemas.microsoft.com/office/drawing/2016/5/9/chartex"
+xmlns:cx4="http://schemas.microsoft.com/office/drawing/2016/5/10/chartex"
+xmlns:cx5="http://schemas.microsoft.com/office/drawing/2016/5/11/chartex"
+xmlns:cx6="http://schemas.microsoft.com/office/drawing/2016/5/12/chartex"
+xmlns:cx7="http://schemas.microsoft.com/office/drawing/2016/5/13/chartex"
+xmlns:cx8="http://schemas.microsoft.com/office/drawing/2016/5/14/chartex"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:aink="http://schemas.microsoft.com/office/drawing/2016/ink"
+xmlns:am3d="http://schemas.microsoft.com/office/drawing/2017/model3d"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"
+xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing"
+xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"
+xmlns:w10="urn:schemas-microsoft-com:office:word"
+xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml"
+xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml"
+xmlns:w16cex="http://schemas.microsoft.com/office/word/2018/wordml/cex"
+xmlns:w16cid="http://schemas.microsoft.com/office/word/2016/wordml/cid"
+xmlns:w16="http://schemas.microsoft.com/office/word/2018/wordml"
+xmlns:w16se="http://schemas.microsoft.com/office/word/2015/wordml/symex"
+xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup"
+xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk"
+xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml"
+xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape" mc:Ignorable="w14 w15 w16se w16cid w16 w16cex wp14">
+<w:body>
+<w:sdt>
+<w:sdtPr>
+    <w:alias w:val=" reviewers / ereview "/>
+    <w:tag w:val="ws365_ereview_reviewers"/>
+    <w:id w:val="-158768229"/>
+    <w:lock w:val="sdtContentLocked"/>
+    <w:placeholder>
+        <w:docPart w:val="4671E73BE31647F8A3FD43B319FCD03C"/>
+    </w:placeholder>
+    <w:showingPlcHdr/>
+    <w15:color w:val="008000"/>
+    <w15:appearance w15:val="tags"/>
+    <w:text w:multiLine="1"/>
+</w:sdtPr>
+<w:sdtEndPr/>
+<w:sdtContent>
+    <w:p w14:paraId="6E0C1900" w14:textId="616D3880" w:rsidR="009A7AC0" w:rsidRDefault="009A7AC0">
+        <w:r w:rsidRPr="00272804">
+            <w:rPr>
+                <w:b/>
+                <w:bCs/>
+            </w:rPr>
+            <w:t></w:t>
+        </w:r>
+    </w:p>
+</w:sdtContent>
+</w:sdt>
+</w:body>
+</w:document>
+    </pkg:xmlData>
+</pkg:part>
+</pkg:package>`
+
+/// TODO:
+/* async function insertContentControls() {
+  await Word.run(async (context) => {
+    let paragraphs = context.document.body.insertOoxml(
+      `<pkg:package xmlns:pkg='http://schemas.microsoft.com/office/2006/xmlPackage'>
+    <pkg:part pkg:name='/_rels/.rels' pkg:contentType='application/vnd.openxmlformats-package.relationships+xml' pkg:padding='512'>
+        <pkg:xmlData>
+            <Relationships xmlns='http://schemas.openxmlformats.org/package/2006/relationships'>
+                <Relationship Id='rId1' Type='http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument' Target='word/document.xml'/>
+            </Relationships>
+        </pkg:xmlData>
+    </pkg:part>
+    <pkg:part pkg:name='/word/document.xml' pkg:contentType='application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml'>
+        <pkg:xmlData>
+            <w:document xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas"
+    xmlns:cx="http://schemas.microsoft.com/office/drawing/2014/chartex"
+    xmlns:cx1="http://schemas.microsoft.com/office/drawing/2015/9/8/chartex"
+    xmlns:cx2="http://schemas.microsoft.com/office/drawing/2015/10/21/chartex"
+    xmlns:cx3="http://schemas.microsoft.com/office/drawing/2016/5/9/chartex"
+    xmlns:cx4="http://schemas.microsoft.com/office/drawing/2016/5/10/chartex"
+    xmlns:cx5="http://schemas.microsoft.com/office/drawing/2016/5/11/chartex"
+    xmlns:cx6="http://schemas.microsoft.com/office/drawing/2016/5/12/chartex"
+    xmlns:cx7="http://schemas.microsoft.com/office/drawing/2016/5/13/chartex"
+    xmlns:cx8="http://schemas.microsoft.com/office/drawing/2016/5/14/chartex"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:aink="http://schemas.microsoft.com/office/drawing/2016/ink"
+    xmlns:am3d="http://schemas.microsoft.com/office/drawing/2017/model3d"
+    xmlns:o="urn:schemas-microsoft-com:office:office"
+    xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+    xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"
+    xmlns:v="urn:schemas-microsoft-com:vml"
+    xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing"
+    xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"
+    xmlns:w10="urn:schemas-microsoft-com:office:word"
+    xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+    xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml"
+    xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml"
+    xmlns:w16cex="http://schemas.microsoft.com/office/word/2018/wordml/cex"
+    xmlns:w16cid="http://schemas.microsoft.com/office/word/2016/wordml/cid"
+    xmlns:w16="http://schemas.microsoft.com/office/word/2018/wordml"
+    xmlns:w16se="http://schemas.microsoft.com/office/word/2015/wordml/symex"
+    xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup"
+    xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk"
+    xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml"
+    xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape" mc:Ignorable="w14 w15 w16se w16cid w16 w16cex wp14">
+    <w:body>
+        <w:sdt>
+            <w:sdtPr>
+                <w:alias w:val="cctitle"/>
+                <w:tag w:val="cctag"/>
+                <w:id w:val="-980158935"/>
+                <w:placeholder>
+                    <w:docPart w:val="DefaultPlaceholder_-1854013440"/>
+                </w:placeholder>
+                <w:showingPlcHdr/>
+                <w15:appearance w15:val="tags"/>
+                <w:text w:multiLine="1"/>
+            </w:sdtPr>
+            <w:sdtContent>
+                <w:p w14:paraId="35A65FD4" w14:textId="215FA48B" w:rsidR="0061040A" w:rsidRDefault="002510E8">
+                    <w:r w:rsidRPr="00DA6B7D">
+                        <w:rPr>
+                            <w:rStyle w:val="PlaceholderText"/>
+                        </w:rPr>
+                        <w:t>Click or tap here to enter text.</w:t>
+                    </w:r>
+                </w:p>
+            </w:sdtContent>
+        </w:sdt>
+        <w:sectPr w:rsidR="0061040A">
+            <w:pgSz w:w="12240" w:h="15840"/>
+            <w:pgMar w:top="1440" w:right="1800" w:bottom="1440" w:left="1800" w:header="720" w:footer="720" w:gutter="0"/>
+            <w:cols w:space="720"/>
+            <w:docGrid w:linePitch="360"/>
+        </w:sectPr>
+    </w:body>
+</w:document>
+        </pkg:xmlData>
+    </pkg:part>
+</pkg:package>
+`, "End");
+    paragraphs.load("text");
+
+    await context.sync();
+
+    console.log("Content controls inserted: " + paragraphs.text);
+
+  });
+} */

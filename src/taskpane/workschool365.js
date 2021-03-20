@@ -415,13 +415,23 @@ async function processTags() {
           pccc.load(['length', 'title']);
           await context.sync();
 
+          let rr = searchResults.items[i].insertParagraph('', Word.InsertLocation.after);
+          if (xmlDocResultsEl.getElementsByTagName("clean").length != 0) {
+            //searchResults.items[i].delete();
+            //searchResults.items[i].paragraphs.getLast().delete();
+            searchResults.items[i].delete();
+            searchResults.items[i].paragraphs.getLast().delete();
+            await context.sync();
+          }
+
           if (pccc.items.length == 0) {
             if (xmlDocResultsEl.getElementsByTagName("title").length != 0) {
               let cctemplate_title_ = cctemplate_title;
               if (xmlDocResultsEl.getElementsByTagName("title")[0].hasChildNodes()) {
                 cctemplate_title_ = cctemplate_title.replace('<w:t>Click or tap here to enter text.</w:t>', '<w:t>' + xmlDocResultsEl.getElementsByTagName("title")[0].childNodes[0].nodeValue + '</w:t>');
               }
-              searchResults.items[i].insertParagraph('', Word.InsertLocation.before).insertOoxml(cctemplate_title_, "End");
+              //searchResults.items[i].insertParagraph('', Word.InsertLocation.before).insertOoxml(cctemplate_title_, "End");
+              rr = rr.insertParagraph('', Word.InsertLocation.after).insertOoxml(cctemplate_title_, "End");
               await context.sync();
             }
 
@@ -430,7 +440,8 @@ async function processTags() {
               if (xmlDocResultsEl.getElementsByTagName("short")[0].hasChildNodes()) {
                 cctemplate_short_ = cctemplate_short.replace('<w:t>Click or tap here to enter text.</w:t>', '<w:t>' + xmlDocResultsEl.getElementsByTagName("short")[0].childNodes[0].nodeValue + '</w:t>');
               }
-              searchResults.items[i].insertParagraph('', Word.InsertLocation.before).insertOoxml(cctemplate_short_, "End");
+              //searchResults.items[i].insertParagraph('', Word.InsertLocation.before).insertOoxml(cctemplate_short_, "End");
+              rr = rr.insertParagraph('', Word.InsertLocation.after).insertOoxml(cctemplate_short_, "End");
               await context.sync();
             }
 
@@ -457,16 +468,10 @@ async function processTags() {
                       .join('') +
                     '</w:sdtContent>');
               }
-              searchResults.items[i].insertParagraph('', Word.InsertLocation.before).insertOoxml(cctemplate_reviewers_, "End");
+              rr = rr.insertParagraph('', Word.InsertLocation.after).insertOoxml(cctemplate_reviewers_, "End");
               await context.sync();
             }
           }
-
-          if (xmlDocResultsEl.getElementsByTagName("clean").length != 0) {
-            searchResults.items[i].delete();
-            searchResults.items[i].paragraphs.getLast().delete();
-          }
-          await context.sync();
         }
 
       } catch (error) {
@@ -530,7 +535,7 @@ xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape" mc
     <w:alias w:val=" title / ereview "/>
     <w:tag w:val="ws365_ereview_title"/>
     <w:id w:val="-1786179243"/>
-    <w:lock w:val="sdtLocked"/>
+    <!-- w:lock w:val="sdtLocked"/ -->
     <w:placeholder>
         <w:docPart w:val="C18670A167294F038A07CB72887BF386"/>
     </w:placeholder>
@@ -609,7 +614,7 @@ xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape" mc
     <w:alias w:val=" short / ereview "/>
     <w:tag w:val="ws365_ereview_short"/>
     <w:id w:val="2116171124"/>
-    <w:lock w:val="sdtLocked"/>
+    <!-- w:lock w:val="sdtLocked"/ -->
     <w:placeholder>
         <w:docPart w:val="9427B7AC5A924BBEBF828D613A096981"/>
     </w:placeholder>

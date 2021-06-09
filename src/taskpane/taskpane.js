@@ -78,6 +78,19 @@ jscoq_opts = {
   editor: { mode: { 'company-coq': true }, keyMap: 'default' }
 };
 
+
+jscoq_src  = "https://1337777.github.io/ui-js/jscoq-loader.js";
+jscoq_opts = {
+  show: true,
+  line_numbers: 'continue',
+  prelude: true,
+  base_path: 'https://1337777.github.io/',
+  init_pkgs: ['init'],
+  all_pkgs: ['init', 'math-comp'],
+  implicit_libs: true,
+  editor: { mode: { 'company-coq': true }, keyMap: 'default' }
+};
+
 */
 
 /* Global reference */
@@ -152,26 +165,40 @@ Office.onReady(info => {
       await context.sync();
 
       if (foundRanges.items.length != 0) {
+        foundRanges.items.forEach(
+          (valR, iR, aR) => {
+            try {
+              /* for (const match of valR.paragraphs.items.map(i => i.text).join('\n').matchAll(coq365script_regexp)) {
+                var evalresult = eval(match[1]);
+              } */
+              let matches = valR.paragraphs.items.map(i => i.text).join('\n').match(coq365script_regexp);
+              if (matches.length > 0) {
+                matches.forEach(
+                function (match) {
+                  var evalresult = eval(match.substring(2, match.length - 2));
+                });
+              }
+            } catch (err) { console.error(err); }
+            if ( (/_prelude/i.test(valR.title)) ) {
+              workspace = document.createElement("TEXTAREA");
+              //workspace.setAttribute("id", "workspace_" + valR.title.split('/')[0].trim());
+              workspace.setAttribute("id", "workspace_" + valR.id);
+              workspaces.appendChild(workspace);
+              //jscoq_ids.push("workspace_" + valR.title.split('/')[0].trim());
+              jscoq_ids.push("workspace_" + valR.id);
+            }
+          }
+        );
       foundRanges.items.forEach(
         (valR, iR, aR) => {
-          try {
-            /* for (const match of valR.paragraphs.items.map(i => i.text).join('\n').matchAll(coq365script_regexp)) {
-              var evalresult = eval(match[1]);
-            } */
-            let matches = valR.paragraphs.items.map(i => i.text).join('\n').match(coq365script_regexp);
-            if (matches.length > 0) {
-              matches.forEach(
-              function (match) {
-                var evalresult = eval(match.substring(2, match.length - 2));
-              });
-            }
-          } catch (err) { console.error(err); }
-          workspace = document.createElement("TEXTAREA");
-          //workspace.setAttribute("id", "workspace_" + valR.title.split('/')[0].trim());
-          workspace.setAttribute("id", "workspace_" + valR.id);
-          workspaces.appendChild(workspace);
-          //jscoq_ids.push("workspace_" + valR.title.split('/')[0].trim());
-          jscoq_ids.push("workspace_" + valR.id);
+          if (! ((/_prelude/i.test(valR.title)) || (/_format/i.test(valR.title))) ) {
+            workspace = document.createElement("TEXTAREA");
+            //workspace.setAttribute("id", "workspace_" + valR.title.split('/')[0].trim());
+            workspace.setAttribute("id", "workspace_" + valR.id);
+            workspaces.appendChild(workspace);
+            //jscoq_ids.push("workspace_" + valR.title.split('/')[0].trim());
+            jscoq_ids.push("workspace_" + valR.id);
+          }
         }
       );
       }
@@ -508,10 +535,12 @@ async function readFrom() {
     var foundRanges = context.document.contentControls.getByTag('ws365_code_coq');
     foundRanges.load(['length', 'items', 'text', 'title']);
     await context.sync();
+    var count = 0;
 
-    foundRanges.items.forEach(
+    foundRanges.items.filter((valR, iR, aR) => (/_prelude/i.test(valR.title)) ).forEach(
       async (valR, iR, aR) => {
         if (coq.provider.snippets[iR]) {
+          count = count + 1;
           coq.provider.snippets[iR].title = valR.title.split('/')[0].trim();
           coq.provider.snippets[iR].ccid = valR.id;
           var cid = valR.id;
@@ -523,6 +552,21 @@ async function readFrom() {
         }
       }
     );
+    foundRanges.items.filter((valR, iR, aR) => (! ((/_prelude/i.test(valR.title)) || (/_format/i.test(valR.title))) ) ).forEach(
+      async (valR, iR, aR) => {
+        if (coq.provider.snippets[count+iR]) {
+          coq.provider.snippets[count+iR].title = valR.title.split('/')[0].trim();
+          coq.provider.snippets[count+iR].ccid = valR.id;
+          var cid = valR.id;
+          var ctitle = valR.title.split('/')[0].trim();
+          window.setTimeout(async () => {
+            await readCC(coq.provider.snippets[count+iR], cid);
+            //context.sync();
+          }, 50 * iR);
+        }
+      }
+    );
+    
 
     return context.sync();
   })

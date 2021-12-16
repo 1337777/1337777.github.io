@@ -698,9 +698,13 @@ xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape" mc
 <w:sdtEndPr/>
 <w:sdtContent>
     <w:p w14:paraId="6E0C1900" w14:textId="616D3880" w:rsidR="009A7AC0" w:rsidRDefault="009A7AC0">
-      <w:r>
-        <w:t xml:space="preserve"></w:t>
-      </w:r>
+        <w:r w:rsidRPr="00272804">
+            <w:rPr>
+                <w:b/>
+                <w:bCs/>
+            </w:rPr>
+            <w:t>.</w:t>
+        </w:r>
     </w:p>
 </w:sdtContent>
 </w:sdt>
@@ -709,6 +713,14 @@ xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape" mc
     </pkg:xmlData>
 </pkg:part>
 </pkg:package>`
+
+/* <w:sdtContent>
+    <w:p w14:paraId="6E0C1900" w14:textId="616D3880" w:rsidR="009A7AC0" w:rsidRDefault="009A7AC0">
+      <w:r>
+        <w:t xml:space="preserve"></w:t>
+      </w:r>
+    </w:p>
+</w:sdtContent> */
 
 /* <w:sdtContent>
     <w:p w14:paraId="6E0C1900" w14:textId="616D3880" w:rsidR="009A7AC0" w:rsidRDefault="009A7AC0">
